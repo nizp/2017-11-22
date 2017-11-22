@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+<body>
+    <script>
+            /*
+                如果你获取元素的时候，获取不到
+                有可能是script没有放到元素之后
+
+                1.如果打印元素是null，那么可能script标签没有放到元素之后
+                2.也有可能是就没有这个元素
+
+                window.onload
+                    当页面的所有静态资源加载完成之后触发
+            */
+
+        window.onload = function(){
+            const box = document.getElementById('box');
+            //null.style.width
+            box.style.width = '100px';
+            box.style.height = '100px';
+            box.style.background = 'red';
+        }
+            
+
+            // console.log(box);
+    </script>
+    <div id="box"></div>
+    <!-- <script>
+         const box = document.getElementById('box2');
+        console.log(box)
+    </script> -->
+</body>
+</html>

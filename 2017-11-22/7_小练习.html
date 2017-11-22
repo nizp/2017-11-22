@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    background: red;
+    transition: all 500ms;
+}
+
+</style>
+</head>
+<body>
+    <button id="btn">按钮</button>
+    <div id="box" style="border:10px solid #000;"></div>
+<script>
+    /*
+        小技巧：
+            只要是操作页面的东西，都要用''或者""
+            页面中的所有内容都是字符串
+
+        cssText：
+            批量设置行间样式
+
+            注意：
+                如果在行间已经有了样式，那么会覆盖。
+        
+        style.cssText = 'width:100px;height:100px;opacity:.5'
+    */
+    //通过id的方式获取一个按钮
+    const btn = document.getElementById('btn');
+     //通过id的方式获取一个div
+    const box = document.getElementById('box');
+    //当点击按钮的时候，让div的样式设置为none
+    btn.onclick = function(){
+        box.style.display = 'none';
+    }
+
+    box.onmouseover = function(){
+        // box.style.width = '200px';
+        // box.style.height = '200px';
+        // box.style.opacity = '.5';
+
+        box.style.cssText = 'width:200px;height:200px;opacity:.5';
+    }
+    box.onmouseout = function(){
+        // box.style.width = '100px';
+        // box.style.height = '100px';
+        // box.style.opacity = '1';
+        box.style.cssText = '';
+    }
+
+
+</script>
+</body>
+</html>

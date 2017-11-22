@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    background: red;
+}
+#box2{
+    width:100px;
+    height: 100px;
+    background:green;
+}
+</style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="box2"></div>
+<!-- <script src="hello.js"></script> -->
+<script>
+     /*
+        如果要引入外部的js，那么使用src="js文件地址"
+
+        //通过ID获取的元素
+            document.getElementById('box');  
+
+        //事件
+
+            onclick  点击
+            onmouseover  鼠标移入事件
+            onmouseout   鼠标移出事件
+
+        // .
+         “的” 的意思
+        
+        // 函数(实现什么目的的代码都放在函数内)
+        
+            function(){
+                alert('欢迎来到妙味课堂')
+            }
+
+            有名函数:
+                function fn(){}
+                
+                函数主要的用途是复用
+
+                如果使用有名函数给事件调用，那么不要加()
+
+                document.getElementById('box').onclick = fn; √
+                document.getElementById('box').onclick = fn(); ×
+
+                直接函数调用，函数名 + 括号
+        //分号；
+            最好在每句话后面加上
+
+        //等号 =
+            把右边的东西给左边
+            
+    */
+
+    document.getElementById('box').onclick = fn;
+
+    document.getElementById('box2').onclick = fn;
+
+    function fn(){
+        alert('呵呵');
+    };
+
+    //fn(); //函数调用
+
+    
+    
+
+
+    // alert(1);
+</script>
+</body>
+</html>

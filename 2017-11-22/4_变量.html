@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    background: red;
+    display: none;
+    transition:all 500ms;
+}
+</style>
+</head>
+<body>
+    <button id="btn"> 点击按钮 </button>
+    <div id="box"></div>
+<script>
+
+    /*
+        变量:
+            可变的量,存储数据的 “容器” 以复用为主
+            var 变量的名字 = 要存储的数据 
+            let 官方更推荐使用 let 
+
+        变量名开头不能是数字,特殊的符号
+        
+        也不能有关键字或者保留字
+
+        关键字:系统已经使用的名字 (undefined)
+        保留字:系统现在没有使用，但是将来会使用的名字 (class)
+
+        变量一般都是小驼峰命名法
+
+            get Element By Id
+
+            首字母小写，单词与单词之间首字母大写
+        
+        
+        除了alert,
+        console.log()  在浏览器的控制台打印内容。
+
+        小技巧：
+            多使用alert或者console.log,越快学会使用，越容易开窍。
+
+    */
+
+    let btn = document.getElementById('btn'); 
+
+
+    // var btn = document.getElementById('btn');
+    // var box = document.getElementById('box');
+
+    let btn = document.getElementById('btn');
+    let box = document.getElementById('box');
+
+    btn.onclick = fn;
+
+    function fn(){
+        box.style.display = 'block';
+    }
+
+    box.onmouseover = function(){
+        box.style.width = '200px';
+        box.style.height = '200px';
+        box.style.opacity = '.5';
+    }
+    box.onmouseout = function(){
+        box.style.width = '100px';
+        box.style.height = '100px';
+        box.style.opacity = '1';
+    }
+   
+</script>
+</body>
+</html>
