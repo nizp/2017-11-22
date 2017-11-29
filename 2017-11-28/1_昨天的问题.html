@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+<script>
+    /*
+        var 
+            window上会自动挂一个变量的属性
+        let
+            块级作用域
+            不是自动挂在window上的
+
+        = 赋值
+
+        域：
+            范围，函数可以套函数，子函数能够使用父函数的变量或者参数
+            如果父函数没有还会向父级的父级找，直到找到window为止。
+
+            只要有函数就是一个域。function(){}
+            只要是一个块就是一个域 {}
+
+        在纯for套for的时候，如果使用let，两个相同变量是不会打架的
+        但是，个人**强烈**建议，不要取成同一个变量名
+
+    */
+
+    var lis = document.querySelectorAll('li');
+
+    // lis[0].onclick = function(){
+    //     alert(1);
+    // }
+    // lis[1].onclick = function(){
+    //     alert(1);
+    // }
+    var b = 0;
+   ;
+    for(let i=0;i<lis.length;i++){
+        // alert('大循环的'+i)
+        for(let j=0;j<2;j++){
+            alert(i);
+        }
+        
+        // lis[i].onclick = function(){
+        //     // var i = 0;
+        //     //alert(i);
+        //     for(let i=0;i<2;i++){
+        //         alert(i);
+        //     }
+        // }
+    }
+    // alert(i);
+
+    // console.log(lis[2].onclick)
+
+
+
+
+    // {
+    //     let a = 10;
+    // }
+
+    // let a = 10;
+    
+    // console.log(window.a);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button">按钮一</button>
+    <button type="button">按钮二</button>
+    <button type="button">按钮三</button>
+    <button type="button">按钮四</button>
+    <button type="button">按钮五</button>
+<script>
+    /*
+        把按钮的内容去对应数组的某项。
+
+        如果点击的是按钮一   ->  星期一
+    */
+    const lis = document.querySelectorAll('button');
+    let arr = ['星期一','星期二','星期三','星期四','星期五'];
+
+    // lis[0].onclick = function(){
+    //     this.innerText = arr[0];
+    // }
+    // lis[2].onclick = function(){
+    //     this.innerText = arr[2];
+    // }
+
+    /*
+        给每个按钮都添加事件函数
+    */
+    // lis[0].num = 0;
+    // lis[1].num = 1;
+    // lis[2].num = 2;
+    // lis[3].num = 3;
+    // lis[4].num = 4;
+    // var j = 10;
+    
+    for(var i=0;i<lis.length;i++){
+        lis[i].num = i;
+        lis[i].onclick = function(){
+            alert(this.num);
+            // alert(i); 
+            this.innerText = arr[this.num];
+        }
+        // j++;
+    }
+
+
+    
+</script>
+</body>
+</html>

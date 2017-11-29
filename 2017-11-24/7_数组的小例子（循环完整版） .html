@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="prev">点击切换上一张</button>
+    <button id="next">点击切换下一张</button>
+    <img width="200" src="img/a1.jpg" id="img">
+<script>
+    
+    const btn1 = document.getElementById('prev');
+    const btn2 = document.getElementById('next');
+    const img = document.getElementById('img');
+    let num = 0;
+    let arr = [
+        'img/001.jpg',
+        'img/a2.jpg',
+        'img/a3.jpg',
+        'img/xx4.jpg',
+        'img/rico.png'
+    ]
+    btn1.onclick = function(){
+        num --; 
+        if(num < 0){
+            num = arr.length - 1;
+        }
+        img.src = arr[num];
+    }
+    btn2.onclick = function(){
+        num ++;
+        if(num > arr.length-1){
+            num = 0;
+        }
+        img.src = arr[num];
+    }
+</script>
+</body>
+</html>

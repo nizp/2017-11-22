@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<script>
+    let txt12 = document.getElementById('txt');
+    
+    function f(){}
+
+    // console.log(typeof txt12); //null
+    console.log(typeof f); //function
+</script>
+<body>
+    <input type="text" id="txt">
+<script>
+    /*
+        javascript:
+            ECMAScript + DOM + BOM
+
+        ECMAScript:
+            规定了一些语法：
+                if(){}
+                for(;;){}
+                while(){}
+                运算符
+                数据类型
+                各种数据类型的方法
+        5.0之前，都叫ES5
+        ES2016以后的，都叫ES6（ES2017,ES2018...）  
+        ES6泛指下一代js语法
+
+        数据类型:
+            简单类型(基本类型)：
+                数字（Number）、字符串（String）、布尔值（Boolean）
+                、未定义（Undefined）、空（Null）、唯一（Symbol）
+            复合数据类型：
+                对象：
+                    {}（Object）、[]（Array）
+
+          
+                数字(Number)：1
+                    new Number()
+
+                字符串(String): 
+                    '' 或者 ""  单引号或者双引号对包起来的
+                    页面中的所有内容都是字符串
+                    new String()
+
+                布尔值(Boolean):
+                    true,false
+                    new Boolean();
+
+                未定义(Undefined):
+                    1.一个变量声明了但是没有赋值就是undefined
+                    2.数组中没有要找的值，undefined
+                    3.对象中没有这个属性，undefined
+                    4.函数默认的返回值，undefined
+
+                空(Null):
+                    1.页面中没有这个元素
+                    2.script标签在元素上方获取元素
+
+                Symbol:
+                    Symbol()
+
+                Object:
+                    new Object()
+                        {
+                            key:val
+                        }
+                    new Array()
+                        [1,true,]
+                    
+                    Function
+                        function
+
+        
+        注意：
+            typeof 检查出来的数据类型与官方的数据类型是有出入的
+            
+            typeof检查出来的值都是字符串并且是**小写**。
+
+            number、boolean、undefined、string、object、function、symbol
+
+            typeof 没有null （null在typeof中数据对象类型）
+                   多了一个 function
+                
+
+    */
+
+    const txt = document.getElementById('txt');
+
+    // let str;
+    // console.log(str);
+    // let arr = [1];
+    // console.log(arr[1]);
+
+    // let obj = {name:'呵呵'}
+    // console.log(obj.age);
+
+    // function fn(){
+    //     // return undefined;
+    // }
+    // console.log(fn());
+
+    // console.log(txt);
+
+    // console.log(typeof Symbol())
+
+    // let num = 1;
+
+    // console.log(typeof num);
+    
+
+    // document.onclick = function(){
+    //     console.log(typeof txt.value);
+    // }
+
+</script>
+</body>
+</html>

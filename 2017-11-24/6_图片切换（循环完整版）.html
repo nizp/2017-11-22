@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="prev">点击切换上一张</button>
+    <button id="next">点击切换下一张</button>
+    <img width="200" src="img/a1.jpg" id="img">
+<script>
+    
+    const btn1 = document.getElementById('prev');
+    const btn2 = document.getElementById('next');
+    const img = document.getElementById('img');
+    let num = 1;
+    btn1.onclick = function(){
+        num --; 
+        if(num < 1){
+            num = 4;
+        }
+        img.src = 'img/a'+num+'.jpg';
+    }
+    btn2.onclick = function(){
+        num ++;
+        if(num > 4){
+            num = 1;
+        }
+        img.src = 'img/a'+num+'.jpg';
+    }
+</script>
+</body>
+</html>

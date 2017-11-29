@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.active{
+    background: yellow;
+}
+div.show{
+    display: block;
+}
+div{
+    width:150px;
+    height: 150px;
+    border: 1px solid #000;
+    display: none;
+}
+</style>
+</head>
+<body>
+    <button type="button" class="active">按钮一</button>
+    <button type="button">按钮二</button>
+    <button type="button">按钮三</button>
+    <div class="show">111111</div>
+    <div>222222</div>
+    <div>33333</div>
+<script>
+    /*
+        1.先把第一个按钮存起来
+        2.点击第二个按钮的时候，把第一个（上一个）按钮的className清掉
+        3.把当前的className加上active
+            
+    */
+    const btns = document.querySelectorAll('button');
+    const divs = document.querySelectorAll('div');
+    let prevBtn = btns[0]; 
+    let prevDiv = divs[0];
+
+    for(var i=0;i<btns.length;i++){
+        btns[i].index = i;
+        divs[i].num2 = i;
+
+        btns[i].onclick = function(){
+            // prevBtn.className = '';
+            btns[prevBtn.index].className = '';
+
+            // prevDiv.className = '';
+            // divs[divs[prevBtn.index].num2].className = '';
+            divs[prevDiv.num2].className = '';
+
+            // this.className = 'active';
+            btns[this.index].className = 'active';
+            divs[this.index].className = 'show';
+
+            prevBtn = this;
+            prevDiv = divs[this.index];
+            
+        }
+    }
+    
+    
+</script>
+</body>
+</html>

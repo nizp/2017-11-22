@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:150px;height:150px;
+}    
+.red{
+    background:red;
+}
+.green{
+    background: green;
+}
+</style>
+</head>
+<body>
+    <input type="text" id="key"/> +
+    <input type="text" id="val" />
+    <input type="button" value="按钮" id="btn"/>
+    <div id="box" class="red"></div>
+<script>
+    /*
+        1.在点击按钮的时候，
+        2.获取到key中的内容，
+        3.获取到val中的内容
+        4.然后把这些填写的内容给box
+
+        一般操作（读和写）input的内容，使用value
+
+        能用[]的地方不一定能用.
+        比如:
+            box.style[kv] = vv;
+            换成
+            box.style.kv = vv;
+        
+        style下面没有kv的属性，所以不能用.kv
+    */
+
+   let text1 = document.getElementById('key');
+   let text2 = document.getElementById('val');
+   let btn = document.getElementById('btn');
+   let box = document.getElementById('box');
+
+   btn.value = '呵呵'; //用来介绍value属性的
+
+   btn.onclick = function(){
+        let kv = text1.value; //获取到第一个input中的value值
+        let vv = text2.value;//获取到第二个input中的value值
+        box.style[kv] = vv;
+   }
+
+
+
+</script>
+</body>
+</html>

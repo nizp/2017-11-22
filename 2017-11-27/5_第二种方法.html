@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="全选">
+    <input type="button" value="反选">
+    <input type="button" value="全不选">
+
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+<script>
+
+    const btns = document.querySelectorAll('input[type="button"]');
+    const checks =  document.querySelectorAll('input[type="checkbox"]');
+
+    for(let i=0;i<btns.length;i++){
+        btns[i].onclick = function(){
+            for(var j=0;j<checks.length;j++){
+                if(i == 0){ //点击的是全选
+                    checks[j].checked = true;
+                }else if(i == 1){ //点击的是反选
+                    if(checks[j].checked == true){
+                        checks[j].checked = false;
+                    }else{
+                        checks[j].checked = true;
+                    }
+                }else{
+                    //点击的是不选
+                    checks[j].checked = false;
+                }
+            }
+        }   
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <button type="button">按钮一</button>
+    <button type="button">按钮二</button>
+    <button type="button">按钮三</button>
+    <button type="button">按钮四</button>
+  <script type="text/javascript">
+      let btns = document.querySelectorAll('button');
+      /*
+        点击2下，第三下就不能点击了。
+
+         *** 加自定义的属性，不是加在行间，而是加在内存中
+
+        element.某属性，这个属性必须是系统自带的才能获取到，不然为undefined
+        btns[0].style.width  （系统自带）
+        btns[0].num （非系统自带）
+      */
+      // let num = 1;
+      btns[0].num = 1;
+      // console.log(btns[0].num);
+      btns[0].onclick = function(){
+        btns[0].num ++;
+        if(btns[0].num >= 3){
+          btns[0].disabled = true;
+        }
+      }
+  </script>
+  </body>
+</html>

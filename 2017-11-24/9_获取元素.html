@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button">
+    <ul id="ul">
+        <li class="li1">1</li>
+        <li id="li2">2</li>
+        <li id="li3">3</li>
+        <li id="li4">4</li>
+        <li id="li5">5</li>
+    </ul>
+<script>
+    // let li1 = document.getElementById('li1');
+    // li1.style.background = 'red';
+    // let li2 = document.getElementById('li2');
+    // li2.style.background = 'red';
+    // let li3 = document.getElementById('li3');
+    // li3.style.background = 'red';
+    // let li4 = document.getElementById('li4');
+    // li4.style.background = 'red';
+    // let li5 = document.getElementById('li5');
+    // li5.style.background = 'red';
+
+    /*
+        获取标签名(一组，多个): 类数组（具有数组的一些特性(比如有length属性，可以使用下标)，但是它不是真正的数组，因为用不了数组的方法）。
+            getElementsByTagName
+        
+        注意：
+            就算页面中只有一个标签，如果要使用，也必须加下标
+            要么在获取元素的时候加，要么在使用的时候加
+            个人建议在获取的时候加
+
+        querySelectorAll() 用css选择器去获取*一组*元素
+
+        querySelector() 用css选择器去获取一个元素
+ 
+    */
+    // let lis = document.getElementsByTagName('li')[0];
+
+    let lis = document.querySelectorAll('.li1')[0];
+
+    // console.log(lis); 
+    lis.style.background = 'red';
+
+    // lis[1].style.background = 'red';
+
+    //lis.push(2);
+
+    // console.log(arr);
+
+    console.log(document.querySelector('li')); //默认选择第一个
+
+
+</script>
+</body>
+</html>

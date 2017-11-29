@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        找到下列数组中最大的值
+
+        Infinity   正无穷大
+       -Infinity   负无穷大 
+
+       数字类型
+            Infinity * 3 等不等于 NaN 
+    */
+    let arr = [10,20,8,3,1,25];
+    let min = -Infinity;//10 20
+
+    /*
+        1.先设置一个最小值
+        2.循环整个数组
+        3.如果循环中的某个值比最小值大，最小值就等于这个值
+    */
+    // for(var i=0;i<arr.length;i++){
+    //     if(arr[i] > min){
+    //         min = arr[i];
+    //     }
+    // }
+    // console.log(min);
+
+
+    /*
+        找到下列数组中最小的值
+        1.先设置一个最大值
+        2.循环整个数组
+        3.如果循环中的某个值比最大值小，最大值就等于这个值
+    */
+    var max = Infinity;
+
+    for(var i=0;i<arr.length;i++){
+        if(arr[i] < max){
+            max = arr[i];
+        }
+    }
+    console.log(max);
+
+
+    // console.log(Infinity * 3);
+
+    // console.log(-1000000000 > min)
+
+
+
+
+</script>
+</body>
+</html>

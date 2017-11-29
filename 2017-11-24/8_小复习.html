@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="prev">点击切换上一张</button>
+    <button id="next">点击切换下一张</button>
+    <img width="200" src="img/001.jpg" id="img">
+<script>
+    /*
+        
+        img.src
+    */
+    const btn1 = document.getElementById('prev');
+    const btn2 = document.getElementById('next');
+    const img = document.getElementById('img');
+    let num = 0;
+    let arr = [
+        '001.jpg',
+        'a2.jpg',
+        'a3.jpg',
+        'xx4.jpg',
+        'rico.png'
+    ];
+    btn1.onclick = function(){
+       num --;
+       if(num < 0){
+         num = arr.length - 1;
+       }
+       img.src = 'img/' + arr[num];
+    }
+
+    //点击下一个
+    btn2.onclick = function(){
+       num ++;
+       //当num大于数组的最后一个的时候
+       if(num > arr.length-1){
+         num = 0;
+       }
+       img.src = 'img/' + arr[num];
+    }
+</script>
+</body>
+</html>

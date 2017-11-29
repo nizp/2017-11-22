@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:150px;height:150px;
+}    
+.red{
+    background:red;
+}
+.green{
+    background: green;
+}
+</style>
+</head>
+<body>
+    <div id="box" class="red"></div>
+<script>
+    /*
+        一般属性名怎么写，js操作就怎么写，但是class为保留字
+        要使用className
+
+        凡是能用.的地方都能用[];
+
+        []中可以放变量
+
+        注意：
+            ***在中括号中只要不是字符串，就是变量
+    */
+    let box = document.getElementById('box');
+   // let className = 'className';
+
+    // box['className'] = 'green';
+
+    let attr = 'height';
+
+    box['style'][attr] = '200px';
+
+    //console.log(box.className);
+
+</script>
+</body>
+</html>

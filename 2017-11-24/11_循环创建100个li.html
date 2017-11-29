@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+*{
+    padding: 0;
+    margin: 0;
+}
+#ul{
+    list-style: none;
+    width:1000px;
+}
+li{
+    width:100px;
+    height: 100px;
+    background: red;
+    float: left;
+    color: #fff;
+}
+</style>
+</head>
+<body>
+    <ul id="ul"></ul>
+<script>
+   /*
+        number + true 那么true以1来计算
+        number + false 那么false以0来计算
+   */
+   for(var i=0;i<100;i++){
+     ul.innerHTML += '<li>'+(i+1)+'</li>';
+   }
+
+//    var arr = ['miaov','wei'];
+//    console.log(arr[1]);
+
+//    console.log(10 + false); 
+
+//    if(0){
+//         alert(123);
+//    }else{
+//        alert(567);
+//    }
+
+</script>
+</body>
+</html>

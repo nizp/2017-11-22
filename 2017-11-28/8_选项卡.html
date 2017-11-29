@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.active{
+    background: yellow;
+}
+div.show{
+    display: block;
+}
+div{
+    width:150px;
+    height: 150px;
+    border: 1px solid #000;
+    display: none;
+}
+</style>
+</head>
+<body>
+    <button type="button" class="active">按钮一</button>
+    <button type="button">按钮二</button>
+    <button type="button">按钮三</button>
+    <div class="show">111111</div>
+    <div>222222</div>
+    <div>33333</div>
+<script>
+    /*
+        大清洗：
+            1.把所有的className全部清空
+            2.把当前点击的按钮加上className
+        
+        当操作某件事的时候，还要对应另外一件事，就用索引
+        lis[i].num = i;
+            
+    */
+    const lis = document.querySelectorAll('button');
+    const divs = document.querySelectorAll('div');
+    for(var i=0;i<lis.length;i++){
+        lis[i].num = i;
+        lis[i].onclick = function(){
+            //把所有的按钮的className清空
+            var i=0;
+            for(;i<lis.length;i++){
+                lis[i].className = '';
+                divs[i].className = '';
+            }
+            //当前的按钮加上className
+            this.classList.add('active');
+            // alert(this.num);
+            divs[this.num].className = 'show';
+        }
+    }
+    
+</script>
+</body>
+</html>

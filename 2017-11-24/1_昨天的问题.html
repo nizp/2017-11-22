@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    /*
+        目前所有浏览器都支持id直接选择器
+
+        10 + '10' = 1010
+
+        10 + 'px' = '10px'
+
+        +:
+            二元运算符
+            1 + 1 
+
+            1)数字与数字相加的时候为正常的数学运算（加法）
+
+            2)任何的数据类型 + 字符串 = 字符串
+
+
+            typeof 一元运算符  专门用来检测数据类型的
+
+            null  空对象
+
+            String（字符串）、Object（对象）、
+            Number（数字）、Boolean（布尔）
+            Null（空对象）、Undefined（未定义）
+
+    */
+
+    let num = 10;
+    let str = '10';
+
+    // console.log(num + 5);
+    // console.log(num + str);
+
+    // console.log(typeof str);
+    // console.log(typeof ('' + {}))
+
+    // console.log(typeof (true + ''));
+
+    console.log(typeof ('<div style="width:'+num+'px;">'))
+
+
+
+    // let box = document.getElementById('box');
+    // let num = 200;
+
+    // box.style.fontSize = num + 'px';
+
+    // console.log(box);
+</script>
+</body>
+</html>

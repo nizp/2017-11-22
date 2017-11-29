@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:150px;height:150px;
+}    
+.red{
+    background:red;
+}
+.green{
+    background: green;
+}
+</style>
+</head>
+<body>
+    <input type="text" value="hehehe" id="key"/> +
+    <input type="text" id="val"/>
+    <button id="btn">按钮</button>
+    <div id="box" class="red"></div>
+<script>
+    /*
+       innerText:
+        操作双标签中的文本
+
+       注意：
+        如果获取text1.value或者text2.value时，还没有点击，
+        那么会获取最开始的那个值。（不要在还没被事件触发时获取值，不然获取的值会不准确）
+
+        正确方式：
+            点击的时候再去获取input中的值
+        
+        var b = 10;
+        var b = 20;
+
+        let b = 10;
+    */
+
+   var text1 = document.getElementById('key');
+   var text2 = document.getElementById('val');
+   var btn = document.getElementById('btn');
+   var box = document.getElementById('box');
+
+   btn.innerText = '呵呵'; //用来介绍value属性的
+
+   btn.onclick = function(){
+     var kv = text1.value;
+     var vv = text2.value;
+     box['style'][kv] = vv;
+    //  console.log(box.id)
+   }
+
+
+
+</script>
+</body>
+</html>

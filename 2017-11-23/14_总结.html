@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.b1{
+   border: 5px solid #000; 
+}
+.bg{
+    background: skyblue;
+}
+</style>
+</head>
+<body>
+    <button id="btn">点击添加class</button>
+    <div id="box" class="bg" style="width:50px;height:50px"></div>
+<script>
+    /*
+        . -> []
+
+        innerText / innerHTML
+
+        ul.innerHTML = ul.innerHTML + '<li>1232</li>'
+
+        ul.innerHTML += '<li>1232</li>';
+
+        element.classList.add('b1');  //添加 b1这个 class 
+        element.classList.remove('b1');// 删除 b1这个 class
+
+        <p style="width:'+ w +'px;height:'+ h +'px"></p>
+    
+        <a href="javascript:;">
+        <img src=""/>
+        background
+        不能进行判断的
+
+        布尔值：
+            true、false
+        
+        obj = {
+            key:val
+        }
+
+        if(条件（布尔值）) {}
+        if(){}else{}
+        if(){}else if(){}else{}
+    */
+
+    // let num = 10;
+
+    // // num = num + 5;
+    // num += 5;
+    // console.log(num);
+
+    let btn = document.getElementById('btn');
+    let box = document.getElementById('box');
+
+    btn.onclick = function(){
+        // box.className = box.className + ' b1';
+        // box.className += ' b1';
+
+        box.classList.add('b1');
+        box.classList.remove('bg');
+    }
+</script>
+</body>
+</html>

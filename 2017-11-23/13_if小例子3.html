@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击切换小老鼠</button>
+    <img width="100" id="img" src="img/1.jpg" alt="">
+<script>
+    const btn = document.getElementById('btn');
+    const img = document.getElementById('img');
+    let onOff = true; //小花狗
+    btn.onclick = function(){
+
+        if(onOff){
+            img.src = 'img/2.jpg';
+            btn.innerText = '召唤小花狗';
+            onOff = false;  //以便下次点击的时候走else
+        }else{
+            img.src = 'img/1.jpg';
+            btn.innerText = '召唤小老鼠';
+            onOff = true; //以便下次点击的时候走if
+        }
+
+
+        // console.log(img.src)  下面的代码是错误的，因为img的src为绝对路径
+        // if(img.src == 'img/1.jpg'){
+        //     img.src = 'img/2.jpg';
+        //     btn.innerText = '召唤小花狗';
+        // }else{
+        //     img.src = 'img/1.jpg';
+        //     btn.innerText = '召唤小老鼠';
+        // }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+span{
+    width:100px;
+    height: 30px;
+    border: 1px solid #000;
+    display: inline-block;
+    font-size:20px;
+    text-align: center;
+    line-height: 30px;
+}    
+</style>
+</head>
+<body>
+    <div id="box">
+       
+    </div>
+<script>
+    /* 
+        1 * 1 = 1
+        2 
+
+    */
+    const box = document.getElementById('box');
+    let str = '';
+    for(var i=1;i<=9;i++){
+        for(j=1;j<=i;j++){
+            str += `<span>${i}*${j}=${i*j}</span>`;
+        }
+        str += '<br />';
+    }
+    box.innerHTML = str;
+
+</script>
+</body>
+</html>

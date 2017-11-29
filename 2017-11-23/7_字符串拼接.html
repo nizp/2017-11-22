@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        字符串 + 任意数据 = 字符串拼接
+
+        如果字符串要加变量，就要字符串拼接
+
+        例如：
+            var str = 10;
+            '<li>str</li>'  -> 结果是<li>str</li>
+            期望结果是：
+                <li>10</li>
+            那么：
+                1.'<li>''</li>'  把一个字符串变成2个字符串
+                2.通过 + 号链接 -> '<li>' + str + '</li>'
+            结果就为 
+                <li>10</li>
+    
+    */
+    var str = '10'; //字符串
+
+    // var num = 10; //10 数字类型
+
+    // console.log(str + num);
+
+    var str1 = '<li>';
+
+    var str2 = '</li>';
+
+    console.log('<li>'+str+'</li>');
+
+    // console.log(str1 + str + str2);
+
+
+
+</script>
+</body>
+</html>

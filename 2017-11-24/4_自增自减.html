@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <button id="btn">点击</button>
+<script>
+
+    /*
+        后自增 ++  每次只增加一个
+        后自减 --  每次只减少一个
+
+        前自增  ++ num
+        前自减  -- num
+    */
+    const btn = document.getElementById('btn');
+    let num = 10;
+    btn.onclick = function(){
+        // num ++;
+        // num --;
+        // ++num;
+        // -- num;
+        // console.log(num);
+
+        // alert( num ++); //先找到变量弹，弹完以后自增
+        // alert( ++ num );
+        // console.log(num);
+        /*
+            先对比左边，左边的变量是 10，找到10之后 ++ num就变成了11
+            然后去对比右边，++ 11 找到变量的时候已经是12了
+        */
+        alert(num++ == ++num);
+        /*
+            先对比左边，左边是前自增所以num = 11
+            然后去对比右边，这个时候右边已经是11了，
+            所以11 == 11 true ，完了之后num又后自增
+            所以最后的num值为12
+        */
+        //let num = 11;
+        // alert(++num == num++);
+        // console.log(num);
+
+        btn.innerText =  ++num;
+    }
+   
+
+
+
+</script>
+</body>
+</html>

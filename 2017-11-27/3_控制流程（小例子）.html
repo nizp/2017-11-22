@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ul">
+        <li class="li1"></li>
+        <li class="li1"></li>
+        <li class="li"></li>
+        <li class="li1"></li>
+        <li class="li1"></li>
+    </ul>
+<script>
+    /*
+        需求：
+            把li中className为li的挑出来，放到数组中，并且找到就不再循环了
+    */
+    const lis = document.getElementsByTagName('li');
+    let arr = [];
+    for(var i=0;i<lis.length;i++){
+        if(lis[i].className == 'li'){
+            arr.push(lis[i]);
+            break;
+        }
+        console.log(i);
+    }
+    console.log(arr);
+
+</script>
+</body>
+</html>

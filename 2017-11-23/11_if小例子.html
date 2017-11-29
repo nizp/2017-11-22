@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="t1">
+    <input type="button" value="查看能学啥" id="btn">
+<script>
+    /*
+        查看miaov能学啥
+            css
+            js
+            html
+    */
+
+    const btn = document.getElementById('btn');
+    const t1 = document.getElementById('t1');
+
+    btn.onclick = function(){
+        let tv = t1.value;
+        if(tv == 'css'){
+            alert('有css课程');
+        }else if(tv == 'html'){
+            alert('有html课程');
+        }else if(tv == 'js'){
+            alert('真有js课程!哈哈!');
+        }else{
+            alert('真没有!呵呵!');
+        }
+    }
+
+
+</script>
+</body>
+</html>

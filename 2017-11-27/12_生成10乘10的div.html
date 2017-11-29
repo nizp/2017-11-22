@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    position: relative;
+}
+#box div{
+    position: absolute;
+    top:0;
+}    
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    const box = document.getElementById('box');
+    const num = 110;
+    let arr = ['red','blue','green','skyblue','pink','yellow'];
+
+    let str = '';
+
+    /*
+        top:0       0   *  110
+        top:110     1   *  110
+        top:220     2   *  110
+        top:330     3   *  110
+
+        j = 0,1,2,3,4  * 110 
+
+      
+        10 * i + j+1
+
+        10 * 0 + 0+1  1
+        10 * 0 + 1+1  2
+
+        10 * 1 + 0+1  11
+
+
+        left:
+            0  110 220  330  990
+
+            0   1  2  3  4
+
+            *110
+
+
+    */
+    
+    document.onclick = function(){
+        for(var i=0;i<10;i++){//i
+            for(var j=0;j<10;j++){
+                console.log(i*num);
+                str += `<div style="
+                left:${j*num}px;
+                top:${i*num}px;
+                width:100px;height:100px;background:${arr[j%arr.length]};">${(10 * i + (j+1))}</div>`;
+            }
+        }
+        box.innerHTML = str;
+    }
+</script>
+</body>
+</html>

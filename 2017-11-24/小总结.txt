@@ -1,0 +1,32 @@
+啥是数组？
+var arr = [1,2,true,{}]；
+var arr2 = new Array();  //标准写法
+length 可读可写
+通过下标去获取里面的内容。
+
+string的length只可读不可写
+new String
+
+typeof
+
+
+边界的处理（点到底就不起作用了）
+
+循环的处理（到底就等于第一个，点到最大就等于0）
+
+获取元素：
+	getElementsByTagName('tagName')
+	querySelector()
+	querySelectorAll()
+
+for(初始化;判断条件;自增或者自减){
+	执行代码
+}
+while(判断条件){}
+
+第一天的练习（使用for和判断来做的）
+
+
+
+
+

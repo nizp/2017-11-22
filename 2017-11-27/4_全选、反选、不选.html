@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="全选">
+    <input type="button" value="反选">
+    <input type="button" value="全不选">
+
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+<script>
+
+    const btns = document.querySelectorAll('input[type="button"]');
+    const checks =  document.querySelectorAll('input[type="checkbox"]');
+
+    /*
+        点击全选按钮
+
+        checked = true   √
+        checked = false  ×
+    */
+    btns[0].onclick = function(){
+        // checks[0].checked = true;
+        // checks[1].checked = true;
+        for(var i=0;i<checks.length;i++){
+            checks[i].checked = true;
+        }
+    }
+
+    /*
+        全不选
+    */
+    btns[2].onclick = function(){
+        for(var i=0;i<checks.length;i++){
+            checks[i].checked = false;
+        }
+    }
+
+    /*
+        反选
+            循环所有的checks
+            来判断一下，如果某个一个的checked为true就变为false，否则就为true
+    */
+    btns[1].onclick = function(){
+        for(var i=0;i<checks.length;i++){
+            if(checks[i].checked == true){
+                checks[i].checked = false;
+            }else{
+                checks[i].checked = true;
+            }
+        }
+    }
+
+    // console.log(checks)
+
+</script>
+
+</body>
+</html>

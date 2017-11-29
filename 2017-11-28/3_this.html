@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    background: yellowgreen;
+}
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    /*
+        关键字:
+            this -> 这个
+            在浏览器中默认的this是window
+
+            变量：a  前面没主
+            属性：obj.a  box.style btn.value  前面有主
+
+            方法：前面有主，主是谁，this就是谁
+            函数：this默认为window
+
+        当某个事件触发的时候，被触发的这个元素就是this
+
+        ******* 非空对象才能加属性或者方法 ！！！！！
+    */
+
+    const box = document.getElementById('box');//元素也是对象
+
+    // function fn(){
+    //     alert(this);
+    // }
+    // fn();
+
+    // box.fn = function(){
+    //     alert(this);
+    // }
+
+    // box.fn();
+
+
+    var obj = {}
+    var arr = [];
+    var str = '';
+
+    // alert(typeof str)
+
+    arr.a = 10;
+    str.a = 100;
+
+
+
+    alert(str.a);
+
+
+    // let a = 10;
+    // box.a = 10;
+
+    // a ++;
+    // box.a ++;
+
+    alert(a);
+
+
+    // let obj = {
+    //     name:'小明',
+    //     fn:function(){
+    //         //alert(this.name);
+    //         console.log(this);
+    //     }
+    // }
+
+    // obj.fn();
+    
+
+
+    // console.log(this);
+
+    box.onclick = function(){
+        console.log(this);
+    }
+
+
+
+
+</script>
+</body>
+</html>

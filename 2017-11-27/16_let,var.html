@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮一</button>
+    <button>按钮二</button>
+    <button>按钮三</button>
+    <button>按钮四</button>
+    <button>按钮五</button>
+<script>
+    /*
+        var 
+        let
+    */
+
+    const btns = document.querySelectorAll('button');
+
+    /*
+        for的循环非常快,
+        在你还没来得及点击的时候i值已经变成5了
+        点击获取i的时候，就直接拿到被循环的结果i 5
+
+
+        let  -> 块级作用域
+
+        {} 块
+
+        函数的特性是，子函数能够访问到父函数的参数或者变量
+        而父函数访问不了子函数的变量或者参数。
+    */
+
+    for(let i=0;i<btns.length;i++){
+        btns[i].onclick = function(){
+            alert(i);
+        }
+    }
+    /*
+        btns[0].onclick = function(){
+            alert(0);
+        }  
+        btns[1].onclick = function(){
+            alert(1);
+        } 
+        btns[2].onclick = function(){
+            alert(2);
+        } 
+        btns[3].onclick = function(){
+            alert(3);
+        } 
+    */
+
+
+
+
+    // var i = 0;
+    // var a = 10;
+    // for(;i<btns.length;){
+    //     // alert(i);
+    //     // console.log(i);
+    //     btns[i].onclick = function(){
+    //         alert(i);
+    //     }
+        
+    //     i++;
+    // }
+
+    // alert(i);
+
+
+    // {
+    //     let b = 10;
+    //     {
+    //         console.log(b);
+    //         let c = 2;
+    //     }
+    //     alert(c);
+    // }
+
+    
+
+
+
+
+</script>
+</body>
+</html>

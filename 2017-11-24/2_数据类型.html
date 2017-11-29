@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        ECMAScript中的数据类型
+            String（字符串）
+               
+                简写：
+                    单引号或者双引号对就叫字符串
+                标准写法:
+                    new String
+                但是直接调用系统内置的函数，性能不高
+
+                length 长度
+                
+                页面中的所有内容都是字符串！！！
+
+                注意：
+                    字符串的length只能读不能写
+            、
+            Object（对象）复合类型
+                {}  对象
+                    从对象中找某个值，那么对象.属性
+                []  数组
+                    ***  它的length可读可写
+                    从数组中找某个值，那么数组[下标](下标必须是数字类型)
+                    js计数是从0开始的
+
+                    [true,'hehe'][0] -> [true]
+
+                    new Array
+
+                    都是存放数据的
+                    
+
+            Number（数字）、Boolean（布尔）
+            Null（空对象）、Undefined（未定义）
+            Symbel（唯一）
+    */
+
+    let str = "妙味ketang ";
+    let num = 10;
+    let b = true;
+    // // let str = new String('妙味');
+    // // str.length = 2;
+    // console.dir(str.length);
+
+    //'{}' '[]'  
+    // let obj = {
+    //     str:"妙味ketang ",
+    //     num:0,
+    //     b:true,
+    //     o:{},
+    //     oo:[]
+    // }
+
+    // console.log(obj.b);
+
+    /*
+        <person>
+            <name>小强</name>
+            <age>18</age>
+        </person>
+
+       person = {
+            name:'小强',
+            age:18
+        }
+    
+    */
+
+    //[] 
+
+    let arr = [num,str,b]; //数组  简写
+
+    let arr2 = new Array('你'); //标准写法
+    
+    // arr.length = 1;
+
+    //js计数是从0开始的
+    // console.log(arr[2]); //这个[]代表下标
+
+    // console.log(typeof arr); //object
+
+    let s;
+    console.log(s); //当一个变量有名，但是没值的时候，默认值就是undefined
+
+</script>
+</body>
+</html>

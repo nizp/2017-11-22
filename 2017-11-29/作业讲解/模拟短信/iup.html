@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul{
+				margin:0;
+				padding:0;
+				list-style:none;
+			}
+			.clearfix:after{
+				content: "";
+				clear: both;
+				display: block;
+			}
+			.fl{
+				float: left;
+			}
+			.fr{
+				float: right;
+			}
+			#box{
+				width:300px;
+				height:630px;
+				background-color:#e5e3ec;
+				margin:0 auto;
+				border-radius:10px;
+			}
+			#head{
+				height:38px;
+				padding:17px 0;
+				text-align:center;
+			}
+			#head1{
+				display:inline-block;
+				width:50px;
+				height:4px;
+				background-color:#918b98;
+				border-radius:3px;
+			}
+			#content{
+				width:270px;
+				height:476px;
+				border:2px solid #9a99a2;
+				margin-left:15px;
+				background-color:#fff;
+				position:relative;
+			}
+			#ul{
+				height: 426px;
+				overflow: auto;
+			}
+			#text{
+				width: 270px;
+				height:50px;
+				background-color:#e3e3e3;
+				position:absolute;
+				bottom:0;
+				right:0;
+			}
+			#img{
+				float:left;
+				margin:7px 8px 0 10px;
+			}
+			#input{       
+				float:left;
+				width:158px;
+				height:35px;
+				background-color:#fff;
+				border-radius:5px;
+				padding:0;
+				outline:none;
+				border:none;
+				margin-top:7px;
+				padding-left: 10px;
+			}
+			#wenzi{
+				float:left;
+				font:12px/50px "微软雅黑";
+				color:#d6687d;
+				margin-left:10px;
+				cursor: pointer;
+			}
+			#footer1{
+				width:40px;
+				height:40px;
+				background-color:#fff;
+				border-radius:50%;
+				margin-top:8px;
+				margin-left:128px;
+				display:inline-block;
+			}
+			#ul li img{
+				width: 35px;
+				height: 35px;
+				margin: 10px 0 10px 10px;
+			}
+			#ul li span{
+				max-width: 120px;
+				background-color: #e1e1e1;
+				font: 12px/26px "微软雅黑";
+				color: #000000;
+				display: inline-block;
+				margin: 10px 10px 0 10px;
+				padding:  0 5px;
+				word-wrap: break-word;
+				border-radius: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="head">
+				<span id="head1"></span>
+			</div>
+			<div id="content">
+				<ul id="ul">
+					<!-- <li class="clearfix">
+						<img src="img/lico.png" class="fl" />
+						<span class="fl">的点点滴滴多</span>
+					</li>
+					<li class="clearfix">
+						<img src="img/rico.png" class="fr" />
+						<span class="fr">11111</span>
+					</li> -->
+				</ul>
+				<div id="text">
+					<img src="img/lico.png" id="img">
+					<input type="text" id="input">
+					<span id="wenzi">发送</span>
+				</div>
+			</div>
+			<div id="footer">
+				<span id="footer1"></span>
+			</div>
+		</div>
+		
+<script>
+	const img = document.getElementById('img');
+	const input = document.getElementById('input');
+	const btn = document.getElementById('wenzi');
+	const ul = document.getElementById('ul');
+
+	//点击img切换头像
+	let onOff = true; //默认为小眼镜
+	img.onclick = function(){
+		if(onOff){
+			img.src = 'img/rico.png';
+			onOff = false;
+		}else{
+			img.src = 'img/lico.png';
+			onOff = true;
+		}
+	}
+
+	//点击发送
+	btn.onclick = function(){
+		let val = input.value;
+		/*
+			if中是判断条件，成立才会进if
+
+			空字符串是假的。  ''或者 ""
+			false
+		*/
+		if(val == ''){
+			alert('请留点东西!');
+		}else{
+			//为了修改className
+			let sClass = ''; 
+			if(onOff){ //如果是小眼镜
+				sClass = 'fl';
+			}else{
+				sClass = 'fr'; 
+			}
+			//console.log(sClass);
+
+			str = `<li class="clearfix">
+				<img src="${img.src}" class="${sClass}" />
+				<span class="${sClass}">${val}</span>
+			</li>`;
+			
+			ul.innerHTML = str + ul.innerHTML;
+			input.value = '';
+			
+		}
+
+	
+	}
+
+	
+</script>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!--<script>
+			//获取元素
+			var imgBox = document.getElementById('img');
+			var inputs = document.getElementById('input');
+			var btn = document.getElementById('wenzi');
+			var content = document.getElementById('ul');
+			
+			//定义一个判断条件
+			var  isChange = true;
+			//切换图片，添加点击事件
+			imgBox.onclick = function(){
+				//判断
+				if(isChange){
+					imgBox.src = 'img/rico.png';
+					isChange = false;
+				}else{
+					imgBox.src = 'img/lico.png';
+					isChange = true;
+				}
+				
+			};
+			//点击发送按钮添加内容
+			btn.onclick = function(){
+				var val = inputs.value;
+				if(val=='')return alert('请输入内容');
+				if(isChange){
+					content.innerHTML = '<li class="clearfix"><img src="img/lico.png" class="fl" /><span class="fl">'+val+'</span></li>'+content.innerHTML;
+					inputs.value='';
+				}else{
+					content.innerHTML = '<li class="clearfix"><img src="img/rico.png" class="fr" /><span class="fr">'+val+'</span></li>'+content.innerHTML;
+					inputs.value='';
+				}
+				
+			}
+			
+		</script>-->
+	</body>
+</html>

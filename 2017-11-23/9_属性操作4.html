@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <a href="javascript:;">点击</a> -->
+    <a href="8_早上的内容.html" id="a" style="background:red;">点击</a>
+    <img src="1.jpg" id="img">
+<script>
+    /*
+        以后写a标签的时候href中如果没有地址，那么写成
+            href="javascript:;"
+
+        读a标签的href是绝对路径，所以不能拿href去进行判断
+        读img标签的src是绝对路径，所以不能拿src去进行判断
+
+        获取background的时候，在不同的浏览器下显示是不同的
+
+        复合样式的设置:
+            background-color  -> backgroundColor
+            如果非得background-color写，这个时候需要用中括号包一下
+            但是不建议那么写，因为在别的浏览器中容易出错
+
+    */
+    const a = document.getElementById('a');
+    const img = document.getElementById('img');
+
+    //console.log(a.href); //file:///D:/class/2017-11-22/2017-11-23/8_%E6%97%A9%E4%B8%8A%E7%9A%84%E5%86%85%E5%AE%B9.html
+
+    // console.log(img.src); //file:///D:/class/2017-11-22/2017-11-23/1.jpg
+
+   //alert(a.style.background);
+
+//    a.style.background-color = 'blue'; ×
+    //   a.style.backgroundColor = 'blue';  √
+    a.style['background-color'] = 'blue';  //√
+</script>
+</body>
+</html>

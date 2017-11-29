@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.bg{
+    background:green;
+} 
+.br{
+    border: 1px solid #000;
+} 
+</style>
+</head>
+<body>
+    <ul>
+        <li class="bg">1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <div id="box"></div>
+<script>
+    /***************1.获取元素有哪些方法？*****************************/
+    /*
+        如果你用获取一组元素的方法去获取一个元素，要加下标(!!!)
+    */
+    // var box = document.getElementById('box');
+    // var li = document.getElementsByTagName('li');
+    // var li = document.querySelector('li');
+    var li = document.querySelectorAll('li')[0];
+    // li.style.background = 'red';
+    // li[0].style.background = 'red';
+    // console.log(box);
+
+    /***************2.学过的属性操作有哪些？各是什么意思？************************/
+
+    /*
+        id
+        className
+        value
+        innerHTML
+        innerText
+        href 
+        src
+        classList.add()  
+        classList.remove()
+        cssText
+        style
+    */
+    // li.onclick = function(){
+    //     // li.className += ' br'; 
+    //     li.classList.add('br');
+    // }
+
+  /*****************3.什么是变量、常量**********************/  
+    /*
+        变量：可变的量   var let 如果不赋值为undefined
+        常量：不可变的量   const  声明之后必须赋值，不然会报错
+    */
+
+    // let a;
+    // const a;
+    // console.log(a);
+
+/****************4.当页面加载完成之后的事件是什么******************************/
+        // window.onload = function(){}
+
+/****************5.拼写字符串的规则******************************/
+
+    var str = 'height';
+    var c = 'green';
+
+    // var str2 = 'style="' + str + ':0px"';
+
+    //ES6中的模板字符串   ``  ${}
+
+    /*
+        ${} 中不但能放变量还是进行数学运算
+        http://es6.ruanyifeng.com/#docs/string#模板字符串
+    */
+
+
+
+    // let str2 = `style="${str}:10px;background:${c};width:${10*2}px"`;
+
+    // console.log(str2);
+
+    /**********************6.if的写法有哪些？**************************/
+        /*
+            if(条件){}
+
+            if(){}else{}
+
+            if(){}else if(){}
+
+            if(){}else if(){}else{}
+        
+        */
+
+        /****************7.中括号能干啥？分别是什么？********************/
+
+        /*
+            凡是能用点的地方都可以用[]
+                style.display = 'none';
+                style['display'] = 'none';
+            (类)数组的下标
+                [1,2,3,4,5][3] ->  4
+            数组
+                ['miao',1,true]    
+        */
+
+        // let lis = document.querySelectorAll('li');//类数组
+        // var arr = [1,2];
+
+        // arr.push(3)
+        // lis.push(3);
+
+        // console.log(arr);
+
+    /********************for循环的步骤有哪些？*****************************/
+        /*
+            1.初始化  （走一次）
+            2.条件判断  （循环之前走一次）
+            3.执行代码  （条件成立就进去）
+            4.自增或者自减
+        */
+        // var arr = [1,2];
+        // for(var i=0,len=arr.length; i<len ; i++){
+
+        // }
+
+    /********************在图片切换中如何判断最大和最小范围边界*****************************/
+            /*
+                最大：
+                    num > arr.length - 1
+                    
+                    num = 0;  //循环操作
+
+                最小：
+                    num < 0
+
+                    num = arr.length - 1  //循环操作
+            */
+    
+    /****************10.你知道的数据类型是哪些？怎么写？**************************/
+
+            /*
+                字符串： '' 或 ""
+                对象：
+                    {key,value}
+                    [true,10,'99']
+
+                布尔值：
+                    true 、false
+                undefined（未定义）
+                    let a;
+                null:
+                    没有获取到元素的时候会出现null
+                数字：
+                    10
+                symbol
+                    唯一
+            */
+
+        /************11.++a == a++ 为什么？***************/
+
+        let a = 10;
+        
+        // alert(++a == a++); //true
+        // alert(a++ == ++a);//false
+        // alert(a++ == a++);
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ul">
+        <li id="li1">1</li>
+        <li id="li2">2</li>
+        <li id="li3">3</li>
+        <li id="li4">4</li>
+        <li id="li5">5</li>
+        <li>6</li>
+    </ul>
+<script>
+    // let li1 = document.getElementById('li1');
+    // li1.style.background = 'red';
+    // let li2 = document.getElementById('li2');
+    // li2.style.background = 'red';
+    // let li3 = document.getElementById('li3');
+    // li3.style.background = 'red';
+    // let li4 = document.getElementById('li4');
+    // li4.style.background = 'red';
+    // let li5 = document.getElementById('li5');
+    // li5.style.background = 'red';
+
+    let lis = document.querySelectorAll('li');
+
+    /*
+        for(;;){}
+            循环
+        1.初始化变量（在整个循环中只会走一次）
+        2.判断(只要判断条件成立，就会循环,不成立就不循环)
+        3.执行代码
+        4.自增或者自减（最后一步）
+
+
+        while(布尔值){}
+            当布尔值为true的时候会循环
+            当布尔值为false的时候不会循环
+    while的优势在当循环的次数不定的（不可预估的时候）使用起来更加方便    
+        
+    */
+    // var i=0;
+    // var len = lis.length;  //这种写法等于下面这种写法
+    // var i = 0,len = lis.length;
+
+    /*
+        因为判断条件每次循环都会进入计算，那么会导致一些不必要的开销
+        所以提前把lis.length给计算出来，能够优化性能。
+    */
+
+    for(var i = 0,len = lis.length;i<len;i++){ 
+        lis[i].style.background = 'red';
+    }
+    // alert(i);
+    // var i = 0;
+    // while( i < 5 ){
+    //     lis[i].style.background = 'green';
+    //     i++;
+    // }
+
+
+
+    // var i = 0; //初始化只会走一次
+    // for(;i<5;){
+    //     alert(i);
+    //     lis[i].style.background = 'red';
+    //     i++;
+    //     alert(i);
+    // }
+    // alert(i);
+
+
+    // var i = 0;
+
+    // for(;i<5;){
+
+    //     lis[i].style.background = 'red';
+
+    //     i++;
+    // }
+
+    // console.log(lis);
+
+</script>
+</body>
+</html>

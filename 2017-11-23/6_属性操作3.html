@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:150px;height:150px;
+}    
+.red{
+    background:red;
+}
+.green{
+    background: green;
+}
+</style>
+</head>
+<body>
+    
+    <input type="text" id="t1"/>
+    <button id="btn">按钮</button>
+    <ul id="ul"></ul>
+<script>
+    /*
+        innerHTML : 操作元素的内容（包括操作结构）
+            box.innerHTML = '<p>哈哈</p>';
+        这个时候box中就有了p标签
+    */
+    //var box = document.getElementById('box');
+    //box.innerHTML = '<p>哈哈</p>';
+
+    const btn = document.getElementById('btn');
+    const t1 = document.getElementById('t1');
+    const ul = document.getElementById('ul');
+    /*
+        1.点击按钮
+        2.获取t1的value
+        3.往ul中添加li
+        
+    */
+    
+    btn.onclick = function(){
+        var val = t1.value;
+        //赋值给ul结构中 = (获取到ul中的所有结构 + 本次添加的结构)
+        ul.innerHTML = ul.innerHTML + '<li>'+val+'</li>';
+        // val = ''; //把变量val的值清空
+        console.log(val);
+        t1.value = ''; //设置t1的value为空
+    }
+
+
+</script>
+</body>
+</html>

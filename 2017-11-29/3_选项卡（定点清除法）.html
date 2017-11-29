@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.active{
+    background: yellow;
+}
+div.show{
+    display: block;
+}
+div{
+    width:150px;
+    height: 150px;
+    border: 1px solid #000;
+    display: none;
+}
+</style>
+</head>
+<body>
+    <button type="button" class="active">按钮一</button>
+    <button type="button">按钮二</button>
+    <button type="button">按钮三</button>
+    <div class="show">111111</div>
+    <div>222222</div>
+    <div>33333</div>
+<script>
+    /*
+        1.先把第一个按钮存起来
+        2.点击第二个按钮的时候，把第一个（上一个）按钮的className清掉
+        3.把当前的className加上active
+            
+    */
+    const lis = document.querySelectorAll('button');
+    const divs = document.querySelectorAll('div');
+    let prevLi = lis[0]; 
+
+    for(var i=0;i<lis.length;i++){
+        lis[i].index = i;
+        lis[i].onclick = function(){
+            //把上一个的className清掉
+            prevLi.className = '';
+            //把上一个btn的索引值对应的div的className清掉
+            divs[prevLi.index].className = '';
+            //当前的className加上active
+            this.className = 'active';
+            //把当前btn的索引对应的div的className加上show
+            divs[this.index].className = 'show';
+            //更改prevLi的值，以便下一次用。这次的this就是下一次的prevLi
+            prevLi = this;
+        }
+       
+    }
+    
+    
+</script>
+</body>
+</html>

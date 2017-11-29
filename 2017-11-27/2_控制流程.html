@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ul"></ul>
+<script>
+    /*
+        continue  跳过
+        break  跳出  不在循环了
+    */
+    // let arr = [1,2,3,4,5,6];
+
+    // for(var i=0;i<arr.length;i++){
+    //     if(arr[i] == 3){
+    //         continue;
+    //     }
+    //     alert(arr[i]);
+    // }
+
+    // for(var i=0;i<arr.length;i++){
+    //     if(arr[i] == 3){//arr[i] 1 2   i 0,1,2
+    //         break;
+    //     }
+    //     alert(arr[i]); //1 2
+    // }
+    // console.log(i);
+    const ul = document.getElementById('ul');
+    var arr = ['red','yellow','pink','green'];
+    var str = '';
+    for(var i=0;i<arr.length;i++){
+        if(i == 2) break;//continue;
+        str += `<li style="width:100px;height:100px;background:${arr[i]}"></li>`  //tab 上面
+    }
+    ul.innerHTML = str;
+    
+    console.log(i);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    position: relative;
+}
+#box div{
+    position: absolute;
+    top:0;
+}    
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    const box = document.getElementById('box');
+    const num = 110;
+    let arr = ['red','blue','green','skyblue','pink'];
+
+    /*
+        0%5  arr[0]  'red'
+        1%5  arr[1]  'blue'
+        2%5  arr[2]  'green'
+        3%5  arr[3]  'skyblue'
+        4%5  arr[4]  'pink'
+        5%5  arr[0]  'red'
+        6%5  arr[1]  'blue'
+        ....
+
+
+    */
+
+    let str = '';
+    
+    document.onclick = function(){
+        for(var i=0;i<10;i++){
+            str += `<div style="left:${i*num}px;width:100px;height:100px;background:${arr[i%arr.length]};">${i+1}</div>`;
+        }
+        box.innerHTML = str;
+    }
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    const box = document.getElementById('box');
+    /*
+        
+
+        1000次
+            1940.181884765625ms
+            1999.552978515625ms
+            1971.52490234375ms
+            2034.395751953125ms
+
+            1940ms
+
+        字符串拼接：
+            0.2451171875ms
+            0.260986328125ms
+            0.3798828125ms
+            0.203125ms
+
+    */
+
+    /*
+        box.innerHTML = box.innerHTML + <div></div>
+    */
+    let str = '';
+    document.onclick = function(){
+        console.time('计时器');
+        for(var i=0;i<1000;i++){
+            // 下面的插入方式性能差。
+            // box.innerHTML += `<div style="width:100px;height:100px;background:red;">${i+1}</div>`;
+            //下面的性能会更高
+            str += `<div style="width:100px;height:100px;background:red;">${i+1}</div>`;
+        }
+        console.timeEnd('计时器');
+        box.innerHTML = str;
+        
+    }
+    
+</script>
+</body>
+</html>

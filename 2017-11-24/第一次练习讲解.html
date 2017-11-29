@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width:1000px;
+				height:1000px;
+				background-color:pink;
+				margin:0 auto;
+				_position:relative;
+			}
+			#btn{
+				width:80px;
+				height:40px;
+				background-color:red;
+			}
+			#box1{
+				width:100px;
+				height:100px;
+				background-color:#fff;
+				border:5px solid #000;
+				
+			}
+			#box2{
+				width:300px;
+				height:300px;
+				background-color:#fff;
+				position:absolute;
+				top:50%;
+				left:50%;
+				margin-left:-150px;
+				margin-top:-150px;
+				_display: none;
+				z-index: 2;
+				opacity: 0;
+				transition-delay: 500ms;
+				transition-duration:500ms;
+			}
+			#one{
+				height:40px;
+				padding:10px 0;
+			}
+			#aa{
+				font:12px/40px "微软雅黑";
+				color:#000;
+				float:left;
+				margin-left:10px;
+			}
+			#ab{
+				width:40px;
+				height:40px;
+				background-color:#008000;
+				float:left;
+				font:12px/40px "微软雅黑";
+				color:#fff;
+				text-align:center;
+			}
+			#ac{
+				float:left;
+				width:40px;
+				height:40px;
+				background-color:#665216;
+				float:left;
+				font:12px/40px "微软雅黑";
+				color:#fff;
+				text-align:center;
+				margin-left:5px;
+			}
+			#ad{
+				float:left;
+				width:40px;
+				height:40px;
+				background-color:#20caa8;
+				float:left;
+				font:12px/40px "微软雅黑";
+				color:#fff;
+				text-align:center;
+				margin-left:5px;
+			}
+			#two{
+				height:40px;
+				padding:10px 0;
+			}
+			#ba{
+				font:12px/40px "微软雅黑";
+				color:#000;
+				float:left;
+				margin-left:10px;
+			}
+			#bb{
+				width:40px;
+				height:40px;
+				background-color:#eff5f4;
+				border:1px solid #c3cdcb;
+				float:left;
+				font:12px/40px "微软雅黑";
+				color:#000;
+				text-align:center;
+				margin-left:5px;
+			}
+			#bc{
+				width:40px;
+				height:40px;
+				background-color:#eff5f4;
+				border:1px solid #c3cdcb;
+				float:left;
+				font:12px/40px "微软雅黑";
+				color:#000;
+				text-align:center;
+				margin-left:5px;
+			}
+			#bd{
+				width:40px;
+				height:40px;
+				background-color:#eff5f4;
+				border:1px solid #c3cdcb;
+				float:left;
+				font:12px/40px "微软雅黑";
+				color:#000;
+				text-align:center;
+				margin-left:5px;
+			}
+			#four{
+				height:40px;
+				padding:10px 0;
+			}
+			#ca{
+				font:12px/40px "微软雅黑";
+				color:#000;
+				float:left;
+				margin-left:10px;
+			}
+			#cb{
+				width:40px;
+				height:40px;
+				background-color:#eff5f4;
+				border:1px solid #c3cdcb;
+				float:left;
+				font:12px/40px "微软雅黑";
+				color:#000;
+				text-align:center;
+				margin-left:5px;
+			}
+			#cc{
+				width:40px;
+				height:40px;
+				background-color:#eff5f4;
+				border:1px solid #c3cdcb;
+				float:left;
+				font:12px/40px "微软雅黑";
+				color:#000;
+				text-align:center;
+				margin-left:5px;
+			}
+			#cd{
+				width:40px;
+				height:40px;
+				background-color:#eff5f4;
+				border:1px solid #c3cdcb;
+				float:left;
+				font:12px/40px "微软雅黑";
+				color:#000;
+				text-align:center;
+				margin-left:5px;
+			}
+			#three{
+				height:40px;
+				padding:10px 0;
+			}
+			#da{
+				width:80px;
+				height:40px;
+				background-color:#1230c8;
+				font:12px/40px "微软雅黑";
+				color:#fff;
+				text-align:center;
+				margin-left:20px;
+				float:left;
+			}
+			#db{
+				width:80px;
+				height:40px;
+				background-color:#1230c8;
+				font:12px/40px "微软雅黑";
+				color:#fff;
+				text-align:center;
+				margin-left:20px;
+				float:left;
+			}
+			#msk{
+				position: absolute;
+				width:0%;
+				height:0%;
+				background: #000;
+				opacity: .3;
+				transition: 500ms;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="msk"></div>
+		<div id="box">
+			<button id="btn">点击设置</button>
+			<div id="box1"></div>
+			<div id="box2">
+				<div id="one">
+					<span id="aa">请选择的颜色：</span>
+					<span id="ab">红</span>
+					<span id="ac">黄</span>
+					<span id="ad">蓝</span>
+				</div>
+				<div id="two">
+					<span id="ba">请选择宽(px):</span>
+					<span id="bb">200</span>
+					<span id="bc">300</span>
+					<span id="bd">400</span>
+				</div>
+				<div id="four">
+					<span id="ca">请选择高(px):</span>
+					<span id="cb">200</span>
+					<span id="cc">300</span>
+					<span id="cd">400</span>
+				</div>
+				<div id="three">
+					<span id="da">恢复</span>
+					<span id="db">确定</span>
+				</div>
+			</div>
+		</div>
+<script>
+	let btn = document.getElementById('btn');
+	let box1 = document.getElementById('box1');
+	let box2 = document.getElementById('box2');
+	let msk = document.getElementById('msk');
+
+	btn.onclick = function(){
+		msk.style.cssText = 'width:100%;height:100%';
+		box2.style.opacity = 1;
+	}
+	
+	//获取one下的所有span
+	let oneSpan = document.getElementById('one').getElementsByTagName('span');
+	//获取two下的所有span
+	let twoSpan = document.getElementById('two').getElementsByTagName('span');
+	//获取four下的所有span
+	let fourSpan = document.getElementById('four').getElementsByTagName('span');
+	let threeSpan = document.getElementById('three').getElementsByTagName('span');
+	//设置颜色的数组
+	let arr = ['red','yellow','blue'];
+	//宽高的数组
+	let arr2 = [200,300,400];
+	for(let i=0,len=oneSpan.length;i<len;i++){
+		oneSpan[i].onclick = function(){
+			//把0排除，因为0是请选择的文字
+			if(i == 0){
+
+			}else{
+				box1.style.background = arr[i-1];
+			}
+		}
+
+		twoSpan[i].onclick = function(){
+			if(i == 0){
+			}else{
+				box1.style.width = arr2[i-1] + 'px';
+			}
+		}
+
+		fourSpan[i].onclick = function(){
+			if(i == 0){
+			}else{
+				box1.style.height = arr2[i-1] + 'px';
+			}
+		}
+	}
+	//恢复
+	threeSpan[0].onclick = function(){
+		box1.style.cssText = '';
+	}
+	//消失
+	threeSpan[1].onclick = function(){
+		msk.style.cssText = '';
+		box2.style.opacity = 0;
+	}
+
+
+</script>
+</body>
+</html>

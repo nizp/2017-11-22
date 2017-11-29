@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:150px;height:150px;background:red;
+}    
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    /*
+        函数名 + 括号就是函数调用
+
+        操作样式.style.cssText
+
+        window  是一个对象，所有的js到在window中，所以window是js中的顶层
+    */
+    // function fn(){
+    //     console.log(1);
+    // }
+    // fn();
+
+    //console.log(window)
+
+
+ ///////////////////////////////////////////////////////////////
+
+/*
+    属性的读操作
+         console.log(box.style.width)
+
+         box.style只能获取标签中行间的样式，非行间的（样式表）是获取不到的
+
+        box = {
+            style:xxx,
+        }
+
+        style是obj的key
+        xxx是obj的value
+
+
+    属性的写操作
+         box.style.width = '200px';
+
+    对象:
+        {
+            key:value
+        }
+
+
+    
+
+*/
+        // let obj = {
+        //     style:{
+        //         width:'150px'
+        //     }
+        // }
+
+        // console.log(obj.style.width)
+
+
+
+        let box = document.getElementById('box');
+
+        //box.style.width = '200px';
+
+        console.log(box.style.width)
+
+        // console.dir(box);
+
+
+
+
+
+
+    
+
+</script>
+</body>
+</html>

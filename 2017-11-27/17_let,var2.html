@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮一</button>
+    <button>按钮二</button>
+    <button>按钮三</button>
+    <button>按钮四</button>
+    <button>按钮五</button>
+<script>
+    const btns = document.querySelectorAll('button');
+    // var i=0;
+   
+    for(var i=0;i<btns.length;i++){
+        // console.log(i);
+        btns[i].onclick = function(){
+            // var i = 10;
+            alert(i);
+        }
+    }
+    // console.log(i)
+    
+</script>
+</body>
+</html>

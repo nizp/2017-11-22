@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+<script>
+    // let arr = [];
+    // console.dir(arr); //__proto__下就是数组的所有方法
+    
+
+    const lis = document.querySelectorAll('li');
+    /*
+        元素本身就有事件，如果没有事件函数那么为null
+
+    
+        *** 变量如果没有声明，访问变量就报错
+             console.log(onhehe);  页面中就没有声明onhehe的变量
+         
+        *** 对象如果没有的属性为undefined
+
+        小技巧：
+            只要是函数就是一个域，那么会先找域中的变量，如果找不到
+            还会去它的父级查找，直到window还是没有，就报错。
+    */
+
+    // console.log(onhehe);
+
+    // console.dir(lis[0].onhehe);  //undefined
+
+    // console.dir(lis[0].onclick);  //null
+
+
+
+    
+    // lis[0].onclick = function(){
+
+    // }
+    // lis[1].onclick = function(){
+        
+    // }
+    
+     
+    for(var i = 0;i<lis.length;i++){
+        lis[i].num = i;
+        lis[i].onclick = function(){
+            // var i = 10;
+            // alert(i);
+            alert(this.num);
+        }  
+    }
+    // console.dir(lis[2]);
+
+
+</script>
+</body>
+</html>

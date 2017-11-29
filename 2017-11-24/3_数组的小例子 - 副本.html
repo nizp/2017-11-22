@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击切换下一张</button>
+    <img width="100" src="img/bg.jpg" id="img">
+<script>
+    /*
+        1.点击按钮
+        2.切换图片
+
+        数组中如果没有值，就为undefined
+
+        小技巧：
+            找最后一个 -> length - 1;
+    */
+    let arr = ['img/bg.jpg','img/l01.png','img/l02.png','img/lico.png'];
+
+    const btn = document.getElementById('btn');
+    const img = document.getElementById('img');
+    let num = 0;
+
+    btn.onclick = function(){
+        // num = num + 1;
+        // num += 1;
+        num ++;  //num += 1;
+        //如果num大于等于3的时候就让num等于3
+        if(num >= arr.length-1){
+            num = 3;
+        }
+        // console.log(num);
+        //console.log(arr[num]);
+        img.src = arr[num]
+    }
+
+    // console.log(arr[1]);
+</script>
+</body>
+</html>

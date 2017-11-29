@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:150px;height:150px;
+}    
+.red{
+    background:red;
+}
+.green{
+    background: green;
+}
+</style>
+</head>
+<body>
+    <div id="box" class="red"></div>
+<script>
+    
+    /*
+        ECMAScript:标准
+            数据类型：
+                ''或者""  字符串
+                {}        对象 (存储数据的) Object
+
+        name就是obj的key
+        '安娜'就是obj.name 的值
+
+        <obj name="安娜"></obj>
+
+        obj.style.width = '200px';
+
+
+    */
+
+    // var obj = {
+    //     name:'安娜'
+    // }
+    // obj.name = '郑好学';
+    // console.log(obj.name);
+
+
+    //obj.style.width = '200px';
+
+    var obj = {
+        style:{
+            width:'200px'
+        },
+        id:'obj',
+        class:'red'
+    }
+    obj.style.width = '300px';
+
+
+    var box = document.getElementById('box');
+
+    console.dir(box);
+
+    //console.log(obj.style.width);
+
+
+</script>
+</body>
+</html>

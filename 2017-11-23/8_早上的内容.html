@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="t" value="hello">
+    <div id="box">
+        <!-- <div style="width:100px;height:200px;background:red"></div> -->
+    </div>
+<script>
+    /*
+        数据类型：
+            对象---> 用来存放数据的。对象中可以放任何数据
+            {
+                key:value
+            }、
+            字符串''或者""、
+            数字 0-9
+        
+        []:
+            能用.的地方都能使用[],注意：如果中括号中没有引号，那么为变量
+        
+        value
+        innerHTML(所有内容) / innerText(文本)
+
+        字符串拼接
+            '<li>' + str + '</li>'
+            在拼接的时候是默认不允许换行，因为会报错，
+            如果想不在一行，那么需要注意拼接的格式
+            比如:
+                '<li></li>'
+
+                '<li>' +
+                '</li>'
+
+        需求:
+            在box中添加一个div，这个div的样式如下
+            width:100px;height:200px;background:red
+
+        注意：
+            在字符串拼接的时候，如果字符串中有双引号，那么这个字符串应该使用单引号。
+
+    */
+    var color = 'red';
+    var w = 'width';
+    var h = 'height';
+    var num1 = 100;
+    var num2 = 200;
+    var bg = 'background';
+
+    const box = document.getElementById('box');
+
+    // box.innerHTML = '<div style="'+w+':'+num1+'px;'+h+':'+num2+'px;'+bg+':'+color+'"></div>';
+    
+    // box.innerHTML = '<div style="'+w+':'+num1+'px;'+h+':'+num2+'px;'+bg+':'+color+'"></div>'
+
+    box.innerHTML = '<div style="' + w + ':' +
+        num1 + 'px;' + h + ':' + num2 + 'px;' +
+        bg + ':' + color+';"></div>';
+
+
+    // var t = document.getElementById('t');
+
+    // console.log(t.value)
+    
+    // var obj = {
+    //     name:'随便',
+    //     age:18,
+    //     style:{
+    //         width:{
+    //             hehe:'200px'
+    //         }
+    //     }
+    // }
+    
+    // // console.log(obj['age']);
+    // //console.log(obj.style.width);
+    // console.log(obj.style.width.hehe);
+
+
+
+
+
+</script>
+</body>
+</html>
