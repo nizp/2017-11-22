@@ -13,13 +13,84 @@
             版本控制工具
 
         github  社交网站（程序员们的基友网站）
-
+            可以作为代码托管
 
         A(id:0)   AB(id:1)
 
         AB  AB-(id:2)
 
         A  A+
+
+        SVN集成式版本控制:
+            缺点:
+                依赖网络，范围小，如果中央服务器挂了，代码就没有了
+        git分布式版本控制:
+                不依赖网络，如果加上github 范围大（只要有网络就能）
+
+        1.工具的安装
+        2.github账号创建
+        3.git与github进行关联
+
+        生成秘钥:
+            ssh-keygen -t rsa -C "注册邮箱"
+
+        查看关联
+            ssh -T git@github.com
+
+        进入盘符：
+            cd d:
+
+        进入文件夹:
+            cd class
+
+        ls -> 查看当前文件夹有哪些文件
+
+
+        创建项目:
+            进入github,点击头像旁边的+号 
+            进入new repository创建项目
+
+            点击download按钮
+                复制地址 git@github.com:nizp/2017-11-22-Class.git
+            
+
+            在指定文件夹下打开git
+                git clone git@github.com:nizp/2017-11-22-Class.git 粘贴地址
+            
+            下载文件成功之后进入该文件夹
+                然后开始工作区 -> 暂存区 -> 版本区
+
+
+        git的三个区
+            工作区
+            暂存区
+            作为过渡层
+            避免误操作
+            保护工作区和版本区
+            分支处理
+            版本区（库）
+
+
+        git status:
+            查看状态
+
+        按tab自动补全
+
+        工作区到暂存区
+            git add 文件名
+            git add .  批量提交到暂存区
+
+        暂存区到版本区
+            git commit -m "本次提交代码的描述注释"
+
+        通过git log查看版本
+
+        返回按 q 键
+
+        如果修改之前提交过的文件中的内容可以使用快捷提交版本区的方式提交
+
+            git commit -a -m "注释"
+
 
     */
 </script>
