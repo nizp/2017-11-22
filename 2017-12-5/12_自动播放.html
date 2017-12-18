@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+*{
+    margin: 0;
+    padding:0;
+}
+input{
+    position: absolute;
+    top:0;
+}
+input:nth-of-type(1){
+    left:0px;
+}
+input:nth-of-type(2){
+    left:35px;
+}
+
+</style>
+</head>
+<body>
+    <input type="button" value="开始">
+    <input type="button" value="停止">
+    <img id="img" width="1260" src="image/1.jpg" alt="">
+<script>
+    const btns = document.querySelectorAll('input');
+    const img = document.getElementById('img');
+    let timer = null;
+    let num = 0;
+    /*
+        问题：
+            狂点开始按钮的时候，timer会一直赋值新的定时器，
+            好几个定时器开着，页面就乱了
+
+            当关闭定时器的时候，只关闭了最新赋值的定时器。
+            会导致关闭不了定时器。
+
+            解决：
+               1. 点完之后就不让点了。这种性能更高。
+               2. 再这次开启定时器之前，先把之前的定时器清了。
+        
+        
+        timer = 1
+        timer = 2
+
+
+    */
+    let onOff = true;
+    btns[0].onclick = function(){
+        // if(onOff){
+            // if(!onOff)return;
+            // onOff = false;
+            clearInterval(timer);  //先清上一次
+            timer = setInterval(function(){
+                num ++;
+                num %= 7;
+                img.src = 'image/' + (num+1) + '.jpg';
+            },1000);
+        // }
+    }
+
+    btns[1].onclick = function(){
+        clearInterval(timer);
+        onOff = true;
+    }
+
+</script>
+</body>
+</html>

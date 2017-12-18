@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        str.padStart(补齐的长度（num）,'补全的内容')
+            往前补全
+        str.padEnd(补齐的长度（num）,'补全的内容')
+            往后补全
+
+        num < str.length 就不用补全了
+
+    */
+
+    // let str = '你还';
+
+    let str = '12';
+
+    if(str.length < 5){
+        //str = str.padEnd(5,'.');
+        //str = str.padStart(5,'  ');  //往前缩进
+
+        str = str.padStart(5,'编号:');
+    }
+    console.log(str);
+
+    console.dir(new String());
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.yellow{
+    color:yellowgreen;
+}    
+</style>
+</head>
+<body>
+    <input type="text" id="txt">
+    <input type="text" id="txt2">
+    <input type="button" value="查找" id="btn">
+    <input type="button" value="替换" id="btn2">
+    <div id="box">
+            Google何时回归中国？这个问题也许根本就不存在
+            华为荣耀店疑遭中国小米员工打砸 卖场欲请两家喝酒和解
+            继康宁之后，中国苹果又砸3.9亿美元投资iPhone ..
+            中国iPhone X用户占有率已超过iPhone 8/..
+            中国iMac Pro 来了，颜值极高的新 iMac 支..
+            喜大普奔！中国小米手机重磅功能来了：又能扔掉一张卡
+            中国夏普手机夹缝求生：S2销量未及预期品牌面临挑战
+            中国阿里云发布云骨干网，网络产品升级到企业级 | 钛快..
+            iPhone X普及率迅速超过iPhone 8系列
+            2017提速降费中国“干货”多 用户期待中国“更快更省”
+    </div>
+<script>
+    let Text = box.innerText;
+
+    btn2.onclick = function(){
+        let val = txt.value;
+        let val2 = txt2.value;
+
+        let arr = Text.split(val);
+
+        box.innerHTML = arr.join('<span class="yellow">'+val2+'</span>');
+
+        console.log();
+
+
+    }
+
+    btn.onclick = function(){
+        let val = txt.value;
+        if(!Text.includes(val)){
+            alert('查询无效!');
+            return;
+        }
+
+        let arr = Text.split(val);
+
+        let str = arr.join('<span class="yellow">'+val+'</span>');
+        // console.log(str);
+
+        box.innerHTML = str;
+
+    }
+</script>
+</body>
+</html>

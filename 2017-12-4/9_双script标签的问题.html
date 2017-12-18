@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var a = 10;
+    alert(b);  //报错
+</script>
+<script>
+    alert(a);
+    var b = 20;
+
+    /*
+        如果有多个script标签，那么只会向上去找某个变量（函数）
+        如果没有就报错，如果有访问成功，不过就算一个script报错
+        是不会影响别的script执行的。
+
+    */
+    
+    /*
+        // A：报错 B：undefined  C：10  D:20
+
+        A:(报错,10),B:(undefined,10),C:(报错),D:(20,10)
+        
+       
+        
+        
+    */
+</script>
+</body>
+</html>

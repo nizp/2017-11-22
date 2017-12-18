@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //默认对象
+    const obj = {
+        name:'小黄',
+        age:18
+    }
+
+    /*
+       *** 如果一个对象中有重名的key值，那么后面的会把前面的覆盖。
+    */
+    //配置的对象
+    const obj2 = {
+        job:'web前端',
+        name:'小黑',
+        name:'小白'
+    }
+    /*
+        对象拷贝(浅拷贝):
+            Object.assgin(传入对象,传入对象,传入对象,传入对象..);  //可以把右边的对象的内容赋值给左边对象，直到第一个。
+    */
+    // const obj3 = Object.assign(obj,obj2);
+
+    // console.log(obj3);
+
+    // for(var attr in obj2){ 
+    //     obj[attr] = obj2[attr];
+    // }
+
+    Object.assign(obj,obj2,{sex:'男'});
+
+    console.log(obj);
+
+
+
+</script>
+</body>
+</html>

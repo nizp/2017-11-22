@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+img{
+    display: block;
+} 
+
+#box{
+    position: absolute;
+    left:0;
+    top:0;
+    transition: .5s;
+}
+#box1{
+    position: relative;
+    height: 61px;
+    overflow: hidden;
+}
+</style>
+</head>
+<body>
+<div id="box1">
+    <div id="box">
+        <img src="img/img/0.png">
+        <img src="img/img/0.png">
+    </div>
+</div>
+<script>
+    let arr = [];
+
+    for(var i=0;i<10;i++){
+        arr.push('img/img/'+i+'.png');
+    }
+
+    const imgs = document.getElementsByTagName('img');
+    const box = document.getElementById('box');
+    let num = 0;
+   document.onclick = function(){
+        num ++;
+        num %= 10;
+        imgs[1].src = arr[num];
+        box.style.top = '-61px';
+        setTimeout(function(){
+            imgs[0].src = arr[num];
+            box.style.transition = 'none';
+            setTimeout(function(){
+               box.style.top = 0;
+               setTimeout(function(){
+                 box.style.transition = '.5s';
+               },30);//确保top值已经回到0了。
+            },50); //确保transition已经清空了
+        },510);
+
+   }
+
+
+
+
+    // setInterval(function(){
+
+    // },1000);
+    // console.log(arr);
+</script>
+</body>
+</html>

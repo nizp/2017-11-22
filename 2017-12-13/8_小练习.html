@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        实现一个trim方法，兼容所有浏览器
+
+        '   miao v   '
+
+        'miao v   '
+
+        'miao v'
+
+        endswith()
+
+    */
+
+    let str = '   miao v   ';
+
+    while(str.startsWith(' ')){
+        str = str.substring(1);
+    }
+    
+    while(str.endsWith(' ')){
+        str = str.substring(0,str.length-1);
+    }
+
+
+
+    console.log(str);
+
+
+
+
+
+    // for(var i=0;i<str.length;i++){
+    //     if(str[i] !== ' ')break; //非空格字符的下标
+    // }
+
+    // str = str.substring(i);
+
+    // for(var i=str.length-1;i>0;i--){
+    //     if(str[i] !== ' ')break;
+    // }
+
+    // str = str.substring(0,i+1);
+
+    // console.log(str);
+
+
+
+
+</script>
+</body>
+</html>

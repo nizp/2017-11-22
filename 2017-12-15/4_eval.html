@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="txt">
+    <button id="btn">点击</button>
+<script>
+    /*
+        eval();  容易被注入病毒。
+
+            尽可能把能够执行的js代码执行，把字符串转js
+
+            一般使用的场景:
+                1.把一个不标准的json转成对象
+                2.低版本浏览器用不了JSON.parse,JSON.stringify
+
+    */
+
+    btn.onclick = function(){
+        alert(eval(txt.value))
+    }
+
+
+    // (function (){
+    //     alert(1);
+    // })();
+
+    // let str = "({'name':'小云'})";
+    let str = "{'name':'小云'}";
+
+    // console.log(eval('(' + str + ')'));
+  
+    // eval('alert(123)');
+
+    // eval('alert(1+1)');
+
+    // console.log(str);
+    // console.log(JSON.parse(str));
+
+    //fn()
+
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+   
+    /*
+        函数声明：
+            function fn(){}
+                调用在定义上面或者下面都可以。
+        函数表达式：
+            let fn = function(){}
+                调用在声明之后，不然会报错
+
+        在函数才被声明的时候，函数内部就有很多属性或者方法
+        比如:
+            name属性,length属性,arguments属性
+            prototype属性->原型->是给它的实例化对象使用的->它的值是一个**对象**
+            Scopes属性
+            apply方法
+            bind方法
+            call方法
+
+
+
+        函数名 + 括号调用
+        事件调用
+        call能够改变this指针（this指向）
+        applay能够改变this指针（this指向）
+        
+        
+        bind也能改变this指向，不过bind之后不立即执行，如果要执行就得执行它的返回值。
+    */
+
+    function fn(){
+        alert(this);
+    }
+
+    // fn();
+    // fn.call(document);
+    // fn.apply(document);
+
+    let f = fn.bind(document);
+
+    // f();
+    // console.log(f);
+
+    // console.dir(fn);
+
+    
+    
+
+</script>
+</body>
+</html>

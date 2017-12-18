@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>V形变换</title>
+    <style>
+        #box { position: relative; margin:100px; border: 1px solid black ;}
+
+        .cnt {
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background: yellow;
+            position: absolute;
+            /* transition: all 1000ms;  */ /*新添加的属性怎么设置动画呢？*/ 
+        }
+
+        #ch {
+            position: absolute;
+            top: 30px;
+            left: 500px;
+        }
+        #iptnum {
+            position: absolute;
+            top: 30px;
+            left: 350px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <br>
+    <br>
+    <div>
+        <input type="number" name="" value="9" id="iptnum" autofocus>
+        <input type="button" value="点击变换" id="ch" >
+        
+        <!-- 
+        <input type="text" value="" id = "iptsjs" >
+        <input type="text" value="" id = "iptcolor" > 
+        -->
+
+    </div>
+    <script>
+
+        /*
+            Math.floor() //向下取整
+            Math.ceil() //向上取整
+
+            ~~ 向下取整  （位运算符）
+        */
+        const box = document.getElementById('box');
+
+        const inputs = document.getElementsByTagName('input');
+        let arr = ["red","green","yellow","blue","pink","purple","skyblue"];
+        
+        let num = parseInt(inputs[0].value);
+        let str = '';
+        let num2 = 50;
+        let num3 = Math.ceil(num / 2);
+
+        let index = 0;
+        let arr2 = [right1,bottom1,left1,top1];
+
+        arr2[index]();
+        box.innerHTML = str;
+
+        // inputs[1].onclick = function(){
+        //     str = '';
+        //     num = parseInt(inputs[0].value);
+        //     num3 = Math.ceil(num / 2);
+        //     index ++;
+        //     index %= arr2.length;
+        //     arr2[index]();
+        //     box.innerHTML = str;
+        //     box.style.cssText = `height:${(num)*50}px;width:${num*50}px;`;
+        // }
+
+
+        inputs[1].onclick = function(){
+            str = '';
+            num = parseInt(inputs[0].value);
+            num3 = Math.ceil(num / 2);
+            // index ++;
+            // index %= arr2.length;
+            if(index == 1){
+                arr2[1]();
+                index =  2;
+            }else if(index == 2){
+                arr2[2]();
+                index =  3;
+            }else if(index == 3){
+                arr2[3]();
+                index =  0;
+            }else{
+                arr2[0]();
+                index = 1;
+            }
+            box.innerHTML = str;
+            box.style.cssText = `height:${(num)*50}px;width:${num*50}px;`;
+        }
+
+        
+
+
+
+        //右
+
+        function right1(){
+            for(var i=0;i<num;i++){
+                if(i < num3){
+                str += `
+                        <div style="
+                            width:50px;
+                            height:50px;
+                            left:${i*num2}px;
+                            top:${i*num2}px;
+                            position:absolute;
+                            background:${arr[i%arr.length]}"
+                        ></div>`;
+                }else{
+                    str += `
+                        <div style="
+                            width:50px;
+                            height:50px;
+                            left:${(num - i - 1)*50}px;
+                            position:absolute;
+                            top:${i*num2}px;
+                            background:${arr[i%arr.length]}"
+                        ></div>`;
+                } 
+            }
+        }
+
+        //上
+        function top1(){
+            for(var i=0;i<num;i++){
+                if(i < num3){
+                str += `
+                        <div style="
+                            width:50px;
+                            height:50px;
+                            left:${i*num2}px;
+                            top:${(num - i - 1)*50}px;;
+                            position:absolute;
+                            background:${arr[i%arr.length]}"
+                        ></div>`;
+                }else{
+                    str += `
+                        <div style="
+                            width:50px;
+                            height:50px;
+                            left:${i*num2}px;
+                            position:absolute;
+                            top:${i*num2}px;
+                            background:${arr[i%arr.length]}"
+                        ></div>`;
+                }   
+            }   
+        }
+        
+        //左
+        function left1(){
+            for(var i=0;i<num;i++){
+                if(i < num3){
+                str += `
+                        <div style="
+                            width:50px;
+                            height:50px;
+                            left:${(num - i - 1)*50}px;
+                            top:${i*num2}px;
+                            position:absolute;
+                            background:${arr[i%arr.length]}"
+                        ></div>`;
+                }else{
+                    str += `
+                        <div style="
+                            width:50px;
+                            height:50px;
+                            left:${i*num2}px;
+                            position:absolute;
+                            top:${i*num2}px;
+                            background:${arr[i%arr.length]}"
+                        ></div>`;
+                } 
+            }
+        }
+
+        //下
+        function bottom1(){
+            for(var i=0;i<num;i++){
+                if(i < num3){
+                str += `
+                        <div style="
+                            width:50px;
+                            height:50px;
+                            left:${i*num2}px;
+                            top:${i*num2}px;
+                            position:absolute;
+                            background:${arr[i%arr.length]}"
+                        ></div>`;
+                }else{
+                    str += `
+                        <div style="
+                            width:50px;
+                            height:50px;
+                            left:${i*num2}px;
+                            position:absolute;
+                            top:${(num - i - 1)*50}px;
+                            background:${arr[i%arr.length]}"
+                        ></div>`;
+                }
+            }
+        }
+
+       
+
+        box.style.cssText = `height:${(num)*50}px;width:${num*50}px;`;
+
+
+
+
+
+
+
+        
+    </script>
+</body>
+
+</html>

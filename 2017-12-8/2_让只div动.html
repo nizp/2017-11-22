@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    background: skyblue;
+    position: absolute;
+    top:30px;
+    left:100px;
+}
+</style>
+</head>
+<body>
+    <button id="btn">运动</button>
+    <div id="box"></div>
+<script>
+    const btn = document.getElementById('btn');
+    const box = document.getElementById('box');
+    let timer = null;
+    let num = 0;
+    /*
+        offsetLeft:
+            定位元素的外边框的左距离到定位父级的内边框的左距离
+    */
+    let b = parseFloat(getComputedStyle(box).left);
+    btn.onclick = function(){
+        
+        timer = setInterval(function(){
+            // let b = parseFloat(getComputedStyle(box).left);
+            // console.log(b);
+            // num += 20;
+
+            console.log(box.offsetLeft)
+            // box.style.left = b + num + 'px';
+            box.style.left = box.offsetLeft + 5 + 'px';
+        },30);
+    }
+
+</script>
+</body>
+</html>

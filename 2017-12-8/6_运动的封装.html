@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+}
+#box{
+    width:100px;
+    height: 100px;
+    background: skyblue;
+    position: absolute;
+    top:30px;
+    left:100px;
+}
+</style>
+</head>
+<body>
+    <button id="btn">运动</button>
+    <div id="box"></div>
+<script src="tween.js"></script>
+<script>
+    const btn = document.getElementById('btn');
+    const box = document.getElementById('box');
+
+    /*
+        * t : time 已过时间
+        * b : begin 起始值
+        * c : count 总的运动值
+        * d : duration 持续时间
+
+        11:36
+
+        11:37
+        11:38
+        11:39
+
+        11:39 - 11:36 = 3分
+        现在的时间 - 开始的时间 = 用了多少时间
+
+        定时器是跟cpu和浏览器的优化机制相关，所以说写的30不一定是30
+        30左右
+    */
+
+    
+    btn.onclick = function(){
+
+        // move(box,'top',350,1000,'bounceOut',function(){
+        //     move(box,'left',300,500,'elasticOut');
+        // });
+
+        move(box,{
+            top:350,
+            width:300,
+            opacity:.5
+        },1000,'bounceOut');
+
+        /*
+            '{"left" : 300}'
+
+            {
+                top:350,
+                width:300
+            }
+
+            1.一开始的初始值
+            2.目标点
+
+            {
+                width:{
+                    b:一开始的初始值,
+                    c:目标点
+                },
+                left:{
+                    b:10,
+                    c:350
+                }
+            }
+
+            350 - 10 = 340
+        */
+    }
+    function move(obj,json,d,fx,callback){
+        //c :目标点  d:运动时间 
+        let timer = null;
+        let newDate = +new Date();
+        // let b = parseFloat(getComputedStyle(obj)[attr]);
+        let j = {};
+
+        /*
+            每个属性有自己的一套，起始值和目标点。
+        */
+        for(var attr in json){
+            let b = parseInt(getComputedStyle(obj)[attr]);
+            j[attr] = {
+                b: b,
+                c:json[attr] - b
+            }
+        }
+
+        console.log(j);
+
+        // return;
+        timer = setInterval(function(){
+            let nowDate = +new Date();
+            let t = nowDate - newDate;
+            if(t >= d){
+                t = d;
+            }
+           
+            if(t == d){
+                clearInterval(timer);
+                callback && callback();
+            }
+
+            for(var attr in j){
+                // console.log( j[attr]) 使用每个属性的起始值和目标点
+                let v = Tween[fx](t, j[attr].b,j[attr].c, d);
+                obj.style[attr] = v + 'px';
+            }
+            
+
+            
+        },30);
+    }
+</script>
+</body>
+</html>

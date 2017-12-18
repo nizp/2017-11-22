@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" value="2017 12 7 00:00:00">
+    <input type="button" value="点击开始">
+    <p id="p">0天9小时29分钟11秒</p>
+<script>
+    const inputs = document.getElementsByTagName('input');
+    const p = document.getElementById('p');
+
+    function toDou(n){
+        return n<10?'0'+n:''+n;
+    }
+    let onOff = true;
+    inputs[1].onclick = function(){
+       if(!onOff)return;
+       onOff = false;
+        let val = inputs[0].value; //用户设置的未来时间
+        let timer = null;
+        if(!val){
+            alert('请填写内容!');
+            return
+        };
+        
+        let newDate = new Date(val); //未来的时间
+        myTime();
+        timer = setInterval(myTime,1000);
+        function myTime(){
+            
+            let nowDate = new Date();
+            let t = (newDate - nowDate) / 1000;
+            let iDay = Math.floor(t/86400);
+            t%=86400;
+            let iH = Math.floor(t/3600);
+            t%=3600;
+            let iM = Math.floor(t/60);
+            t%=60;
+
+           // console.log('离成功还剩下'+toDou(iDay)+'天'+toDou(iH)+'小时'+toDou(iM)+'分'+toDou(t)+'秒')
+
+            if(Math.floor(t) <= -1){
+                t = 0;
+                clearInterval(timer);
+                alert('开始秒杀!');//钩子,某个条件成立的时候触发的时机
+                onOff = true;
+            }else{
+                p.innerText = '离成功还剩下'+toDou(iDay)+'天'+toDou(iH)+'小时'+toDou(iM)+'分'+toDou(Math.floor(t))+'秒';
+            }
+        }    
+    }
+</script>
+</body>
+</html>

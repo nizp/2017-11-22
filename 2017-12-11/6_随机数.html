@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        Math.random();
+            随机 0 - 1之间的无限不循环小数
+
+        常用的取整公式
+			x ~ y : Math.round(Math.random()*(y-x) + x)
+			0 ~ x : Math.round(Math.random()*x)
+			1 ~ x : Math.ceil(Math.random()*x)||1
+			0 ~ x-1 : Math.floor(Math.random()*x) 
+    */
+    // for(var i=0;i<1000;i++){
+    //     console.log(Math.random())
+    // }
+
+    /*
+        0.1 * 5   0.5 -> + 5  ->  5.5
+
+        0.9 * 5   4.5 -> + 5  -> 9.5
+    */
+    //5-10
+    // console.log(Math.round(Math.random()*5 + 5));
+
+    //20-40   Math.round(Math.random()*(40-20)+20);
+    // console.log(Math.round(Math.random()*20+20))
+    
+    // function random(n,m){
+    //     return Math.round(Math.random()*(m-n)+n);
+    // }
+
+    // let c = 10;
+    // let ab = random(0,5);
+
+    // console.log(c + ab); //10 - 15之间的数
+
+    console.log(Math.round(Math.random()*5))
+
+</script>
+</body>
+</html>

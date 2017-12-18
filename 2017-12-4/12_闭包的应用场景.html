@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <input type="button" value="按钮一">
+    <input type="button" value="按钮二">
+    <input type="button" value="按钮三">
+</head>
+<body>
+<script>
+    
+    let arr = [111,222,333];
+
+    const btns = document.getElementsByTagName('input');
+       
+
+    for(var i=0;i<btns.length;i++){
+        function fn(a){
+            btns[a].onclick = function(){
+                alert(a);
+                // alert(arr[a]);
+            }
+        }
+        fn(i);
+        /*
+            fn(0);
+                btns[0].onclick = function(){
+                    alert(0);
+                }
+
+            fn(1);
+                 btns[1].onclick = function(){
+                    alert(1);
+                }
+            fn(2);
+                 btns[2].onclick = function(){
+                    alert(2);
+                }
+        */
+
+    }
+
+
+    // for(var i=0;i<btns.length;i++){
+    //     btns[i].index = i;
+    //     btns[i].onclick = function(){
+    //         alert(arr[this.index]);
+    //     }
+    // }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        1.从str这个字符串中找到所有n的下标
+            (1)循环
+            (2)判断到底有没有n
+            (3)每次找到还得改变某个变量
+
+        2.存到数组中
+        3.lastIndexOf
+        4.再过滤数组中最大的值
+        5.通过这个最大值去查找最后一个n的下一个字符是什么
+    */
+    let str = 'ndnsnadu891321dnemiyfe2jcejwqn9c1c';
+    // console.log(str[str.lastIndexOf('n')+1]);
+    // console.log(str.lastIndexOf('x'))
+    let arr = [];
+
+    let num = str.length - 1;
+
+    // console.log(str.lastIndexOf('n',-1))
+
+    for(;str.lastIndexOf('n',num) != -1;){
+        arr.push(str.lastIndexOf('n',num));
+        if(str.lastIndexOf('n',num) == 0){
+            break;
+        }
+        num = str.lastIndexOf('n',num) - 1;
+    }
+    console.log(arr);
+
+
+
+</script>
+</body>
+</html>

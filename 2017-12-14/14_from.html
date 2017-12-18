@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+<script>
+
+    /*
+        Array.from([]|类数组)
+
+            返回一个数组
+
+        功能一样 
+            [].slice.call(类数组)
+    */
+
+    let lis = document.getElementsByTagName('li');
+
+    lis = Array.from(lis); //从类数组变成了数组
+
+    lis.forEach(function(e,i){
+        e.onclick = function(){
+            alert(i);
+        }
+    });
+
+    console.log(lis);
+
+
+
+</script>
+</body>
+</html>

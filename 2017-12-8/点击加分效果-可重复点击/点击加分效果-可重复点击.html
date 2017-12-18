@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			body{
+				margin: 0;
+			}
+			.main {
+				width: 1200px;
+				height: 800px;
+				background: url(./image/bg.png) no-repeat;
+				margin: 0 auto;
+				overflow:hidden;
+				text-align: center;
+			}
+
+			.clearFix:after{
+				display: block;
+				content: '';
+				clear: both;
+				visibility: hidden;
+			}
+			
+			.photos{
+				margin-top: 342px;
+				display: inline-block;
+			}
+
+			.Beauty{
+				margin:2px 0 0 2px;
+				width: 237px;
+				height: 259px;
+				float: left;
+				position: relative;
+			}
+			.love {
+				width: 100px;
+				height: 104px;
+				position: absolute;
+				left: 68px;
+				top: -35px;
+				background: url(./image/love.png) no-repeat;
+				font-size: 20px;
+				color: #fff;
+				line-height: 100px;
+				font-family: Arial;
+			}
+			.love:hover {
+				background-position: -137px;
+			}
+			.heart {
+				width: 32px;
+				height: 27px;
+				position: absolute;
+				left: 101px;
+				top: -60px;
+				background: url(./image/heart.png) no-repeat;
+				display: none;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div class="main">
+			<div class="photos clearFix">
+				<div class="Beauty">
+					<div class="love">
+						+1
+					</div>
+					<div class="heart"></div>
+					<img src="./image/meinv2.png" />
+				</div>
+				<div class="Beauty">
+					<div class="love">
+						+1
+					</div>
+					<div class="heart"></div>
+					<img src="./image/meinv2.png" />
+				</div>
+				<div class="Beauty">
+					<div class="love">
+						+1
+					</div>
+					<div class="heart"></div>
+					<img src="./image/meinv2.png" />
+				</div>
+
+				<div class="Beauty">
+					<div class="love">
+						+1
+					</div>
+					<div class="heart"></div>
+					<img src="./image/meinv2.png" />
+				</div>
+			</div>
+		</div>
+
+<script src="perfect_1.0.js"></script>
+<script>
+	const Beautys = document.querySelectorAll('.Beauty');
+	for(let i=0;i<Beautys.length;i++){
+		Beautys[i].num = 1; 
+		Beautys[i].onclick = function(){
+			let heart = this.querySelector('.heart');
+			heart.style.display = 'block';
+			this.num ++;
+			this.querySelector('.love').innerText = '+' + this.num;
+			move({
+				obj:heart,
+				attrs:{
+					top:-110,
+					opacity:0
+				},
+				d:500,
+				cb:function(){
+					setTimeout(function(){
+						heart.style.top = '-60px';
+						heart.style.display = 'none';
+						heart.style.opacity = '1';
+					},50);
+				}
+			});
+		}
+	}
+</script>	
+</body>
+</html>

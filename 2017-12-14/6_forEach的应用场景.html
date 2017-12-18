@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+<script>
+    /*
+        lis为类数组（类似于数组）
+            类数组有length，有下标，但是不能使用数组的方法
+            
+    */
+    let lis = document.getElementsByTagName('li');
+
+    
+
+    /*
+        [1,2,3].slice = function(){
+            let arr = [];
+            for(var i=0;i<this.length;i++){
+                arr.push(lis[i]);
+            }
+           return arr;
+        }
+
+        [].slice.call(lis);
+    */
+    let arr = [1,2,3,4];
+    // Array.prototype.slice = function(){
+    //     let arr = [];
+    //     console.log(this);
+    //     for(var i=0;i<this.length;i++){
+    //         arr.push(this[i]);
+    //     }
+    //     return arr;
+    // }
+    // console.log(arr.slice(0))
+
+    //把类数组转真数组的方法
+    lis = [].slice.call(lis);   //[1,2,3].push  [5,6,7,7]
+
+    lis.forEach(function(ele,i){
+        ele.onclick = function(){
+            alert(i);
+        }
+    });
+
+    // lis.forEach((ele,i)=>{
+    //     ele.onclick = function(){
+    //         alert(i);
+    //     }
+    // });
+
+
+    // (function(global,factory){
+    //     "use strict"
+    //     factory(global);
+    // })(typeof window !== 'undefined'?window:this,function(global,noGlobal){
+    //     let slice = Array.prototype.slice;
+    //     slice.call(lis).forEach((e,i)=>{
+    //         e.onclick = function(){
+    //             alert(i);
+    //         }
+    //     }); 
+    // });
+
+
+    // console.log(lis);
+    // console.log(arr == arr.slice());
+
+    // console.log();
+
+    //console.log(lis.push);
+
+    
+
+    // console.log(lis.push(5));
+
+</script>
+</body>
+</html>

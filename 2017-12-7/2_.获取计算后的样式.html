@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#div{
+    width:100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    top:0;
+    left:150px;
+    left:200px;
+    transform:scale(.5);
+    /* translateX(10px); */
+    /* rotateZ(10deg); */
+}
+</style> 
+</head>
+<body>
+    <div id="div" style="width:200px;border:1px solid #000"></div>
+<script>
+    /*
+        getComputedStyle(obj).width : 计算后的样式。
+
+        *** 返回值是带单位的字符串(带单位就不能直接数学运算)。
+
+        获取CSS3的内容一般获取不准确
+        如果获取transform的时候，获取到的是一个矩阵。
+
+    */
+    // console.log(div.style.border);
+
+    console.log(getComputedStyle(div).height)
+
+    // console.log(getComputedStyle(div).transform);
+</script>
+</body>
+</html>

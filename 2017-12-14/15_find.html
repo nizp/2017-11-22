@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    /*
+        查看数组中的name有没有裤子，有裤子就把这条数据取出来
+
+        find()
+            在数组中返回条件成立的数据。
+    */
+    let arr = [
+        {name:'衣服',num:20},
+        {name:'裤子',num:30},
+        {name:'袜子',num:5}
+    ];
+
+
+//    console.log(find('T桖'))
+//    function find(val){
+//         for(var i=0;i<arr.length;i++){
+//             if(arr[i].name == val){
+//                 return arr[i];
+//             }
+//         }
+//         return null;
+//    }
+
+    console.log(arr.find(function(e,i){
+        return e.name == '裤子';
+    }));
+
+</script>
+</body>
+</html>

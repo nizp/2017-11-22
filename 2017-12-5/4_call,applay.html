@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    /*
+        call(this,1,2,3,4,5):
+            第一个参数：
+                改变this指向
+            第二个参数之后为实参。
+
+        
+        apply(this,[]):
+            第一个参数：
+                改变this指向
+            第二个参数为数组,里面放着实参
+                [1,2,3,4]
+            
+            
+    */
+    function fn(a,b,c,d){
+        /*
+            函数默认的this为window
+            如果使用了call，apply写什么this就是什么。
+
+        */
+        console.log(this,(a+b+c+d)); 
+    }
+    // fn(1,2,3,4);
+    // fn.call(document,1,2,3,4);
+    fn.apply(document,[1,2,3,4]);
+</script>
+</body>
+</html>

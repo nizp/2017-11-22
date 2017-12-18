@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    background: skyblue;
+    position: absolute;
+    top:30px;
+    left:100px;
+}
+</style>
+</head>
+<body>
+    <button id="btn">运动</button>
+    <div id="box"></div>
+<script src="tween.js"></script>
+<script>
+    const btn = document.getElementById('btn');
+    const box = document.getElementById('box');
+    /*
+        * t : time 已过时间
+        * b : begin 起始值
+        * c : count 总的运动值
+        * d : duration 持续时间
+
+        11:36
+
+        11:37
+        11:38
+        11:39
+
+        11:39 - 11:36 = 3分
+        现在的时间 - 开始的时间 = 用了多少时间
+
+        定时器是跟cpu和浏览器的优化机制相关，所以说写的30不一定是30
+        30左右
+    */
+
+    let c = 300;
+    let d = 1000;
+    let b = parseFloat(getComputedStyle(box).left);
+    let timer = null;
+    btn.onclick = function(){
+        let newDate = +new Date();
+        timer = setInterval(function(){
+            let nowDate = +new Date();
+            let t = nowDate - newDate;
+            // console.log(t);
+            if(t >= d){
+                console.log(t,d)
+                //clearInterval(timer);
+                t = d;
+            }
+            /*
+                500 * (1000/1000)  = 500
+
+                500 * (1030/1000) = 50x.xx
+            */
+            if(t == d){
+                clearInterval(timer);
+            }
+            // box.style.left = c * (t/=d) * t + b + 'px';
+            // box.style.left = c * (t/d) + b  + 'px';
+            
+            // let v = Tween.elasticOut(t, b, c, d);
+            let v = Tween.bounceOut(t, b, c, d);
+
+            box.style.top = v + 'px';
+
+        },30);
+        
+    }
+
+
+
+
+</script>
+</body>
+</html>

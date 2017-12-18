@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="price.css" />
+	</head>
+
+	<body onselectstart="return false;">
+		<div class="wrap">
+			<div class="box">
+				<ul class="list">
+					<li>
+						<i></i>
+						<em>0</em>
+						<i></i>
+						<span>
+							单价：<strong>12.5元 </strong> 小计：<strong>0元</strong>
+						</span>
+					</li>
+					<li>
+						<i></i>
+						<em>0</em>
+						<i></i>
+						<span>
+							单价：<strong>10.5元 </strong> 小计：<strong>0元</strong>
+						</span>
+					</li>
+					<li>
+						<i></i>
+						<em>0</em>
+						<i></i>
+						<span>
+							单价：<strong>8.5元 </strong> 小计：<strong>0元</strong>
+						</span>
+					</li>
+					<li>
+						<i></i>
+						<em>0</em>
+						<i></i>
+						<span>
+							单价：<strong>8元 </strong> 小计：<strong>0元</strong>
+						</span>
+					</li>
+					<li>
+						<i></i>
+						<em>0</em>
+						<i></i>
+						<span>
+							单价：<strong>14.5元 </strong> 小计：<strong>0元</strong>
+						</span>
+					</li>
+				</ul>
+				<div class="info">
+					<span>商品公合计：<em>0</em>件</span>
+					<span>共花费了：<em>0</em>元</span>
+					<br />
+					<br />
+					<span>其中最贵的商品单价是：<em>0</em>元</span>
+				</div>
+			</div>
+		</div>
+<script>
+	var list = document.querySelector('.list');
+	var oLi = list.getElementsByTagName('li');
+	var info = document.querySelector('.info');
+	var ems = info.getElementsByTagName('em');
+
+	let arr1 = []; //个数合计
+	let arr2 = [];//共花费
+	let arr3 = [];//最贵
+
+	/*
+		有几个li就放几个0进去，每个0代表着每个商品的初始化。
+		[0,0,0,0]
+	*/
+	for(var i=0;i<oLi.length;i++){
+		oLi[i].index = i;
+		arr1[i] = arr2[i] = arr3[i] = 0;
+		fn(i);
+	}
+	
+	function fn(i){
+		let li = oLi[i];
+		let btns = li.getElementsByTagName('i');
+		let em = li.getElementsByTagName('em')[0];
+		let strongs = li.getElementsByTagName('strong');
+		//减少
+		btns[0].onclick = function(){
+			//获取到数字内容
+			let val = em.innerText;
+			val --;
+			//如果val值小于等于0 ,这个商品没有被选择
+			/*
+				1.val = 0,让innerText等于0
+				2.某一项的个数为0
+				3.某一项的单价也为0,目的是为了不用去比较最贵了
+					[12.5,8]
+			*/
+			if(val <= 0){
+				val = 0;
+				arr1[li.index] = 0;
+				arr3[li.index] = 0;
+			}
+			em.innerText = val;
+			arr1[li.index] = val;
+			//把索引和单价标签和小计标签传给count
+			count(li.index,strongs);
+		}
+		//增加
+		btns[1].onclick = function(){
+			let val = em.innerText * 1;
+			val ++;
+			em.innerText = val;
+			arr1[li.index] = val;
+			arr3[li.index] = parseFloat(strongs[0].innerText);
+			count(li.index,strongs);
+		}
+	}
+
+
+
+	function count(i,strongs){
+		let num = parseFloat(strongs[0].innerText); //单价
+		strongs[1].innerText = arr1[i] * num + '元'; //小计
+		arr2[i] = arr1[i] * num;  //给数组中添加本地累积的值。
+		ems[0].innerText = sum();
+		ems[1].innerText = sum2();
+		ems[2].innerText = zuigui();
+	}
+
+	//累计商品个数
+	function sum(){
+		let num = 0;
+		for(var i=0;i<arr1.length;i++){
+			num += arr1[i];
+		}
+		return num;
+	}
+	//累计共花费
+	function sum2(){
+		let num = 0;
+		for(var i=0;i<arr2.length;i++){
+			num += arr2[i];
+		}
+		return num;
+	}
+
+	//比较谁最贵
+	function zuigui(){  //[0,0,0,0]
+		let num = -Infinity;
+		let onOff = true;
+		for(var i=0;i<arr3.length;i++){
+			if(arr3[i]){
+				onOff = false;
+			}
+			if(num < arr3[i]){
+				num = arr3[i];
+			}
+		}
+		if(onOff){
+			return 0;
+		}else{
+			return num;
+		}
+		
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#div{
+    width:100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    top:0;
+    left:150px;
+    left:200px;
+}
+</style> 
+</head>
+<body>
+    <div id="div" style="width:200px;border:1px solid #000"></div>
+<script>
+    /*
+        getComputedStyle(obj).width : 计算后的样式。
+
+        返回值是带单位的字符串。
+
+    */
+    // console.log(div.style.border);
+
+    console.log(getComputedStyle(div).height)
+</script>
+</body>
+</html>

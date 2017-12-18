@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    position: relative;
+}
+#box div{
+    width:50px;
+    height:50px;
+    position: absolute;
+    top:0;
+    left:0;
+    background: gainsboro;
+}
+
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    /*
+        530 * 350
+    */
+   let str = '';
+    for(var i=0;i<10;i++){
+        for(var j=0;j<10;j++){
+            str += `<div style="top:${i*55}px;left:${j*55}px"></div>`;
+        }
+    }
+    box.innerHTML = str;
+
+    const divs = box.getElementsByTagName('div');
+    for(var i=0;i<divs.length;i++){
+        divs[i].onmouseover = function(){
+            this.style.backgroundImage = 'url(img/5.png)';
+            this.style.backgroundPosition = `-${this.style.left} -${this.style.top}`; 
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ul"></ul>
+<script>
+    /*
+        8.什么是闭包？为什么要用闭包？
+
+        1.函数套函数，子级引用着父级的参数或者变量，这个时候父级的参数或者变量就不会被回收
+          子级就形成了闭包环境()
+        2.就是想让父级的参数或者变量不被回收才用闭包。
+    */
+
+    // function fn(){
+    //     var a = 10;
+    //     return function(){
+    //         a++;
+    //         console.log(a);
+    //     }
+    // }
+    // var f = fn();
+    // f();
+    // f();
+    // console.dir(fn);
+
+    /*
+        9.延迟定时器和间隔型定时器是什么？如何关闭？
+
+        setTimeout   clearTimeout
+        setInterval  clearInterval
+    */
+
+    /*
+        10.从进门到座位上用了多少时间怎么计算？
+
+        进门的时候有个时间
+
+        走在路上的时候也有个时间
+
+        用走的时间 - 进门的时间 = 用了多少时间
+    */
+
+    // document.documentElement  html
+
+    //4785 4685
+
+    // document.documentElement.onclick = function(){
+    //     var date = new Date();
+    //     for(var i=0;i<500;i++){
+    //         ul.innerHTML += '<li>'+i+'</li>';
+    //     }
+    //     var date2 = new Date();
+    //     console.log(date2 - date);
+    // }
+
+    /*
+        11.什么是赋值，什么是赋址？
+
+        简单类型的赋值就是赋值
+        复合类型的赋值是赋址
+
+     注意：
+         函数如果有参数，在函数体内赋值了，那么不是赋址
+        var obj = {name:'小明'};
+        function fn(o){
+            o = {age:18};
+        }
+        fn(obj);
+        console.log(obj); //{name:'小明'}
+    */
+
+    // var obj = {name:'小明'};
+    // function fn(){
+    //     obj = {age:18};
+    // }
+    // fn(obj);
+    // console.log(obj); //{age:18}
+
+    /*
+        12.如何将一个对象内容拷贝给另一个对象（2种方法）？
+
+
+        for(var attr in obj){
+            obj2[attr] = obj[attr];
+        }
+
+        Object.assign(obj2,obj);
+    */
+
+</script>
+</body>
+</html>

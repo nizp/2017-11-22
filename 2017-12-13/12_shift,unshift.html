@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    /*
+        shift
+            往数组首位删除1个
+
+            返回:删除的那个数据
+
+        unshift
+            往数组首位添加1个或者多个
+            
+            返回:新数组的长度
+
+        
+        push
+        pop
+
+        shift
+        unshift
+
+    */
+
+    let arr = [1,2,3,4];
+
+    arr.unshift(-1,0);
+
+    arr.shift(100000000000); //就一个
+    
+    // console.log(arr);  //[0,1,2,3,4]
+    arr.push(arr.pop());//[0,1,2,3,4]
+
+    arr.shift(arr.push(arr.unshift(6)));//[6,0,1,2,3,4,6]
+
+    arr.unshift(arr.push(7));//[7,0,1,2,3,4,6,7]
+
+    console.log(arr);
+
+
+
+</script>
+</body>
+</html>

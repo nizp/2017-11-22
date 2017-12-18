@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        = 
+        把右边的东西赋值给左边  （简单类型）
+
+        复合类型就不是赋值，而是赋址。
+
+        复合类型的等号是**赋址**。
+    */
+
+    var a = 10;
+
+    var b = a;
+
+    b ++;
+
+    // alert(b);  //11
+    // alert(a); //10
+
+    var arr = [1,2,3];
+
+    var arr2 = arr;
+
+    arr2.push(4);
+
+    console.log(arr);
+
+
+    var arr3 = [];
+
+    var arr4 = [];
+
+    console.log(arr3 == arr4);
+
+    
+
+
+</script>
+</body>
+</html>

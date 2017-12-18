@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    /*
+        string.split('-');
+            以某些字符为依据，把字符串分割出来，放到数组中
+            返回值是数组。
+
+        如果用字符串作为分隔符，那么会返回一个双字符串的数组 ['','']
+
+        只有空字符串分割空字符串才会是个空白数组 []
+
+        一般会和数组的join()合用。
+
+        如果用空字符串为分割符，那么会把字符串的每项分割出来放到数组中。
+
+        str = 'miaov'
+        str.split('')  -> ['m','i','a','o','v'];
+
+
+        /////////////////////////////////////////////////////
+        
+        array.join('')
+            以字符为链接符，链接数组的每项，并且转成字符串。
+
+        一般会和字符串的split合用。
+        
+    */
+
+    let str = 'm-i-a-o-v';
+    // let s = 'a';
+    let sa = '';
+
+    // console.log(s.split('a'));
+
+    // console.log(sa.split(''));
+
+    let arr = str.split('-');  //[m,i,a,o,v]
+    // str = arr.join(); //如果不写连接符，就是把这个数组直接转成字符串并且带,号。
+    //小技巧：如果要转字符串的时候不带,号，在join中就写空字符串 ''。
+    str = arr.join(''); 
+    console.log(str);
+
+</script>
+</body>
+</html>

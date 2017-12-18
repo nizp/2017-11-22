@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        js预解析机制:
+            在打开页面的时候会提前执行的js顺序，这种规则叫预解析器。
+        
+        1.js从上往下执行。
+        2.碰到var 碰到 function就会提前解析
+        3.解析之后逐行解读代码。
+
+        如果2个函数的名字一样，那么后面的会把前面的覆盖。等同于第一个函数就从世界上消失了。
+
+        如果一段js代码中既有函数也有var（同名的），那么直接走最后一个同名函数
+
+        逐行解读代码的时候，有=号就赋值，没有等号就过。
+
+        ***注意:
+            就算var后面是个函数，也不算函数，只算变量。
+    */
+    /*
+        // var a = function a (){
+        //     alert(2);
+        // }
+        // var a = undefined;
+
+        // var a = undefined;
+
+        // var a =  function a (){
+        //     alert(a);
+        // }
+
+        a = function(){
+            alert(5);
+        }
+
+
+
+
+    */
+
+    alert(a);
+    function a (){
+        alert(2);
+    }
+    var a = function(){
+        alert(5);
+    }
+    alert(a);
+    var a = 30;
+    function a (){
+        alert(a);
+    }
+    a();  //30()  报错
+    alert(a);
+   
+   
+
+
+
+</script>
+</body>
+</html>

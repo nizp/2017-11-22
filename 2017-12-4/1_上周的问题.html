@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        因为 Infinity-1<Infinity 为false,所以不会走并且，
+
+        但是后面还有个||那么就会走最后的值。（5 > 2）;
+    */
+    let a = 1*'2' && 2/'2px' || Infinity-1<Infinity && !!true && !!!!0 || 5>2;
+    console.log(a); //false
+</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			html {
+				height: 100%;
+			}
+			body{
+				margin: 0;
+				height: 100%;
+				font-family: '微软雅黑';
+			}
+			.main {
+				width: 100%;
+				height: 100%;
+				background: -webkit-linear-gradient( left,#ada994,#e59a9b);
+				overflow:hidden;
+			}
+			.content {
+				width: 478px;
+				height: 208px;
+				background: url(./image/bg3.png) no-repeat;
+				margin: 30px auto;
+				overflow:hidden;
+			}
+			.testQQ {
+				width: 400px;
+				height: 40px;
+				margin: 80px auto 0;
+				font-size: 16px;
+				color: #fff;
+			}
+			.testQQ label {
+				margin-right: 4px;
+			}
+
+			.testQQ input {
+				border-radius: 5px;
+			}
+			
+			.testQQ input[type='button']{
+				height: 40px;
+				width: 70px;
+				background: #e05672;
+				border: none;
+				color: #fff;
+				font-size: 16px;
+				margin-left: 10px;
+			}
+
+			.inputText {
+				padding-left: 5px;
+				width: 175px;
+				height: 40px;
+				border: none;
+				border: 2px solid #fff;
+				color: #fff;
+				background: #4c075f;
+			}
+			.tips {
+				width: auto;
+				height: 40px;
+				background: #17021d;
+				line-height: 40px;
+				text-align: center;
+				font-size: 16px;
+				border-radius: 5px;
+				position: relative;
+				left: 167px;
+				top:15px;
+				float: left;
+				display: none;
+			}
+			.tip {
+				padding:0px 10px;
+				display: block;
+				color: #fff;
+			}
+			#san {
+				width: 0px;
+				height: 0;
+				border-left: 5px solid transparent;
+				border-right: 5px solid transparent;
+				border-bottom: 5px solid #17021d;
+				position: absolute;
+				left: 18px;
+				top: -5px;
+			}
+		</style>
+		<script>
+				
+		</script>
+	</head>
+
+	<body>
+		<div class="main">
+			<div class="content">
+				<div class="testQQ">
+					<label>请输入QQ号码：</label>
+					<input class="inputText" />
+					<input type="button" value="检测" class="btn" />
+				</div>
+				<div class="tips">
+					<div id="san"></div>
+					<span class="tip">输入的不是数字</span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

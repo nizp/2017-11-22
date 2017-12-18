@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+}
+#box{
+    width:200px;
+    height: 120px;
+    border: 1px solid #000;
+    overflow: hidden
+}
+ul{
+    list-style: none;
+    position: relative;
+    transition: .8s;
+}
+li{
+    width:200px;
+    height: 120px;
+    float: left;
+}
+
+
+</style>
+</head>
+<body>
+    <div id="box">
+        <ul id="ul">
+            <li>
+                <img width="200" height="120" src="img/0.jpg" alt="">
+            </li>
+            <li>
+                <img width="200" height="120" src="img/1.jpg" alt="">
+            </li>
+            <li>
+                <img width="200" height="120" src="img/2.jpg" alt="">
+            </li>
+            <li>
+                    <img width="200" height="120" src="img/3.jpg" alt="">
+            </li>
+            <li>
+                    <img width="200" height="120" src="img/4.jpg" alt="">
+            </li>
+        </ul>
+    </div>
+<script>
+    const ul = document.getElementById('ul');
+    const lis = ul.getElementsByTagName('li');
+    const w = 200;
+    let num = -1;
+    let len = lis.length;
+    ul.style.width = w * len + 'px';
+
+    function fn(){
+        num ++;
+        num%=len;
+        ul.style.left = -(num * w) + 'px';
+    }
+    fn()
+    setInterval(fn,1000);
+
+</script>
+</body>
+</html>

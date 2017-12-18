@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding: 0}
+		ul{list-style: none;}
+		body{
+			width: 100%;
+			background: radial-gradient(at 50% 0,#c55478,#1e1e2a) no-repeat;
+		}
+		.regular-checkbox {
+			display: none;
+		}
+		.regular-checkbox + label {
+			border: 1px solid #9C9C9C;
+			padding: 7px;
+			font-size: 14px;
+			display: inline-block;
+			position: relative;
+			top: 2px;
+			left: 34px;
+		}
+		.regular-checkbox:checked + label:after {
+			content: '\2714';
+			position: absolute;
+			top: -14px;
+			left: 1px;
+			color: #99a1a7;
+		}
+		#wrap{
+			width: 600px;
+			border-radius: 8px;
+			padding-top: 20px;
+			margin: 100px auto;
+			background: white;
+		}
+		#list{
+			padding-bottom: 20px;
+		}
+		#list li{
+			height: 46px;
+			font: bold 14px/46px 'Microsoft';
+			position: relative;
+		}
+		#list li.white{
+			background: white;
+		}
+		#list li.pink{
+			background: #f7c5ce;
+		}
+		#list li.red{
+			background:firebrick;
+			color: #fff;
+		}
+
+		.name{
+			position: absolute;
+			left: 70px;
+		}
+		.artist{
+			position: absolute;
+			right: 34px;
+		}
+		#footer{
+			height: 56px;
+			background: #de4a63;
+			border-radius: 0 0 8px 8px;
+			color: white;
+		}
+		#footer li{
+			display: inline-block;
+			font: 18px/56px 'Microsoft';
+			margin: 0 50px;
+		}
+		#footer li:first-of-type{
+			display: inline-block;
+			width: 150px;
+			font: 18px/56px 'Microsoft';
+			margin: 0;
+			position: relative;
+		}
+		#footer span{
+			position: absolute;
+			left: 70px;
+		}
+		#checkbox:checked + label:after{
+			top: -20px;
+		}
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<ul id="list">
+		<li>
+			<input type="checkbox" id="checkbox0" class="regular-checkbox"><label for="checkbox0"></label>
+			<span class="name">泡沫</span>
+			<span class="artist">邓紫棋</span>
+		</li>
+		<li>
+			<input type="checkbox" id="checkbox1" class="regular-checkbox"><label for="checkbox1"></label>
+			<span class="name">说爱你</span>
+			<span class="artist">蔡依林</span>
+		</li>
+		<li>
+			<input type="checkbox" id="checkbox2" class="regular-checkbox"><label for="checkbox2"></label>
+			<span class="name">稻香</span>
+			<span class="artist">周杰伦</span>
+		</li>
+		<li>
+			<input type="checkbox" id="checkbox3" class="regular-checkbox"><label for="checkbox3"></label>
+			<span class="name">我的梦</span>
+			<span class="artist">张靓颖</span>
+		</li>
+		<li>
+			<input type="checkbox" id="checkbox4" class="regular-checkbox"><label for="checkbox4"></label>
+			<span class="name">怎么说我不爱你</span>
+			<span class="artist">萧敬腾</span>
+		</li>
+		<li>
+			<input type="checkbox" id="checkbox5" class="regular-checkbox"><label for="checkbox5"></label>
+			<span class="name">无处安放</span>
+			<span class="artist">白若溪</span>
+		</li>
+	</ul>
+	<ul id="footer">
+		<li>
+			<input type="checkbox" id="checkbox" class="regular-checkbox"><label for="checkbox"></label>
+			<span>全选</span>
+		</li>
+		<li>收藏</li>
+		<li>添加</li>
+		<li>删除</li>
+	</ul>
+</div>
+<script>
+	/*
+		需求:
+			1.移入移出，移入变色，移出还原  √
+			2.点击选中，移出不还原  √
+			3.全部点完，全选勾选，否则全选不勾选  √
+			4.勾选全部，全部勾选，取消勾选全部，全部取消  √
+			5.勾选一部分，点全选，全部勾选  √
+			6.点击选中再点一下不选中 √
+
+			.pink  .white各行变色
+
+			.red  选中
+	*/
+
+	const list = document.getElementById('list');
+	let lis = Array.from(list.getElementsByTagName('li'));
+	let checkbox = document.getElementById('checkbox');
+	let footer = document.getElementById('footer').getElementsByTagName('li')[0];
+	let checkbox1 = footer.getElementsByTagName('input')[0];
+	checkbox1.onOff = false;
+	//各行变色
+	lis.forEach(function(e,i){
+		if(i%2){
+			e.className = 'pink';
+		}else{
+			e.className = 'white';
+		}
+	});
+
+	let arr = [];
+	//移入移出
+	lis.forEach(function(e,i){
+		// e.onOff = false;
+		arr[i] = false;
+		e.onmouseover = function(){
+			this.classList.add('red');
+		}
+		e.onmouseout = function(){
+			// console.log(arr);
+			if(!arr[i]){
+				this.classList.remove('red');
+			}
+			// if(!e.onOff){
+			// 	this.classList.remove('red');
+			// }
+		}
+
+		e.onclick = function(){
+			let input = e.getElementsByTagName('input')[0];
+			// if(!e.onOff){
+			if(!arr[i]){
+				input.checked = true;
+			}else{
+				input.checked = false;
+			}
+			// e.onOff = !e.onOff;
+			arr[i] = !arr[i];
+
+			/*
+				每次在点击li的时候都去看看数组中的每个是不是true
+				是true，全选按钮就是true,否则全选按钮就是false
+			*/
+			checkbox.checked = checkbox1.onOff = arr.every(function(e,i){
+				return e;
+			});
+		}
+	});
+
+	//点击全选
+	
+	footer.onclick = function(){
+		
+		// if(checkbox1.onOff){
+		// 	//不全选
+		// 	checkbox1.checked = false;
+		// }else{
+		// 	//全选
+		// 	checkbox1.checked = true;
+		// }
+
+		checkbox1.checked = checkbox1.onOff?false:true;
+		checkbox1.onOff = !checkbox1.onOff;
+
+		/*
+			循环所有的li,所有的checked都等于，全选的值
+
+			把数组重置，要么都是true，要么都是false
+
+			如果是true就给每个li添加red这个class，否则删除这个class
+		*/
+		lis.forEach(function(e,i){
+			e.getElementsByTagName('input')[0].checked = checkbox.checked;
+			if(checkbox.checked){
+				e.classList.add('red');
+				arr[i] = true;
+			}else{
+				e.classList.remove('red');
+				arr[i] = false;
+			}
+		});
+	}
+
+
+
+
+
+</script>
+</body>
+</html>

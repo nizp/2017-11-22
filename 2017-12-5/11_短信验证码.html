@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input id="btn" type="button" value="获取验证码">
+<script>
+
+    const btn = document.getElementById('btn');
+    let timer = null;
+    let num = 10;
+    btn.onclick = function(){
+        btn.disabled = true;
+        timer = setInterval(function(){
+            btn.value = '重新获取验证码还需('+num+')';
+            num --;
+            if(num < -1){
+                num = 10;
+                btn.value = '获取验证码';
+                btn.disabled = false;
+                clearInterval(timer);
+            }
+        },1000);
+    }
+
+
+</script>
+</body>
+</html>

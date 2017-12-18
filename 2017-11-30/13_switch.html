@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        switch(变量){
+            case 是1 :
+                执行想要的效果;
+            break;
+            case 是2 :
+                执行想要的效果2;
+            break;
+            default:
+                执行都不是的效果
+            break;
+        }
+
+        default: 默认的条件 类似于 else
+
+        注意：
+            如果不加break那么会穿透,不但某个条件成立会执行，还会执行下面的代码。
+    */
+    let a = 'css';
+    switch(a){
+        case 'css' :
+            alert('有css');
+        break;
+        case 'js' :
+            alert('也有js');
+        break;
+        default:
+            alert('真没有');
+        break;
+    }
+</script>
+</body>
+</html>

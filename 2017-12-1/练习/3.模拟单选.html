@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟单选</title>
+    <style>
+        div{width: 400px;height: 180px;background: #fff;border: 3px solid #de4a63;
+            border-radius: 3px;box-shadow:0px 0px 10px #de4a63;position: absolute;
+        left: 50%;margin-left: -200px;top: 50%;margin-top: -90px;}
+        h2{text-align: center;}
+        button{display: block;float: left;width: 100px;line-height: 34px;background: #fff;
+            border: 2px solid #ccc; margin-left: 26.5px;font-size: 20px;position: relative;}
+        button:hover,.active{border: 2px solid #de4a63;cursor: pointer;
+        outline: none;}
+        img{display: block;width:20px;height: 20px;position: absolute;right: -10px;top: -10px;}
+    </style>
+</head>
+<body>
+    <div>
+        <h2>模拟单选</h2>
+        <button class="active">男<img src="img/check-mark.png"></button>
+        <button>女</button>
+        <button>保密</button>
+
+    </div>
+    <script>
+       
+        const btns = document.querySelectorAll('button');
+        let btn = btns[0];
+        let arr = ['男','女','保密'];
+        for(var i=0;i<btns.length;i++){
+            btns[i].index = i;
+            btns[i].onclick = function(){
+                btn.classList.remove('active');
+                btn.innerHTML = '';
+                btn.innerText = arr[btn.index];
+                this.classList.add('active');
+                this.innerHTML += '<img src="img/check-mark.png">';
+                btn = this;
+            }
+        }
+        
+    </script>
+</body>
+</html>

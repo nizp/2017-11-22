@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+</style>
+</head>
+<body>
+    <input type="text" id="txt">
+    <input type="button" id="btn" value="点击就变色">
+    <div id="box"></div>
+<script>
+    /*
+
+    */
+    let arr = ['red','antiquewhite','aqua','aquamarine','brown'];
+    btn.onclick = function(){
+        let val = txt.value;
+        let str = '';
+        let arr2 = [];
+
+        let arr1 = val.split('');
+        
+        for(var i=0;i<arr1.length;i++){
+            arr2.push('<span style="color:'+arr[i%arr.length]+'">'+arr1[i]+'</span>')
+        }
+
+        box.innerHTML = arr2.join('');
+   
+    }
+
+</script>
+</body>
+</html>

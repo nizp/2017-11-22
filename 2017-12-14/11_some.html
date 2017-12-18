@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>衣服</li>
+        <li>裤子</li>
+        <li>袜子</li>
+    </ul>
+<script>
+    /*
+        some：
+            测试数组中的某些元素是否通过由提供的函数实现的测试
+            布尔值
+    */
+
+    let arr = ['衣服'];
+
+    const lis = document.getElementsByTagName('li');
+
+    for(var i=0;i<lis.length;i++){
+        lis[i].onclick = function(){
+
+            // if(rep(this.innerText)){
+            //     arr.push(this.innerText);
+            // }
+            let _this = this;
+           
+            //只要在arr中有一个值等于点击的文本就会返回true
+            let onOff = arr.some(function(e,i){
+                return e == _this.innerText;
+            });
+            console.log(onOff);
+
+            //没有这个值的时候才push
+            if(!onOff){
+                arr.push(this.innerText);
+                console.log(arr);
+            }
+            
+        }
+    }
+
+    // function rep(txt){
+    //     for(var i=0;i<arr.length;i++){
+    //         if(arr[i] == txt){
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // }
+
+   
+
+
+
+
+</script>
+</body>
+</html>

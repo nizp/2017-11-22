@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        对象需要特殊的格式情况下才能使用for循环
+        key值为数字并且还得有length属性。
+
+        in 运算符。
+            可以运算对象的key值,查看对象中是否有这个key值
+            返回一个布尔值。
+
+        通过for in是可以拿到对象中所有的key值。
+
+        数组与对象都能够使用for in循环，但是，for in的性能不高。
+        对象{}目前来说只能用for in
+
+
+    */
+    // var b = {
+    //     0:'小黑',
+    //     1:18,
+    //     2:'前端开发',
+    //     length:3
+    // };
+    // for(var i=0;i<b.length;i++){
+    //     console.log(b[i]); //b[0]
+    // }
+
+     var b = {
+        name:'小黑',
+        age:18,
+        job:'前端开发',
+        length:3
+    };
+
+    /*
+        b.name
+        b.age
+        b.job
+
+        b[attr]
+        小黑        b['name']   attr -> name
+        18          b['age']    attr -> age
+        前端开发     b['job']    attr -> job
+            ....
+
+        当key值为job的时候，把前端开发弹出来。
+
+        如果key值是job，就弹前端开发
+
+
+        var attr = 0
+        var attr = 1
+    */
+    //attr就是in运算符，运算对象的key值
+    //b[attr] -> value值。
+
+    var arr3 = [];  
+
+    for(var attr in b){  
+        // console.log(b[attr]);
+        // alert(b.job);
+        // if(attr == 'job'){
+        //     alert(b[attr]);
+        // }
+        arr3.push(attr);
+    }
+
+    /*
+        
+        var val1 = input[0].value;
+
+        [height] 
+        [200px]
+
+        obj.style[val1] = '200px'
+
+        var obj = {
+            style:{
+                width:200px
+            }
+        }
+           
+    */
+
+    for(var attr in arr3){
+        console.log(arr3[attr]);
+    }
+    
+    console.log(arr3);
+    // console.log(attr); //attr为最后一次key值->length
+
+
+    // console.log('name' in b);
+    // console.log('hehe' in b);
+
+    // var num = 1;
+    // for(;num;){
+    //     num ++;
+    //     if(num >= 3){
+    //         break;
+    //     }
+    //     alert(num);
+    // }
+
+</script>
+</body>
+</html>

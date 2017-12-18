@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        全选:
+        <input type="checkbox" name="" id="">
+    </div>
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+<script>
+    /*
+        every() 
+            方法测试数组的**所有**元素是否都通过了指定函数的测试。
+
+            布尔值
+    */
+
+    let arr = [false,false,false,false];
+
+    const inputs = document.getElementsByTagName('input');
+
+    for(let i=1;i<inputs.length;i++){
+
+        inputs[i].onclick = function(){
+            // console.log(isTrue());
+            // inputs[0].checked = isTrue();
+            
+            arr[i-1] = this.checked;
+
+            inputs[0].checked = arr.every(function(e){
+                return e == true;
+            });
+        }
+    }
+
+    // function isTrue(){
+    //     for(var i=1;i<inputs.length;i++){
+    //         if(inputs[i].checked != true){
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // }
+
+
+
+
+</script>
+</body>
+</html>

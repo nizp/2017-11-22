@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        // var fn = undefined
+        // var fn = undefined
+        var fn = function fn(a){
+            alert(fn);
+            function fn2(a){
+                alert(b);
+                var b = 50;
+                function b(){
+                    alert(5);
+                }
+                b();
+            }
+            var a = 30;
+            alert(fn);
+        }
+
+    
+    */
+    alert(fn);
+    // var fn = function(){
+    //     alert(5);
+    // }
+    alert(fn);
+    // var fn = 80; 
+    function fn(a){
+        /*
+            var fn2 = 代码块
+            var a = undefined
+        */
+        alert(fn); //代码块
+        function fn2(a){
+            /*
+                // var b = undefined;
+                var b = function(){}
+                
+            */
+            alert(b); 
+            // var b = 50;  //b = 50
+            function b(a){
+                alert(5);
+            }
+            b(b); //报错。
+        }
+        fn2();
+        var a = 30;
+        alert(fn); //大的代码块
+    }
+    fn(10);
+</script>
+</body>
+</html>

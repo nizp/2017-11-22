@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>按钮控制商品图片上下滚动</title>  
+<style>
+  *{
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+  }
+  #box{
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    margin: 0px auto;
+    background: #ddd;
+  }
+  a{
+    line-height: 30px;
+    text-decoration: none;
+  }
+  #prev{
+    width: 300px;
+    height: 30px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    background: #999;
+    z-index: 9;
+    opacity: 0.7;
+  }
+  #next{
+    width: 300px;
+    height: 30px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    background: #999;
+    z-index: 9;
+    opacity: 0.7;
+  }
+  #ul{
+    width: 300px;
+    height: 400px;
+    /* overflow: hidden; */
+    position: absolute;
+  }
+  #ul li{
+    width: 290px;
+    height: 189px;
+    padding: 5px;
+    border-bottom: 1px dashed #999;
+    transform: 500ms;
+  }
+  #ul li p{
+    width: 130px;
+    height: 169px;
+    line-height: 20px;
+    font-size: 14px;
+    overflow: hidden;
+    float: left;
+    padding: 10px 0px 10px 10px;
+    margin-right: 10px;
+    text-indent: 25px;
+  }
+  #ul li img{
+    width: 140px;
+    float: left;
+    height: 189px;
+  }
+</style>
+</head>
+<body>
+
+<div id="box">
+  <a href="javascript:;" id="prev">上</a>
+  <a href="javascript:;" id="next">下</a>
+  <ul id="ul">
+    <li>
+      <p>小米(MI)Air 13.3英寸全金属轻薄笔记本小米(MI)Air 13.3英寸全金属轻薄笔记本小米(MI)Air 13.3英寸全金属轻薄笔记本小米(MI)Air 13.3英寸全金属轻薄笔记本</p>
+      <img src="a1.jpg" alt="">
+    </li>
+    <li>
+      <p>小米(MI)Air 13.3英寸全金属轻薄笔记本小米(MI)Air 13.3英寸全金属轻薄笔记本小米(MI)Air 13.3英寸全金属轻薄笔记本小米(MI)Air 13.3英寸全金属轻薄笔记本</p>
+      <img src="a2.jpg" alt="">
+    </li>
+    <li>
+      <p>小米(MI)Air 13.3英寸全金属轻薄笔记本小米(MI)Air 13.3英寸全金属轻薄笔记本小米(MI)Air 13.3英寸全金属轻薄笔记本小米(MI)Air 13.3英寸全金属轻薄笔记本</p>
+      <img src="a3.jpg" alt="">
+    </li>
+    <li>
+      <p>小米(MI)Air 13.3英寸全金属轻薄笔记本小米(MI)Air 13.3英寸全金属轻薄笔记本小米(MI)Air 13.3英寸全金属轻薄笔记本小米(MI)Air 13.3英寸全金属轻薄笔记本</p>
+      <img src="a4.jpg" alt="">
+    </li>
+  </ul>
+</div>
+<script>
+  /*
+    1.先获取元素
+
+    2.down在上的时候开个定时器，改变top值  +
+
+    3.down在下的时候开个定时器，改变top值  -
+
+    4.mouseup的时候关掉定时器、
+
+    5.一个li的高度是200，
+      top值小于0就到顶了
+      top值大于200*4 就到底了
+  */
+
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
+  const ul = document.getElementById('ul');
+  const lis = ul.getElementsByTagName('li');
+
+  let timer = null;
+  let num = 0;
+  let liH = 200;
+  let len = lis.length;
+  let boxH = 400;
+  let bottom = liH * len - boxH;
+
+  prev.onmousedown = function(){
+    move(false);
+  }
+
+  next.onmousedown = function(){
+    move(true);
+  }
+
+
+  function move(onOff){
+    timer = setInterval(function(){
+      onOff ? num -= 5:num += 5;
+      if(num <=  0){
+        num = 0;
+        clearInterval(timer);
+      }
+      if(num >=  bottom){
+        num = bottom;
+        clearInterval(timer);
+      }
+      ul.style.top = -num + 'px';
+    },30);
+  }
+  
+  prev.onmouseup = next.onmouseup = function(){
+    clearInterval(timer);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
+
+
+

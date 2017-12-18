@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body id="box">
+<script>
+    console.dir(window);
+    /*
+        50%的同学会懵
+
+        作用域:  执行js的范围。
+            域:范围（{},function）
+            作用:执行js
+
+        1.js的一种特性,子级能够访问父级的参数或者变量，如果父级还是没有（形参也没有）
+        那么会去父级的父级去中找，如果到了全局还是没有，那么就报错。
+        
+        2.子级先会去父级的函数体内找某个变量，如果没有那么还会去父级的形参中查找
+          如果父级的形参中有，直接走形参。
+
+        3.如果自身有这个变量会优先自身的变量(访问变量的时候应该在声明之后访问（let）)
+
+
+        4.在使用var的时候会进行预解析，如果在声明之前打印这个值
+        那么会是一个undefined
+        本质：
+            var 声明的时候会在window下注册一个变量的属性(在全局的情况下会挂在window上，如果在函数内是不会挂在window上的)，赋值为undefined
+            let 声明（在全局下）的时候不会在window下注册这个变量
+
+            let声明的上面有暂存死区（不会预解析）
+            如果在一个域中声明，那么去声明之前找这个变量是不会走作用域链的(就报错)。 
+
+        5.函数内有var声明的变量，参数也有一个和var声明变量一样的名字的形参
+          在函数一开始访问这个变量，那么会看参数是否有值，如果没有值直接undefined，
+          如果传入实参或者形参中有默认值，那么直接输出形参值。
+
+          
+
+
+
+
+        能够不段有规则的去查找变量，这种规则就是作用域链。
+
+    */
+    
+    function fn(a){
+        function fn2(a=6){
+            // alert(a); //6
+            let a = 10;
+            alert(a); //10
+        //    console.log(window); //window下是没a的，因为函数是个域。
+        }
+        fn2();
+    }
+    fn(6);
+
+
+
+
+
+    // console.log(window.a); //undefined
+    // // var a = 10;
+    // // let a = 10;
+    // console.log(window.a); //10
+
+    // function fn(a){
+    //     function fn2(){
+    //         let a = 5;
+    //         // var a = undefined;
+    //         alert(a);
+    //         // var a = 4;
+    //         let a = 4;
+    //     }
+    //     fn2();
+    // }
+    // fn(6);
+
+
+
+    //序号3
+    // function fn(a){
+    //     function fn2(){
+    //         var a = 20;
+    //         alert(a);
+    //     }
+    //     fn2();
+    // }
+    // fn(6);
+
+
+    //序号2
+    // function fn(a){
+    //     // let a = 5;
+    //     function fn2(){
+    //         alert(a);
+    //     }
+    //     fn2();
+    // }
+    // fn();
+
+
+    //序号1
+    // let a = 10;
+    // {
+    //     {
+    //         alert(a);
+    //     }
+    // }
+
+
+
+</script>
+</body>
+</html>

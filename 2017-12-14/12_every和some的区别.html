@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        //查看数组中每个是不是都是统一的值，如果是返回true,否则false
+        arr.every(function(e,i,all){
+
+        })
+
+        arr.some(function(e,i,all){
+            //查看数组中有没有设置好的值，如果有就返回true，没有就返回false
+        })
+
+    */
+
+    let arr = [true,true,true,'衣服',6];
+
+    // console.log(arr.some(function(e){
+    //     return e == '裤子';
+    // }));
+
+    console.log(arr.some(function(e){
+        return e > 5;
+    }));
+
+    // console.log(arr.every(function(e){
+    //     return e == true;
+    // }))
+
+
+
+
+</script>
+</body>
+</html>

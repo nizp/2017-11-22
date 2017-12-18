@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <button>点击</button>
+<script>
+    /*
+        需求：
+            点击按钮的时候判断input中输入的内容是否为整数？
+
+        1.点击按钮（获取元素、点击事件）
+        2.if
+        3.input.value
+        4.判断是否为整数的方法
+    */
+    let btn = document.querySelector('button');
+    let txt = document.querySelector('input');
+
+    btn.onclick = function(){
+        let val = txt.value;
+        if(val == ''){
+            alert('请想好了再点!');
+        }else{
+
+            if(parseFloat(val) == parseInt(val)){
+                //是整数
+                alert('是整数');
+            }else{
+                //不是整数
+                alert('不是整数');
+            }
+
+        }
+
+        // console.log(val)
+        // val = '';
+        // console.log(val)
+        txt.value = '';
+    }
+
+</script>
+</body>
+</html>

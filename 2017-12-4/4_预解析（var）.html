@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        js预解析机制:
+            在打开页面的时候会提前执行的js顺序，这种规则叫预解析器。
+        
+        1.js从上往下执行。
+        2.碰到var 碰到 function就会提前解析
+        3.解析之后逐行解读代码。
+    */
+    /*
+        var a = undefined;
+
+        a = undefined
+        a = 10;
+        a = 20;
+
+
+    */
+
+    alert(a); //undefined
+    var a = 10;
+    alert(a); //10
+    var a = 20;
+    alert(a);//20;
+    
+
+
+
+</script>
+</body>
+</html>

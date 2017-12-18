@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.active{
+    background: yellow
+}
+div{
+    width:200px;
+    height: 150px;
+    border: 1px solid #000;
+    display: none;
+}
+div.show{
+    display: block;
+}
+</style>
+</head>
+<body>
+    <input type="button" value="按钮一" class="active"> 
+    <input type="button" value="按钮二"> 
+    <input type="button" value="按钮三"> 
+    <div class="show">123213321312</div>
+    <div>32222222222</div>
+    <div>33333333333</div>
+<script>
+    const btns = document.querySelectorAll('input');
+    const divs = document.querySelectorAll('div');
+    let btn = btns[0];
+    let timer = null;
+    let num = -1;
+
+    for(let i=0,len=btns.length;i<len;i++){
+        btns[i].index = i;
+        btns[i].onclick = function(){
+            //如果这里不改，那么自动播放和点击的冲突
+            //这样做的目的，是为了点击和自动播放步调一致。
+            num = i;
+            tab(i);
+        }
+    }
+
+    fn();
+    timer = setInterval(fn,1000);
+    // console.log(fn)
+    function fn(){
+        num ++;
+        num %= btns.length;
+        tab(num);
+    }
+
+
+    function tab(i){
+        btn.className = '';
+        divs[btn.index].className = '';
+        btns[i].className = 'active';
+        divs[i].className = 'show';
+        btn = btns[i];
+    }
+
+
+
+</script>
+</body>
+</html>

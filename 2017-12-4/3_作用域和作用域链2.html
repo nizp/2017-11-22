@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    /*
+        在let声明的时候，一定不要和形参的名字重复。
+
+    */
+
+    let a = 10;
+    function fn(a){
+        let b = 20;
+        function fn2(){
+            // let a = 30;
+            alert(b);
+            var b = 30;
+        }
+        fn2(b);
+    }
+    fn(a);
+
+
+    // var b = 10;  //window.b  // [] {} fn
+
+    // alert(b);
+    // let b = 10;
+
+
+   
+
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        定时器:
+            炸弹、闹钟、进度条、轮播图
+        
+        函数的第3种调用方式:定时器调用
+            1.直接调用
+            2.事件调用
+            3.定时器调用
+
+        间隔型定时器: setInterval (函数,毫秒)  一直炸
+        延迟型定时器: setTimeout  (函数,毫秒) 只炸一次
+
+        1秒等于1000毫秒
+
+        返回值为数字，每有一个定时器就添加一个数字，只要开定时器这个数字就一直在。
+        
+    */
+
+    // function 炸(){
+    //     console.log('bong,bong,bong!');
+    // }
+    // setTimeout(炸,1500);
+
+    var num = setTimeout(function(){
+        console.log('bong,bong,bong!');
+    },1500);
+    var num2 = setTimeout(function(){
+        console.log('bong,bong,bong!');
+    },1500);
+
+    console.log(num,num2);
+
+
+
+    
+
+</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+<script>
+    /*
+        bind
+        闭包
+    */
+
+    // function fnn(){
+    //     return 2;
+    // }
+    // fnn.f = function(){
+    //     return 1;
+    // }
+
+    // console.log(fnn.f());
+
+    /*
+        函数绑定bind的时候，是不会自动调用的，调用它的**返回值**才算执行这个函数
+    */
+    // function fn(a,b){
+    //     console.log(this,a,b);
+    // }
+    // let f = fn.bind(document);
+    // f(1,2);
+
+    // console.log(f);
+
+    /*
+        闭包
+            就是为了父级的参数或者变量不被垃圾回收机制给回收
+
+
+    */
+
+    // function fn(){
+    //     var a = 10;
+    //     // console.log(a);
+    //     return function(){
+    //         a++;
+    //         console.log(a);
+    //     }
+    // }
+    // fn();
+    // fn();
+    // fn()();
+    // fn()();
+
+    // let f = fn();
+    // f();
+    // f();
+
+    // console.log();
+
+
+    let timer = null;
+    let i = 0;
+    let li = document.getElementsByTagName('li');
+
+    timer = setInterval(function(){
+        console.log(i);
+        (function(i){
+            li[i].onclick = function(){
+                // function fn(a){
+                //     alert(a);
+                // }
+                // fn(i);
+                alert(i);
+            }
+        })(i);
+        i++;
+        if(i>3){
+            clearInterval(timer);
+        }
+    },30);
+
+    
+
+
+
+
+
+</script>
+</body>
+</html>

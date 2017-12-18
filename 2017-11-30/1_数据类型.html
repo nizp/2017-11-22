@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        ECMAScript 的数据类型
+            string,number,object,
+            undefined{
+                声明变量没有赋值,
+                当对象没有这个属性的时候（简单类型身上没有这个属性时）,
+                当找不到数组中的值时,
+                函数默认返回值
+                
+            },
+            null{
+                找不到元素的时候,
+                script放在元素的上面的时候并且没有加window.onload
+                let n = null
+            },
+            布尔值:
+                true\false
+            symbol:
+                唯一
+        typeof:
+             string,number,object,undefined,boolean,symbol,function
+        
+        非空对象下可以加属性和方法:{
+            除了null的对象：
+                {},[],function
+        }
+
+            {str:'',num:1}[1,'',true]
+    */
+    let obj = {
+        name:'小强'
+    }
+    let arr = [1,2,3,4];
+    // console.log(obj.num);
+    // console.log(arr[4]);
+    function fn(){}
+    let f = fn();
+    let n = null;
+    let str = 'xx';
+    // console.log(typeof n);
+
+    fn.num = 10;
+
+    // n.num = 20;
+    // str.num = 10;
+
+    console.log(str.num);
+
+</script>
+</body>
+</html>

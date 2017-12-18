@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:200px;
+    height: 100px;
+    background: red;
+    display: none;
+    position: absolute;
+    top:50px;
+    color: #fff;
+}    
+
+</style>
+</head>
+<body>
+    <input id="btn" type="button" value="移入">
+    <div id="box">
+        <ul>
+            <li>
+                衣服更多
+            </li>
+            <li>
+                电器更多
+            </li>
+
+        </ul>
+    </div>
+<script>
+    
+    let timer = null;
+    /*
+        onmouseenter  -> 移入
+        onmouseleave  -> 移出
+    */
+    
+    btn.onmouseenter =  box.onmouseenter = function(){
+        clearTimeout(timer);
+        box.style.display = 'block';
+    }
+    
+    btn.onmouseleave = box.onmouseleave = function(){
+        timer = setTimeout(function(){
+            box.style.display = 'none';
+        },1000);
+    }
+
+</script>
+</body>
+</html>

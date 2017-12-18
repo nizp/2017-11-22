@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <p id="p"></p>
+<script>
+    /*
+        getHours
+        getMinutes
+        getSeconds
+        getFullYear
+        getMonth
+        getDate
+    */
+    const p = document.getElementById('p');
+
+    /*
+        2017年12月06日 11:44:00
+    */
+    
+    myTime ();
+    setInterval(myTime,1000);
+
+    function myTime (){
+        let date = new Date();
+        let iY = date.getFullYear();
+        let iMou = date.getMonth() + 1;
+        let iDate = date.getDate();
+        let iH = date.getHours();
+        let iM = date.getMinutes();
+        let Se = date.getSeconds();
+        p.innerText = `${iY}年${toDou(iMou)}月${toDou(iDate)}日 ${toDou(iH)}:${toDou(iM)}:${toDou(Se)}`;
+    }
+
+    function toDou(n){
+        // if(n < 10){
+        //     return '0' + n;
+        // }else{
+        //     return '' + n; 
+        // }
+        return n<10?'0'+n:''+n;
+    }
+
+    console.log(toDou(9));
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

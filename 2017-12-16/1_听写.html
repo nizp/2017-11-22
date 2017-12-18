@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+/*
+    1.咱们学的数学方法有哪些？
+
+    Math.round()  四舍五入
+
+    Math.abs()   绝对值
+
+    Math.max   最大 
+    Math.min   最小
+
+    Math.random()  随机0-1之间的无限不循环小数
+
+    Math.ceil() 向上取整
+
+    Math.floor() 向下取整
+
+    Math.sqrt()  开方
+
+    Math.PI()  π
+
+    Math.pow() 幂
+
+    new Number.toFixed(2)  字符串
+
+    new Number.toString(2) 转进制
+
+*/
+// console.dir(Math);
+// console.log(Math.sqrt(9));3的平方
+//   console.log(Math.pow(7,2));  //49  7*7
+
+/*
+    2.默写字符串的方法，各代表什么意思？
+
+    1.charAt()  找到指定位置的字符,默认为0
+
+    2.charCodeAt() 指定位置的字符串转成unicode值
+
+    3.String.fromCharCode  把unicode转字符
+
+
+    一:截取类
+
+    4.slice(起始位置,结束位置但不包含结束位置); 返回值为截取的字符
+
+    5.substring(起始位置,结束位置但不包含结束位置)
+
+    6.substr(起始位置,截取几个)
+
+
+   二:查询类
+
+    7.indexOf(查找的字符,起始的位置) 从前往后找，找到指定字符的位置，没找到-1
+
+    8.lastIndexOf(查找的字符,起始的位置) 从后往前找，找到指定字符的位置，没找到-1
+
+    9.startsWith(查找的字符,起始的位置);字符串中起始位置包不包含指定字符 布尔值
+
+    10.endsWith(查找的字符,起始的位置);字符串中结束位置包不包含指定字符 布尔值
+
+    11.includes(查找的字符) 字符串中包不包含指定字符 布尔值
+
+
+    三:补全
+        padStart(长度,'内容')
+            向前补全，如果字符串的长度不够设置（第一个参数）的长度，补全第二个参数中的内容
+
+        padEnd(长度,'内容')
+            向后补全，如果字符串的长度不够设置（第一个参数）的长度，补全第二个参数中的内容
+
+        repeat(num)
+            重复多少次
+    
+    
+    四.去掉前后空格
+        trim()
+
+    五.字母转换
+        大写转小写:
+            toLowerCase()
+
+        小写转大写:
+            toUpperCase()
+
+    六.切割
+        split('') 以参数中的内容为分割符，存到数组中
+            字符串转数组
+
+    七.拼接
+    ``  'a'+ num +'b'
+        模板字符串
+
+*/
+
+    //let str = 'miaov';
+
+    // console.log(str.startsWith('a',2));
+
+    //console.log(str.padStart(9,'机构名:'));
+
+/*
+    3.默写数组的方法，各代表什么意思？
+
+    一.截取类ss
+        slice() 跟字符串的一样
+        splice(起始位置,截取几个)  返回值也有截取的功能
+
+    二.增删类
+        push() 往数组的末位添加数据，返回值新数组的长度
+
+        pop() 删除末位，返回值删除的那个
+
+        unshift() 往数组的首位添加数据，返回值新数组的长度
+
+        shift() 删除首位，返回值删除的那个
+
+        splice()
+            第二个参数为0就添加
+            如果第二个参数不为0,第三个参数又写了，使用替换功能
+
+    三.ES5类
+        forEach(callback(e,i,all),this); 数组循环
+
+        every(callback(e,i,all)) ; 查看数组中是否都符合回调函数的条件，返回布尔值
+
+        some(callback(e,i,all));查看数组中是否有一个条件是符合回调函数的条件，返回布尔值
+
+        map(callback(e,i,all)); 返回新数组
+
+        filter(callback(e,i,all));过滤掉回调函数中条件不符合的（条件符合就留下）
+
+    四.查询类
+        indexOf
+        includes
+
+    五.ES6类
+        find(callbcak(e,i,all)) 找到回调函数条件成立的数据
+        findIndex(callbcak(e,i,all))找到回调函数条件成立的下标
+        Array.from()  把类数组转数组
+        Array.isArray() 是不是数组  返回布尔值
+
+    六.拼接类
+        join() 以参数中的字符为链接符，链接数组并且转成字符串
+        concat() 链接一个或多个数组，返回一个拼接后的新的数组
+
+    七.翻转
+        arr.reverse()
+
+    八.排序
+        arr.sort(function(a,b){})  a-b 小到大，b-a大到小
+
+*/
+
+    let arr = [1,2,3,4];
+    console.log(arr.find(function(e,i){
+        return i == 3;
+    }))
+    console.log(arr.splice(1,2));
+
+/*
+    4.对象的方法
+
+        JSON.parse()  JSON转对象  JSON中的为字符串都不会报错
+
+        JSON.stringify()  对象转JSON  undefined 函数转不了
+
+        eval
+*/
+
+    // let obj = '{"a":"undefined","fn":"function(){}","c":123}';
+
+    // console.log(JSON.stringify(obj))
+    //console.log(JSON.parse(obj))
+
+
+</script>
+</body>
+</html>

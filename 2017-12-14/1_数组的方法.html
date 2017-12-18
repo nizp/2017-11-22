@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        push
+        pop
+        shift
+        unshift
+
+        padStart    补全
+        padEnd    
+
+        xx.repeat(3)  重复
+
+        包含
+            startsWith
+            endsWith
+            includes
+
+        array.splice();
+
+            参数：
+                第一个
+                    参数起始位置
+                第二个
+                    参数如果写非0的正数字，那么为删除,
+                    数字是几就删除几个,返回值为删除的内容（数组）
+
+                    如果为0,说明一个都不删，返回空白数组
+
+                第三个或三个之后的参数:
+                    添加的数据
+
+    */
+
+    // console.log('034567'.padStart(5,'编号:'));
+    // console.log('na'.repeat(2));
+
+    let arr = [1,2,3,4,5];
+
+    // console.log(arr.splice(0,1));   // 删除操作 
+
+    // arr.splice(2,0,3.3);  // 添加操作
+
+    // arr.splice(5,0,6,7);  // 添加操作
+
+    console.log(arr.splice(2,3,'三'));
+    // arr.splice(2,3,'三');    //替换操作  //[1,2,'三']
+
+    console.log(arr);
+
+
+
+
+
+
+</script>
+</body>
+</html>

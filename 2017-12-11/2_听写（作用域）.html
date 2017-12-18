@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+     /*
+        7.你是如何理解作用域、作用域链、预解析的？
+
+        作用域：js执行的范围。
+        作用域链:在某个域中去找某个变量，从查找到找到的过程是跟"链"有关系的
+                比如某个域里面没有就会去外面找
+
+        预解析:
+            碰到var和函数的时候会提前解析的过程，就叫预解析
+
+    */
+
+    // var a = 10;
+    // function fn(a){
+    //     //var a = undefined
+    //     alert(a);
+    //     var a = 5;
+    //     alert(a);
+    // }
+    // fn(20);
+
+
+   
+    
+
+    /*
+        当在域中给某个变量赋值的时候，
+        如果说参数也是这个名字，那么这个时候
+        会认为，赋值的这个变量是局部的。
+
+        //等同于在域中var个变量
+        1、function fn(obj){  
+            obj = {age:18};  //不算赋址
+        }
+        fn(obj);
+        console.log(obj);  //{name:'小明'};
+        
+        2、function fn(obj){
+            obj.age = 18; 
+        }
+        fn(obj);
+        console.log(obj);  //{name:'小明',age:18};
+
+
+        3、function fn(){
+            obj = {age:18};  //这才叫赋址。
+        }
+        fn(obj);
+        console.log(obj);  //{age:18}
+
+        
+    */
+   
+    let obj = {name:'小明'};
+    function fn(obj){
+        /*
+            var obj = undefined
+            var a = function a(){alert(obj)};
+
+            undefined.xx
+        */
+        
+        obj.age = 18; //挂了
+        //{name:小明,age:18}
+        function a(){
+            console.log(obj); //{}
+        }
+        a(obj);
+        var obj = {};
+        // console.log(obj);//{}
+        // return;
+        // a(obj); //就看在哪里调用的。
+
+    }
+    fn(obj);
+    console.log(obj);  //{name:小明}  undefined
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

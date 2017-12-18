@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+      var fn = 大的代码块
+
+    //   var fn = undefined
+
+
+    
+    */
+    alert(fn); //大的代码块
+    function fn(c){
+        /*
+            var fn2 = 小代码块
+            var a = undefined
+        */
+
+        alert(fn);  //大的代码块
+        function fn2(a){
+            /*
+                var b = 小代码块
+            */
+            alert(b); //小代码块
+            function b(a){
+                alert(a);
+            }
+            b(b); 
+        }
+        fn2(c);
+        var a = 30;
+        alert(fn);
+    }
+    fn(10);
+    var fn = function(a){
+        alert(a);
+    }
+    alert(fn);
+</script>
+</body>
+</html>

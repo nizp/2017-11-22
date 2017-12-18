@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="txt">
+<script>
+    /*
+        trim :
+            去掉前后空格
+    */
+
+    var str = '    今天天气不错    ';
+
+    document.onclick = function(){
+
+        var val = txt.value.trim();
+
+        //如果不加trim那么空格也算是有内容的
+        if(!val){
+            alert('真没有');
+        }
+
+        // if(str.trim() == '今天天气不错'){
+        //     console.log('真不错');
+        // }else{
+        //     console.log('真错了');
+        // }
+    }
+    // console.log(str);
+    console.log(str.trim());
+    
+</script>
+</body>
+</html>

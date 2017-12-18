@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 30px;
+    background: skyblue;
+    line-height: 30px;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+    position: absolute;
+    margin-left: -50px;
+    top:-30px;
+    left:50%;
+}  
+</style>
+</head>
+<body>
+    <div id="box">点击了</div>
+<script src="jquery-3.1.1.js"></script>
+<script>
+    document.onclick = function(){
+        // $('#box').animate({
+        //     top:0
+        // }).delay(500).animate({
+        //     top:-30
+        // });
+
+        $('#box').animate({
+            top:200
+        }).delay(1000).animate({
+            width:400,
+            height:100,
+            fontSize:50
+        });
+    }
+</script>
+</body>
+</html>

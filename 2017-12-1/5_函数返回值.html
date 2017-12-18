@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+   
+   /*
+        **函数**返回值：（**函数**的返回值，return只能在函数内使用）
+            return
+        函数的默认返回值为undefined
+
+        函数返回值的目的：
+            因为函数是一个域，在域中的变量或者运算结果，在外部是访问不到的（js的特性）
+            如果想让外部也能够访问到函数内部的变量或者运算结果，这个时候就用return
+
+            函数名 + () 的返回值就等于 return后面的结果
+            如果没有return默认返回值为undefined
+
+        什么时候用return?
+            1.外部想访问内部的变量或者运算结果。
+            2.在函数内部终止后面的代码执行。
+
+
+   */
+
+//    function fn(){
+//       let a = 20;
+//       return 'a23';
+//    }
+
+//     function fn(){
+//       let a = 20;
+      
+//       return 'a23';
+//       alert(1);
+      
+//    }
+   
+//    let f = fn();  //f就是fn的返回值
+  
+// //    console.log(f);
+//    console.log(f);
+
+
+    function fn(){
+        let arr = [];
+        for(var i=0;i<5;i++){
+            // if(i == 2){
+            //     return i;
+            //     // break;
+            // }
+            arr.push(i);
+            // alert(i);
+            console.log(i)
+        }
+        return arr;
+    }
+    
+    let i = fn();
+
+    console.log(i);
+
+
+    
+
+</script>
+</body>
+</html>

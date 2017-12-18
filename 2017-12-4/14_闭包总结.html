@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        函数套函数，子级使用父级的参数或者变量,外部能够访问函数内部的内容
+
+        避免命名冲突:
+            1.封闭空间（打闭包）
+            2.命名空间（添属性）
+
+        var a = 10;
+
+        var b = xxx
+
+
+        闭包:
+            函数就是闭包，但是一般都是去使用闭包的特性，
+            父级的参数或者变量不会被回收
+
+            (函数套函数)子级使用父级的参数或者变量，这个时候子级就形成了闭包环境
+
+            去查看子函数，在子函数下有个属性Scopes:Closure
+
+            (function(){
+                
+            })()  函数自执行
+
+    */
+
+    function fn(a){
+        function fn2(){
+            a++;
+            alert(a);
+        }
+        return fn2;
+    }
+    // var a = fn(10);  //a ->里面就生成了闭包环境
+
+    fn(10)();
+    fn(10)();
+    fn(10)();
+
+    // var a = fn(10);
+
+    console.dir(fn(10));
+
+
+    // a();
+    // a();
+
+    // console.dir(a);
+
+    
+    // function fn(){
+    //     var a = 10;
+    // }
+
+    // (function(){
+    //     var a = 10;
+    //     alert(a);
+    // })()
+    
+    // var a = 11;
+    // alert(a);
+
+    var obj = {}
+    var obj2 = {};
+    // var a = 10;
+    // var a = 11;
+
+    obj.a = 10;
+    obj2.a = 11;
+
+    console.log(obj.a,obj2.a);
+
+    
+
+    // console.log(a);
+
+
+
+
+
+    // function fn(){
+    //     window.a = 10;
+    // }
+    // fn();
+
+    // console.log(window.a);
+
+    // console.dir(fn);
+
+
+
+</script>
+</body>
+</html>

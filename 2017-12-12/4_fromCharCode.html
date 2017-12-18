@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   账号:<input type="text" id="user"><br />
+   密码:<input type="password" id="pass">
+   <button id="btn">提交</button>
+<script>
+    /*
+        String.fromCharCode()  静态方法
+
+        账号:miaov
+        密码:1101011,1110100
+
+        number.toString(进制数) -> 把number转成指定的进制数
+    */
+
+    // console.log('t'.charCodeAt());
+
+    // let num = 116;
+
+    // console.log(num.toString(2));
+
+    console.log(parseInt('1101011',2));  //107
+    console.log(String.fromCharCode(107));//k
+
+    btn.onclick = function(){
+        let uv = user.value;
+        let pv = pass.value;
+        if(uv && pv){ //有值
+            if(uv === 'miaov' && pv === 'kt'){
+                alert('恭喜你,进入下一关');
+                window.location.href = 'http://www.miaov.com';
+            }else{
+                alert('账号或密码错误!');
+            }
+        }else{
+            alert('Please look at the code');
+        }
+    }
+
+    console.log(String.fromCharCode(109)); //m
+
+</script>
+</body>
+</html>

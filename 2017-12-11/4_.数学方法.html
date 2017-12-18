@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        js提供了Math对象下的多个数学方法
+
+        Math.ceil()  向上取整
+
+        Math.floor()  向下取整
+
+        Matrh.abs()  取绝对值。
+
+        Math.max();  最大
+        Math.min();  最小
+
+        找到数组中最大的值：
+            Math.max.apply(null,arr);
+
+        new Number(3.14).toFixed(num);  num为几就保留几位。
+
+        3.141596.toFixed(2)  保留2位小数 ->返回值是个string
+
+
+    */
+    // console.dir(Math);
+
+    // console.log(Math.ceil(4.12));  //5
+
+    //let arr = [1,2,3,4,5];  //打算一页显示2条数据
+    // console.log(Math.ceil(arr.length/2));
+
+    // console.log(Math.floor(4.12)); //4
+
+    var n = 3.1415926;
+    // var obj = {
+    //     toFixed:function(a){
+    //         return this;
+    //     }
+    // }
+    // let f = obj.toFixed(2);
+
+    // console.log(n.toFixed(2)); //返回值为string  保留2位小数 -> 3.14
+
+    // function toFixed(number,num2){
+    //     number = number + '';
+    //     return number.substring(0,4);
+    // }
+
+    // console.log(toFixed(3.141596,2));
+
+    // console.log(Math.abs(100));
+
+  
+
+    let ab = Math.max(100,0,10,30);   //max返回值为最大的100
+
+    let aa = Math.min(100,10,30,0.5); //max返回值为最小的0.5
+    // console.log(aa);
+
+    let arr = [100,10,30];
+
+    console.log(Math.min.apply(null,arr));//借方法来用
+
+//     function max(a,b,c){
+//         return a+b+c;
+//     }
+//     console.log(max(10,20,30));
+
+//    console.log( max.apply(document,arr) );
+
+
+
+
+
+
+    
+
+
+
+
+</script>
+</body>
+</html>

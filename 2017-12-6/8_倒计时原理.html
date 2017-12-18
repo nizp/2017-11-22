@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        倒计时：
+            电商商品倒计时秒杀
+            什么活动
+            离结课还有  3月30日
+            ....
+
+        规定一个未来的时间 -  现在的时间  = 还剩下多少时间
+    */
+
+    // let date = new Date(2017,11,7,0,0,0);
+
+    //未来的时间
+    let newDate = new Date('2017 12 7 00:00:00');
+
+    //现在的时间
+    let nowDate = new Date();
+
+    // console.log(newDate - nowDate); //结果是毫秒数
+    /*
+            天：86400 = 60*60*24  : Math.floor(t/86400)
+			
+			小时：Math.floor(t%86400/3600)
+			
+			分钟：Math.floor(t%86400%3600/60)
+			
+			秒：Math.floor(t%60)
+    
+    */
+    let t = (newDate - nowDate) / 1000;
+    // let Se = Math.floor(t / 1000);
+    // let Min = Math.floor(Se / 60);
+    // let iH = Math.floor(Min / 60);
+    // console.log(iH+'小时');
+    let iDay = Math.floor(t/86400);
+    let iH = Math.floor(t%86400/3600);
+    let iM = Math.floor(t%86400%3600/60);
+    let Se = Math.floor(t%60);
+
+
+    console.log(iDay+'天'+iH +'小时'+iM+'分钟'+Se+'秒');
+
+
+
+
+    
+
+
+
+
+</script>
+</body>
+</html>

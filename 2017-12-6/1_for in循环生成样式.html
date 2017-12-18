@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    let obj = {
+        width:'200px',
+        height:'100px',
+        background:'red',
+        border:'1px solid #000'
+    }
+    const box = document.getElementById('box');
+    for(var attr in obj){
+        box.style[attr] = obj[attr];
+    }
+
+    // box.style['width'] = '200px';
+    // box.style['height'] = '100px';
+    // box.style.cssText = 'width:50px';
+
+
+
+
+
+</script>
+</body>
+</html>

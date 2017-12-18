@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#img{
+    position: absolute;
+    top:0;
+    left:150px;
+}
+</style>
+</head>
+<body>
+   <img id="img" src="img/1.png" alt="">
+    
+<script>
+    let img = document.getElementById('img');
+    let num = 0;
+    /*
+        使用连续炸（setInterval）的时候，一定要记得把定时器关闭
+
+        *** css的transition和定时器的运动是有冲突的。
+    */
+    let onOff = true; 
+    img.onclick = function(){
+        // console.log(1);
+        if(!onOff)return;
+        // console.dir(2);
+        onOff = false;
+        shake({
+            obj:img,
+            callback:function(){
+                onOff = true;
+                img.style.transition = '1s';
+                img.style.left = '300px';
+                setTimeout(function(){
+                    img.style.transition = '';
+                },1000);
+            },
+            n:30
+        });
+    }
+
+    function shake(json={}){ //配置
+        //默认
+        let opt = {
+            callback:function(){},
+            attr:'left',
+            n:10
+        }
+        // 有配置走配置，没配置走默认
+        Object.assign(opt,json);
+
+        //console.log(opt);
+
+        let arr = [];
+        let timer = null;
+        for(var i=opt.n;i>0;i-=2){
+            arr.push(-i,i);
+        }
+        arr.push(0);
+        clearInterval(timer);
+        timer = setInterval(function(){
+            opt.obj.style[opt.attr] = parseInt(getComputedStyle(opt.obj)[opt.attr]) + arr[num] + 'px';
+            num ++;
+            if(num >= arr.length){
+                clearInterval(timer);
+                num = 0;
+                //console.log(callback);
+                opt.callback && opt.callback();//钩子函数
+                // if(callback){
+                //     callback();
+                // }
+            }
+        },30); 
+    }
+    //console.log(num);
+
+
+</script>
+<script>
+    
+
+
+
+</script>
+</body>
+</html>

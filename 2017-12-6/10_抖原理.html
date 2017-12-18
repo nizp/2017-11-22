@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+body,html{
+    overflow: hidden;
+}
+#box{
+    width:100px;
+    height: 100px;
+    background: red;
+    transform: scale(5);
+    transition: 1s;
+    opacity: 0;
+    margin:200px auto;
+}     
+#div{
+    width:100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    top:0;
+    left:0;
+}  
+</style> 
+</head>
+<body>
+    <!-- <div id="box"></div> -->
+    <div id="div"></div>
+<script>
+    /*
+        抖
+    */
+    // document.onclick = function(){
+    //     box.style.transform = 'scale(1)';
+    //     box.style.opacity = 1;
+    // }
+
+    const arr = [-10,10,-8,8,-6,6,-4,4,-2,2,0];
+    let timer = null;
+    let num = 0;
+    document.onclick = function(){
+        timer = setInterval(function(){
+            div.style.left = arr[num] + 'px';
+            num++;
+            if(num > arr.length){
+                clearInterval(timer);
+                num = 0;
+                console.log('抖完完!');
+            }
+        },50);
+    }
+
+
+
+</script>
+</body>
+</html>

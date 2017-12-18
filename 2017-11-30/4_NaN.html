@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        NaN -> 非法的数学运算
+
+        除了NaN，所有的数据自己都等于自己
+
+        检测是否为NaN：
+            isNaN:
+                true，false
+            如果是NaN就是true，否则false
+    */
+
+    let num = 10;
+    let str = '1230px';
+    let obj = {};
+    let N = NaN;
+    // console.log(num == num);
+    // console.log(str == str);
+    // console.log(obj == obj);
+    // console.log(N == N); //自己不等于自己
+
+    // console.log(isNaN(parseInt(''))); //true
+
+
+    console.log(isNaN('')); //false
+
+    /*
+        isNaN() -> Number('') -> 0  isNaN(0) -> false
+    */
+
+
+
+
+</script>
+</body>
+</html>

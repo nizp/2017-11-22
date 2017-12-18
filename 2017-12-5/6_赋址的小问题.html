@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    let arr = [1,2,3,4];
+
+    /*
+        参数为对象类型的时候，有可能会修改外面的对象。
+    */
+
+    // function fn(a){
+    //     a.push(5);
+    //     console.log(a);
+    // }
+    // fn(arr);
+
+    // console.log(arr);
+
+
+    /*
+        简单类型在函数中更改是不会影响外面的变量的。
+    */
+    // var a = 10;
+    // function fn(a){
+    //     a ++;
+    //     alert(a);
+    // }
+    // fn(a);
+
+    // console.log(a);
+
+    /*
+        形参a其实就是实参，改变了对象形参就会改变这个对象本身。
+    */
+    // function fn(a){
+    //     a.height = '100px';
+    //     console.log(a);
+    // }
+    // var o = {
+    //     width:'200px'
+    // }
+    // fn(o);
+
+    // console.log(o);
+
+
+    var obj1 = {
+        width:'200px'
+    }
+    var obj2 = {
+        height:'50px'
+    }
+
+    // obj1.height = obj2.height;  //赋值
+
+    obj1 = obj2; //赋址。
+
+    obj1.height = '30px';
+
+    console.log(obj2);
+
+    // console.log(obj2);
+
+    
+
+
+
+
+   
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        强制类型转换:
+            强行转换（主动人为去转换）
+        隐式类型转换
+            系统偷偷的帮你转换的（非人为主动的转换）
+
+
+        强制类型转换：
+            1.字符串转数字
+                Number();
+                number转空字符串为0
+            如果Number转不出来，比如：'20px'；那么同样会给个结果NaN
+
+                parseInt(字符串,第一个参数的进制数)
+                    比number多了一个取整功能
+                    开头必须为数字，不然转NaN
+                    如果开头为0或空格，那么会舍弃0或空格
+                    如果开头为数字中间不为数字了，那么就会把开头的数字转成数字返回。
+                    如果添加第二个参数：
+                        将第一个参数转成十进制
+
+                parseFloat(字符串)
+                    相比parseInt可以转小数，不过没有第二个参数
+
+            NaN -> 非法的数学运算
+
+
+    */
+    let num = 10;
+    let str = '20';
+
+    // console.log(Number('20'));  // 20
+    // console.log(Number('')); //0
+    // console.log(typeof Number('20px'));
+    // console.log(parseInt('0000000000020.99px'));
+
+    // console.log(parseInt('110',2));
+
+    // console.log(parseFloat('0000000000020.99px'));
+    
+    console.log(parseInt('')); //NaN
+
+    // console.log(num + str);
+</script>
+</body>
+</html>

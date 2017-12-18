@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        findIndex
+            在数组中找到条件成立数据的下标
+    */
+    let arr = [
+        {name:'衣服',num:20},
+        {name:'裤子',num:30},
+        {name:'袜子',num:5}
+    ];
+
+    console.log(arr.findIndex(function(e,i){
+        return e.name == '裤子';
+    }));
+
+
+</script>
+</body>
+</html>

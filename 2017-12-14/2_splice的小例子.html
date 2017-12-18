@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        使用splice把下面的数组变成周一到周日
+
+        ['周一','周二']
+    */
+
+    let arr = ['周一',2,'周五',5,'周三','周四','周六',2,7,5,'周四','周一',2,'周五',5,'周三','周四','周六',2,7,5,'周四'];
+
+    arr.length = 7;
+
+    arr.splice(1,1,'周二');
+
+    arr.splice(2,0,arr.splice(4,1)[0]); //["周一", "周二", "周三", "周五", 5, "周四", "周六"]
+
+    arr.splice(3,0,arr.splice(5,1)[0]);
+
+    arr.splice(5,1);
+
+    arr.splice(6,0,'周日');
+
+
+
+    console.log(arr);
+
+
+</script>
+</body>
+</html>

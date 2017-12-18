@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <input type="button" value="按钮一">
+    <input type="button" value="按钮二">
+    <input type="button" value="按钮三">
+</head>
+<body>
+<script>
+    /*
+        函数自执行:
+
+            (function(){
+
+            })()
+
+        闭包就是一个函数引用另外一个函数的变量，因为变量被引用着所以不会被回收，因此可以用来封装一个私有变量。这是优点也是缺点，不必要的闭包只会徒增内存消耗！另外使用闭包也要注意变量的值是否符合你的要求，因为他就像一个静态私有变量一样。闭包通常会跟很多东西混搭起来，接触多了才能加深理解，这里只是开个头说说基础性的东西。
+
+        内部一直使用着外部的值，那么就一直不被回收。
+
+        缺点:
+            一直不回收，如果数量大了，会影响性能。
+            IE6版本浏览器会出现内存泄露。
+
+            window.onload = function(){
+                var box = document.getElementById('box');
+                box.onclick = function(){
+                    console.log(box.id);
+                }
+            }
+
+            function(){
+                var box = document.getElementById('box');
+                function(){
+                    console.log(box.id);
+                }
+            }
+    */
+    const btns = document.getElementsByTagName('input');
+    
+    for(let i=0;i<3;i++){
+        btns[i].onclick = function(){
+            alert(i);
+        }
+    }
+    
+    // for(var i=0;i<3;i++){
+    //    (function(a){
+    //         btns[a].onclick = function(){
+    //             alert(a);
+    //         }
+    //    })(i);
+    // }
+
+
+    // (function (){
+    //     alert(1);
+    // })()
+
+
+
+    /*
+
+        function fn(0){
+            function f(){
+                alert(i);
+            }
+            f(0);
+        }
+        fn(0);
+    
+    */
+
+</script>
+</body>
+</html>

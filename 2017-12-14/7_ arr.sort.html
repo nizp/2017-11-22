@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        arr.sort(可以接收一个回调函数)  排序
+            默认是从小到大排列
+
+            默认的排序方式是依据字符串比较的方式来排列的。
+
+        返回一个排序好的数组
+
+        回调函数中**必须返回一个number**类型出去
+
+        a - b   为正数  就调换位置
+
+        a - b   为负数  就不掉换位置
+
+        a - b = 0  [5,5]  可换可不换
+
+    */
+
+    let arr = [3,5,5,2,1,8,7,4,3,1,2,15];
+
+    // alert('11' > '2');//false
+    // console.log(arr.sort());
+
+    // console.log(arr.sort(function(a,b){
+    //     return b - a;  //从大到小
+    //    //return a-b;  //从小到大
+    // }));
+
+    let arr2 = [1,2,3,4,5,6,7];
+
+    //0.2  -  0.5  //随机排序
+    console.log(arr2.sort(function(){
+        return Math.random() - 0.5;
+    }))
+
+    console.log(Math.random())
+</script>
+</body>
+</html>

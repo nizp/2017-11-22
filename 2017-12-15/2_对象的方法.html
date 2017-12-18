@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+   /*
+        对象
+            {}
+            []
+
+                标准写法  {"name":"小青"}
+
+                js {'name':'小青'}
+
+        
+
+        json ->  '{}' '[]'
+
+                '{"name":"小青"}' 
+
+        json 转 对象  
+            JSON.parse();
+        
+        注意:
+            json必须要是标准格式的,如果不是标准格式就会报错。
+
+        对象 转 json
+            JSON.stringify();
+
+            注意:
+                stringify不能转函数和undefined的
+
+        只要尝试去alert，会默认调用该数据的toString方法
+
+
+        JSON.parse
+        JSON.stringify
+        低版本浏览器都用不了
+
+        下载一个json2.js的文件就能使用了。
+        
+   */ 
+
+//    let json = '{"name":"小青"}';
+
+      let json = "{'name':'小青'}";
+
+      let obj = {name:'小薛',fn:function(){},u:undefined,nn:null};
+
+      let arr = [1,2,3,4];
+
+      console.log(JSON.stringify(arr));
+
+    //   console.log(JSON.stringify(obj))
+
+    //   alert(obj);
+
+//    console.log(json);
+
+        // console.log(obj); //[object Object];
+
+        //console.log(JSON.stringify(obj));
+    //   console.log(JSON.parse(json));
+
+//    console.log(JSON.parse(json).name);
+
+
+
+</script>
+</body>
+</html>

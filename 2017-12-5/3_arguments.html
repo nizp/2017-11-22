@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // function fn(a,b,c){
+    //     c(a);
+    // }
+    // fn(2,3,function(d){
+    //     alert(d);
+    // });
+
+    // var c = function(d){
+    //     alert(d);
+    // }
+    // c(2);
+
+    
+    /*
+        arguments : 实参的集合（类数组）
+
+        fn(2,3,4) -> 3 -> arguments[1]   
+
+        $('.li1')
+        $(funnction(){})
+        $('').css({width:200px}) 
+    */
+    function fn(a,b,c,d,e,f,g){
+    //    console.log(arguments);
+        let num = 0;
+        for(var i=0;i<arguments.length;i++){
+            num += arguments[i];
+        }
+        console.log(num);
+    }
+    fn(2,3,4,5,6,7,9,8,3,4,5,6,7,9,8,3,4,5,6,7,9,8,3,4,5,6,7,9,8,3,4,5,6,7,9,8,3,4,5,6,7,9,8,3,4,5,6,7,9,8,3,4,5,6,7,9,8,3,4,5,6,7,9,8,2,3,4,5,6,7,9,8,3,4,5,6,7,9,8,3,4,5,6,7,9,8,3,4,5,6,7,9,8,3,4,5,6,7,9,8,3,4,5,6,7,9,8,3,4,5,6,7,9,8,3,4,5,6,7,9,8,3,4,5,6,7,9);
+
+    // console.dir(fn);
+
+
+    function fn2(a,b){
+        /*
+            修改arguments实参的值就发生变化了，
+            一般来说，arguments的值是不允许改变的。
+        */
+        arguments[0] = 10;
+        // console.log(arguments[0])
+        console.log(a); // 已经不是2了
+    }
+    fn2(2,3);
+
+</script>
+</body>
+</html>

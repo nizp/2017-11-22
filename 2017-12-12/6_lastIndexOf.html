@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        lastIndexOf('查找的字符',起始位置)
+            从右往左找，指定字符的下标
+
+        1.html.txt
+        2.txt.html
+
+        找到文件的后缀名是什么？
+    */
+
+    let str = 'miao.jpg.vi.html';
+
+    // console.log(str.lastIndexOf('i'));
+
+    let num  = str.lastIndexOf('.');
+    let temp = '';
+    for(let i=num;i<str.length;i++){
+        temp += str[i];
+        // console.log(str[i])
+    }
+    console.log(temp);
+   
+
+
+
+
+
+</script>
+</body>
+</html>

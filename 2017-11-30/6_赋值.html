@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    /*
+        =、+=、-=、*=、/=、%=
+
+        = 赋值
+            从右往左赋值
+    */
+
+    // let num = 10;
+
+    // num = num + 5;
+
+    // num += 5;
+
+    // num += '5';
+
+    // num += '5px';
+
+    //  num -= '5px';
+
+    // num *= 5;
+    // num /= 5;
+
+    // num %= 20;
+    // console.log(num);
+
+    let arr = ['起床','上课','吃饭','午休','上课','下课','回家','作业','睡觉'];
+
+    let num = 0;
+    document.onclick = function(){
+        box.innerText = arr[num];
+        num ++;
+        num %= arr.length;
+
+        // if(num > arr.length-1){
+        //     num = 0;
+        // }
+       
+    }
+    
+
+
+    
+
+
+
+</script>
+</body>
+</html>

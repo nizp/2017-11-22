@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+   
+    /*
+        函数声明：
+            function fn(){}
+                调用在定义上面或者下面都可以。
+        函数表达式：
+            let fn = function(){}
+                调用在声明之后，不然会报错
+
+        在函数才被声明的时候，函数内部就有很多属性或者方法
+        比如:
+            name属性,length属性,arguments属性
+            prototype属性->原型->是给它的实例化对象使用的->它的值是一个**对象**
+            Scopes属性
+            apply方法
+            bind方法
+            call方法
+
+
+
+        函数名 + 括号调用
+        事件调用
+    */
+    // fn();
+    // function fn(){
+    //     alert(1);
+    // }
+    // fn();
+    
+    //fn(); //报错
+    // let fn = function(){
+    //     alert(12345);
+    // }
+    // fn(); //正常执行
+
+
+    function fn(){
+        alert(1);
+        var a = 10;
+        function fn1(){
+            alert(a);
+        }
+        fn1();
+    }
+    // fn();
+
+    console.dir(fn);
+
+
+
+    
+    
+
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        array.forEach()  数组的循环  ES5的方法
+
+            有2个参数: 
+                第一个参数：
+                    回调函数
+                        回调函数中还有3个参数
+                            1.循环中的每一个  arr[i]
+                            2.循环中每一个的索引（下标）i
+                            3.整个数组 arr
+                第二个参数:
+                    改变this指向(写啥this就是啥)
+                        默认this为window
+
+            没有break也没有continue
+
+            如果要有continue那么可以使用return，但是类似break的东西就没有了
+
+    */
+
+    let arr = [1,2,3,4,5];
+
+    arr.forEach(function(e,i,all){
+        // console.log(this);
+        if(i == 2){
+            return;
+        }
+        alert(e);
+    },document);
+
+    // console.log();
+
+
+</script>
+</body>
+</html>

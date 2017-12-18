@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+}
+#box{
+    width:100px;
+    height: 100px;
+    background: skyblue;
+    position: absolute;
+    top:30px;
+    left:100px;
+    opacity: .1;
+}
+</style>
+</head>
+<body>
+    <button id="btn">运动</button>
+    <div id="box"></div>
+<script src="tween.js"></script>
+<script>
+    const btn = document.getElementById('btn');
+    const box = document.getElementById('box');
+
+    /*
+        * t : time 已过时间
+        * b : begin 起始值
+        * c : count 总的运动值
+        * d : duration 持续时间
+
+        11:36
+
+        11:37
+        11:38
+        11:39
+
+        11:39 - 11:36 = 3分
+        现在的时间 - 开始的时间 = 用了多少时间
+
+        定时器是跟cpu和浏览器的优化机制相关，所以说写的30不一定是30
+        30左右
+    */
+
+    
+    btn.onclick = function(){
+
+        // move(box,'top',350,1000,'bounceOut',function(){
+        //     move(box,'left',300,500,'elasticOut');
+        // });
+
+        move({
+            obj:box,
+            attrs:{
+                top:350,
+                left:300,
+                opacity:1
+            },
+            fx:'bounceOut'
+        });
+
+    }
+    //obj,json,d,fx,callback
+    function move(data){
+        //默认的配置
+        let opt = {
+            obj:null,
+            attrs:{},
+            d:1000,
+            fx:'linear',
+            cb:function(){}
+        }
+        //有配置走配置，没配置走默认
+        Object.assign(opt,data);
+
+        let timer = null;
+        let newDate = +new Date();
+        let j = {};
+
+        /*
+            每个属性有自己的一套，起始值和目标点。
+        */
+        for(var attr in opt.attrs){
+            let b;
+            //是透明度就使用parseFloat
+            if(attr === 'opacity'){
+              b = parseFloat(getComputedStyle(opt.obj)[attr]);
+            }else{
+              b = parseInt(getComputedStyle(opt.obj)[attr]);
+            }
+            // console.log(b);
+            j[attr] = {
+                b: b,
+                c:opt.attrs[attr] - b
+            }
+        }
+        // console.log(j);
+        // return;
+        timer = setInterval(function(){
+            let nowDate = +new Date();
+            let t = nowDate - newDate;
+            if(t >= opt.d){
+                t = opt.d;
+            }
+           
+            if(t == opt.d){
+                clearInterval(timer);
+                opt.callback && opt.callback();
+            }
+
+            for(var attr in j){
+                // console.log( j[attr]) 使用每个属性的起始值和目标点
+                let v = Tween[opt.fx](t, j[attr].b,j[attr].c, opt.d);
+                if(attr === 'opacity'){
+                    opt.obj.style.opacity = v;
+                }else{
+                    opt.obj.style[attr] = v + 'px';
+                }   
+            }
+            
+        },16);
+    }
+</script>
+</body>
+</html>

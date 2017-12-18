@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        string.indexOf(指定字符,起始的位置);
+            从左往右  找到指定位置的下标(返回值)
+
+        *** 如果找不到就返回 -1
+
+            如果说某个字符串中有这个值，那么就可以这些写
+                if(string.indexOf('') != -1){}
+
+        设置本身的位置只能找到本身。如果要往后找，那么要在本身后 + num
+
+        例子:
+            找到下面所有i出现的位置，并且存到数组中,再通过
+            这个数组中找到最大的值对应的字符,
+            找到之后再再找它的下一个字符是什么。
+
+            1.循环
+            2.字符串中还有指定的字符才循环
+            3.push i
+            4.设置起始的位置。
+
+            for(){}
+            while(){}
+    */
+
+    // let str = 'miaoiv';
+    // console.log(str.indexOf('i',2));
+    // console.log(str.indexOf('x'));
+
+    let str = 'miaomiaoivmiaoivmiaoiv';//[1,5,8]
+    let num = 0;
+    let arr = [];
+
+    // while(str.indexOf('i',num)!=-1){
+    //     arr.push(str.indexOf('i',num));
+    //     num = str.indexOf('i',num) + 1;
+    // }
+
+    // for(;str.indexOf('i',num)!=-1;num=str.indexOf('i',num) + 1){
+    //     arr.push(str.indexOf('i',num));
+    //     // num=str.indexOf('i',num) + 1
+    // }
+    // console.log(arr);
+
+
+    function searchIndex(str,s,num=0){
+        let arr = [];
+        while(str.indexOf(s,num)!=-1){
+            arr.push(str.indexOf(s,num));
+            num = str.indexOf(s,num) + 1;
+        }
+        return arr;
+    }
+
+    let arr2 = searchIndex(str,'i'); //再从这个数组中找到最大的下标，后面的字符 
+    console.log(str.charAt(Math.max.apply('',arr2)+1));
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        隐式类型转换：
+            系统偷偷的帮你转换的（非人为主动的转换）
+        
+        运算符都会隐式类型转换
+            + 
+                1.如果字符串数字前面没有别的数据，那么转成number
+                2.字符串 + 别的数据类型都是字符串
+                3.数字 + 数字 = 数字
+
+            - * / %
+
+                默认转成number类型，如果运算不出来，就NaN
+            
+        alert()
+            只要调用alert就会隐式转成string
+    */  
+
+    let str = '10';
+    let num = 50;
+
+    // console.log(+str); //数字 10
+
+    // console.log('' + {});
+
+    // alert([1,2,3]);
+
+    // console.log('20' - 10);  //数字10
+
+    // console.log('20px' - 10); //NaN
+
+    // console.log('20' * 10); //数字 200
+    
+    // console.log('20' / 10); //数字2
+
+    // console.log('20'% 3); //数字2
+
+    // console.log(Number(str));
+    // console.log(parseInt(str));
+    // console.log(parseFloat(str));
+    // console.log(+str);
+    // console.log(str*1);
+
+
+
+</script>
+</body>
+</html>

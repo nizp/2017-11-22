@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课程分类</title>
+    <style>
+        body{background: #a8cde6;}
+        .box{width: 500px;height: 300px;position: absolute;left: 50%;
+        margin-left: -250px;top: 50%;margin-top: -150px;}
+        .top,.list{width: 100%;height: 100px;}
+        .top{background: #fff;border-radius: 5px 5px 0 0;}
+        .list{background:#331c1e;color: #fff;font-size: 20px;line-height: 100px;padding-left: 20px;
+        width:460px;padding-right: 20px;}
+        .list1{border-bottom: 2px dashed #797074;}
+        .list2{border-radius: 0 0 5px 5px; }
+        h3{line-height: 100px;text-align: center;color: #df4a64;}
+        .edit{display: inline-block;width: 32px;height: 32px;margin-left: 20px;position: relative;
+        top: 9px;outline: none;}
+        .text{width: 60%;font-size: 20px;position: relative;top: 1px;outline:none;display: none;}
+        .cancel{border: none;outline: none;display: inline-block;width: 70px;height: 30px;margin-left: 10px;
+        position: relative;bottom: 2px;background:#df4a64;color: #fff;font-size: 16px;display: none;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="top">
+            <h3>课程分类</h3>
+        </div>
+        <div class="list list1">
+            <input class="text" type="text">
+            <span class="span">欢迎来到妙味课堂</span>
+            <input class="edit" type="image" src="img/edit.png">
+            <input class="cancel" type="button" value="确定">
+            <input class="cancel" type="button" value="取消">
+        </div>
+        <div class="list list2">
+            <input class="text" type="text">
+            <span class="span">欢迎来到妙味课堂</span>
+            <input class="edit" type="image" src="img/edit.png">
+            <input class="cancel" type="button" value="确定">
+            <input class="cancel" type="button" value="取消">
+        </div>
+    </div>
+    <script>
+        //获取元素
+        const lists = document.querySelectorAll('.list');
+        
+        for(var i=0;i<lists.length;i++){
+            fn(lists[i]);
+        }
+       
+       function fn(lists){
+            const inputs = lists.getElementsByTagName('input');
+            const oSpan =  lists.getElementsByTagName('span')[0];
+            inputs[1].onclick = function(){
+                inputs[0].style.display = inputs[2].style.display = inputs[3].style.display = 'inline-block';
+                oSpan.style.display = inputs[1].style.display = 'none';
+            }
+            //确定
+            inputs[2].onclick = function(){
+                let val =  inputs[0].value;
+                if(!val){
+                        alert('我心态爆炸了，你小心!');
+                }else{
+                        oSpan.innerText = val;
+                        inputs[0].style.display = inputs[2].style.display = inputs[3].style.display = 'none';
+                        oSpan.style.display = inputs[1].style.display = 'inline-block';
+                        inputs[0].value = '';
+                }
+            }
+
+            //取消
+            inputs[3].onclick = function(){
+                    inputs[0].style.display = inputs[2].style.display = inputs[3].style.display = 'none';
+                    oSpan.style.display = inputs[1].style.display = 'inline-block';
+                    inputs[0].value = '';
+            }
+       }
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

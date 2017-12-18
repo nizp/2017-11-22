@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        只要尝试去alert，会默认调用该数据的toString方法
+
+        toString -> 转成string
+
+        所有的数据自身都有toString方法
+
+        toString可以转除了10进制的进制数
+            变量.toString()
+
+            不能用  数字.toString() 会报错的。
+
+        object   ->  [object Object]  第二个Object是当前数据的内置对象为Object
+
+        arr -> 1,2,3
+    */
+
+    let str = 'miaov';
+
+    let b = true;
+
+    let arr = [1,2,3];
+
+    // console.log(b.toString());
+    // alert(arr);
+    // console.log(arr.toString());
+
+    let num = 6;
+
+    // console.log(num.toString(2));
+
+    console.log(num.toString(2));
+
+    // console.log(parseInt('110',2));
+
+
+</script>
+</body>
+</html>

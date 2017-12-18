@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		body{
+			background: #7592d2;
+		}
+		ul{list-style: none;}
+		#black{
+			width: 440px;
+			height: 840px;
+			margin: 20px auto;
+			background: #0f1115;
+			border-radius: 20px;
+			overflow:hidden; /*触发BFC*/
+		}
+		#line{
+			width: 76px;
+			height: 10px;
+			background: white;
+			border-radius: 5px;
+			margin: 20px auto;
+		}
+		#content{
+			width: 400px;
+			height: 700px;
+			background: url(1.jpg);
+			margin: 0 auto;
+			padding-top: 16px;
+		}
+		#circle{
+			width: 56px;
+			height: 56px;
+			background: #040c0b;
+			border: 2px solid #323839;
+			border-radius: 50%;
+			margin: 16px auto;
+		}
+		#square{
+			width: 20px;
+			height: 20px;
+			border: 2px solid #323839;
+			background: #000605;
+			border-radius: 6px;
+			display: inline-block;
+			margin: 16px 16px;
+		}
+		#content>ul>li{
+			width: 340px;
+			margin: 10px auto;
+		}
+		#content h2{	
+			height: 60px;
+			background: rgba(20, 21, 20, .8);
+			font: 20px/60px 'Microsoft';
+			color: white;
+			cursor: pointer;
+		}
+		#content h2 span{
+			display: inline-block;
+			width: 0;
+			height: 0;
+			margin: 0 14px;
+			border: 6px solid transparent;
+			border-color: transparent transparent transparent white;
+		}
+		#content .active h2{
+			background: rgba(205, 97, 100, .8);
+		}
+		#content .active h2 span{
+			display: inline-block;
+			width: 0;
+			height: 0;
+			margin: 0 14px;
+			border: 6px solid transparent;
+			vertical-align: -2px;
+			border-color: white transparent transparent transparent;
+		}
+		#content .active .name{
+			display: block;
+		}
+		.name{
+			display: none;
+		}
+		.name li{
+			height: 50px;
+			background: black;
+			font: 16px/50px 'Microsoft';
+			padding-left: 42px;
+			color: white;
+		}
+		.name li:hover{
+			background: #5b5b5b;
+		}
+		.name .active{
+			background: #7b2c3a;
+		}
+	</style>
+</head>
+<body>
+	<div id="black">
+		<div id="line"></div>
+		<div id="content">
+			<ul>
+				<li class="children">
+					<h2><span></span>我的好友</h2>
+					<ul class="name">
+						<li>friend1</li>
+						<li>friend2</li>
+						<li>friend3</li>
+						<li>friend4</li>
+					</ul>
+				</li>
+				<li class="children">
+					<h2><span></span>企业好友</h2>
+					<ul class="name">
+						<li>company1</li>
+						<li>company2</li>
+						<li>company3</li>
+					</ul>
+				</li>
+				<li class="children">
+					<h2><span></span>黑名单</h2>
+					<ul class="name">
+						<li>people1</li>
+						<li>people2</li>
+						<li>people3</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div id="circle">
+			<div id="square"></div>
+		</div>
+	</div>
+<script>
+	const content = document.getElementById('content');
+	const ul1 = content.getElementsByTagName('ul')[0];
+	const lis = ul1.getElementsByClassName('children');
+	let h2 = document.getElementsByTagName('h2');
+	h2 = Array.from(h2);
+	
+	let activeLi = lis[0];
+	h2.forEach(function(e,i){
+		e.onclick = function(){
+
+			activeLi.classList.remove('active');
+			lis[i].classList.add('active');
+
+			let li = lis[i].getElementsByTagName('li');
+
+			for(var j=0;j<li.length;j++){
+				li[j].onclick = function(){
+					for(var j=0;j<li.length;j++){
+						li[j].className = '';
+					}
+					this.className = 'active';
+				}
+			}
+			
+
+
+			activeLi = lis[i];
+		}
+	});
+
+
+
+
+	
+
+
+
+</script>
+</body>
+</html>

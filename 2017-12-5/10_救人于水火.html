@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="开始">
+    <input type="button" value="拆弹">
+<script>
+
+    /*
+        关闭定时器：
+            clearInterval(要关闭的定时器);
+            clearTimeout(要关闭的定时器);
+
+        这2个关闭定时器都可以用。
+    */
+    const btns = document.querySelectorAll('input');
+
+    let timer = null;
+    let num = 10;
+    btns[0].onclick = function(){
+        timer = setInterval(function(){
+            btns[0].value = num;
+            num --;
+            if(num < 0){
+                alert('再见!');
+            }
+        },1000);
+    }
+    btns[1].onclick = function(){
+        // clearInterval(timer); 
+        clearTimeout(timer);
+        alert('哈哈,这下炸不到我了吧!');
+    }
+
+
+
+</script>
+</body>
+</html>

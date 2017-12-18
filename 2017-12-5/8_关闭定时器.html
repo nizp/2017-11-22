@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="开始">
+    <input type="button" value="拆弹">
+<script>
+
+    /*
+        关闭定时器：
+            clearTimeout(要关闭的定时器);
+    */
+    const btns = document.querySelectorAll('input');
+
+    let timer = null;
+    btns[0].onclick = function(){
+        timer = setTimeout(function(){
+            alert('爆炸');
+        },2000);
+    }
+    btns[1].onclick = function(){
+        clearTimeout(timer); 
+        alert('哈哈,这下炸不到我了吧!');
+    }
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        && 与（谁1与谁2）
+            
+
+        布尔值 && 布尔值
+            谁1成立 还会去看后面 谁2
+            如果谁1成立，谁2不成立，返回谁2
+            如果谁1不成立,直接返回谁1
+
+        
+
+        || 或
+
+            布尔值 || 布尔值
+
+            谁1 || 谁2
+
+            如果谁1成立就不会看谁2了，返回谁1
+            如果谁1不成立，还会看谁2，返回谁2
+
+            
+    */
+
+    let vip = '超级会员';
+    let $ = 0;//'10美刀';
+    let phone = '手机某宝支付';
+
+
+    if(vip && $ || phone){
+        alert('买到打折商品');
+    }else{
+        alert('回去玩泥巴!');
+    }
+
+    //console.log($ && vip);
+    // if(vip && $){
+    //     alert('买到打折商品');
+    // }else{
+    //     alert('回去玩泥巴!');
+    // }
+
+    
+
+</script>
+</body>
+</html>

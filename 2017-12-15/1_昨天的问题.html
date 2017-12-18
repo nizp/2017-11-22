@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        forEach
+
+        some:
+            在回调函数中判断数组的某些条件是否成立，
+            只要有一个成立就返回true，否则返回false
+
+        slice变数组
+
+        兼容性（未来说）
+
+    */
+
+    let arr = [1,2,3,4,5.5];
+
+    var b = 10;
+
+    document.b = 20;
+
+    function slice(a){
+        return a + this.b;
+    }
+
+    // let f = slice(1);
+
+    // let f = slice.call('',1);
+
+    //let f = slice.call(document,1);
+
+    // console.log(f);
+
+
+    let arr = [1,2,3];
+
+    arr.slice.call(lis);
+
+
+
+
+
+
+
+
+
+    // let b = arr.some(function(e,i,all){
+    //    return e == 5;
+    // });
+
+    // console.log(b);
+
+
+
+    // let num = 0;
+
+    // forEach(arr,function(e){
+    //     num += e;
+    //     console.log(num);
+    // },document);
+
+    // forEach(arr,function(e,i,all){
+    //     console.log(e,i,all);
+    // },document);
+
+
+
+    // function forEach(arr,cb,that){
+    //     for(var i=0;i<arr.length;i++){
+    //         cb.call(that,arr[i],i,arr);
+    //     }
+    // }
+
+    
+
+   
+
+    
+
+    // function fn(a,callback){
+    //     callback(a);
+    // }
+    
+    // fn(1,function(c){
+    //     console.log(c);
+    // });
+
+
+    // arr.forEach(function(e,i,all){
+    //     console.log(this);
+    // },document);
+
+</script>
+</body>
+</html>

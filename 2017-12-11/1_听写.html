@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+/*
+    1.小明今年18岁，职业是前端，性别男，住辉煌国际大厦，
+    他有2个妹妹，一个妹妹叫小红，另一个妹妹叫小兰，小红17，
+    职业学生，小兰18，职业：演员，用对象去描述刚刚说的话
+*/
+
+    // let 小明 = {
+    //     sex:'男',
+    //     age:18,
+    //     job:'前端',
+    //     add:'辉煌国际大厦',
+    //     sister:[
+    //         {
+    //             name:'小红',
+    //                sex:'女'
+    //             age:17,
+    //             job:'学生'
+    //         },
+    //         {
+    //             name:'小兰',
+    //                 sex:'女'
+    //             age:18,
+    //             job:'演员'
+    //         }
+    //     ]
+    // }
+
+    // let obj = {
+    //     name:'小明',
+    //     sex:'男',
+    //     age:18,
+    //     job:'前端',
+    //     add:'辉煌国际大厦',
+    //     sister:[
+    //         {
+    //             name:'小红',
+    //             age:17,
+    //             job:'学生'
+    //         },
+    //         {
+    //             name:'小兰',
+    //             age:18,
+    //             job:'演员'
+    //         }
+    //     ]
+    // }
+
+    /*
+        2.var跟let的区别
+
+        1.var声明的时候会在全局（window）下挂一个属性
+            let是不会的
+            var a = 10;
+            console.dir(window);  //window.a 
+
+            let a = 10;
+            console.dir(window);  //window下没有a
+
+
+        2.在一个域下，var同名可以有多个,let只能有一个（函数的参数也不能和函数体内的变量名一样）
+
+            let a = 10;
+            let a = 12;  //报错
+
+            var a = 10;
+            var a = 12; //12
+
+
+        3.在一个域下 var 有预解析，let是没有的（有暂存死区）
+
+            console.log(a); //报错
+            let a = 10;
+            
+            console.log(a); //undefined
+            var a = 10;
+
+            function fn(a){
+                var a = 10;
+                // let a = 10; //报错
+                console.log(a);
+            }
+            fn(10);
+    
+
+        4.let支持块级作用域。
+
+            {
+                // let a = 10;
+                var a = 10;
+            }
+            console.log(a);
+
+    */
+
+
+    /*
+        3.call跟apply，bind的区别
+
+        改变this指向,都函数自身的方法。
+
+        call,有多个参数，从第二个起为实参。
+            fn.call(document,1,2);
+
+        apply,就2个参数，第二个参数是数组，数组中放的是实参
+            fn.apply(document,[1,2]);
+
+        bind(this)
+            this绑定之后是不调用的,也可以有多个参数,
+            从第二个参数起，就是实参的各式个数,
+            它的返回值是一个改变this的函数
+
+                let f = fn.bind(document,1,2);
+                f();
+
+            返回值也可以传实参。
+
+                let f = fn.bind(document);
+                f(1,2);
+    */
+
+    // function fn(a,b){
+    //     alert(a+b);
+    //     console.log(this);
+    // }
+    // fn(1,2);
+    // fn.call(document,1,2);
+    // fn.apply(document,[1,2]);
+    // let f = fn.bind(document);
+    // f(1,2);
+    // console.dir(fn);
+
+    /*
+        4.什么叫函数返回值,
+
+            整个函数名||方法名 + 括号就是返回值并且还会把函数体内的代码执行一遍
+        
+            function fn(a,b){
+                alert(a+b);  
+                console.log(this);
+            }
+            let ff = fn(1,2);  //会执行函数体内的代码
+            console.log(ff); //打印函数返回值
+        
+
+        return 是什么，函数的返回值就是什么，
+
+        return的用法？
+        
+           1.在函数外部想访问到函数内部的运算结果就用return;
+           2.终止return后面的代码执行
+
+    */
+
+    // function fn(a,b){
+    //     // alert(a+b);  
+    //     // console.log(this);
+    //     return a + b;
+    //     alert(a);  //return后面都不执行
+    // }
+    // let f = fn(2,3);
+    // console.log(typeof f);
+
+
+    // let c = 10;
+    // let ab = 0;
+    // function fn(a,b){
+    //     // let ab = a + b;
+    //     // console.log(ab);
+    //     // return ab;
+    //     ab = a + b;
+    // }
+    // // let ab = fn(2,3); //ab就是函数的返回值
+    // fn(2,3);
+    // console.log(c + ab); //15;
+
+
+    /*
+        5.break和return哪有不同
+
+        break: 
+            终止for循环的
+
+        return:
+            终止return后面的
+    */
+
+    // function fn(){
+    //     for(var i=0;i<3;i++){
+    //         if(i == 2){
+    //             // return;
+    //             break;
+    //         }
+    //         alert(i);
+    //     }
+    // }
+    // fn();
+    // console.log(fn());
+
+    // for(var i=0;i<3;i++){
+    //     if(i == 2){
+    //         return;
+    //     }
+    //     alert(i);
+    // }
+    //a 0,1   b报错（√） c 0,1,报错
+
+/*
+    函数声明方式有哪些，什么是形参什么是实参，
+    实参能传哪些数据类型？
+    
+    fn()
+    function fn(a,b){}  //可以在定义的上面和下面调用
+    fn(1,2)
+
+    fn() //报错
+    var fn = function(){} //只能在定义之后调用
+    fn() //正常运行
+
+    实参能放所有的数据类型
+
+    function fn(a,c){
+        c && c(a);
+    }
+    fn(1,function(d){
+        console.log(d);
+    })
+
+    fn({
+        obj:img,
+        attrs:{
+            width:100
+        },
+        callback:function(){
+
+        }
+    })
+
+*/
+
+    // function fn(a,c){
+    //     c && c(a);
+    // }
+    // fn(1,function(d){
+    //     console.log(d);
+    // });
+
+   
+
+
+
+
+
+
+
+
+    
+
+
+
+   
+
+   
+
+</script>
+</body>
+</html>

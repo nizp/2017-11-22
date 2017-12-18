@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    /*
+        map(callback);
+
+            返回一个新的数组
+    */
+
+    // let li = '<li></li>';
+
+    let arr = [
+        {name:'衣服',num:20},
+        {name:'裤子',num:30},
+        {name:'袜子',num:5}
+    ];
+
+    let li = arr.map(function(e,i){
+        return '<li>'+e.name+'<span>'+e.num+'</span></li>';
+    });
+
+    
+    console.log(li);
+
+
+
+
+</script>
+</body>
+</html>

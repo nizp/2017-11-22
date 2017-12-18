@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        push:
+            向数组的末位添加一个或多个数据。
+
+        返回值为新数组的长度。    
+    */
+
+    let arr = [1,2,3,4];
+
+    // arr.push(8,2,3);
+
+    arr.push(  arr.push(2)  );//123412342
+
+    /*
+        [1,2,3,4,2,5]
+    */
+
+    console.log(arr);
+
+    /*
+        *** 如果str不赋值，str是不会被改变的。
+    */
+
+    // let str = 'mai';
+    // str = str.substring(1); //ai
+    // console.log(str);
+    
+
+</script>
+</body>
+</html>

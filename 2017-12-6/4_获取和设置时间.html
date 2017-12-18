@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        时间对象：
+            new Date();
+        获取到当前*本机*的时间(这个时间是可以任意修改的)
+        真正在开发中的使用服务器时间。
+        new Date(服务器时间)
+        Fri(星期) Dec(月份) 07(几号) 2018(年份) 00:00:00(时分秒) GMT+0800 (中国标准时间)
+        参数（目的是为了设置自己想要的时间）：
+            
+            1.可以放时间戳数字(1970.1.1号的时间到某个时间*毫秒*数字)
+
+            2.也可以放字符串
+                new Date('December 17, 1995 03:24:00');
+
+                一  月：January    简写:Jan.
+                二  月：February   简写:Feb.
+                三  月：March      简写:Mar.
+                四  月：April      简写:Apr.
+                五  月：May        简写:May.
+                六  月：June       简写:Jun.
+                七  月：July       简写:Jul.
+                八  月：August     简写:Aug.
+                九  月：September  简写:Sep.
+                十  月：October    简写:Oct.
+                十一月：November   简写:Nov.
+                十二月：December   简写:Dec.
+
+            3.还可以传入数字
+                new Date(2017, 11, 31, 0, 0, 0); //月份需要减一（如果要设置12月，那么要写11）
+
+            4.数字版字符串
+                let date = new Date('2017 12 7 00:00:00')
+            以上的时间，如果设置的时间过大，那么会跳到下几个月或者下几天甚至下几年
+
+
+            对象基于1970年1月1起的毫秒数
+
+
+            getFullYear()  获取年 
+            getMonth()  获取月份  
+                注意:获取出来的数字比想要的数字少1，所以要+1
+            getDate()  获取天
+
+            getDay() 周几  0-6 (0属于周日)
+
+            getHours() 小时
+
+            getMinutes() 分钟
+            
+            getSeconds() 秒
+
+            getMilliseconds() 毫秒
+
+            以上返回值为number类型
+
+        设置时间：
+            setFullYear()
+            setMonth()
+            setDate()
+            setHours()
+            setMinutes()
+            setSeconds()
+            setMilliseconds()
+    */
+
+    //2017, 11, 30, 0, 0, 0
+    let date = new Date();
+
+    let iY = date.getFullYear();  
+    let iMou = date.getMonth(); 
+    let iDate = date.getDate();
+    let iDay = date.getDay();
+
+    let Milliseconds = date.getMilliseconds();
+    let iH = date.getHours();
+    let iM = date.getMinutes(); 
+    let iS = date.getSeconds();
+
+    // console.log(Milliseconds);
+    // console.log(iS)
+    // console.log(iM);
+    // console.log(iDay);
+    // console.log(iDate);
+    // console.log(iMou+1);
+
+
+    // let date2 = new Date(2018,1,0,0);
+    let date2 = new Date();
+    // date2.setFullYear(2018,0,1,0);
+
+    console.log(date2);
+
+
+
+</script>
+</body>
+</html>

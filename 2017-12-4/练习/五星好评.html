@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>五星好评</title>
+<style>
+	body,ul,p{margin:0; padding:0; font-family: "兰亭黑-简";}
+	.show {background: url(img/sure.jpg) no-repeat right bottom;  border: 4px solid #d05465;}
+	ul {width:600px; margin-left:190px;}
+	body {background: -webkit-gradient(linear,0%100%, 100%00% ,from(#dcc3c2),to(#f2ecd9)); width:100%; height:100%; overflow-x: hidden;}
+	.logo {float:left;height: 64px; width:500px; margin-top: 50px; background: url(img/logo.jpg) no-repeat 210px 0px; }
+	.Pa {float:left;height: 46px; width:410px; margin-top:54px; line-height: 46px;border-left: 2px solid #000; text-indent: 14px; font-size: 34px;}
+	.main {margin:0 auto; height:400px; width:920px; border-radius: 15px; margin-top:100px;background:#fff; overflow: hidden;}
+	.Val {font-size: 34px; line-height: 60px;width:120px; text-align: center; float:left; margin-left: 70px;background: #ce5565;color:#fff;border-radius: 8px; display: none;}
+	.content {margin-top: 160px; height:60px; width:920px; }
+	li {border-color: #c5c4c4 transparent transparent transparent;border-style: solid;border-top-width: 16.66667px;border-right-width: 25px;border-left-width: 25px;height: 0;margin-top: 16.66667px;margin-bottom: 10.71429px;position: relative; width: 0; float:left;list-style: none; margin-left: 18px; margin-top: 24px;}
+	li:before,li:after {border-color: #c5c4c4 transparent transparent transparent;border-style: solid; border-top-width: 16.66667px;border-right-width: 25px;border-left-width: 25px;content: '';display: block;height: 0;left: -25px;position: absolute; top: -16.66667px; width: 0;}
+	.Pu {border-color:#ddc1e0 transparent transparent transparent;}
+	.Pu:before,.Pu:after {border-color: #ddc1e0 transparent transparent transparent;}
+	.Pi {border-color:#ce5565 transparent transparent transparent;}
+	.Pi:before,.Pi:after {border-color: #ce5565 transparent transparent transparent;}
+	li:before {transform: rotate(70deg);}
+	li:after {transform: rotate(-70deg);}	
+	.footer {height:120px;margin-top: 60px; background: #ce5565;}
+	p {text-align: center;display: block; line-height: 120px; font-size: 30px; width:920px; color: #fff;}
+</style>
+	
+</head>
+
+<body>
+<div class="main">
+	<span class="logo"></span>
+	<span class="Pa">总体评价</span>
+	<div class="content">
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<p class="Val"></p>
+	</div>
+	<div class="footer">
+		<p class="tips">小提示：点击星星就能打分</p>
+	</div>
+</div>
+
+<script>
+     var Lis=document.querySelectorAll('li');
+	 var P1 =document.querySelector('p');
+	 var Arr=['极差','一般','不错','推荐','力荐'];
+	 var n = undefined; //判断一下有没有点击。 
+
+	 for(var i=0;i<Lis.length;i++){
+		Lis[i].index = i;
+		Lis[i].onmouseover = function(){
+			if(this.index < 2){
+				clear();
+				for(var i=0;i<=this.index;i++){
+					Lis[i].classList.add('Pu');
+				}
+			}else{
+				clear();
+				for(var i=0;i<=this.index;i++){
+					Lis[i].classList.add('Pi');
+				}
+			}
+			P1.style.display = 'block';
+			P1.innerHTML = Arr[this.index];
+		}
+
+		Lis[i].onmouseout = function(){
+			if(typeof n === 'undefined'){ //如果是undefined说明没点击过，全部清掉
+				clear();
+				P1.style.display = 'none';
+			}else{
+				//被点击过了，移出还原到点击时的位置
+				if(n < 2){
+					clear();
+					for(var i=0;i<=n;i++){
+						Lis[i].classList.add('Pu');
+					}
+				}else{
+					clear();
+					for(var i=0;i<=n;i++){
+						Lis[i].classList.add('Pi');
+					}
+				}
+				P1.style.display = 'block';
+				P1.innerHTML = Arr[n];
+			}
+		}
+
+		Lis[i].onclick = function(){
+			n = this.index;
+		}
+
+	 }
+
+	 function clear(){
+		for(var i=0;i<Lis.length;i++){
+			Lis[i].className = '';
+		}
+	 }
+
+
+	 
+	
+</script>
+
+</body>
+</html>

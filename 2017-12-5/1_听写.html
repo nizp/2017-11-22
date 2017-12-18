@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" index="0"></div>
+    <ul>
+        <li class="li">1</li>
+        <li class="li">2</li>
+        <li class="li">3</li>
+    </ul>
+<script>
+    /*
+        1.如何求得一个数组中的最大值。
+    */
+    let arr = [1,6,2,7,3,9];
+    let Max = -Infinity;
+    for(var i=0;i<arr.length;i++){
+        if(arr[i] > Max){
+            Max = arr[i];
+        }
+    }
+    // console.log(Max);
+
+    /*
+        2.取余的规律
+
+        a > b 取余 a/b余几？
+
+        a < b 取a
+
+        a == b 取0 
+    */
+    // console.log(5%2);
+    // console.log(4%5);
+
+    /*
+        什么是自定义属性，一般用在哪个地方
+
+        在非空对象下添加一个自定义属性（{},[],function）
+
+        1.有多个对象的情况下，每个对象都有自己的一套属性
+
+        2.行间的属性如果是系统自带的，比如box.id，那么可以直接通过对象.的方式获取
+          如果不是系统自带的，那么为undefined
+        
+        3.添加索引（操作一个东西的时候还要关联另一个东西）
+
+        作为一个标识好去对应。
+
+    */
+    // alert(typeof null);
+    // console.log(box.id);
+    // box.index = 1;
+    // console.log(box.index);
+    
+    /*
+        4.选项卡的定点清除思路
+
+        1）
+            预设一个默认元素
+        2）
+            在触发事件的时候先清掉预设的className
+            再清掉预设元素对应（divs[预设元素.index]）的div的className
+        3）
+            当前触发事件对象的className变为active（btns[this.index].className = 'active'）
+            把当前触发事件对象.索引的div的className设置为show
+        4）
+           *** 把预设的默认元素改变成this，以便下一次使用。
+    */
+
+    /*
+        数据类型有哪些？分别长什么样子？什么时候会出现？
+
+        string（''||""）,number(0-9),boolean(true,false),
+        undefined[
+            1.声明了一个变量没有赋值
+            2.函数的默认返回值
+            3.对象中没有这个属性(数组中找不到这个值)
+            4.函数没有传实参，去访问形参的时候
+            5.预解析的时候var的上面会出现undefined
+        ]
+        ,null[
+            1.页面中没有这个元素
+            2.script标签写在元素的上面，没有window.onload
+        ]
+        ,object
+        ,symbol
+
+        typeof版：(小写字符串)
+            没有null(object)，有function
+
+
+
+    */
+
+    
+    var a;
+    function fn(a){
+        alert(a);
+    }
+    //fn();
+    // var b = {
+    //     name:'小黑',
+    //     age:18,
+    //     job:'前端开发',
+    //     length:3
+    // };
+    // alert(arr2);
+    var arr2 = [1,2,3,4,5,6];
+     
+
+
+    // console.log(a);
+    // var b = fn();
+    // console.log(b['name']);
+    // console.log(this['name']); // '' window下有name值为''
+    // console.log(arr2);
+
+
+    // for(var i=0;i<arr2.length;i++){
+    //     console.log(arr2[i]);
+    // }
+
+    /******
+        举例强制类型转换和隐式类型转换不少于2个
+
+        parseInt
+        parseFloat
+        Number
+
+        + '10'  -> number 10
+
+        '10' + 10 ->  '1010'
+
+        '100'-2 -> number 98
+
+        '100' * 1 -> number 100
+
+    ******/
+
+    /*
+        a && b
+            如果a成立还会去看b，结果一定是b
+            如果a不成立，结果a
+            
+
+        a||b 各是什么意思
+
+            如果a成立，就不会去看b了，结果为a
+            如果a不成立，就会去看b，结果是b
+    */
+    // console.log(0 && 2);
+    // console.log(1 || 2);
+
+    /*
+        8.== === 的区别
+
+        == 不会对比数据类型，而且会转换左右两边的值（双方转成一样的数据类型然后比较）。
+
+        a===b 全等 会去比较数据类型，不会转换左右两边的值。
+
+
+    */
+
+    /*
+        使用取反时发生了什么
+
+        var str = '呵呵';
+
+        !str  -> false 
+
+        隐式类型转换了，能把所有的数据类型直接转成布尔值，并且取相反值
+
+        !!str -> true 小技巧
+    */
+
+    /*
+        什么是真什么是假：
+        
+        真:非空对象([],{},fn)、true、非空字符串、非0数字、function、symbol
+
+        假:NaN,null,false,空字符串,undefined,0
+    */
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">开始</button>
+    <button id="btn2">停止</button>
+    <p id="p"></p>
+
+<script>
+    const btn = document.getElementById('btn');
+    const btn2 = document.getElementById('btn2');
+    const p = document.getElementById('p');
+    let timer = null;
+    let arr = ['刘传超','孙岩皓','徐涛','杨娜','郑超学','袁帅','马雪琦','刘春雨','胡耀祥'];
+
+    btn.onclick = function(){
+        timer = setInterval(function(){
+            p.innerText = arr[Math.round(Math.random()*8)];
+        },50);
+    }
+    btn2.onclick = function(){
+        clearInterval(timer);
+    }
+</script>
+</body>
+</html>

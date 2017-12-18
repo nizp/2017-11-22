@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+<script>
+    /*
+        box1.onclick = red;
+        box2.onclick = red;
+
+        function red(){
+            alert(1);
+        }
+        函数传参:
+            形参:
+                形参 -> 形式上的参数
+                是可变的-> 直接理解为变量 var,let
+                形参是可以定义初始值的
+                    function(a=1,b=[]){}
+                    a默认值为1
+                    b默认值为一个空白数组
+                如果没有初始值，就为undefined
+                
+            实参:
+                实实在在的参数
+                *** 实参的个数一定要对应形参的个数
+                function fn(a=1,b=[]){}
+                fn(5,6)
+
+                *** 实参可以传入任何数据
+
+
+                
+    */
+
+    // document.onclick = fn();
+
+    const divs = document.getElementsByTagName('div');
+
+    // divs[0].onclick = function(){
+    //     console.log(1+2)
+    // }
+    // divs[0].onclick = fn(1,2); ×，因为事件还没触发就直接调用了
+    divs[0].onclick = function(){
+        fn();
+    }
+    divs[1].onclick = function(){
+        //2,5是实参 -> 实实在在的参数
+        fn(2,5); 
+    }
+
+    /*
+        a,b   形参 -> 形式上的参数
+        是可变的-> 直接理解为变量 var a,b
+        如果没有初始值，就为undefined
+
+        形参是可以定义一个初始值的
+    */
+    function fn(c=100,d=1,e){
+        // console.log(e);
+        e(); //e为一个函数
+        console.log(c+d);
+    }
+    fn(100,1,function(){
+        alert(1);
+    },[],true);
+
+
+
+    // function fn(){
+    //    console.log(a + b);
+    // }
+
+    // fn();
+</script>
+</body>
+</html>

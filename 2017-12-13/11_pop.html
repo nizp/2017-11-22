@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        pop(没有参数);
+            从末位删除1个数据
+            
+            返回值:为删除的那个数据
+
+        注意：
+            添加多个参数也是删除最后一个
+
+    */
+
+    let arr = [1,2,3,4];
+
+    
+    arr.push(arr.push(arr.pop(arr.pop(1000)))); 
+
+    /*
+        [1,2,3,3]
+    */
+
+    console.log(arr);
+    
+
+    // console.log(arr.pop());
+
+
+</script>
+</body>
+</html>

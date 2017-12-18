@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        非常好用
+        arr.filter(callback) 
+            过滤
+    */
+
+    let arr = [
+        {name:'衣服',num:20,chcked:false},
+        {name:'裤子',num:30,chcked:true},
+        {name:'袜子',num:5,chcked:false}
+    ];
+
+    //查看每条数据，某条数据是否条件成立，把不成立的过滤掉，返回一个新数组
+    console.log(arr.filter(function(e,i){
+        return !e.chcked;
+    }));
+</script>
+</body>
+</html>
