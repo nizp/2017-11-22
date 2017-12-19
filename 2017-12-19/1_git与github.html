@@ -143,8 +143,49 @@
             还原整个历史记录:
                 git reset --hard 历史记录
 
+        同步到远程仓库
+            git remote     (查看远程仓库的名字)
+            git remote -v  (查看远程仓库对应的地址)
+            git push origin master （将版本库中的文件提交到远程仓库）
+            
+            git remote add 名字 地址（url） 创建远程仓库的名字
+
         
+        多人协作开发：
+                1.进入项目，点击settings 最左边coll...
+                2.添加合伙人
+                3.合伙人需要邮箱确认
+                4.合伙人需要把项目克隆到本地
+                5.合作开发
+            遇到了冲突:
+                git fetch  拉取远程仓库的代码
+                git diff master origin/master 查看对比冲突
+                git merge origin/master  合并冲突，人为去删除冲突代码
+                再次提交代码到版本区 -> push
+
+    长期存储密码：
+		git config --global credential.helper store
+        增加远程地址的时候带上密码也是可以的。(推荐)
+
+            下课件步骤:
+            
+            首次下载:
+                fork nizp  2017-11-22项目
+                git clone fork的项目
+
+            以后下载:
+                进入自己的2017-11-22 点击settings 删除
+                再fork nizp  2017-11-22项目
+                输入git pull
+                就拿到了当天的课件
+
+
+
                 
+
+                
+                
+
 
             
 
