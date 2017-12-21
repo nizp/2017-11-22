@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // let arr = [-1,-2,1,10,4,5,8];
+
+    //let mx = -Infinity;
+    // arr.forEach(function(e){
+    //     if(e > mx){
+    //         mx = e;
+    //     }
+    // });
+
+    // arr.sort(function(a,b){
+    //     return a - b;
+    // });
+    // console.log(arr[arr.length-1]);
+
+    // console.log(Math.max.apply(null,arr));
+
+
+    let str = 'miao wei ke tang';
+    console.log( fn(str) );
+    function fn(str){
+        let arr = str.split(' ');
+        let s = '';
+        arr.forEach(function(e,i){
+            if(i > 0){
+                s += e[0].toUpperCase() + e.substring(1);
+            }
+        });
+        // console.log(a);
+       return arr[0] + s;
+    }
+
+    // function fn(str){
+    //     let arr = str.split(' ');
+    //     // console.log(arr)
+    //    return arr[0] + arr[1][0].toUpperCase() + arr[1].substring(1);
+    // }
+
+
+    /*
+        string:
+            box.value
+        object:
+            {},[],null
+        number:
+            1
+        boolean:
+            1 > 0
+        undefined:
+            var a;
+        function:
+            function(){}
+        symbol:
+            symbol  
+        
+    */
+
+    // function fn(){}
+    // console.log(typeof fn);
+
+
+    let str2 = 'ababcabcababcababaabbcabababcaababbda';
+
+    // console.log(str2.split('c').length);
+
+    // console.log((str2.length - str2.split('ab').length)/2);
+    
+    // let num = 0;
+    // let index = [];
+    // while(str2.indexOf('ab',num) != -1){
+    //     index.push( str2.indexOf('ab',num) );
+    //     num = str2.indexOf('ab',num) + 1;
+    // }
+
+    // console.log('出现的位置为'+index,'一共出现了'+index.length+'次');
+
+    
+    let arr = [1,2,3,4,5,6,7,8,9];
+    
+    arr.push(arr.pop(arr.shift()));
+
+    // [2,4,5,12,8,6,7,8,9,[3]]
+
+    arr.splice(3,0,12,arr.push(arr.splice(1,1)));
+    
+     console.log(arr);
+</script>
+</body>
+</html>
