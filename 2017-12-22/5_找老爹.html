@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <div>
+            <a  href="javascript:;">点我!!</a>
+        </div>
+        <div>
+            <a  href="javascript:;">点我!!</a>
+        </div>
+        <div>
+                <a  href="javascript:;">点我!!</a>
+        </div>
+
+    </div>
+<script>
+
+    /*
+        子级.parentNode   找父级
+
+        如果一直向上找，那么就
+        parentNode.parentNode
+
+        页面中最大的是document
+    */
+
+    // const a = document.getElementById('a');
+
+    // a.onclick = function(){
+    //     // console.log(this.parentNode);
+
+    //     this.parentNode.parentNode.style.display = 'none';
+
+    //     // alert(this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode);
+    // }
+
+    const a = document.getElementsByTagName('a');
+    const divs = document.getElementById('box').children;
+    for(let i = 0;i<a.length;i++){
+        a[i].index = i;
+        a[i].onclick = function(){
+            divs[this.index].style.display = 'none';
+        }
+    }
+
+</script>
+</body>
+</html>

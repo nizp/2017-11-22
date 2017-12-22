@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+#wrap{
+	width:450px;
+	height: 260px;
+	background: #ffb746;
+	/*border-radius:10px;*/
+	border: 1px solid #000;
+	font-family: "微软雅黑";
+	
+	/*box-shadow:1px 1px 1px #000;*/
+}
+nav a{
+	display: inline-block;
+	width:146px;
+	height: 40px;
+	font-size: 16px;
+	text-align: center;
+	line-height: 40px;
+	color: #000;
+	text-decoration: none;
+	background: #fff;
+}
+a.active{
+	background: #ffb746;
+	color: #fff;
+}
+
+#box{
+	margin:20px;
+	height: 180px;
+}
+#box ul{
+	width:226px;
+	list-style: none;
+	float: left;
+}
+#box div{
+	display: none;
+}
+#box div.show{
+	display: block;
+}
+#box ul li{
+	height: 60px;
+	width
+}
+#box ul li.active{
+	background:#fff;
+}
+#box li p{
+	font-size: 14px;
+	color:#fff;
+	text-indent:2em;
+	line-height:2.5em;
+	height: 35px;
+}
+#box li.active p{
+	font-size: 16px;
+	color:#000;
+}
+#box li.active span{
+	color:#000;
+}
+img{
+	width:178px;
+	height: 178px;
+	display: block;
+	float: left;
+	border: 2px solid #fff;
+	display: none;
+}
+img.active{
+	display: block;
+}
+span{
+	font-size: 12px;
+	line-height: 20px;
+	text-indent:2.5em;
+	display: block;
+	color:#fff;
+}
+#box div{
+	height: 180px;
+	width:
+}
+
+</style>
+</head>
+<body>
+	<section id="wrap">
+		<nav>
+			<a href="javascript:;" class="active">专题</a>
+			<a href="javascript:;">视频</a>
+			<a href="javascript:;">图片</a>
+		</nav>
+		<div id="box">
+			<div class="show">
+				<img src="img/1.jpg" alt="" class="active"/>
+				<img src="img/2.jpg" alt=""/>
+				<img src="img/3.jpg" alt=""/>
+				<ul class="show">
+					<li class="active">
+						<p>奇虎360纽交所上市11</p>
+						<span>2016-10-12</span>
+					</li>
+					<li >
+						<p>2011年IT领袖峰会</p>
+						<span>2016-10-12</span>
+					</li>
+					<li>
+						<p>CCBN召开 助三网融合</p>
+						<span>2016-10-12</span>
+					</li>
+				</ul>
+			</div>
+			
+			<div>
+				<img src="img/4.jpg" alt=""  class="active"/>
+				<img src="img/3.jpg" alt=""/>
+				<img src="img/1.jpg" alt=""/>
+				<ul class="show">
+					<li class="active">
+						<p>奇虎360纽交所上市222</p>
+						<span>2016-10-12</span>
+					</li>
+					<li >
+						<p>2011年IT领袖峰会</p>
+						<span>2016-10-12</span>
+					</li>
+					<li>
+						<p>CCBN召开 助三网融合</p>
+						<span>2016-10-12</span>
+					</li>
+				</ul>
+			</div>
+			
+			<div>
+				<img src="img/1.jpg" alt=""  class="active"/>
+				<img src="img/2.jpg" alt=""/>
+				<img src="img/3.jpg" alt=""/>
+				<img src="img/1.jpg" alt=""/>
+				<ul class="show">
+					<li class="active">
+						<p>奇虎360纽交所上市333</p>
+						<span>2016-10-12</span>
+					</li>
+					<li >
+						<p>2011年IT领袖峰会</p>
+						<span>2016-10-12</span>
+					</li>
+					<li >
+						<p>2011年IT领袖峰会</p>
+						<span>2016-10-12</span>
+					</li>
+					<li>
+						<p>CCBN召开 助三网融合</p>
+						<span>2016-10-12</span>
+					</li>
+				</ul>
+			</div>
+			
+		</div>
+	</section>
+<script type="text/javascript">
+	
+	const wrap = document.getElementById('wrap');
+	//按钮
+	const btns = Array.from(document.querySelectorAll('a'));
+	//box下的div
+	const divs = Array.from(document.getElementById('box').getElementsByTagName('div'));
+	let timer = null;
+	let num = 0;
+	let num2 = 0; //控制小的div
+
+	let imgs = divs[num].getElementsByTagName('img');
+	let lis = Array.from(divs[num].getElementsByTagName('li'));
+
+	
+	btns.forEach(function(e,i){
+		e.onmouseover = function(){
+			for(var j=0;j<btns.length;j++){
+				btns[j].className = '';
+				divs[j].className = '';
+			}
+			btns[i].className = 'active';
+			divs[i].className = 'show';
+			num2 = 0; 
+			// changemin(i);
+			// alert('刚才是谁'+num)
+			changemin(num);
+			minDiv(i);
+			num = i;
+			// alert('xz是谁'+num);
+			
+		};
+	});
+
+	function minDiv(num){
+		//修正当前切换的img和li
+		imgs = divs[num].getElementsByTagName('img');
+		lis = Array.from(divs[num].getElementsByTagName('li'));
+		lis.forEach(function(el,k){
+			el.onmouseover = function(){
+				for(var n=0;n<lis.length;n++){
+					lis[n].className = '';
+					imgs[n].className = '';
+				}
+				lis[k].className = 'active';
+				imgs[k].className = 'active';
+			}
+			el.onmouseout = function(){
+				num2 = k;
+			}
+		});
+	}
+
+	/*
+		找到对应要切换的img和li
+	*/
+	change();
+
+	wrap.onmouseenter = function(){
+		clearInterval(timer);
+		minDiv(num);
+	}
+	wrap.onmouseleave = function(){
+		change();
+	}
+
+
+	//清除
+	function changemin(num){
+		let imgs = divs[num].getElementsByTagName('img');
+		let lis = divs[num].getElementsByTagName('li');
+		for(var n=0;n<lis.length;n++){
+			lis[n].className = '';
+			imgs[n].className = '';
+		}
+		lis[num2].className = 'active';
+		imgs[num2].className = 'active';
+	}
+
+
+	function change(){
+		let imgs = divs[num].getElementsByTagName('img');
+		let lis = Array.from(divs[num].getElementsByTagName('li'));
+		timer = setInterval(function(){
+			num2 ++;
+			//当num2到了最后一个li的时候。
+			if(num2 == imgs.length){
+				clearInterval(timer); //把刚才的定时器关闭
+				num2 = 0; //默认从第0个li开始
+				/*
+					清掉刚才的
+				*/
+				changemin(num);
+
+				num ++; //切换按钮和大的box
+				//切换大的div和btn
+				for(var j=0;j<btns.length;j++){
+					btns[j].className = '';
+					divs[j].className = '';
+				}
+				btns[num%=btns.length].className = 'active';
+				divs[num%=btns.length].className = 'show';
+
+				change();
+			}else{
+				//大清洗，把所有li和img洗掉,把第num2对应的li和img显示出来
+				for(var n=0;n<lis.length;n++){
+					lis[n].className = '';
+					imgs[n].className = '';
+				}
+				lis[num2].className = 'active';
+				imgs[num2].className = 'active';
+			}
+		
+		},1000);
+	}
+
+
+
+
+
+
+	
+
+
+	
+
+
+
+</script>
+</body>
+</html>

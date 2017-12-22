@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+*{
+    margin: 0;
+    padding:0;
+}
+#box{
+    width:428px;
+    height: 514px;
+    background: #555;
+    border: 1px solid #848484;
+}
+ul {
+    width:428px;
+    list-style: none;
+}
+ul li{
+    width:58px;
+    height: 48px;
+    border: 1px solid #555;
+    float: left;
+    color: #fff;
+    line-height: 48px;
+    text-align: center;
+}
+ul li.active{
+    border: 1px solid #0078D7;
+}
+ul li.old{
+    color: #848484;
+}
+
+</style>
+</head>
+<body>
+    <div id="box">
+        <ul id="week"></ul>
+        <ul id="date"></ul>
+    </div>
+<script>
+    /*
+
+    */
+
+    const box = document.getElementById('box');
+    const week = document.getElementById('week');
+    const date = document.getElementById('date');
+
+    let arr = ['一','二','三','四','五','六','日'];
+    let html = '';
+    arr.forEach(function(e,i){
+        html += '<li>'+ e +'</li>';
+    });
+    week.innerHTML = html;
+
+
+   
+
+    //今天多少号   date1.getDate()
+
+    //一个月有多少天
+    let date1 = new Date();
+
+    var curMonth = date1.getMonth(); //当前是几月
+
+    date1.setMonth(curMonth + 1); //设置实际的月份
+
+    date1.setDate(0); //当前日期从0开始算
+
+    let d = date1.getDate();  //一个月有多少天
+
+    //现在的时间
+    let nowDate = new Date();
+    let nowd = nowDate.getDate();
+
+
+    let dHtml = '';
+    for(let i=0;i<d;i++){
+        dHtml += `<li class="${i==nowd-1?'active':''}">${(i+1)}</li>`;
+    }
+
+    date.innerHTML = dHtml;
+
+    //顶格   每个月的1号是周几
+    let nDate = new Date();
+    nDate.setDate(1);
+    let d2 = nDate.getDay();
+    d2==0 && (d2=7);
+
+
+    //做上个月的日期
+    let oDate = new Date();
+    oDate.setMonth(oDate.getMonth());
+    oDate.setDate(0);
+    let od = oDate.getDate();
+
+
+
+    for(let i=1;i<d2;i++){
+        date.innerHTML = `<li class="old">${od--}</li>` + date.innerHTML;
+    }
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

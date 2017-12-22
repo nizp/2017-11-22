@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        1.闭包
+            函数套函数，子函数能够访问（使用）到父函数的参数或者变量
+            父级的参数或者变量不会被垃圾回收机制给回收。
+                1.函数内的计算结果不会回收
+                2.在循环的时候找索引
+        2.递归
+            自己调用自己(想一件事重复多次去执行)
+
+        3.传参
+            function fn(num){}
+            fn(5,{},function(){},[]);
+        4.钩子
+            callback 当某个条件成立的时候调用的函数
+        5.alert
+            toString()
+        6.json
+            {} []  对象
+            '{}'  '[]'  json 是个字符串
+        7.sort
+            a-b  小到大
+            b-a  大到小
+        8.借方法
+
+        9.const
+            const a;
+        10.预解析
+
+    */
+/*
+    alert(2);
+*/
+    fn();
+    function fn(){
+        alert(1);
+    }
+    function fn(){
+        alert(2);
+    }
+    // fn();
+    var fn = function(){
+        alert(3);
+    }
+    fn();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // let arr = [1,2,[8]];
+
+    // let arr2 = JSON.parse(JSON.stringify(arr));
+
+    // arr2[2].push(9);
+
+    // console.log(arr);
+
+
+
+    // function fn(){
+    //     let num = 0;
+    //     for(var i=0;i<arguments.length;i++){
+    //         num += arguments[i];
+    //     }
+    //     return num;
+    // }
+
+    /*
+        常量:不可变的  -> const box = docu.id('box')
+        变量:
+            var let
+    */
+    // const a = 0;
+    // a = 20;
+    // console.log(fn.apply(null,arr));
+
+//    console.log( fn(1,2,3,4,5,6,7) );
+
+    
+
+
+
+    // function fn(num){
+    //     if(num == 1)return num;
+    //     return fn(num-1) + num;
+    // }
+
+    /*
+    
+        function fn(5){
+            return fn(5-1) + num;
+        }
+
+        function fn(4){
+            return 3 + num;
+        }
+
+        function fn(2){
+            return 1 + 2;
+        }
+
+        function fn(1){
+            if(num == 1)return num;
+        }
+    */
+
+
+
+    // function fn(num){
+    //     function fn2(){
+    //         return 5;
+    //     }
+    //     return fn2() + num;
+    // }
+
+    /*
+        function fn(num){
+
+            return fn2() + num;
+        }
+
+        function fn2(){
+            return 5;
+        }
+    */
+
+    // console.log(fn(5));
+
+    
+    // var i=0;
+    // function fn(){
+    //     if(i >= 5)return;
+    //     console.log(i);
+    //     i++;
+    //     fn();
+    // }
+    // fn();
+
+    // let a = 0;
+    // setTimeout(function(){
+    //     a = 10;
+    // },0);
+    // alert(a);
+
+
+
+    // function fn(){
+    //     window.a = 20;
+    // }
+    // fn();
+    // console.log(window.a);
+     
+
+    // function fn(){
+    //     let a = 10;
+    //     return function(){
+    //         ++ a;
+    //         alert(a);
+    //     }
+    // }
+    // // fn()();
+    // // fn()();
+
+    // let f = fn();
+
+    // f();
+    // f();
+
+
+    // console.dir(f);
+
+    // function fn(num){
+    //     return function(a){
+    //         function fn2(b){
+    //             console.log(b());
+    //         }
+    //         function fn3(c){
+    //             alert(a);
+    //             fn2(function(){
+    //                 return 10;
+    //             });
+    //         }
+    //         fn3(a);
+    //     }
+    // }
+    // let f = fn(5);
+    // f(20);
+
+        // alert([1,2,3,4,5])
+        //console.log([1,2,3,4,5])
+    // console.log([1,2,3,4,5].toString())
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

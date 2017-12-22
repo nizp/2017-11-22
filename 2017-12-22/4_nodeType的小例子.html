@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ul">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+<script>
+    let ul = document.getElementById('ul');
+    let lis = ul.children;//ul.childNodes;
+
+    /*
+        children  孩儿们 -> 找元素节点 
+           不是标准但是所有浏览器都兼容。
+    */
+
+    console.log(lis.length);
+
+    for(let i=0;i<lis.length;i++){
+        lis[i].style.background = 'red';
+        // if(lis[i].nodeType === 1){ //元素节点
+        //     lis[i].style.background = 'red';
+        // }
+    }
+
+</script>
+</body>
+</html>
