@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" index="1">
+          12312321
+          
+          <!-- 呵呵,不好看我! -->
+          
+          fddsfdsfs
+    </div>
+<script>
+    /*
+        javascript:
+            ECMAscript
+            DOM
+                Document Object Model(文档对象模型)
+
+                通过document提供的接口，赋予开发者操作页面的能力
+
+                对于结构的关系非常清晰,任意操作它们
+            BOM
+
+            id: document.getElementById('box');
+                document.querySelectorAll()
+
+                box.getElementsByTagName()
+
+        页面中所有的内容都叫节点。
+
+        结构:
+            父级
+            子级
+            兄弟
+
+            祖孙节点  从下往上
+            子孙节点  从上往下
+
+        nodeType  查看节点类型
+
+        常用的类型:
+            document  9
+
+            元素节点   1
+
+            文本节点   3
+                空格和文字都是文本节点，在一个元素中既有空格
+                又有文字，算一个文本节点。
+
+            注释节点   8
+
+            属性节点   2
+
+            http://www.w3school.com.cn/xmldom/dom_nodetype.asp
+
+
+        childNodes[num]   -> 所有子节点(包含文本节点，注释节点)。
+
+        nodeName   节点的名字
+        nodeValue  节点的内容
+        tagName    大写标签   DIV
+
+
+    */
+
+    let box = document.getElementById('box');
+
+    // console.log(box.nodeType);  //1
+
+    // console.log(box.childNodes[1].nodeType);
+
+    // console.log(box.childNodes[0].nodeName);
+
+    // console.log(box.childNodes[1].nodeValue);
+
+    // console.log(box.childNodes[3].nodeType);
+
+    // console.log(box.attributes[1].nodeType);
+
+    console.log(box.tagName); //大写
+</script>
+</body>
+</html>
