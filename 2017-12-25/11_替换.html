@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    background: red;
+}
+#box2{
+    width: 100px;
+    height: 100px;
+    background: yellow;
+}
+</style>
+</head>
+<body>
+   <div id="wrap">
+        <div id="box"></div>
+        <!-- <hr /> -->
+   </div>
+    <!-- <div id="box2"></div> -->
+<script>
+    /*
+        replaceChild();
+
+        parent.replaceChild(newnode,oldnode);
+    */
+    document.onclick = function(){
+        let div = document.createElement('div');
+        div.id = 'box2';
+        wrap.replaceChild(div,box);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击添加</button>
+    <ul id="ul"></ul>
+<script>
+    /*
+        创建元素:
+            document.createElement(标签名)
+
+        在末位追加元素:
+            parent.appendChild(childNodes[0])
+
+            parent.insertBefore(添加谁,往谁前面添加)
+
+        删除
+            parent.removeChild(删除的那个)
+
+            高版本浏览器自带    
+                element.remove();
+        替换
+            replaceChild()
+
+        DOM的操作都是剪切，不是复制
+    */
+    let num = 0;
+    btn.onclick = function(){
+        let li = document.createElement('li');
+
+        li.onclick = function(){
+            // this.remove();
+            ul.removeChild(this);
+        }
+        // console.log(li);
+        li.innerText = ++ num;
+        
+        ul.insertBefore(li,ul.children[0]);
+        //ul.appendChild(li);
+    }
+</script>
+</body>
+</html>

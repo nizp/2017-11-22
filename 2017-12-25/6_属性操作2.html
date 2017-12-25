@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" index="1"></div>
+    <img src="1.png" alt="" id="img">
+<script>
+    /*
+        box.id
+        box['id']
+
+        操作行间的属性
+            获取属性：
+                box.getAttribute(属性名)
+            设置属性:
+                box.setAttribute(属性名,属性值)
+            删除属性:
+                box.removeAttribute(属性名)
+        ES5
+            dataset 给行间添加属性的方式
+
+        box.dataset.index = 0
+    */
+    const box = document.getElementById('box');
+
+    box.dataset.index = 1;
+
+    box.dataset.index2 = '';
+
+    box.removeAttribute('data-index2'); //彻底删除data-xxx，使用removeAttribute
+
+    
+
+
+
+
+</script>
+</body>
+</html>

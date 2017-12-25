@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    background: red;
+}
+#box2{
+    width: 100px;
+    height: 100px;
+    background: yellow;
+}
+#box3{
+    width:20px;
+    height: 20px;
+    background: black;
+}
+</style>
+</head>
+<body>
+   <div id="wrap">
+        <div id="box"></div>
+        <hr />
+        <div id="box2">
+            <div id="box3"></div>
+        </div>
+   </div>
+    
+<script>
+    /*
+        克隆
+            cloneNode(true);
+                true:还可以克隆子节点
+    */
+    document.onclick = function(){
+        let box22 = box2.cloneNode(true);
+        wrap.insertBefore(box22,box);
+        console.log(box22);
+    }
+</script>
+</body>
+</html>

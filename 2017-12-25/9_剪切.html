@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ul">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+<script>
+    /*
+        动态数组
+            getElementsByTagName()
+            children
+            className
+
+        静态：
+            querySelectorAll
+
+        A:12345  B:54321 C:24153 D:34251  E:24351 F:34215
+    */
+    let ul = document.getElementById('ul');
+    let lis = ul.querySelectorAll('li');//ul.children;
+    for(var i=0;i<lis.length;i++){
+        ul.appendChild(lis[i]);  //最后的结果就是5个，不会是10个，因为剪切
+    }
+
+</script>
+</body>
+</html>

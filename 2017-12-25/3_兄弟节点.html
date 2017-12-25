@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ul">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+<script>
+    /*
+        上个兄弟节点：
+            previousElementSibling
+
+        下一个兄弟节点：
+            nextElementSibling
+        
+        
+    */
+    const ul = document.getElementById('ul');
+    const last = ul.lastElementChild;
+    const first = ul.firstElementChild;
+    first.style.background = 'yellow';
+
+    last.style.background = 'red';
+
+    last.previousElementSibling.style.background = 'green';
+
+    first.nextElementSibling.style.background = 'skyblue';
+    // console.log();    
+
+
+
+</script>
+</body>
+</html>

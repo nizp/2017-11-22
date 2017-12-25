@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+*{
+    margin: 0;
+    padding:0;
+}
+ul{
+    width:100px;
+    border: 1px solid #000;
+    list-style: none;
+}
+li{
+    height: 20px;
+}
+.o{
+    background: orange;
+}
+.g{
+    background: gainsboro;
+    font-size:18px;
+}
+.b{
+    background:grey;
+    font-size:12px
+}
+.s{
+    background: skyblue
+}
+</style>
+</head>
+<body>
+    <ul id="ul">
+        <li class="s">1</li>
+        <li>2</li>
+        <li class="b">3</li>
+        <li class="g">4</li>
+        <li class="b">5</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li class="s">6</li>
+    </ul>
+<script>
+    const ul = document.getElementById('ul');
+    const lis = Array.from(ul.children);
+
+    lis.forEach(function(el,i){
+        el.onmouseover = function(){
+            if(this == ul.firstElementChild || this == ul.lastElementChild){
+                lis.forEach(function(el,i){
+                   if(i!=0 && i!=lis.length-1){
+                        el.className = '';
+                   }
+                });
+                this.className = 'o';
+                //如果当前这个有上个兄弟节点，就变色
+                if(this.previousElementSibling){
+                    this.previousElementSibling.className = 'b';
+                }
+                if(this.nextElementSibling){
+                    this.nextElementSibling.className = 'b';
+                }
+            }else{
+                //不能动第一个和最后一个
+                lis.forEach(function(el,i){
+                   if(i!=0 && i!=lis.length-1){
+                        el.className = '';
+                   }
+                });
+                this.className = 'g';
+                if(this.previousElementSibling != ul.firstElementChild){
+                    this.previousElementSibling.className = 'b';
+                }
+                if(this.nextElementSibling != ul.lastElementChild){
+                    this.nextElementSibling.className = 'b';
+                }
+            }
+        }
+
+        el.onmouseout = function(){
+            if(this == ul.firstElementChild || this == ul.lastElementChild){
+               this.className = 's';
+            }
+        }
+    });
+
+
+</script>
+</body>
+</html>
