@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.active{
+    background: yellow;
+}
+</style>
+</head>
+<body>
+    <button class="active">按钮一</button>
+    <button>按钮二</button>
+    <button>按钮三</button>
+    <div id="box">
+        11111
+    </div>
+<script>
+    let arr = ['11111','22222','33333'];
+    const btns = Array.from(document.querySelectorAll('button'));
+    let btn = btns[0];
+    for(var i=0;i<btns.length;i++){
+        btns[i].dataset.index = i;
+        btns[i].onclick = function(){
+            btn.classList.remove('active');
+            this.classList.add('active');
+            box.innerText = arr[this.dataset.index];
+            btn = this;
+        }
+    }
+
+
+</script>
+</body>
+</html>

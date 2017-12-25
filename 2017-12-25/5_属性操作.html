@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" index="1"></div>
+    <img src="1.png" alt="" id="img">
+<script>
+    /*
+        box.id
+        box['id']
+
+        操作行间的属性
+            获取属性：
+                box.getAttribute(属性名)
+            设置属性:
+                box.setAttribute(属性名,属性值)
+            删除属性:
+                box.removeAttribute(属性名)
+    */
+    const box = document.getElementById('box');
+
+    // console.log(img.src); //不能直接拿来判断(绝对路径)
+
+    console.log(img.getAttribute('src'));//(可以拿来判断（相对路径）)
+
+    // box.index = 1;
+
+    // console.log(box.getAttribute('index'));
+
+    // box.setAttribute('hehe','哈哈');
+
+    // box.removeAttribute('index');
+
+    // console.log(box.index);
+    // console.log(box.id);
+
+    // console.dir(box);
+
+
+</script>
+</body>
+</html>
