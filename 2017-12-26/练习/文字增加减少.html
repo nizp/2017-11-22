@@ -82,8 +82,14 @@
     span.innerText = num +'/'+len;
     btn.onclick = function(){
         // let str = '';
+        len = ts[0].value.length;
+        clearInterval(timer);
         timer = setInterval(function(){
-            if(!ts[0].value)return;
+            if(!ts[0].value){
+                clearInterval(timer);
+                num = 0;
+                return;
+            };
             num ++;
             // str += ts[0].value[0];
             ts[1].value += ts[0].value.substr(0,1);
