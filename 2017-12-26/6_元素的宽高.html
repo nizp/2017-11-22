@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+*{
+    margin:0;
+    padding: 0;
+    font-size:12px;
+}
+#box{
+    width:100px;
+    /* height: 100px; */
+    background: red;
+    padding: 10px;
+    border: 10px solid #000;
+}
+</style>
+</head>
+<body>
+    <div id="box">
+        <p>addsadsaddsadsad</p><p>addsadsaddsadsad</p><p>addsadsaddsadsad</p><p>addsadsaddsadsad</p><p>addsadsaddsadsad</p><p>addsadsaddsadsad</p><p>addsadsaddsadsad</p><p>addsadsaddsadsad</p><p>addsadsaddsadsad</p><p>addsadsaddsadsad</p><p>addsadsaddsadsad</p><p>addsadsaddsadsad</p><p>addsadsaddsadsad</p><p>addsadsaddsadsad</p><p>addsadsaddsadsad</p><p>addsadsaddsadsad</p>
+    </div>
+<script>
+    /*
+        obj.style.width
+        getComputedStyle(obj).width
+
+        *obj.clientWidth  width + padding
+
+        *obj.offsetWidth  width + padding + border
+
+        *obj.scrollHeight  被内容撑开的高度
+
+
+    */
+    const box = document.getElementById('box');
+
+    // console.log(box.scrollHeight);
+    console.log(box.clientHeight);
+</script>
+</body>
+</html>

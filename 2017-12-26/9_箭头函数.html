@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // function fn(){
+    //     return 1;
+    // }
+    // let fn = () => 1;
+
+    // function fn(e){
+    //     return e;
+    // }
+    // //如果只有一个参数()是可以不带的
+    // let fn = e => e;
+
+    // function fn(a,b){
+    //     return a+b;
+    // }
+    
+    // let fn = (a,b) => a+b;
+    // console.log(fn(1,2));
+
+    // let fn = (a,b) => {
+    //     let k = 5;
+    //     return k+a+b;
+    // }
+    // console.log(fn(1,2));
+
+    /*
+        1.省了代码
+            特别是在带了回调函数的
+        2.this问题
+            ***永远***都跟父函数走
+    */
+
+    // function fn(){
+    //     console.log(this);
+    //     let ff = () => {
+    //         console.log(this);
+    //     }
+    //     ff();
+    // }
+    // fn.call(document);
+
+
+    // document.onclick = function(){
+    //     // let ff = function () {
+    //     //     console.log(this); //window
+    //     // }
+
+    //     let ff = () => {
+    //         console.log(this); //document
+    //     }
+    //     ff();
+    // }
+
+
+    //***看应用场景***在事件中绑箭头函数
+    document.onclick = () => {
+        console.log(this); //window
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

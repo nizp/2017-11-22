@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+td{
+    border:1px solid #000;
+    width:50px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+    <table id="tab">
+        <thead>
+            <tr>
+                    <th>
+                            编号
+                        </th>
+                        <th>
+                            商品
+                        </th>
+                        <th>
+                            价格
+                        </th>
+                        <th>
+                            数量
+                        </th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>汽水</td>
+                <td>1</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>自来水</td>
+                <td>5</td>
+                <td>100</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td>20</td>
+                <td>汽水</td>
+                <td>100</td>
+                <td>10</td>
+            </tr>
+        </tfoot>
+    </table>
+<script>
+/*
+    tBodies[0]
+        一个table可以有很多tBody,获取到的是一个集合
+    rows（一行,获取tr的）
+        也是一个集合，也是支持下标
+    
+    cells(一个单元格,获取td)
+
+    tHead
+
+    tFoot
+
+    createTFoot()
+    createTHead()
+
+    删除单元格
+        deleteRow(index)
+
+    
+
+    
+
+*/
+    const tab = document.getElementById('tab');
+    const tBody = tab.tBodies[0];
+
+    tBody.rows[0].style.background = 'pink';
+
+    tBody.rows[0].cells[2].style.color = '#fff';
+
+    tab.tFoot.style.background = 'yellow';
+    tab.tHead.style.background = 'skyblue';
+
+
+    // tBody.deleteRow(0);
+
+    // tBody.rows[1].append(tab.createCaption());
+    
+    // console.log(tBody.rows);
+    
+
+</script>
+</body>
+</html>
