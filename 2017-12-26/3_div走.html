@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#div1{
+    width:100px;
+    height: 100px;
+    position: absolute;
+    top:0;
+    left:0;
+    background: red;
+  
+}
+#box{
+    border: 10px solid #000;
+    position: relative;
+    height: 100px;
+}
+#box2{
+    height: 120px;
+    overflow: hidden;
+}
+</style>
+</head>
+<body>
+    <div id="box2">
+        <div id="box">
+            <div id="div1"></div>
+        </div>
+    </div>
+<script>
+    const div = document.getElementById('div1');
+    /*
+        在ff下,如果子级有定位，
+        父级也有定位并且定位父级有边框和overflow: hidden
+        这个时候offsetLeft会重新计算
+
+            offsetLeft - 定位父级的border = 实际的offsetLeft
+            
+    */
+    document.onclick = function(){
+        console.log(div.offsetLeft);
+        setInterval(function(){
+            div.style.left = div.offsetLeft + 1 + 'px';
+        },30);
+    }
+</script>
+</body>
+</html>

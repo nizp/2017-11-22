@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #contain {
+            width: 1000px;
+            border: 1px solid #ccc;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        textarea {
+            width: 300px;
+            height: 400px;
+            padding: 20px;
+            font-size: 24px;
+        }
+
+        textarea:nth-child(1) {
+            float: left;
+        }
+
+        textarea:nth-child(2) {
+            float: right;
+        }
+
+        .btn-box {
+            position: absolute;
+            top: 40%;
+            left: 42%;
+            text-align: center;
+        }
+
+        .btn {
+            padding: 20px;
+            background-color: yellowgreen;
+            margin-bottom: 20px;
+            font-size: 30px;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .btn-box span {
+            color: #75addf;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<div id="contain">
+    <textarea>字符串：length、charAt、charCodeAt、indexOf...，字符编码：ASCII、Unicode、UTF-8...，JSON：数据交换格式、规则、用途，JSON对象：parse、stringify，for...in，mTween+、数学对象：ceil、floor、round、abs、random、常用随机值公式，数组：length、push、pop、sort...，排序算法：冒泡排序（BubbleSort）、快速排序（QuickSort）
+    </textarea>
+    <textarea></textarea>
+
+    <div class="btn-box">
+        <div class="btn">文字右移</div>
+        <span>0/0</span>
+    </div>
+</div>
+<script>
+    /*
+        需要定时器
+    */
+    const contain = document.getElementById('contain');
+    const ts = contain.getElementsByTagName('textarea');
+    const btn = contain.getElementsByClassName('btn')[0];
+    const span = contain.getElementsByTagName('span')[0];
+    let timer = null;
+    let num = 0;
+    let len = ts[0].value.length;
+    span.innerText = num +'/'+len;
+    btn.onclick = function(){
+        // let str = '';
+        ts[1].value = '';
+        len = ts[0].value.length;
+        clearInterval(timer);
+        timer = setInterval(function(){
+            if(!ts[0].value){
+                clearInterval(timer);
+                num = 0;
+                return;
+            };
+            num ++;
+            // str += ts[0].value[0];
+            ts[1].value += ts[0].value.substr(0,1);
+            ts[0].value = ts[0].value.substring(1);
+            span.innerText = num +'/'+len;
+        },30);
+    }
+
+
+
+</script>
+
+</body>
+</html>

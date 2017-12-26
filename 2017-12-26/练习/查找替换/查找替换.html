@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            background-color: #C5E8EF;
+        }
+
+        #box{
+            width:860px;
+            overflow: hidden;
+            margin:100px auto auto;
+
+        }
+        .con-box{
+            overflow: hidden;
+            position: relative;
+            background-color: #fff;
+            padding:30px;
+            border-radius:10px;
+        }
+        .content{
+            width: 580px;
+            height:380px;
+            padding:10px;
+            border:1px solid #B2E2EC;
+            background:#EBF8F9;
+            float: left;
+            font-size:22px;
+        }
+        .tool{
+            position: relative;
+            width:198px;
+            height:400px;
+            float: left;
+        }
+        .tool a{
+            display: block;
+            position: absolute;
+            width:120px;
+            height:120px;
+            background-color: #83DFF1;
+            border-radius:10px;
+            text-align: center;
+            line-height:120px;
+            font-size:24px;
+            color:#fff;
+            font-weight: 500;
+            text-decoration: none;
+            left:60px;
+        }
+        .tool a:nth-of-type(1){
+            z-index: 3;
+            top:0px;
+        }
+        .tool a:nth-of-type(2){
+            z-index: 2;
+            background-color:#9E9BF6;
+            /*top:140px;*/
+        }
+        .tool a:nth-of-type(3){
+            z-index: 1;
+            background-color:#93E69D;
+            /*top:280px;*/
+        }
+
+        .tool-box{
+            width:800px;
+            padding:30px;
+            border-radius:10px;
+            background-color:#fff;
+            margin-top:10px;
+            position: relative;
+            display: none;
+        }
+        .btns{
+            overflow: hidden;
+            margin-bottom:20px;
+        }
+        .btns a{
+            float: left;
+            width:120px;
+            height:50px;
+            text-align: center;
+            line-height: 50px;
+            color:#fff;
+            background-color:#9E9BF6;
+            border-radius:5px;
+            text-decoration: none;
+            font-size:18px;
+        }
+        .btns a:nth-of-type(2){
+            background-color:#93E69D;
+            margin-left:10px;
+        }
+
+        input{
+            padding:5px 10px;
+            border-radius:2px;
+            border:1px solid #000;
+            font-size:18px;
+            outline: 0;
+            height:50px;
+            vertical-align: middle;
+            border:1px solid #B2E2EC;
+            background:#EBF8F9;
+        }
+        input+a{
+            display: inline-block;
+            vertical-align: middle;
+            padding:5px 10px;
+            line-height: 50px;
+            border-radius:2px;
+            font-size:18px;
+            outline: 0;
+            width:100px;
+            text-align: center;
+            background-color:#9E9BF6;
+            color:#fff;
+            height:50px;
+            text-decoration: none;
+        }
+        .lookfor input{
+            width:630px;
+        }
+        .splice input{
+            width:300px;
+        }
+
+        .splice{
+            display: none;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <div class="con-box">
+        <div class="content">如今的市面上已经存在太多教大家如何 “使用轮子” 的教程，编程界也有 N 多理念告诫大家：会 “使用轮子” 就行啦，不必动手去 “造轮子”。毕竟偷懒是一种天性，懒出境界才是编程最高追求嘛——大家对此深信不疑，许多人再也不提 “造轮子” 的话题，甚至于连 “轮子” 的构造原理也不深究。直到有一天，开发出了问题，手中的 “轮子” 似乎不太好用，纵然满世界有那么多 “轮子”，却没一款用得称心如意！在需求万变的场景下，开发者手中的 “轮子” 用起来越来越别扭，少数 NB 的人早就挽起袖子，或者改造 “轮子”，或者重新制造 “轮子”，在这过程中，少数开发者逐渐成为高手，年薪百万。而更多开发者，仍然笃信 “偷懒是一种天性，懒出境界才是编程最高追求”……殊不知在这个世界上，能够 “懒出境界” 的人，万分之一都不到……</div>
+        <div class="tool">
+            <a href="javascript:;">展开</a>
+            <a href="javascript:;">查找</a>
+            <a href="javascript:;">替换</a>
+        </div>
+    </div>
+    <div class="tool-box">
+        <div class="btns">
+            <a href="javascript:;">查找</a>
+            <a href="javascript:;">替换</a>
+        </div>
+        <div class="lookfor">
+            <input type="text" placeholder="输入查找的内容">
+            <a href="javascript:;">查找</a>
+        </div>
+        <div class="splice">
+            <input type="text" placeholder="输入要替换的内容">
+            <input type="text" placeholder="输入替换的内容">
+            <a href="javascript:;">替换</a>
+        </div>
+    </div>
+</div>
+
+<script src="tween.js"></script>
+<script>
+
+    /*
+    * 需求：
+    *   1.展开收起的动画
+    *
+    *   2.查找替换的切换
+    *
+    *   3.查找功能
+    *
+    *   4.替换功能
+    *
+    *
+    * */
+
+    let as = document.getElementsByClassName('tool')[0].children;
+
+    let toolBox = document.getElementsByClassName('tool-box')[0]
+
+     //2.查找替换的切换
+    var btns = document.querySelectorAll('.btns a');
+    var lookFor = document.querySelector('.lookfor');
+    var lookForInput = lookFor.querySelector('input');
+    var lookForBtn = lookFor.querySelector('a');
+    var splice = document.querySelector('.splice');
+    var spliceInput = splice.querySelectorAll('input');
+    var spliceBtn = splice.querySelector('a');
+    var content = document.querySelector('.content');
+    as[0].onOff = true;
+    as[0].onclick = function(){
+        if(as[0].onOff){
+            as[0].innerText = '收起';
+            move({
+                obj:as[1],
+                attrs:{
+                    top:130,
+                },
+                d:500
+            });
+            move({
+                obj:as[2],
+                attrs:{
+                    top:260,
+                },
+                d:500,
+                cb:function(){
+                    toolBox.style.display = 'block';
+                }
+            });
+        }else{
+            as[0].innerText = '展开';
+            move({
+                obj:as[1],
+                attrs:{
+                    top:0,
+                },
+                d:500
+            });
+            move({
+                obj:as[2],
+                attrs:{
+                    top:0,
+                },
+                d:500,
+                cb:function(){
+                    toolBox.style.display = 'none';
+                }
+            });
+        }
+        as[0].onOff = !as[0].onOff;
+    }
+
+    as[1].onclick = function(){
+        lookFor.style.display = 'block';
+        splice.style.display = 'none';
+    }
+    as[2].onclick = function(){
+        lookFor.style.display = 'none';
+        splice.style.display = 'block';
+    }
+    
+    //下面的切换。
+    for(var i=0;i<btns.length;i++){
+        btns[i].index = i;
+        btns[i].onclick = function(){
+            if(this.index == 0){
+                lookFor.style.display = 'block';
+                splice.style.display = 'none';
+            }else{
+                lookFor.style.display = 'none';
+                splice.style.display = 'block';
+            }
+        }
+    }
+
+    //查找
+    let v = content.innerText;
+    lookForBtn.onclick = function(){
+        let val = lookForInput.value;
+        if(!val){
+            alert('请留点内容!');
+            return;
+        }
+        if(!v.includes(val)){
+            alert('查无此字!');
+            return;
+        }
+        content.innerHTML = v.split(val).join('<span style="background:green">'+val+'</span>');
+        lookForInput.value = '';
+    }
+
+    //替换
+
+    spliceBtn.onclick = function(){
+        let val1 = spliceInput[0].value;
+        let val2 = spliceInput[1].value;
+
+        if(!val1 || !val2){
+            alert('请输入合法内容!');
+            return;
+        }
+        if(!v.includes(val1)){
+            alert('没有替换的内容,你瞎呀!');
+            return;
+        }
+
+        content.innerHTML = v.split(val1).join('<span style="background:green">'+val2+'</span>');
+        //更新v，好让下次查找的时候，只查找更新之后的val值。
+        v = v.split(val1).join(val2);
+
+       
+        spliceInput[0].value = spliceInput[1].value = '';
+    }
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

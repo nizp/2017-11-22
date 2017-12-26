@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    font-size:12px;
+}
+</style>
+</head>
+<body>
+<script>
+    /*
+        offsetParent  定位父级
+        offsetLeftoffsetTop  子级的左（上）外边框到定位父级的左（上）内边框的距离
+        getBoundingClientRect().left  绝对位置
+
+        obj.clientWidth/obj.clientHeight (宽/高 + padding)
+        obj.offsetWidth/obj.offsetHeight(宽/高 + padding + border)
+        obj.scrollWidth / obj.scrollHeight (被内容撑开的宽/高)
+
+        document.documentElement.clientWidth  可视区的宽度
+        document.documentElement.clientHeight  可视区的高度
+
+        tab.tBodies[0]
+
+        tab.rows[1]
+
+        tab.cells[0]
+
+        deleteRow(index)
+
+
+
+
+
+    */
+
+    console.log(document.documentElement.tagName);//html
+
+    console.log( document.body.clientWidth )
+</script>
+</body>
+</html>
