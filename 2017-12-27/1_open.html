@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <a href="http://www.miaov.com" target="_blank">点击</a> -->
+<script>
+    /*
+        BOM:
+            Browser Object Model
+            浏览器对象模型
+        
+        window
+            通过window提供的api赋予开发者操作浏览器的能力。
+            基本上是不兼容的。
+
+        window.open(url,打开的方式,可以设置浏览器窗口)
+            第三个参数支持:
+                width=420,height=230,resizable=yes,scrollbars=yes
+
+            在Chrome中必须是在用户主动触发的情况下才会有用，不然会被拦截。
+
+            IE下是不会拦截的。
+    */
+
+    // window.open('http://www.miaov.com');
+
+    document.documentElement.onclick = function(){
+        window.open('http://www.miaov.com','_blank','width=420,height=230,resizable=yes');
+    }
+</script>
+</body>
+</html>

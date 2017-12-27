@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>遮罩</title>
+    <style>
+    .container {
+        width: 1000px;
+        height: 600px;
+        background: url(bg.jpg) no-repeat;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .btn {
+        width: 130px;
+        height: 36px;
+        background: #E15571;
+        border-radius: 100px 100px 100px 100px;
+        text-align: center;
+        color: #fff;
+        font: 16px/36px Arial;
+        position: relative;
+        top: 134px;
+        margin: 0 auto;
+        cursor: pointer;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .shade {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .2);
+    }
+    
+    .alert {
+        width: 260px;
+        height: 300px;
+        /* margin: 202px auto 0; */
+        border: 2px solid #E15571;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, .5);
+        position: relative;
+    }
+    
+    .alert span {
+        position: absolute;
+    }
+    
+    .close {
+        width: 20px;
+        height: 20px;
+        right: 16px;
+        top: 16px;
+        text-align: right;
+        box-sizing: border-box;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    
+    .close:hover {
+        color: #E15571;
+    }
+    
+    .icon {
+        width: 62px;
+        height: 50px;
+        background: url(1.png) no-repeat;
+        top: 60px;
+        left: 100px;
+    }
+    
+    .text1 {
+        width: 100%;
+        height: 20px;
+        text-align: center;
+        font: 18px/20px Arial;
+        color: #fff;
+        top: 132px;
+    }
+    
+    .text2 {
+        top: 172px;
+        width: 100%;
+        height: 20px;
+        font: 16px/20px Arial;
+        color: #E15571;
+        text-align: center;
+        font-weight: bold;
+    }
+    
+    .sure {
+        top: 230px;
+        width: 140px;
+        height: 30px;
+        background: #E15571;
+        text-align: center;
+        color: #fff;
+        border-radius: 100px 100px;
+        font: 16px/30px Arial;
+        text-align: center;
+        left: 50%;
+        transform: translateX(-50%);
+        cursor: pointer;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    .hide {
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="btn">提交</div>
+        <div class="shade hide">
+            <div class="alert">
+                <span class="close">×</span>
+                <span class="icon"></span>
+                <span class="text1">恭喜你，提交成功！</span>
+                <span class="text2">已扣除10微币</span>
+                <span class="sure">确定</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        const btn = document.querySelector('.btn');
+        const alert = document.querySelector('.alert');
+        const container = document.querySelector('.container');
+        const iW = container.clientWidth;
+        const iH = container.clientHeight;
+
+        btn.onclick = function(){
+            alert.parentNode.classList.remove('hide');
+            let w = alert.clientWidth;
+            let h = alert.clientHeight;
+            alert.style.left = (iW - w)/2 + 'px';
+            alert.style.top = 35 + (iH - h)/2 + 'px';
+        }
+    </script>
+</body>
+
+</html>

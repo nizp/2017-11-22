@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="上一张">
+    <input type="button" value="下一张">
+    <input type="button" value="刷新">
+    <img width="300" src="img/0.jpg" alt="" id="img">
+<script>
+    const btns = document.querySelectorAll('input');
+    const img = document.querySelector('#img');
+    let num = 0;
+    btns[1].onclick = function(){
+        num ++;
+        if(num > 9){
+            num = 9;
+        }
+        window.location.hash = 'page='+num;
+    }
+    btns[0].onclick = function(){
+        num --;
+        if(num < 0){
+            num = 0;
+        }
+        window.location.hash = 'page='+num;
+    }
+    btns[2].onclick = function(){
+        window.location.hash = 'page=0';
+        window.location.reload();
+    }
+
+    //刷新时的初始化
+    num = window.location.hash.split('=')[1] || 0;
+    img.src = 'img/'+num+'.jpg';
+    window.location.hash = 'page='+num;
+    
+
+
+    window.onhashchange = function(){
+        /*
+            1.#page=3 
+            2.["#page","3"]
+            3."3"
+
+        */
+        let hash = window.location.hash.split('=')[1];  //"3"
+
+        img.src = 'img/'+hash+'.jpg';
+
+        num = hash*1;
+        // console.log(hash);
+
+    }
+
+
+</script>
+</body>
+</html>
