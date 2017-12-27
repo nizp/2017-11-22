@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body style="height:3000px">
+
+<script>
+    /*
+        document.documentElement.scrollTop 能读能写;
+        window.pageYOffset只能读不能写
+
+
+        scrollTo(x,y)
+    */
+
+    window.onscroll = function(){
+        console.log(12324);
+    }
+
+    document.onclick = function(){
+        // document.documentElement.scrollTop = 0;
+        window.scrollTo(0,0);
+    }
+
+</script>
+</body>
+</html>

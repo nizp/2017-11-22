@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="" cols="30" rows="10" id="t">
+            <!DOCTYPE html>
+            <html>
+            <head>
+            <meta charset="gb2312" />
+            <title>无标题文档</title>
+            <style>
+            body,ul,li{margin:0; padding:0; font:12px/1.5 arial;}
+            ul,li{list-style:none;}
+            .wrap{width:500px; margin:20px auto;}
+            .hide{display:none;}
+            #tab_t{height:25px;border-bottom:1px solid #ccc;}
+            #tab_t li{float:left; width:80px; height:24px; line-height:24px; margin:0 4px; text-align:center; border:1px solid #ccc; border-bottom:none; background:#f5f5f5; cursor:pointer}
+            #tab_t .act{ position:relative; height:25px; margin-bottom:-1px; background:#fff;}
+            #tab_c{border:1px solid #ccc; border-top:none; padding:20px;}
+            </style>
+            <script>
+            window.onload = function(){
+             var tab_t = document.getElementById("tab_t");
+             var tab_t_li = tab_t.getElementsByTagName("li");
+             var tab_c = document.getElementById("tab_c");
+             var tab_c_li = tab_c.getElementsByTagName("div");
+             var len = tab_t_li.length;
+             var i=0;
+             for(i=0; i<len; i++){
+              tab_t_li[i].index = i;
+              tab_t_li[i].onclick = function(){
+               for(i=0; i<len; i++){
+                tab_t_li[i].className = '';
+                tab_c_li[i].className = 'hide';
+               }
+               tab_t_li[this.index].className = 'act';
+               tab_c_li[this.index].className = '';
+              }
+             }
+            }
+            </script>
+            </head>
+            <body>
+            <div class="wrap">
+             <ul id="tab_t">
+             <li class="act">选择1</li>
+             <li>选择2</li>
+             <li>选择3</li>
+             <li>选择4</li>
+             </ul>
+             <div id="tab_c">
+             <div>内容1</div>
+             <div class="hide">内容2</div>
+             <div class="hide">内容3</div>
+             <div class="hide">内容4</div>
+             </div>
+            </div> 
+            </body>
+            </html>
+    </textarea>
+    <button id="btn">运行</button>
+<script>
+    const btn = document.getElementById('btn');
+    const t = document.getElementById('t');
+    btn.onclick = function(){
+        let s = window.open('','_blank');
+        // console.log(t);
+        s.document.write(t.value);
+        /*
+            文本输入流:
+            
+            新窗口如果使用了document.write，那么等同于
+            开了个水龙头，开着一直不关闭就容易出错，一般的
+            症状就是js代码不执行
+
+            解决:
+                使用close()
+        */
+        s.document.close();
+    }
+</script>
+</body>
+</html>

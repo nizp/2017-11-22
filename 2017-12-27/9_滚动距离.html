@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body style="height:3000px">
+<script>
+    /*
+        上滚动距离
+            document.documentElement.scrollTop
+            window.pageYOffset
+
+        左滚动距离:
+            document.documentElement.scrollLeft
+            window.pageXOffset
+    */
+
+    document.documentElement.onclick = function(){
+        console.log( window.pageYOffset );
+    }
+</script>
+</body>
+</html>

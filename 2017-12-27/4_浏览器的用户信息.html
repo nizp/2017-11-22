@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        window.navigator.userAgent
+            浏览器用户信息
+            字符串
+        IE10及以下都是MSIE xx
+
+        注意:
+            这个信息容易被修改,只能做参考，不能100%肯定
+
+    */
+
+    console.log(window.navigator.userAgent.toLowerCase())
+    var str = window.navigator.userAgent.toLowerCase(); 
+    // if(str.indexOf('msie 8')!=-1){
+    //     alert('是IE8');
+    // }else{
+    //     alert('不是IE8');
+    // }
+
+    // if(str.includes('iphone')){
+    //     alert('是苹果');
+    // }else{
+    //     alert('不是苹果');
+    // }
+    // alert(window.navigator.userAgent);
+
+    console.log(isIE('rv:11'))
+
+    function isIE(ie){
+        var str = window.navigator.userAgent.toLowerCase(); 
+        if(str.indexOf(ie)!=-1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+     
+</script>
+</body>
+</html>
