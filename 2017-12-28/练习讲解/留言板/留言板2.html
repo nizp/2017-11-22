@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<link rel="stylesheet" type="text/css" href="css/clear.css">
+
+</head>
+<body>
+<section id="wrap">
+	<div id="content">
+		<h2 class="logo"><img src="img/log.png"></h2>
+		
+		<div class="clearfix">
+			<textarea class="message"></textarea>
+			<input type="button" value="提交" class="btn">
+		</div>
+		
+		<ul id="mList">
+			<!-- <li class="mText clearfix">
+				<span class="mIcon1"></span>
+				<p class="mComtent">你好!</p>
+			</li>
+			<li class="mText clearfix">
+				<span class="mIcon1 mIcon2"></span>
+				<p class="mComtent">你好!</p>
+			</li> -->
+		</ul>
+	</div>
+</section>
+<script type="text/javascript">
+	const btn = document.querySelector('.btn');
+	const ul = document.getElementById('mList');
+	const content = document.getElementById('content');
+	const t = content.children[1].children[0];
+	let num = 0;
+	let arr2 = [];
+	
+	let arr = ['mIcon1','mIcon1 mIcon2'];
+
+	btn.addEventListener('click',function(){
+		let tv = t.value.trim();
+		if( !tv ){
+			alert('请输入内容');
+			return;
+		};
+		
+		let li = createLi(tv,num);
+		arr2.push(li);
+		ul.insertBefore(li,ul.children[0]);
+		t.value = '';
+		num ++;
+	});
+
+	function createLi(tv,index){
+		let li = document.createElement('li');
+		li.dataset.index = index;
+		li.className = 'mText clearfix';
+		let span = document.createElement('span');
+		span.className = num%2?arr[0]:arr[1];
+		span.innerText = num;
+		let p = document.createElement('p');
+		p.className = "mComtent";
+		p.innerText = tv;
+		li.onclick = function(){
+			num --;
+			arr2 = arr2.filter((e,i)=>{
+				return this.dataset.index != i;
+			});
+
+			ul.innerHTML = '';
+			arr2.forEach((e,i)=>{
+				e.dataset.index = i;
+				e.children[0].innerText = i;
+				e.children[0].className = i%2?arr[0]:arr[1];
+				ul.insertBefore(e,ul.children[0]);
+			});
+		}
+		li.append(span);
+		li.append(p);
+		return li;
+	}
+	
+	
+</script>
+</body>
+</html>

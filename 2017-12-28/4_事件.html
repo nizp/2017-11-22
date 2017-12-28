@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#div{
+    width:100px;
+    height: 100px;
+    background: red;
+}
+#div2{
+    width:100px;
+    height: 100px;
+    background: skyblue;
+
+}
+</style>
+</head>
+<body>
+    <div id="div"></div>
+    <div id="div2"></div>
+<script>
+    /*
+        事件:
+            onclick
+            onmouseover
+            onmouseout
+            onmouseenter
+            onmouseleave
+            onmousedown
+            onmouseup
+            onrezie
+            onscroll
+            onhashchange
+            onpopstate 
+
+        事件绑定:
+            obj.addEventListener('不带on的事件名',事件函数,是否捕获(默认是false，不捕获))
+
+        解绑:
+            obj.removeEventListener(要解除的事件名,要解除的函数名,boolean);
+
+            注意：
+                *** 解除的函数必须为有名函数，匿名函数解不了
+    
+    */
+
+   const div = document.getElementsByTagName('div')[0];
+
+    div.addEventListener('click',fn);
+
+    function fn(){
+        alert(1);
+    }
+
+    div2.addEventListener('click',function(){
+        div.removeEventListener('click',fn);
+    })
+
+    // div.addEventListener('click',function(){
+    //     alert(2);
+    // });
+
+    // div.onclick = function(){
+    //         alert(1);
+    // }
+
+    // div2.onclick = function(){
+    //         div.onclick = null;
+    // }
+//    console.dir(div);
+   
+
+
+</script>
+</body>
+</html>

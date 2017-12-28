@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#div{
+    width:100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    top:0;
+    left: 0;
+    cursor: move;
+}
+</style>
+</head>
+<body style="height:3000px">
+    <div id="div"></div>
+<script>
+    /*
+        Event:事件对象
+            当用户触发某个事件的时候，记录下用户操作的一些细节的信息。
+
+        1.事件函数的第一个参数，一定是事件对象。
+        2.在IE和chrome中 全局有个event属性，就是事件对象
+
+        onmousemove  移动事件
+
+        clientX/clientY  鼠标到可视区的距离（不包含滚动条的）
+        pageX/pageY  鼠标到浏览器顶端的距离（包含滚动条）
+    */
+    const div = document.getElementsByTagName('div')[0];
+    
+    document.onmousemove = function(ev){
+        // console.log(ev.clientX,ev.clientY)
+        // div.style.left = window.pageXOffset + ev.clientX - div.offsetWidth/2 + 'px';
+        // div.style.top = window.pageYOffset + ev.clientY - div.offsetHeight/2 + 'px';
+
+        div.style.left = ev.pageX - div.offsetWidth/2 + 'px';
+        div.style.top = ev.pageY - div.offsetHeight/2 + 'px';
+    }
+
+    // document.onclick = function(ev){
+    //     // console.log(ev.clientY);
+    //     console.log(ev.pageY);
+    // }
+
+</script>
+</body>
+</html>

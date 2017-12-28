@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+    #div{
+        width:100px;
+        height: 100px;
+        background: red;
+        display: none;
+    }
+</style>
+</head>
+<body>
+    <button id="btn">点击打开</button>
+    <div id="div"></div>
+<script>
+    /*
+        ev.cancelBubble  不是标准，但是别的浏览器都支持
+        ev.stopPropagation();  是标准，但是低版本浏览器不支持
+
+        在目标点上取消，不让父级触发。
+    */
+    const div = document.getElementById('div');
+    const btn = document.getElementById('btn');
+
+    btn.onclick = function(ev){
+        div.style.display = 'block';
+        // ev.cancelBubble = true; //取消冒泡
+        ev.stopPropagation();
+        // alert(1);
+    }
+
+    document.onclick = function(){
+        div.style.display = 'none';
+    }
+
+</script>
+</body>
+</html>

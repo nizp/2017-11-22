@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+li{
+    background: red;
+}
+</style>
+</head>
+<body>
+    <button id="btn">点击创建</button>
+    <ul id="ul">
+        <li>
+            <span>1</span>
+        </li>
+    </ul>
+<script>
+    const btn = document.getElementById('btn');
+    const ul = document.getElementById('ul');
+    let lis = document.getElementsByTagName('li');
+    let num = 1;
+    /*
+        ev.target  可以通过触发父级事件直接找到触发这个事件
+        的子级是谁。
+
+        *** 只能监听父级及以下的元素，兄弟级是监听不到的。
+        冒泡机制
+
+    */
+    
+    btn.onclick = function(){
+        num ++;
+
+        // console.log(lis[0].onclick);
+        ul.innerHTML += '<li>'+num+'</li>';
+        // for(var i=0;i<lis.length;i++){
+        //     lis[i].onclick = function(){
+        //         alert(this.innerText);
+        //     }
+        // }
+        /*
+            赋值之后原来的事件就被覆盖。
+        */
+        // ul.innerHTML = ul.innerHTML + '<li>'+num+'</li>';
+        // console.log(lis.length);
+
+        // console.log(lis[0].onclick);
+    }
+
+    ul.onclick = function(ev){
+        alert(ev.target.innerText);
+        console.log(ev.target);
+    }
+
+   
+
+
+
+
+
+
+</script>
+</body>
+</html>

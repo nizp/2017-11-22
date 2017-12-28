@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+}
+#ul{
+    list-style: none;
+    width: 450px;
+    border: 1px solid #000;
+    overflow: hidden;
+}
+li{
+    width:200px;
+    height: 200px;
+    float: left;
+    margin: 10px;
+    opacity: 0;
+    transition: 1s;
+}
+img{
+    width:200px;
+    height: 200px;
+}
+
+
+</style>
+</head>
+<body>
+    <ul id="ul">
+        <!-- <li><img src="img/0.jpg"></li>
+        <li><img src="img/0.jpg"></li>
+        <li><img src="img/0.jpg"></li>
+        <li><img src="img/0.jpg"></li> -->
+    </ul>
+<script>    
+    const ul = document.getElementById('ul');
+    /*
+      在批量渲染页面的时候尽量用字符串拼接。
+    */
+    let str = ''; 
+    for(let i=0;i<40;i++){
+        str += `<li _src="img/${i%10}.jpg"><img></li>`;
+    }
+    ul.innerHTML = str;
+
+    const lis = Array.from(document.getElementsByTagName('li'));
+    const iH = window.innerHeight;
+    render();
+    window.onscroll = function(){
+        render();
+    }
+
+    function render(){
+        lis.forEach(e=>{
+            if(e.getBoundingClientRect().top <= iH && e.getAttribute('_src')){
+                let data = e.getAttribute('_src');
+                e.children[0].src = data;
+                e.removeAttribute('_src');
+                setTimeout(function(){
+                    e.style.opacity = 1;
+                },100);
+            }
+        });
+    }
+
+</script>
+</body>
+</html>
