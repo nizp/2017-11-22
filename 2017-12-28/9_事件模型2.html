@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+div{
+   padding: 100px;
+}
+#div1{
+    background: red;
+    position:absolute;
+    top:30px;
+    z-index: 10;
+}
+#div2{
+    background:green;
+    position: absolute;
+    top:100px;
+}
+#div3{
+    background:yellow;
+    position: absolute;
+    top:30px;
+    z-index: 1;
+}
+section{
+    position: relative;
+}
+
+</style>
+</head>
+<body>
+    <section>
+        <div id="div1">
+            <div id="div2">
+                <div id="div3"></div>
+            </div>
+        </div>
+    </section>
+<script>
+    /*
+        事件流（事件模型）
+
+            1.捕获阶段：
+                从（window）上往下到目标点的阶段
+
+            2.到达目标阶段
+
+            3.冒泡
+                从（目标点）下往上到（window）的阶段
+
+        传统的事件是没有捕获的，只有冒泡。
+
+        目标阶段不用先走捕获，只走顺序绑定，同事件，同名函数的下面会把上面的覆盖。
+
+    */
+    const div = document.getElementsByTagName('div');
+    div[0].addEventListener('click',ff,false);
+    function ff(){
+        alert('red1');
+    }
+    div[1].addEventListener('click',function(){
+        alert('yellow');
+    },true);
+    // div[2].addEventListener('click',fn,false);
+    div[2].addEventListener('click',fn,false);
+    div[2].addEventListener ('click',function(){
+        alert('green');
+    },false);
+    div[2].addEventListener('click',function(){
+        alert('greenhehe');
+    },true);
+    
+    function fn(){
+        alert('yellow123');
+    }
+   
+</script>
+</body>
+</html>

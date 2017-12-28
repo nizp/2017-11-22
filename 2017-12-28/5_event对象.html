@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#div{
+    width:100px;
+    height: 100px;
+    background: red;
+}
+</style>
+</head>
+<body>
+    <div id="div"></div>
+<script>
+    /*
+        Event:事件对象
+            当用户触发某个事件的时候，记录下用户操作的一些细节的信息。
+
+        1.事件函数的第一个参数，一定是事件对象。
+        2.在IE和chrome中 全局有个event属性，就是事件对象
+    */
+    const div = document.getElementsByTagName('div')[0];
+    div.addEventListener('click',function(){
+        //console.log(event); 
+    });
+</script>
+</body>
+</html>

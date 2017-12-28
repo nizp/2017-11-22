@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <input type="button" value="上一张">
+        <input type="button" value="下一张">
+        <img width="300" src="img/0.jpg" alt="" id="img">
+<script>
+    /*
+        历史记录
+            history
+            ***必须要在服务器下运行
+
+        go()
+        back()  
+        forward()
+
+        //后退一页
+        history.go(-1)
+        back()  
+        //前进一页
+        history.go(1);
+        forward()
+
+        history.pushState()  添加历史记录
+
+            history.pushState(数据,title,url);
+
+        history.replaceState() 替换当前的历史记录
+
+        onpopstate 取数据  
+
+        window.onpopstate = function(ev){
+            ev.state //本次的数据
+        }
+    */
+
+    const btns = document.querySelectorAll('input');
+    const img = document.querySelector('#img');
+    let num = 0;
+    btns[1].onclick = function(){
+        num ++;
+        if(num > 9){
+            num = 9;
+        }
+        history.pushState(num,'','http://localhost/h/3_history.html?page='+num);
+        img.src = 'img/'+num+'.jpg';
+    }
+    btns[0].onclick = function(){
+        history.go(-1);
+    }
+
+    window.onpopstate = function(ev){
+        if(ev.state){
+            img.src = 'img/'+ev.state+'.jpg';
+        }
+    }
+</script>
+</body>
+</html>
