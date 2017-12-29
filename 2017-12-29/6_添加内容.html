@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <select name="" id="sele">
+        <option value="0">回车</option>
+        <option value="1">shift+回车</option>
+        <option value="2">shift+ alt +回车</option>
+    </select>
+    <input type="text" id="t">
+    <!-- <input type="file" id="f"> -->
+    <ul id="ul"></ul>
+<script>
+    /*
+        onchange：
+            当表单元素value值发生变化的时候触发
+    */
+    const t = document.getElementById('t');
+    const ul = document.getElementById('ul');
+    const sele = document.getElementById('sele');
+    const f = document.getElementById('f');
+    let v = '0';
+    sele.onchange = function(){
+       v = this.value;
+    }
+
+    t.onkeydown = function(ev){
+        switch(v){
+            case  '0' :
+                if(ev.keyCode == 13 && !ev.shiftKey && !ev.altKey && !ev.ctrlKey){
+                    let li = document.createElement('li');
+                    li.innerText = this.value;
+                    ul.insertBefore(li,ul.children[0]);
+                    this.value = '';
+                }
+            break;
+            case  '1' :
+                if(ev.shiftKey && ev.keyCode == 13){
+                    let li = document.createElement('li');
+                    li.innerText = this.value;
+                    ul.insertBefore(li,ul.children[0]);
+                    this.value = '';
+                }
+            break;
+            case  '2' :
+                if(ev.altKey && ev.shiftKey && ev.keyCode == 13){
+                    let li = document.createElement('li');
+                    li.innerText = this.value;
+                    ul.insertBefore(li,ul.children[0]);
+                    this.value = '';
+                }
+            break;
+        }
+        
+    }
+
+
+
+
+
+    // t.onchange = function(){
+    //     console.log(123);
+    // }
+
+    // f.onchange = function(){
+    //     console.log('呵呵')
+    // }
+
+
+
+
+
+   
+
+    
+
+</script>
+</body>
+</html>

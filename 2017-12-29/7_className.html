@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+.active{
+    background: red;
+}
+.bo{
+    border:1px solid #000;
+}
+div{
+    width:100px;
+    height: 100px;
+}
+.a2{
+    background: skyblue;
+}
+</style>
+</head>
+<body>
+    <div id="d" class="active bo"></div>
+<script>
+    document.onclick = function(){
+        // d.className = 'a2';
+
+        d.classList.add('a2');
+
+        // d.className += ' a2'; 
+
+    }
+</script>
+</body>
+</html>
