@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="t" placeholder="hehe">
+    <input type="checkbox" id="c"/>
+    <input type="radio" name="" id="r">
+<script>
+    const t = document.getElementById('t');
+    /*
+        onfocus:
+            聚焦
+        onblur:
+            失焦
+    */
+
+    // t.onfocus = function(){
+    //     console.log(1213);
+    // }
+    // t.onblur = function(){
+    //     console.log(789);
+    // }
+
+    let arr = ['脏脏','静静','康康','帅帅','涛涛'];
+
+    t.onblur = function(){
+        let v = this.value;
+        // if(arr.some(e=>e==v)){
+        c.checked = r.checked = false;
+        if(arr.includes(v)){
+            r.checked = true;
+        }else{
+            c.checked = true;
+        }
+        // console.log(789);
+    }
+
+
+
+  
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        事件流:
+            捕获  从window起到目标点的过程
+            目标  事件触发的点
+            冒泡  从目标点到window
+        
+        问题:
+            当目标点绑定了事件函数，祖先级元素也绑定了同样的事件
+            函数，在触发目标事件的时候通过冒泡也会调用祖先级
+            的事件函数
+
+        解决冒泡:
+            ev.cancelBubble = true
+            ev.stopPropagation();
+        
+        ev event
+            当某个事件触发的时候，函数的第一个参数就为事件对象
+            能够记录事件触发时的细节信息。
+        
+    */
+</script>
+</body>
+</html>

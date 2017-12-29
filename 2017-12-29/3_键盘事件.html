@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        onkeydown  键盘按下
+        onkeyup    键盘抬起
+        onkeypress 事件会在键盘按键被按下并释放一个键时发生。
+
+        ev.keyCode 获取到键值
+
+            常用的键值
+                左上右下
+                    37 - 40
+                0-9
+                    48 - 57
+
+                a-z 
+                    65 - 90
+
+                回车 13
+
+                空格 32
+    */
+
+    document.onkeydown = function(ev){
+        // console.log('按下');
+        console.log(ev.keyCode);
+    }
+
+    // document.onkeyup = function(){
+    //     console.log('抬起');
+    // }
+
+
+
+
+    // document.onkeypress = function(){
+    //     console.log(11);
+    // }
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="t">
+    <ul id="ul"></ul>
+<script>
+    const t = document.getElementById('t');
+    const ul = document.getElementById('ul');
+
+    /*
+        小细节：
+            当通过键盘去监控（获取）输入的内容时，请使用onkeyup
+            因为onkeydown会少监听一次。
+
+        insertBefore：
+            如果第二个参数是没有的，那么等同于appendChild
+
+        addEventListener()
+            不管有没有写true，那么都有捕获的过程，只不过没监听而已
+            没监听不等于没有
+
+        shift -> 16
+
+        注意：
+            如果使用组合键的时候，后面的键会把前面的键给覆盖
+        
+        特殊键:
+            ev.shiftKey  
+            ev.altKey
+            ev.ctrlKey
+
+            布尔值 按着就是true,否则false
+
+    */
+
+    t.onkeydown = function(ev){
+        // console.log(ev)
+        if(ev.ctrlKey &&  ev.shiftKey && ev.keyCode == 13){
+            let li = document.createElement('li');
+            li.innerText = this.value;
+            ul.insertBefore(li,ul.children[0]);
+            this.value = '';
+        }
+    }
+
+
+    // t.onkeyup = function(ev){
+    //     console.log(ev.keyCode)
+    //     if(ev.keyCode == 16 && ev.keyCode == 13){
+    //         let li = document.createElement('li');
+    //         li.innerText = this.value;
+    //         ul.insertBefore(li,ul.children[0]);
+    //         this.value = '';
+    //     }
+    // }
+
+</script>
+</body>
+</html>
