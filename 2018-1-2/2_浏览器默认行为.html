@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body style="height:3000px">
+    <img src="logo.png" alt="" id="img">
+<script>
+    /*
+        浏览器的默认行为:
+            你不想触发某个行为，浏览器偷偷的帮你触发了
+
+        传统的事件绑定阻止默认行为:
+            return false
+
+        事件绑定阻止默认行为:
+            ev.preventDefault();
+
+    */
+
+    document.onmousedown = function(){
+        return false;
+    }
+    // img.onmousedown = function(){
+    //     return false;
+    // }
+
+    // document.onkeydown = function(ev){
+    //     if(ev.keyCode === 32){
+    //         return false;
+    //     }
+    // }
+
+    // document.addEventListener('keydown',function(ev){
+    //     if(ev.keyCode === 32){
+    //         ev.preventDefault();
+    //     }
+    // });
+
+
+
+
+</script>
+</body>
+</html>

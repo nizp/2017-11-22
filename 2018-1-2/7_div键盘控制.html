@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#div{
+    width:100px;
+    height: 100px;
+    position: absolute;
+    left:0;
+    top:0;
+    background:red;
+}
+</style>
+</head>
+<body>
+    <div id="div"></div>
+<script>
+    const div = document.getElementById('div');
+
+    /*
+        为了优化用户体验，在按下某个键盘的时候，大概有430ms左右
+        事件让用户抬起，如果430ms左右之后还没有送开手，就说明
+        是长按。
+
+        所以说才会出现停顿效果。
+    */
+    let o = +new Date()
+    document.onkeydown = function(ev){
+        let n = +new Date();
+        console.log(n-o);
+        o = n;
+       
+
+        if(ev.keyCode == 39){
+            div.style.left = div.offsetLeft + 5 +'px';
+        }
+
+        if(ev.keyCode == 40){
+            div.style.top = div.offsetTop + 5 +'px';
+        }
+    }  
+</script>
+</body>
+</html>

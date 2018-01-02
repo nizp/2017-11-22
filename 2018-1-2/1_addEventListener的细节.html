@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:200px;
+    height: 200px;
+    background: red;
+}
+#box2{
+    width:50px;
+    height: 50px;
+    background:greenyellow;
+}
+</style>
+</head>
+<body>
+    <div id="box">
+        <div id="box2"></div>
+    </div>
+<script>
+    /*
+        事件模型（事件流）
+            捕获、目标、冒泡
+
+        
+        addEventListener:第三个参数可以为一个对象
+
+        
+        capture：
+            是否捕获  true就捕获,false冒泡
+
+        once:
+            只触发一次,掉用完之后就解除绑定。
+
+
+        ev.cancelBubble = true
+
+        ev.stopPropagation();
+
+
+        注意：
+            如果在事件套事件的时候使用了addEventlistener
+            那么会出现重复绑定。
+
+
+        
+    */
+
+    // box.addEventListener('click',function(){
+    //     alert(1);
+    //     box2.addEventListener('mouseover',function(){
+    //         alert('小盒子触发');
+    //     },{once:true});
+    // });
+
+
+    // box.onclick = function(){
+    //     alert(1);
+    //     box2.onmouseover = function(){
+    //         alert('小盒子触发');
+    //     }
+    // }
+
+
+    box.addEventListener('click',fn);
+
+    function fn(){
+        alert(1);
+        box2.addEventListener('mouseover',fn);
+        function fn(){
+            alert('小盒子触发'); 
+        } 
+    }
+
+    
+
+    
+
+    // document.addEventListener('click',function(){
+    //     alert(document);
+    // },{capture:false});
+
+    // window.addEventListener('click',function(){
+    //     alert(window);
+    // },{capture:false});
+
+
+
+    // window.onclick = function(){
+    //     alert(window);
+    // }
+    // document.onclick = function(){
+    //     alert(document);
+    // }
+
+</script>
+</body>
+</html>

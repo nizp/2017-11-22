@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+}
+body,html{
+    overflow: hidden;
+}
+#box{
+    position: absolute;
+    top:0;
+    left:0;
+}
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script src="tween.js"></script>
+<script>
+
+    let arr = ['skyblue','pink','yellow','green'];
+    let div = '';
+    let iW = document.documentElement.clientWidth;
+    let iH = window.innerHeight;
+    arr.forEach((el,i) => {
+        div += `<div style="background:${arr[i]};width:${iW}px;height:${iH}px"></div>`
+    });
+
+    box.innerHTML = div;
+    let num = 0;
+    let onOff = true;
+
+    addWheel(document,function(o){
+        if(o){
+            //正数
+
+            if(!onOff)return;
+            onOff = false;
+            num --;
+            if(num < 0){num = 0};
+        }else{
+            //负数
+            if(!onOff)return;
+            onOff = false;
+            num ++;
+            if(num > arr.length-1)num = arr.length-1;
+            // console.log(num);
+        }  
+        
+        move({
+            obj:box,
+            attrs:{
+                top:-num*iH
+            },
+            cb:function(){
+                onOff = true;
+            },
+            d:500,
+            fx:'bounceOut'
+        });
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function addWheel(obj,fn){
+        obj.addEventListener('mousewheel',callback);
+        obj.addEventListener('DOMMouseScroll',callback);
+
+        function callback(ev){
+            let o = true; //向上
+            if(ev.wheelDelta){
+                o = ev.wheelDelta > 0?true:false;
+            }else{
+                o = ev.detail < 0? true:false;
+            }
+            fn && fn(o);
+        }
+
+    }
+
+</script>
+</body>
+</html>
