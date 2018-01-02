@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="t">
+    <input type="button" value="选中文字" id="btn">
+    <span id="span">0/266</span>
+<script>
+   /*
+        t.focus();
+            自动聚焦
+
+        select：
+            选中文本,也可以拿来聚焦
+
+        oninput:
+            文本内容发生变化的时候触发
+   */
+    
+   t.focus();
+
+    btn.onclick = function(){
+        t.select();
+    }
+  
+    t.oninput = function(){
+        
+        span.innerText = (this.value.length)+'/266';
+        console.log(this.value.length);
+    }
+</script>
+</body>
+</html>

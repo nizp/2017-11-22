@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    #box{
+        width:50px;
+        /* height: 50px; */
+        background:greenyellow;
+        position: absolute;
+        top:0;
+        left:0;
+        display: none;
+    }
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul li{
+        list-style: none;
+        margin: 5px;
+        background: #fff;
+        text-align: center;
+    }
+    ul li:hover{
+        background: green;
+        color: #fff;
+    }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul id="ul">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+<script>
+/*
+    oncontextmenu：
+        弹出右键菜单
+*/
+
+    let lis = ul.children;
+    document.oncontextmenu = function(ev){
+        box.style.display = 'block';
+        box.style.left = ev.pageX + 'px';
+        box.style.top = ev.pageY + 'px';
+        return false;
+    };
+
+    // for(var i=0;i<lis.length;i++){
+    //     lis[i].onclick = function(ev){
+    //        console.log(this.innerText);
+    //        ev.cancelBubble = true;
+    //     }
+    // }
+
+    ul.onclick = function(ev){ //一般使用事件源的时候最好给个确定的目标点。
+        if(ev.target.tagName === 'LI'){
+            console.log(ev.target.innerText);
+            ev.cancelBubble = true;
+        }
+    }
+
+    document.onclick = function(){
+        box.style.display = 'none';
+    }
+</script>
+</body>
+</html>

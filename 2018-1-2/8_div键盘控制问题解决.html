@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#div{
+    width:100px;
+    height: 100px;
+    position: absolute;
+    left:0;
+    top:0;
+    background:red;
+}
+</style>
+</head>
+<body>
+    <div id="div"></div>
+<script>
+    const div = document.getElementById('div');
+
+    /*
+        为了优化用户体验，在按下某个键盘的时候，大概有430ms左右
+        事件让用户抬起，如果430ms左右之后还没有送开手，就说明
+        是长按。
+
+        所以说才会出现停顿效果。
+
+        解决:
+            按下的时候开个定时器，把间隔范围缩小到30左右
+
+        按下:
+        {
+            按上键:true,
+            按下键:flase,
+            按左键:true
+            按右键:flase
+        }
+        抬起:
+        {
+            按上键:false,
+            按下键:flase,
+            按左键:false
+            按右键:true
+        }
+    */
+    // let o = +new Date()
+    let timer = null;
+    document.onkeydown = function(ev){
+        // let n = +new Date();
+        // console.log(n-o);
+        // o = n;
+        clearInterval(timer);
+        timer = setInterval(function(){
+            if(ev.keyCode == 39){
+                div.style.left = div.offsetLeft + 5 +'px';
+            }
+
+            if(ev.keyCode == 40){
+                div.style.top = div.offsetTop + 5 +'px';
+            }
+            if(ev.keyCode == 38){
+                div.style.top = div.offsetTop - 5 +'px';
+            }
+            if(ev.keyCode == 37){
+                div.style.left = div.offsetLeft - 5 +'px';
+            }
+        },10);
+    }  
+
+    document.onkeyup = function(){
+        clearInterval(timer);
+    }
+</script>
+</body>
+</html>

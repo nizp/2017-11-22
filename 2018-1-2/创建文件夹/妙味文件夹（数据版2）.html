@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		body{
+			margin: 0;
+		}
+		#wrap {
+			width: 700px;
+			height: 500px;
+			margin: 30px auto;
+			background: url(img/warp.png) no-repeat;
+			position: relative;
+			/*text-align: center;*/
+		}	
+		#files {
+			position: absolute;
+			left: 148px;
+			width:420px;
+			top: 200px;
+			overflow: auto;
+		}
+		.add {
+			width: 132px;
+			height: 47px;
+			display: inline-block;
+			text-decoration: none;
+			background: url(img/addberfor.png) no-repeat;
+			background-size: cover;
+			position: absolute;
+			left: 290px;
+			bottom: 102px;
+		}
+		.del{
+			width: 132px;
+			height: 48px;
+			display: inline-block;
+			text-decoration: none;
+			background: url(img/add.png) no-repeat;
+			position: absolute;
+			left: 295px;
+			bottom: 50px;
+		}
+		.file{
+			width: 116px;
+			height: 118px;
+			border: 2px solid rgba(0,0,0,0);
+			position: relative;
+			border-radius: 10%;
+			float: left;
+			margin-right: 10px;
+			
+		}
+		.fileActive{
+			border-color:#b5a3c2 ;
+			background:#6f5872 ;
+		}
+		.file .ico{
+			margin: 20px auto 0;
+			width:70px;
+			height: 57px;
+			background: url(img/wenjian.png) no-repeat;
+			background-size: cover;
+		}
+		.file .check{
+			position: absolute;
+			left: 0;
+			top: 0;
+			display: none;
+		}
+		.fileActive .check{
+			display: block;
+		}
+		.file span{
+			display: block;
+			font: 16px/34px "微软雅黑";
+			text-align: center;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			color: #fff;
+			
+		}
+		.file .text{
+			position: absolute;
+			left: 12px;
+			top: 82px;
+			height: 20px;
+			padding: 1px;
+			display: none;
+			width: 80px;
+			font: 16px/34px "微软雅黑";
+		}
+	</style>
+</head>
+<body>
+	<section id="wrap">
+		<div id="files">
+			<!-- <div class="file">
+				<div class="ico"></div>
+				<input type="checkbox" class="check">
+				<span>新建文件夹</span>
+				<input type="text" class="text">
+			</div> -->
+		</div>
+		<a href="javascript:;" class="add"></a>
+		<a href="javascript:;" class="del"></a>
+	</section>
+<script>
+	/*
+		
+
+		<div class="file">
+			<div class="ico"></div>
+			<input type="checkbox" class="check">
+			<span>新建文件夹</span>
+			<input type="text" class="text">
+		</div>
+	*/
+	var data=[
+		{
+			id:0,
+			name:"新建文件夹1",
+			checked:false
+		},
+		{
+			id:1,
+			name:"新建文件夹2",
+			checked:true
+		},
+		{
+			id:2,
+			name:"新建文件夹3",
+			checked:false
+		}
+	]
+	const add = document.querySelector('.add');
+	const del = document.querySelector('.del');
+	const files = document.querySelector('#files');
+	let num = 0;
+	let len = data.length;
+
+	/*
+		添加
+
+		ondblclick 双击
+	*/
+	add.onclick = function(){
+		
+		if(num < len){
+			createData();
+			files.appendChild(createDiv(num));
+		}
+		num ++;
+		if(num > 3){
+			num = 3;
+		}
+	}
+
+	/*
+		删除
+			obj.classList.contains('className'):
+				返回布尔值，判断指定的类名是否存在。
+
+			
+	*/
+
+	
+	del.onclick = function(){
+		num = 0;
+		//留下是checked为false的
+		data = data.filter((e,i)=>{
+			return !e.checked;
+		});
+
+		files.innerHTML = '';
+		//重新创建div
+
+		data.forEach(e=>{
+			files.appendChild(createDiv(num));
+			num ++;
+		});
+	}
+
+	
+	
+	/*
+		创建数据
+	*/
+	function createData(){
+		if(data.length < 3){
+			data.push({
+				id:+new Date(),
+				name:'新建文件夹',
+				checked:false
+			});
+		}
+	}
+
+	function createDiv(num){
+		let fileDiv = document.createElement('div');
+		fileDiv.className = 'file';
+		let ico = document.createElement('div');
+		ico.className = 'ico';
+		let check = document.createElement('input');
+		check.type = 'checkbox';
+		check.className = "check";
+		//check的checked根据数据的chceked来
+		check.checked = data[num].checked;
+
+		//点击选中和非选中来控制数据的checked
+		check.onclick = function(){
+			data[num].checked = this.checked;
+		}
+
+		if(data[num].checked){
+			fileDiv.classList.add('fileActive');
+		}
+		/*
+			移入移出的样式。
+		*/
+		fileDiv.onmouseover = function(){
+			this.classList.add('fileActive');
+		}
+		fileDiv.onmouseout = function(){
+			if(!check.checked){
+				this.classList.remove('fileActive');
+			}
+		}
+		let span = document.createElement('span');
+		//初始化文件夹的名字
+		span.innerText = data[num].name;
+
+		let text = document.createElement('input');
+		text.type = 'text';
+		text.className = 'text';
+		
+		/*
+			点击span修改文件名
+		*/
+		span.ondblclick = function(){
+			text.style.display = 'block';
+			text.focus();
+		}
+
+		text.onblur = function(){
+			if(text.value){
+				span.innerText = text.value;
+				/*
+					循环数据，把input对应的数据的name修改掉。
+				*/
+
+				data[num].name = text.value; //这个和下面那个是等价的。
+				// data.forEach(e=>{
+				// 	if(span.parentNode.dataset.id == e.id){
+				// 		e.name = text.value;
+				// 	}
+				// });
+				// console.log(data);
+			}
+			text.style.display = 'none';
+		}
+		fileDiv.appendChild(ico);
+		fileDiv.appendChild(check);
+		fileDiv.appendChild(span);
+		fileDiv.appendChild(text);
+		return fileDiv;
+	}
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

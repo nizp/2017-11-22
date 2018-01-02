@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        onscroll
+            只有滚动条的情况下才会触发
+
+        onmousewheel：IE和chrome下
+            ev.wheelDelta
+                上：180   正数
+                下: -180  负数
+
+        DOMMouseScroll  FF
+            ev.detail
+                上: -3   负数
+                下: 3    正数
+    */
+
+    // window.onscroll = function(){
+    //     alert(1);
+    // }
+
+    // window.onmousewheel = function(ev){
+    //     // alert(1);
+    //     // console.log(ev.wheelDelta);
+
+    //     if(ev.wheelDelta > 0){
+    //         alert('上滚');
+    //     }else{
+    //         alert('下滚');
+    //     }
+    // }
+
+    // window.addEventListener('DOMMouseScroll',function(ev){
+    //     alert(ev.detail); 
+    // });
+
+    addWheel(window,function(o){
+        if(o){
+            alert('上滚');
+        }else{
+            alert('下滚');
+        }
+    });
+
+    function addWheel(obj,fn){
+        obj.addEventListener('mousewheel',callback);
+        obj.addEventListener('DOMMouseScroll',callback);
+
+        function callback(ev){
+            let o = true; //向上
+            if(ev.wheelDelta){
+                o = ev.wheelDelta > 0?true:false;
+            }else{
+                o = ev.detail < 0? true:false;
+            }
+            fn && fn(o);
+            // alert(o);
+        }
+
+    }
+
+
+
+</script>
+</body>
+</html>
