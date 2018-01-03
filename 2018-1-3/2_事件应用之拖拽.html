@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    top:0;
+    left:0;
+}
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    /*
+        拖拽3大事件:
+            1.onmousedown
+            2.onmousemove
+            3.onmouseup
+    */
+
+    const box = document.getElementById('box');
+
+    let disX = 0;
+    let disY = 0;
+    box.onmousedown = function(ev){
+        /*
+            拿到按下时的位置
+        */
+        disX = ev.pageX;
+        disY = ev.pageY;
+        let t = box.offsetTop;
+        let l = box.offsetLeft;
+
+        box.onmousemove = function(e){
+            /*
+                拿到move时的位置
+            */
+            let mpageX = e.pageX;
+            let mpageY = e.pageY;
+            box.style.left = l + (mpageX - disX) + 'px';
+            box.style.top = t + (mpageY - disY) + 'px';
+        }
+
+        box.onmouseup = function(){
+            box.onmousemove = null;
+        } 
+    }
+    
+
+    
+
+
+</script>
+</body>
+</html>

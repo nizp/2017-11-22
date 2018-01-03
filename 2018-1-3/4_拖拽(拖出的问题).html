@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    /* background: red; */
+    position: absolute;
+    top:0;
+    left:0;
+    /* border: 100px solid #000; */
+}
+</style>
+</head>
+<body>
+    1232178ey79dsjahd
+    <!-- <div id="box"></div> -->
+    <img src="wenjian.png" width="100" id="box">
+<script>
+    /*
+        拖拽3大事件:
+            1.onmousedown
+            2.onmousemove
+            3.onmouseup
+        
+        move、up的时候绑在document身上就能解决快速移动和没在
+        元素本身释放的bug
+
+        在up的时候也把up事件清除,这样就不会导致
+        释放up的时候多次触发up事件中的代码。
+
+        在down的时候清除默认行为。
+    */
+
+    const box = document.getElementById('box');
+
+    let disX = 0;
+    let disY = 0;
+    let num = 0;
+    box.onmousedown = function(ev){
+        /*
+            拿到按下的位置到元素的边的距离
+        */
+        disX = ev.pageX - box.offsetLeft;
+        disY = ev.pageY - box.offsetTop;
+
+        document.onmousemove = function(e){
+            /*
+                拿到move时的位置
+            */
+            let mpageX = e.pageX;
+            let mpageY = e.pageY;
+            box.style.left = (mpageX - disX) + 'px';
+            box.style.top = (mpageY - disY) + 'px';
+        }
+
+        document.onmouseup = function(){
+            document.onmousemove = null;
+            document.onmouseup = null;
+            console.log(++num);
+        } 
+        return false;
+    }
+    
+
+    
+
+
+</script>
+</body>
+</html>

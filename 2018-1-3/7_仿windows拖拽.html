@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.box{
+    width:100px;
+    height: 100px;
+    /* background: red; */
+    position: absolute;
+    top:0;
+    left:0;
+    /* border: 100px solid #000; */
+}
+</style>
+</head>
+<body id="body">
+    <img src="wenjian.png" width="100" class="box">
+<script>
+    /*
+        拖拽3大事件:
+            1.onmousedown
+            2.onmousemove
+            3.onmouseup
+        
+        move、up的时候绑在document身上就能解决快速移动和没在
+        元素本身释放的bug
+
+        在up的时候也把up事件清除,这样就不会导致
+        释放up的时候多次触发up事件中的代码。
+
+        在down的时候清除默认行为。
+    */
+
+    const box = document.getElementsByClassName('box')[0];
+
+    let disX = 0;
+    let disY = 0;
+    let actX = 0;
+    let actY = 0;
+    box.onmousedown = function(ev){
+       
+        disX = ev.pageX - box.offsetLeft;
+        disY = ev.pageY - box.offsetTop;
+
+        let cloneBox = box.cloneNode(true);
+        cloneBox.style.opacity = .5;
+
+        body.appendChild(cloneBox);
+
+        document.onmousemove = function(e){
+           
+            cloneBox.style.left = (e.pageX - disX) + 'px';
+            cloneBox.style.top = (e.pageY - disY) + 'px';
+            
+            //存分身的位置，存起来给真身用。
+            actX = e.pageX - disX;
+            actY = e.pageY - disY;
+        }
+
+        document.onmouseup = function(){
+            document.onmousemove = document.onmouseup = null;
+            cloneBox.remove();
+            box.style.left = actX + 'px';
+            box.style.top = actY + 'px';
+        } 
+        return false;
+    }
+    
+
+    
+
+
+</script>
+</body>
+</html>

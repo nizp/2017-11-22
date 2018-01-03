@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    top:0;
+    left:0;
+    /* border: 100px solid #000; */
+}
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    /*
+        拖拽3大事件:
+            1.onmousedown
+            2.onmousemove
+            3.onmouseup
+
+        解除move:
+            1.把匿名函数变成有名函数
+            2.
+    */
+
+    const box = document.getElementById('box');
+    let onOff = true;
+    box.addEventListener('mousedown',function(ev){
+        onOff = true;
+        let disX = ev.pageX - this.offsetLeft;
+        let disY = ev.pageY - this.offsetTop;
+
+        document.addEventListener('mousemove',move);
+        document.addEventListener('mouseup',up);
+        
+        function move(e){
+            if(!onOff)return;
+            box.style.left = e.pageX - disX + 'px';
+            box.style.top = e.pageY - disY + 'px';
+        }
+        function up(){
+            onOff = false;
+            if(!onOff)return;
+            console.log(123);
+        }
+
+    });
+
+   
+    
+
+
+</script>
+</body>
+</html>
