@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#div{
+    width:100px;
+    height: 100px;
+    background: red;
+}
+#div2{
+    width:20px;
+    height: 20px;
+    background: bisque;
+}
+</style>
+</head>
+<body>
+    <div id="div">
+        <div id="div2"></div>
+    </div>
+<script>
+    /*
+        onclick
+        onmouseover
+        onmouseout
+        onmouseleave
+        onmouseenter
+        onmousedown
+        onmousemove
+        onmouseup
+        onkeydown
+        onkeyup
+        onresize
+        onscroll
+        onmousewheel
+        DOMMouseScroll
+        onchange
+        oninput
+        onfocus
+        onblur
+        onpopState
+        onhashchange
+        ondblclick
+    */
+
+    // div.onmouseover = function(){
+    //     alert('div移入');
+    // }
+    // div.onmouseout = function(){
+    //     alert('div移出');
+    // }
+
+
+    // div.onmouseenter = function(){
+    //     alert('div移入');
+    // }
+    // div.onmouseleave = function(){
+    //     alert('div移出');
+    // }
+
+    // div2.onmouseenter = function(){
+    //     alert('div2移入');
+    // }
+    // div2.onmouseleave = function(){
+    //     alert('div2移出');
+    // }
+
+    /*
+        onmouseenter
+        onmouseleave
+            *** 不冒泡
+
+        解决冒泡：
+            1.阻止冒泡
+            2.不绑同一事件名的函数
+            3.使用类似onmouseenter
+    */
+    div.onclick = function(){
+        alert(1);
+    }
+    div2.onmouseenter = function(){
+        alert(2);
+    }
+
+
+
+
+
+</script>
+</body>
+</html>
