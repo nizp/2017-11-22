@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#div1{
+    width:100px;
+    height: 100px;
+    background: skyblue;
+    position: absolute;
+    top:0;
+    left:0;
+}
+#div2{
+    width:100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    top:100px;
+    left:550px;
+}
+#div2.green{
+    background: greenyellow;
+}
+</style>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+<script>
+    const div1 =  document.getElementById('div1');
+    const div2 =  document.getElementById('div2');
+
+    Drag(div1);
+    // Drag(div2);
+    function Drag(box){
+        box.onmousedown = function(dev){
+            let disX = dev.pageX - this.offsetLeft;
+            let disY = dev.pageY - this.offsetTop;
+
+            document.onmousemove = function(mev){
+               
+                box.style.left = mev.pageX - disX + 'px';
+                box.style.top = mev.pageY - disY + 'px';
+
+                if(bong(div2,box)){
+                    //碰到了
+                    div2.className = 'green';
+                }else{
+                    //没碰到
+                    div2.className = 'red';
+                }
+
+            }
+            document.onmouseup = function(){
+                document.onmousemove = document.onmouseup = null;
+            }
+            return false;
+        }
+    }
+
+    function bong(a,b){
+        /*
+            B的四个方向
+        */
+        let bl = b.offsetLeft;
+        let bt = b.offsetTop;
+        let br = bl + b.offsetWidth;
+        let bb = bt + b.offsetHeight;
+
+
+        /*
+            A的四个方向
+        */
+
+        let al = a.offsetLeft;
+        let at = a.offsetTop;
+        let ar = al + a.offsetWidth;
+        let ab = at + a.offsetHeight;
+
+        if(br < al || bb < at || bl > ar || bt > ab){
+            //没碰到
+            return false;
+        }else{
+           return true;
+        }
+    }
+</script>
+</body>
+</html>
