@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #6DE0FD;
+        }
+
+        #box{
+            width:800px;
+            margin:100px auto auto;
+            background-color: rgba(225,225,225,.6);
+            box-shadow: 0 0 5px #ccc;
+        }
+
+        .showSelect{
+            height:40px;
+            padding:5px;
+            background-color: rgba(214,239,237,.8);
+        }
+        h4{
+            float: left;
+            margin:5px 0;
+            width:100px;
+            padding:5px;
+            text-align: center;
+        }
+        .showSelect .info div{
+            float: left;
+        }
+        .showSelect .info div div{
+            border:1px solid #1C9ABE;
+            margin:5px;
+            padding:5px;
+            color:#1C9ABE;
+        }
+
+        .showSelect .info div span{
+            display: inline-block;
+            background-color: #1C9ABE;
+            width:20px;
+            height:20px;
+            color:#fff;
+            text-align: center;
+            line-height:20px;
+            cursor:pointer;
+        }
+        ul{
+            list-style: none;
+            padding:10px;
+        }
+        li{
+            padding:5px;
+            margin:10px 0;
+        }
+        li strong,li span{
+            display: inline-block;
+            padding:5px;
+        }
+        span{
+            cursor:pointer;
+        }
+        span.active{
+            color:#66CC00;
+        }
+        .red{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div class="showSelect">
+        <h4>你的选择：</h4>
+        <div class="info">
+            <div>
+                <!-- <div>苹果 <span>x</span></div> -->
+            </div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <ul class="type-box">
+        <li class="type1">
+            <strong>品牌：</strong>
+            <span>苹果</span>
+            <span>小米</span>
+            <span>锤子</span>
+            <span>魅族</span>
+            <span>华为</span>
+            <span>三星</span>
+            <span>OPPO</span>
+            <span>vivo</span>
+            <span>乐视</span>
+            <span>360</span>
+            <span>中兴</span>
+            <span>索尼</span>
+        </li>
+        <li class="type2">
+            <strong>尺寸：</strong>
+            <span>3.0英寸以下</span>
+            <span>3.0-3.9英寸</span>
+            <span>4.0-4.5英寸</span>
+            <span>4.6-4.9英寸</span>
+            <span>5.0-5.5英寸</span>
+            <span>5.5-5.9英寸</span>
+            <span>6.0英寸以上</span>
+        </li>
+        <li  class="type3">
+            <strong>系统：</strong>
+            <span>安卓(Android)</span>
+            <span>苹果(IOS)</span>
+            <span>微软(WindowsPhone)</span>
+            <span>无</span>
+            <span>其他</span>
+        </li>
+        <li  class="type4">
+            <strong>网络：</strong>
+            <span>联通3G</span>
+            <span>双卡单4G</span>
+            <span>双卡双4G</span>
+            <span>联通4G</span>
+            <span>电信4G</span>
+            <span>移动4G</span>
+        </li>
+    </ul>
+</div>
+<script>
+
+    let lis = document.querySelectorAll('li');
+    let divs = document.querySelectorAll('.info div');
+
+    for(var i=0;i<lis.length;i++){
+        (function(lis,divs){
+            lis.onclick = function(ev){
+               // console.log(ev.target);
+                if(ev.target.tagName === 'SPAN'){
+                    //打清洗
+                    let spans = Array.from(lis.children);
+                    spans = spans.map(e=>e.className='');
+                    ev.target.className = 'red';
+
+                    let div = document.createElement('div');
+        
+                    div.innerHTML = `${ev.target.innerText}<span>x</span>`;
+                    divs.innerHTML = '';
+                    
+                    //删除
+                    let span = div.getElementsByTagName('span')[0];
+                    span.onclick = function(){
+                        div.remove();
+                        let spans = Array.from(lis.children);
+                        spans = spans.map(e=>e.className='');
+                    }
+                    //插入创建的div
+                    divs.appendChild(div);
+                }
+            }
+        })(lis[i],divs[i]);
+    }
+   
+    
+
+
+</script>
+
+
+
+</body>
+</html>
