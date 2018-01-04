@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#k{
+    width:0;
+    height: 0;
+    border: 1px solid skyblue;
+    position: absolute;
+    left:0;
+    top:0;
+    background:rgba(180, 186, 211,1);
+}
+</style>
+</head>
+<body id="body">
+    <!-- <div id="k"></div> -->
+<script>
+    const body = document.getElementById('body');
+    document.onmousedown = function(ev){
+        let disX = ev.pageX;
+        let disY = ev.pageY;
+        let div = document.createElement('div');
+        div.id = 'k';
+        body.appendChild(div);
+
+        document.onmousemove = function(ev){
+            let w = Math.abs(ev.pageX - disX);
+            let h = Math.abs(ev.pageY - disY);
+
+            div.style.width = w + 'px';
+            div.style.height = h + 'px';
+
+            //console.log('移动的:'+(ev.pageX - disX) , '按下的:'+disX)
+
+            let l = Math.min(disX,ev.pageX);
+            let t = Math.min(disY,ev.pageY);
+
+            div.style.left = l + 'px';
+            div.style.top = t + 'px';
+        }
+        document.onmouseup = function(){
+            document.onmousemove = document.onmouseup = null;
+            div.remove();
+        }
+    }
+</script>
+</body>
+</html>

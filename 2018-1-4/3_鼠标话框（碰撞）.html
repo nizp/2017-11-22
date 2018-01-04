@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#k{
+    width:0;
+    height: 0;
+    border: 1px solid skyblue;
+    position: absolute;
+    left:0;
+    top:0;
+    background:rgba(180, 186, 211,.8);
+}
+li{
+    width:100px;
+    height: 100px;
+    background: skyblue;
+    margin: 10px;
+    float: left;
+    list-style: none;
+}
+.active{
+    background: yellowgreen;
+}
+</style>
+</head>
+<body id="body">
+    <!-- <div id="k"></div> -->
+
+    <ul id="ul">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+<script>
+    const body = document.getElementById('body');
+    const ul = document.getElementById('ul');
+    let lis = ul.children;
+    document.onmousedown = function(ev){
+        let disX = ev.pageX;
+        let disY = ev.pageY;
+        let div = document.createElement('div');
+        div.id = 'k';
+        body.appendChild(div);
+
+        document.onmousemove = function(ev){
+            let w = Math.abs(ev.pageX - disX);
+            let h = Math.abs(ev.pageY - disY);
+
+            div.style.width = w + 'px';
+            div.style.height = h + 'px';
+
+            //console.log('移动的:'+(ev.pageX - disX) , '按下的:'+disX)
+
+            let l = Math.min(disX,ev.pageX);
+            let t = Math.min(disY,ev.pageY);
+
+            div.style.left = l + 'px';
+            div.style.top = t + 'px';
+
+            for(let i=0;i<lis.length;i++){
+                if(bong(lis[i],div)){
+                    lis[i].classList.add('active');
+                }else{
+                    lis[i].classList.remove('active');
+                }
+            }
+            
+        }
+        document.onmouseup = function(){
+            document.onmousemove = document.onmouseup = null;
+            div.remove();
+        }
+        return false;
+    }
+
+    function bong(a,b){
+        /*
+            B的四个方向
+        */
+        let bl = b.offsetLeft;
+        let bt = b.offsetTop;
+        let br = bl + b.offsetWidth;
+        let bb = bt + b.offsetHeight;
+
+
+        /*
+            A的四个方向
+        */
+
+        let al = a.offsetLeft;
+        let at = a.offsetTop;
+        let ar = al + a.offsetWidth;
+        let ab = at + a.offsetHeight;
+
+        if(br < al || bb < at || bl > ar || bt > ab){
+            //没碰到
+            return false;
+        }else{
+           return true;
+        }
+    }
+</script>
+</body>
+</html>
