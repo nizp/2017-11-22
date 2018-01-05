@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+*{ margin:0; padding:0;}
+#div1{ width:312px; margin:50px auto; position:relative;}
+.small{ width:310px; height:310px; border:1px solid #cdcdcd; overflow:hidden; left:0; top:0; position:absolute;}
+.mark{ position:absolute; width:100%; height:100%; background:#ff0000; filter:alpha(opacity:0); opacity:0; z-index:2;cursor:move;}
+.float1 { width:100px; height:100px; background:#fede4f; border:1px solid #aaa; filter:alpha(opacity:50);opacity:0.5; position:absolute;  display:none;}
+.big{ width:310px; height:310px; border:1px solid #cdcdcd; overflow:hidden; position:absolute; left:320px; top:0; display:none;}
+.big img{ position:absolute; left:0; top:0;}
+#list{ width:288px; height:46px; overflow:hidden; position:absolute; left:10px; top:320px;}
+#list ul{ position:absolute; left:0;}
+#list li{ list-style:none; float:left; padding:4px; overflow:hidden; width:40px; height:40px;}
+#list li img{ border:1px solid #cdcdcd;}
+#list .active img{  border:1px solid #ff0000;}
+#left{ width:10px; height:45px; display:block; background:url(images/left.gif) no-repeat; position:absolute; top:322px; left:0; cursor:pointer;}
+#right{ width:10px; height:45px; display:block; background:url(images/right.gif) no-repeat; position:absolute; top:322px; left:300px; cursor:pointer;}
+</style>
+</head>
+<body>
+<div id="div1">
+	<div class="small">
+    	<div class="float1"></div>
+    	<div class="mark"></div>
+        <img src="images/m1.jpg" width="310" height="310" />
+    </div>
+    <div id="big" class="big">
+    	<img src="images/b1.jpg" id="img1"/ >
+    </div>
+    <span id="left"></span>
+    <span id="right"></span>
+    <div id="list">
+    	<ul>
+        	<li class="active"><img src="images/s1.jpg" /></li>
+        	<li><img src="images/s2.jpg" /></li>
+        	<li><img src="images/s3.jpg" /></li>
+            <li><img src="images/s4.jpg" /></li>
+        	<li><img src="images/s5.jpg" /></li>
+            <li><img src="images/s6.jpg" /></li>
+            <li><img src="images/s7.jpg" /></li>
+            <li><img src="images/s8.jpg" /></li>
+        	<li><img src="images/s9.jpg" /></li>
+            <li><img src="images/s10.jpg" /></li>
+        </ul>
+    </div>
+</div> 
+<script>
+	const div1 = document.getElementById('div1');
+	const small = div1.querySelectorAll('.small')[0];
+	const f1 = div1.querySelectorAll('.float1')[0];
+	const big = div1.querySelectorAll('.big')[0];
+	const img1 = document.getElementById('img1');
+
+
+	small.onmouseover = function(){
+		f1.style.display = big.style.display = 'block';
+	}
+	small.onmouseout = function(){
+		f1.style.display = big.style.display = 'none';
+	}
+	small.onmousemove = function(ev){
+		//console.log(div1.offsetLeft)
+		let l = ev.pageX - div1.offsetLeft - f1.offsetWidth/2;
+		let t = ev.pageY - div1.offsetTop - f1.offsetHeight/2;
+
+		if(l < 0){
+			l = 0;
+		}else if(l > div1.offsetWidth - f1.offsetWidth){
+			l = div1.offsetWidth - f1.offsetWidth;
+		}
+		if(t < 0){
+			t = 0;
+		}else if(t > small.scrollHeight - f1.offsetHeight){
+			t = small.scrollHeight - f1.offsetHeight;
+		}
+
+		let scaleX = l/(div1.offsetWidth - f1.offsetWidth)
+		let scaleY = t / (small.scrollHeight - f1.offsetHeight);
+		
+
+		img1.style.left = scaleX * (big.offsetWidth - img1.offsetWidth) + 'px';
+		img1.style.top = scaleY * (big.offsetHeight - img1.offsetHeight) + 'px';
+		
+
+		f1.style.left =  l  + 'px';
+		f1.style.top = t + 'px';
+	}
+
+
+
+
+	console.log(f1)
+
+</script>
+</body>
+</html>

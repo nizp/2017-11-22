@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    left:0;
+    top:0;
+}
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    let obj = {
+        37:false,
+        38:false,
+        39:false,
+        40:false
+    }
+    
+    const box = document.getElementById('box');
+
+    let timer = null;
+    let speed = 10;
+
+    timer = setInterval(fn,20);
+    
+    function fn(){
+        console.log(obj);
+        if(obj[38]){
+            box.style.top = box.offsetTop - speed + 'px';
+        }
+        if(obj[40]){
+            box.style.top = box.offsetTop + speed + 'px';
+        }
+        if(obj[37]){
+            box.style.left = box.offsetLeft - speed + 'px';
+        }
+        if(obj[39]){
+            box.style.left = box.offsetLeft + speed + 'px';
+        }
+    }
+    document.onkeydown = function(ev){
+        // alert(timer);
+        if(!timer){
+            timer = setInterval(fn,20);
+        }
+        obj[ev.keyCode] = true;
+    }
+
+    document.onkeyup = function(ev){
+        obj[ev.keyCode] = false;
+
+        let num = 4;
+        for(var attr in obj){
+            if(!obj[attr]){
+                num --;
+            }
+        }
+        if(num == 0){
+            clearInterval(timer);
+            timer = null; //真的关了;
+        }
+    }
+
+
+</script>
+</body>
+</html>
