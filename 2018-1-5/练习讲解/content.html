@@ -89,7 +89,7 @@
 		    .simple time{
 		    	color: #5c6675;
 		    	float: right;
-		    	width: 76px;
+		    	width: 100px;
 		    	font: 12px/30px "微软雅黑";
 		    }
 		    #content dl{
@@ -107,7 +107,7 @@
 	<body>
 		<div id="content">
 			<div id="rightTop">
-				<a href="list.html" class="goback">&lt;&nbsp;返回招聘列表</a>
+				<!-- <a href="list3.html" class="goback">&lt;&nbsp;返回招聘列表</a> -->
 				<a href="javascript:;">投个简历</a>
 			</div>
 			<div id="title">
@@ -127,38 +127,71 @@
 				<dd>8.  了解任一一种流行的前端框架，包括但不限于React、Vue、Angular等；</dd>
 			</dl> -->
 		</div>
-		<script src="js/data.js"></script>
-		<script>
-			let title = document.querySelector('#title');
-// appendChild
-			//  创建节点
-			let p = document.createElement('p');
-			let simplediv = document.createElement('div');
-			simplediv.className = 'simple';
-			simplediv.innerHTML = `18k-25k<span>/</span>北京<span>/</span>经验3-5年<span>/</span>本科及以上<span>/</span>2名 <time>2014-04-10</time>`
-			p.innerText = `前端开发工程师`;
-			title.appendChild(p);
-			title.appendChild(simplediv);
-			//  列表
-			//  最后父级中添加
-			let dl = document.createElement('dl');
-			//  创建节点
-			let dt = document.createElement('dt');
-			dt.innerText = data.sh.text[0].info[0].t;
-			
-				dl.appendChild(dt);
-			data.sh.text[0].info[0].l.forEach(function(e,i){
-				let dd = document.createElement('dd');
-				dd.innerHTML = e;
-				dl.appendChild(dd);
-				return dl;
-			})
-			
-				// console.log(dl);
-			bottom.appendChild(dl)
+<script src="js/data.js"></script>
+<script>
+	/*
+		通过search值去获取对应的数据
+	*/
+	let search = window.location.search.substring(1).split('&');
+	
+	let newData = data[search[0]].text[search[1]*1];
+
+	let title = document.getElementById('title');
+
+	const bottom = document.getElementById('bottom');
+
+	const rightTop = document.getElementById('rightTop');
+
+	/*
+		设置标题:
+			<p>前端开发工程师</p>
+				<div class="simple">18k-25k<span>/</span>北京<span>/</span>经验3-5年<span>/</span>本科及以上<span>/</span>2名 <time>2014-04-10</time></div>
+	*/
+
+	let titleData = `
+			<p>${newData.zw}</p>
+			<div class="simple">${newData.dy}<span>/</span>${newData.dd}<span>/</span>经验${newData.jy}<span>/</span>${newData.xl}<span>/</span>${newData.rs}名 <time>${data.formateDate(newData.sj)}</time></div>
+	`;
+
+	title.innerHTML = titleData;
+
+	/*
+		返回
+	*/
+	rightTop.innerHTML = `<a href="list4.html#lx=${search[0]}&page=${Math.ceil((search[1]*1+1)/4)}" class="goback">&lt;&nbsp;返回招聘列表</a>` + rightTop.innerHTML;
 
 
-			// console.log(data.sh.text[0].info[0].l);
-		</script>
-	</body>
+
+	/*
+		数据的渲染
+	*/
+	let h = '';
+	function render(d,i){
+		let html = `
+				<dl>
+					<dt>${d[i].t}</dt>
+		`;
+			for(var j=0;j<d[i].l.length;j++){
+				html += '<dd>'+ d[i].l[j] +'</dd>';
+			}
+		
+		html += '</dl>';
+		return html;
+	}
+
+	for(var i=0;i<newData.info.length;i++){
+		h += render(newData.info,i);
+	}
+
+	bottom.innerHTML = h;
+	console.log(h);
+	
+
+	
+
+
+	console.log(newData)
+
+</script>
+</body>
 </html>
