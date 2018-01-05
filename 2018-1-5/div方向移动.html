@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    left:0;
+    top:0;
+}
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    let obj = {
+        down:false,
+        left:false,
+        right:false,
+        up:false
+    }
+    const box = document.getElementById('box');
+
+    let timer = null;
+    let speed = 5;
+
+    timer = setInterval(fn,20);
+    
+    function fn(){
+        console.log(obj);
+        if(obj.down){
+            box.style.top = box.offsetTop - speed + 'px';
+        }
+        if(obj.up){
+            box.style.top = box.offsetTop + speed + 'px';
+        }
+        if(obj.left){
+            box.style.left = box.offsetLeft - speed + 'px';
+        }
+        if(obj.right){
+            box.style.left = box.offsetLeft + speed + 'px';
+        }
+    }
+    document.onkeydown = function(ev){
+        // alert(timer);
+        if(!timer){
+            timer = setInterval(fn,20);
+        }
+        switch(ev.keyCode){
+            case  37 :
+                obj.left = true;
+            break; 
+            case  38 :
+                obj.down = true;
+            break; 
+            case  39 :
+                obj.right = true;
+            break; 
+            case  40 :
+                obj.up = true;
+            break; 
+        }
+    }
+
+    document.onkeyup = function(ev){
+        switch(ev.keyCode){
+            case  37 :
+                obj.left = false;
+            break; 
+            case  38 :
+                obj.down = false;
+            break; 
+            case  39 :
+                obj.right = false;
+            break; 
+            case  40 :
+                obj.up = false;
+            break; 
+        }
+        let num = 4;
+        for(var attr in obj){
+            if(!obj[attr]){
+                num --;
+            }
+        }
+        if(num == 0){
+            clearInterval(timer);
+            timer = null; //真的关了;
+        }
+    }
+
+
+</script>
+</body>
+</html>
