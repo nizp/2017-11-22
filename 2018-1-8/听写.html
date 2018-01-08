@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" index="1">
+        <p>
+            你 别 补 刀
+        </p>
+    </div>
+<script>
+    /*
+        1.什么是git，什么是github
+
+        git版本控制工具
+        github程序员的基友网站、代码托管、远程仓库
+    */
+
+    /*
+        2.如何才能版本控制？
+
+        .git文件 -> 到远程仓库创建一个项目 -> git clone下载到本地
+
+        git add . || git add 文件名
+
+        git commit -m "注释"
+
+        git push origin master
+
+    */
+
+    /*
+        3.如何回滚指定版本？
+
+        git reset --hard 指定的版本
+    */
+
+    /*
+        4.当提交代码的时候如果遇到了冲突你是如何解决的？
+
+        1.git fetch  把远程仓库的代码拉取下来（git pull）
+
+        2.git diff master origin/master  查看冲突
+
+        3.git merge origin/master  合并代码
+
+        4.git commit -a -m "注释"
+
+        5.git push origin master
+
+    */
+
+    /*
+        5.什么是DOM？
+
+        document object model  文档对象模型
+
+        通过document提供的api赋予开发者操作页面的能力
+
+    */
+
+    /*
+        
+        6.常用的节点类型有哪些？各代表数字几？用什么属性去查？
+
+        document        9
+
+        element         1    
+
+        text            3
+
+        注释             8
+
+        attributes      2
+
+        element.nodeType
+
+        nodeName || tagName
+
+        nodeValue
+
+    */
+
+    /*
+        7.增删改查属性如何操作
+
+        setAttribute('key','value') 增加属性
+
+        removeAttribute('key') 删除属性
+
+        getAttribute('key') 查属性
+
+        el.dataset.index
+
+        box.index = 2;
+
+        console.log(box.index); //用.的方式去设置得用.的方式去获取
+
+        //如果通过getAttribute去获取行间的属性，.的方式添加的获取不到就为null 
+        console.log(box.getAttribute('index'));
+
+    */
+
+    /*
+        8.父节点、子节点、上、下一个兄弟节点各是什么？
+
+        parentNode
+
+        childNodes 在高版本浏览器下所有的子节点
+
+        children 元素节点
+
+        previousElementSibling
+        nextElementSibling
+    */
+
+    // console.log(box.childNodes.length);
+
+    /*
+        
+        9.DOM的添加、删除、克隆、替换的方法有哪些？
+
+        document.createElement('标签名');可以自定义标签
+
+        document.appendChild();  后添加
+
+        parent.insertBefore(new,添加到它的位置前)
+
+            如果第二个参数为空，那么默认往最后一个添加
+
+        parent.removeChild(子节点)
+
+        子节点.remove();
+
+        element.cloneNode(true)
+
+        parent.replaceChild(new,old)
+
+
+    */
+
+    // document.body.appendChild(document.createElement('自定义'))
+    
+
+    /*
+        
+        10.获取元素的宽度（带边框，不带边框，内容撑开的）
+
+        offsetWidth
+        clientWidth
+        scrollWidth
+    */
+
+    /*
+        11.计算距离上下左右
+
+        offsetLeft
+        offsetTop
+
+        getBoudingClientRect() = {
+            let :
+            right:
+            bottom:
+            top:
+            width:
+            ....
+        }
+    */
+
+</script>
+    
+</body>
+</html>
