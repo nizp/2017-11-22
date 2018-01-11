@@ -15,10 +15,12 @@ function styleV(){
 */
 function fullK(title){
     fullTipBox.innerHTML = title;
+    fullTipBox.style.opacity = 0;
     t.move({
         obj:fullTipBox,
         attrs:{
-            top:0
+            top:0,
+            opacity:1
         },
         d:500,
         cb:function(){
@@ -26,11 +28,12 @@ function fullK(title){
                 t.move({
                     obj:fullTipBox,
                     attrs:{
-                        top:-40
+                        top:-40,
+                        opacity:0
                     },
                     d:400
                 });
-           },1000);
+           },2000);
         }
     });
 }
