@@ -98,7 +98,7 @@ remove.onclick = function(){
 
 content.onclick = function(ev){
     if(ev.target.tagName === 'SPAN'){
-        getId = 0;
+        // getId = 0;
         let id = ev.target.dataset.index * 1;
         getId = id;
         let trees = Array.from(t.$('.tree-title',content));

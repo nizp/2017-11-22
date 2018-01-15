@@ -151,7 +151,6 @@ const t = {
     	opt.obj.timerM = null;
     	let newDate = +new Date();
     	let j = {};
-    
     	/*
     		每个属性有自己的一套，起始值和目标点。
     	*/
@@ -238,7 +237,7 @@ const t = {
 		return arr;
 	},
 	//找到父级的数据
-	getParent:function(id){ 
+	getParent:function(id){
 		let obj = data[id]; //当前的数据
 		if(obj){
 			return data[obj.pid];
