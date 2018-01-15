@@ -28,13 +28,19 @@
         let disY = ev.pageY - this.offsetTop;
 
         document.addEventListener('mousemove',move);
+        document.addEventListener('mouseup',up);
         function move(ev){
             box.style.left = ev.pageX - disX + 'px';
-            boxt.style.top = ev.pageY - disY + 'px';
+            box.style.top = ev.pageY - disY + 'px';
+        }
+        function up(){
+            document.removeEventListener('mouseup',up); 
+            document.removeEventListener('mousemove',move); 
         }
 
         ev.preventDefault();
     });
+
 
 </script>
 </body>
