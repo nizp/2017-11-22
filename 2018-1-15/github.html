@@ -23,6 +23,12 @@
 
     const box = document.getElementById('box');
 
+    document.addEventListener('mousemove',move);
+
+    function move(ev){
+        box.style.left = ev.pageX - disX + 'px';
+        boxt.style.top = ev.pageY - disY + 'px';
+    }
 
 </script>
 </body>
