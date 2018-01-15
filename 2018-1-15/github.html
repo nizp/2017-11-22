@@ -23,6 +23,13 @@
 
     const box = document.getElementById('box');
 
+    box.addEventListener('mousedown',function(ev){
+        let disX = ev.pageX - this.offsetLeft;
+        let disY = ev.pageY - this.offsetTop;
+
+        ev.preventDefault();
+    });
+
 
 </script>
 </body>
