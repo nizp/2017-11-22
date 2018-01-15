@@ -538,10 +538,10 @@ html,body{
     top: -40px;
     z-index: 1001;
     text-align: center;
-    width: 400px;
+    width: 200px;
     left: 50%;
-    margin-left: -200px;
-	transition:.3s;
+    margin-left: -100px;
+	/* transition:.3s; */
 	background: #00BFFF;
 	color: #fff;
 	height: 40px;

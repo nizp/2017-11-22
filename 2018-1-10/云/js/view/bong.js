@@ -1,8 +1,10 @@
 
 folders.onmousedown = function(ev){
+    console.log(ev.pageY)
     t.$('.title a')[0].style.outline = 'none';
     t.$('.title a')[0].focus();
     //只在空白区域画框
+    console.log(ev.target)
     if(ev.target!=this)return;
     let disX = ev.pageX;
     let disY = ev.pageY;
@@ -33,13 +35,15 @@ folders.onmousedown = function(ev){
                     foldersChild[i].classList.add('hov');
                     foldersChild[i].children[3].classList.add('checked');
                     
-                    checkall.className = foldersChild.every(e=>e.classList.contains('hov'))?'checked':'checkedAll';
                 }else{
                     foldersChild[i].classList.remove('hov');
                     foldersChild[i].children[3].classList.remove('checked');
                 }
             // }
         }
+        checkall.className = foldersChild.every(e=>e.classList.contains('hov'))?'checked':'checkedAll';
+
+        console.log(foldersChild);
 
         
 
