@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+  <script>
+    var box = document.querySelector('.box');
+    
+    var dir = {
+      l: false,
+      t: false,
+      r: false,
+      b: false
+    };
+    
+    var speed = 10;
+    var timer = null;
+    
+    timer = requestAnimationFrame(move);
+    function move(){
+      if(dir.l){
+        box.style.left = box.offsetLeft - speed + 'px';
+      }
+      if(dir.r){
+        box.style.left = box.offsetLeft + speed + 'px';
+      }
+      if(dir.t){
+        box.style.top = box.offsetTop - speed + 'px';
+      }
+      if(dir.b){
+        box.style.top = box.offsetTop + speed + 'px';
+      }
+      timer = requestAnimationFrame(move);
+    }
+    
+    window.addEventListener('keydown', function (e){
+        console.log(1);
+        cancelAnimationFrame(timer);
+        timer = requestAnimationFrame(move);
+        var keyCode = e.keyCode;
+        switch (keyCode) {
+          case 37:
+            dir.l = true;
+            break;
+          case 38:
+            dir.t = true;
+            break;
+          case 39:
+            dir.r = true;
+            break;
+          case 40:
+            dir.b = true;
+            break;
+        }
+    });
+    
+    window.addEventListener('keyup', function (e){
+      var keyCode = e.keyCode;
+        switch (keyCode) {
+            case 37:
+            dir.l = false;
+            break;
+            case 38:
+            dir.t = false;
+            break;
+            case 39:
+            dir.r = false;
+            break;
+            case 40:
+            dir.b = false;
+            break;
+        }
+
+        if(Object.values(dir).every(e=>!e)){
+            cancelAnimationFrame(timer);
+        }
+    });
+    
+  </script>
+</body>
+</html>
