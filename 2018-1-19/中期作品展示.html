@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">开启天堂||地狱之门</button>
+    <button id="clear">点击之后这里需要你</button>
+    <div id="box"></div>
+<script>
+    let arr = ['女巫','隐狼'];
+
+    const box = document.getElementById('box');
+    const btn = document.getElementById('btn');
+    const clear = document.getElementById('clear');
+    let timer = null;
+    btn.onclick = function(){
+        timer = setInterval(function(){
+            box.innerHTML = arr[Math.round(Math.random()*1)]
+        },50);
+    }
+    clear.onclick = function(){
+        clearInterval(timer);
+    }
+
+
+    //1、预言家组（袁一刀讲的）   2、猎人组（暴民）  3、守卫组（丁绒绒）  4、女巫组（杨雨明）  5、隐狼组（jquery）
+
+
+
+
+</script>
+</body>
+</html>

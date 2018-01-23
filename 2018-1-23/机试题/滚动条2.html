@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>上机测试-滚动条</title>
+	<style type="text/css">
+		*{padding: 0; margin:0;}
+		li{list-style: none;}
+		#wrap{width: 300px; height: 400px;margin:100px auto 0 auto; position: relative;overflow: hidden;}
+		.main_box{width: 300px; height: 400px;  position: relative; background:#fafafa;}
+		#data_list{ position: absolute;top:0; left: 0; width: 100%; }
+		#data_list li{line-height: 40px; padding-left: 20px; font-size: 16px; }
+		#data_list li:hover{ background: #fdc }
+		#scroll_body{width: 16px; background: #ccc; height: 400px; position: absolute; top:0; right: 0; border-radius: 8px;}
+		#scroll_block{width:16px; height: 30px; background: #711d18;border-radius: 8px;cursor: pointer; position: absolute;top:16px; left: 0;}
+		#pre_btn,
+		#next_btn{ display: block; width: 16px; height: 16px; background: #962720; position: absolute;left: 0; text-align: center; color: #fff; line-height: 16px; font-size: 12px; cursor: default;}
+		#pre_btn{top:0;}
+		#next_btn{ bottom: 0; }
+	</style>
+<script type="text/javascript">
+window.onload = function(){
+	
+	const main_box = document.getElementById('main_box');
+	const data_list = document.getElementById('data_list');
+	const scroll_body = document.getElementById('scroll_body');
+	const scroll_block = document.getElementById('scroll_block');
+	const pre_btn = document.getElementById('pre_btn');
+	const next_btn = document.getElementById('next_btn');
+
+
+	
+
+}
+</script>
+</head>
+<body>
+
+<div id="wrap">
+	<div id="main_box" class="main_box">	
+		<ul id="data_list">
+
+		</ul>
+	</div>
+
+	<div id="scroll_body">
+		<div id="scroll_block"></div>
+		<span id="pre_btn">▲</span>
+		<span id="next_btn">▼</span>
+	</div>
+</div>
+<script type="text/javascript" src="data.js"></script>
+<script>
+	/*
+		arrCity
+	*/
+
+	const ul = document.getElementById('data_list');
+	const scroll_body = document.getElementById('scroll_body');
+	const scroll_bar = document.getElementById('scroll_block');
+	const pre_btn = document.getElementById('pre_btn');
+	const next_btn = document.getElementById('next_btn');
+	const main_box = document.getElementById('main_box');
+	const wrap = document.getElementById('wrap'); 
+	let html = '';
+	for(let i=1,len=arrCity.length;i<len;i++){
+		html += `<li>${arrCity[i].name}</li>`;
+	}
+	ul.innerHTML = html;
+
+	//拖拽
+
+	let pH = pre_btn.offsetHeight;
+	let nH = next_btn.offsetHeight;
+	let scrollH = scroll_body.offsetHeight;
+	let boxH = main_box.offsetHeight;
+	let uH = ul.scrollHeight;
+	scroll_bar.onmousedown = function(ev){
+		let disY = ev.pageY - scroll_bar.offsetTop;
+		
+		document.onmousemove = function(ev){
+			let t = ev.pageY - disY;
+
+			move(t);
+		}
+		document.onmouseup = function(){
+			document.onmousemove = document.onmouseup = null;
+		}
+		return false;
+	}
+
+	wheel(wrap,function(down){
+		let t = scroll_bar.offsetTop;
+		if(down){
+			t -= 5;
+		}else{
+			t += 5;
+		}
+		move(t);
+	});
+	let timer = null;
+	scroll_body.onmousedown = function(ev){
+		timer = setInterval(function(){
+			let t = scroll_bar.offsetTop;
+			//console.log('按下的:'+(ev.pageY - wrap.offsetTop),'| top值：'+ (t-pH))
+			if(ev.pageY - wrap.offsetTop  < t){
+				t-=5;
+			}else if(ev.pageY - wrap.offsetTop > t + scroll_bar.offsetHeight){
+				t+=5;
+			}else{
+				clearInterval(timer);
+			}
+			move(t);
+		},30);
+	};
+	scroll_body.onmouseup = function(){
+		clearInterval(timer);
+	}
+	function move(t){
+		if(t < pH){
+			t = pH;
+			clearInterval(timer);
+		}else if(t > scrollH - pH - scroll_bar.offsetHeight){
+			t = scrollH - pH - scroll_bar.offsetHeight
+			clearInterval(timer);
+		}
+		let scale = (t-pH)/(scrollH - nH - pH - scroll_bar.offsetHeight)
+		data_list.style.top = scale * (boxH - uH) + 'px';
+		scroll_bar.style.top = t + 'px';
+	}
+	function wheel(obj,cb){
+		obj.addEventListener('mousewheel',fn);
+		obj.addEventListener('DOMMouseScroll',fn);
+
+		let down = null;
+		function fn(ev){
+			if(ev.wheelDelta){
+				down = ev.wheelDelta > 0?true:false;
+			}else{
+				down = ev.detail < 0?true:false
+			}
+
+			cb && cb(down);
+			ev.preventDefault();			
+		}
+	}
+
+</script>
+</body>
+</html>

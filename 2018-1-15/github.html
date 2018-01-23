@@ -19,6 +19,23 @@
 <script>
 /*
     git push origin master
+
+    Git分支
+        git branch （查看分支）
+        git branch 新分支名 （新分支的名字）
+        git checkout 分支名 （切换分支）
+        git checkout -b 新分支名  （快速新建并切换）
+        git merge 分支名 （合并分支）
+        git branch --merged （查看当前主干上有多少个分支已经合并）
+        git branch --no-merged （查看没有合并的分支）
+        git branch -d 分支名 （合并完分支后删除）
+        git branch -D 分支名 （强制删除没有合并的分支）
+        解决冲突：
+            1.将主干和分支都提交到版本库；2.合并（git merge new1）
+            3.git status (查看冲突)；4.手动解决；
+
+        git@github.com:BlackrockDigital/startbootstrap-clean-blog-jekyll.git
+
 */
 
     const box = document.getElementById('box');
