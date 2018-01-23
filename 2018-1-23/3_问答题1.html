@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ul">
+        <li class="li1 li2 li3"></li>
+        <li></li>
+        <li class="li1 li2"></li>
+        <li></li>
+        <li class="li1"></li>
+        <li></li>
+    </ul>
+    <ul id="ul2">
+            <li class="li1 li2 li3"></li>
+            <li></li>
+            <li class="li1 li2"></li>
+            <li></li>
+            <li class="li1"></li>
+            <li></li>
+        </ul>
+<script>
+    /*
+        $('#box')
+        $('.li1')
+        $('ul')
+
+        $(ul,'li')
+    */
+
+    // console.log($('ul'));
+
+    // console.log();
+
+    var lis = $('.li1',$('#ul2'));//$('.li1');
+
+    for(var i=0;i<lis.length;i++){
+        lis[i].style.background = 'red';
+    }
+
+
+
+    function $(){
+        var parent = document;
+        if(arguments.length == 2){
+            parent = arguments[1];
+        }
+        var aEle = parent.getElementsByTagName('*');
+        var selector = arguments[0][0];
+        var cName = arguments[0].substring(1);
+        var arr = []; //存class的
+        if(selector === '#'){
+            return document.getElementById(cName);
+        }else if(selector === '.'){
+            // console.log(aEle)
+            //'li1 li'-> ['li1','li']-> [li1]
+            for(var i=0;i<aEle.length;i++){
+                var sClass = aEle[i].className.split(' ');
+                for(var j=0;j<sClass.length;j++){
+                    if(sClass[j] === cName){
+                        arr.push(aEle[i]);
+                    }
+                }
+                // if(aEle[i].className === cName){
+                //     arr.push(aEle[i]);
+                // }
+            }
+            return arr;
+        }else{
+            //既不是.也不是#就是tagName
+
+            return parent.getElementsByTagName(arguments[0]);
+        }
+    }
+
+
+</script>
+</body>
+</html>
