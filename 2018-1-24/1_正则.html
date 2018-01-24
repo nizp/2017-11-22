@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        正则:
+            /^(\\d{1,4})(-|\\/)(\\d{1,2})\\2(\\d{1,2})$/; 
+            ^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$
+
+            莫尔斯密码、非主流火星文、乱码、能做一些字符串不好操作的....
+
+            
+            专门用来检索（模糊范围）*字符串*的一种规则（工具）
+            
+            用更少的代码去操作字符串
+    */
+
+    /*
+        找出下列字符串中所有可以转正数字的字符，并且放到数组中
+    */
+    let str = '378dsds89e1 ednnu9hr84vyecb83n80';
+
+    // [378,89,1,9,84,83]
+
+    let temp = '';   
+
+    /*
+        temp += 3     3
+
+        temp +=7      37
+
+        temp += 8     378
+
+    [378]
+    temp = '';
+    temp += 8
+    temp += 9      89
+    temp = '';
+    [378,89]
+
+    */
+
+    // let arr = [];
+    // for(let i=0;i<str.length;i++){
+    //     //是数字
+    //     if(!isNaN(parseInt(str[i]))){
+    //         arr.push(str[i]);
+    //     }
+    // }
+
+     /*
+        找出下列字符串中所有可以转正数字的字符(包括连续的字符)，并且放到数组中
+    */
+
+    // let arr = [];
+    // for(let i=0;i<str.length;i++){
+    //     //是数字
+    //     if(!isNaN(parseInt(str[i]))){
+    //         temp += str[i];
+    //     }else{
+    //         if(temp){
+    //             arr.push(temp);
+    //             temp = '';
+    //         }
+    //     }
+    // }
+    // if(temp){
+    //     arr.push(temp);
+    //     temp = '';
+    // }
+
+    
+    console.log(str.match(/\d+/g));
+
+    // console.log(arr);
+    
+
+
+
+</script>
+</body>
+</html>

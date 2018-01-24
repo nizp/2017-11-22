@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        正则:
+            强大的字符串操作工具
+            擅长模糊范围字符串的检索
+
+        //
+        new RegExp()
+
+        //.test()  boolean
+
+        str.search()  index   -1
+
+        str.match()   []      null
+
+        str.replace(''|//,''|cb)
+        
+        cb:默认三个参数
+            $0   当前匹配的字符
+            $1   索引
+            $2   整个字符串
+
+        \d  一个数字
+
+        \D  一个非数字
+
+        修饰符:
+            i  忽略大小写
+            g  全局
+
+        子项:
+            ()
+
+            有子项的时候$0后面的就是子项，有几个子项就有几个$x
+        
+            ()提权 ->   (1+2)*3
+    */
+
+    let str = '2018../-/01.----___---dsja24';
+
+    str.replace(/(\d+)\D+\d+\D+\d+/,function($0,$1,$2,$3,$4){
+        /*
+            $0 本次匹配的字符
+            $1 子项
+            $2 匹配到的索引
+            $3 整个字符串
+            $4 undefined
+            ....
+        */
+        console.log($4)
+    });
+
+    
+
+
+
+
+</script>
+</body>
+</html>

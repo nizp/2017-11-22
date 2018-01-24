@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        string.match(正则):
+
+            把正则匹配到的字符push到一个数组中
+
+        返回值:
+            匹配上就为数组
+            没匹配上为null
+
+        如果只匹配到一个，那么数组中有3个属性，
+
+            第一个：匹配到的字符
+
+            第二个：下标
+
+            第三个：整个字符串
+
+            length还是1
+
+        \d  一个数字
+
+        g   找全局
+
+        量词:（用来修饰前面的规则的）
+            +  最少有一个，最多不限
+
+    */
+
+    let str = 'ab323627836278647823641c54323 n43kndsjk909fjkdb4';
+    // console.log(str.match(/a/));  //[a]
+
+    console.log(str.match(/\d+/g));  //找全局
+
+</script>
+</body>
+</html>
