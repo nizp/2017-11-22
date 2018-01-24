@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        string.replace(字符串||正则,字符串||cb)
+
+        第一个参数：
+            替换谁
+
+        第二个参数:
+            替换成什么
+
+        我靠,你妹,艹
+
+        &……*%￥##&
+
+        cb:默认的前3个参数
+
+            $0 : 当前正则匹配到的字符
+
+            $1 : 当前正则匹配到的字符索引
+
+            $2 : 整个字符串
+
+            $3  undefined
+            
+            $4  undefined
+            .....
+            
+
+
+    */
+
+    let str = '黩你它么个邪教之徒';
+
+    // console.log(str.replace('绍康','一刀'));
+
+    // console.log(str.replace(/袁|它么|邪教/g,'*'));
+
+    console.log(str.replace(/黩|它么|邪教/g,function($0,$1,$2,$3){
+       console.log($0);
+        let arr = ['&','$','@.','%','*'];
+        let str = '';
+        for(let i=0;i<$0.length;i++){
+            str += arr[Math.round(Math.random()*(arr.length-1))];
+        }
+        return str;
+    }));
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        []
+            代替.
+            下标
+            数组
+        obj[attr]
+        
+        正则中指的是范围 || 指定的字符 
+
+        0-9  数字的范围
+
+        a-z  小写字母的范围
+
+        A-Z  大写字母的范围
+
+        大写到小写字母：
+            A-Za-z
+
+
+
+
+    */
+
+    // let str = 'a1ca2ca3ca4ca5cabcadcaxc';
+
+    let str = 'abcadcaxcaGcaHca_c';
+    // console.log(str.match(/a(1|2|3|4)c/g));
+
+    // console.log(str.match(/a[12bx]c/g));
+
+    // console.log(str.match(/a[A-z]c/g));
+
+    console.log(str.match(/a[A-Za-z]c/g));
+
+</script>
+</body>
+</html>

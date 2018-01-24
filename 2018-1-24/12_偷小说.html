@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="" id="t1" cols="30" rows="10"></textarea>
+    <button id="btn">点击开偷</button>
+    <textarea name="" id="t2" cols="30" rows="10"></textarea>
+<script>
+
+    /*
+        <p id="s" index="1" data-index="1" class="abstract">
+            之前看阿米尔·汗的电影，关注点总是在他本人身上，他在印度电影中角色，就如同周星驰在香港喜剧片中的角色一样，“一家独大”，他是永远的闪光点，而其他人则是陪衬，然而在《神秘巨星》...
+        </p>
+    
+    */
+    let str = `<p class="abstract">
+            之前看阿米尔·汗的电影，关注点总是在他本人身上，他在印度电影中角色，就如同周星驰在香港喜剧片中的角色一样，“一家独大”，他是永远的闪光点，而其他人则是陪衬，然而在《神秘巨星》...
+        </p>`
+
+    /*
+       (<找到不是>的一堆字符 >)   =  <p class="abstract">
+
+    */
+    console.log(str.replace(/<[^>]+>/g,''));
+
+    btn.onclick = function(){
+        let tv = t1.value;
+
+        t2.value = tv.replace(/<[^>]+>/g,'');
+
+    }
+</script>
+</body>
+</html>

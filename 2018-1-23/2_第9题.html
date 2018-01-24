@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        人为在window下设置的属性是可以被delete掉
+
+        var出来的属性是delete不掉的
+    */
+    var a = 10;
+    function fn(){
+        var b = c = 20;
+    }
+    fn();
+
+    // window.a = 20;
+    // delete this.a;
+    // console.dir(this);
+    delete this.a;//10,undefined
+
+
+    alert(this.a);//
+    alert(this.b);//undefined
+    alert(this.c);//20
+
+    // ACB
+</script>
+</body>
+</html>

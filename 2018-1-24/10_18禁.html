@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="t">
+    <input type="button" value="天堂之门" id="btn">
+<script>
+    
+
+    const t = document.getElementById('t');
+    const btn = document.getElementById('btn');
+    // 18-110    [18-110]
+    /*
+        18-19   1[89]
+        20-99   [2-9][0-9]
+        100-109 10[0-9]
+        110     110
+
+
+        ^sajdsadsalds$
+        ^dsjkkdd$
+        ^ajkldjsakdj$
+
+        ^ 开头
+        $ 结尾
+
+        118包含18所以它认为你成年了
+
+
+        
+    */
+
+    btn.addEventListener('click',function(){
+        let tv = t.value;
+        if(/^(1[89])$|^([2-9][0-9])$|^(10[0-9])$|^110$/.test(tv)){
+           window.location.href = 'http://www.miaov.com';
+        }else{
+            alert('不好意思,未满18禁止入内');
+        }
+    });
+
+
+</script>
+</body>
+</html>
