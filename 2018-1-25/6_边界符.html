@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        \b
+
+        '|miaov| |ke| |tang|';
+
+        字母加中文，中文是有边界的
+
+        中文与中文之间是没有边界。
+    */
+
+    let str = 'miaov ke ta类似ng';
+
+    console.log(str.replace(/\b/g,'|'));
+
+</script>
+</body>
+</html>
