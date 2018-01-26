@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ul">
+        <li class="li1 li2 li3"></li>
+        <li></li>
+        <li class="li1 li2"></li>
+        <li></li>
+        <li class="li1"></li>
+        <li class="selector"></li>
+    </ul>
+<script>
+   
+    let lis = $('li1');
+    /*
+        "|li1| li2 li3"
+
+        |li1|
+
+       
+        
+    */
+
+    for(var i=0;i<lis.length;i++){
+        lis[i].style.background = 'red';
+    }
+
+    function $(selector){
+        let arr = [];
+        let aEle = document.getElementsByTagName('*');
+        // let re = /\bselector\b/;
+        let re = new RegExp('\\b'+ selector +'\\b'); 
+        for(var i=0;i<aEle.length;i++){
+            if(re.test(aEle[i].className)){
+                arr.push(aEle[i]);
+            }
+        }
+        return arr;
+    }
+
+
+    
+
+</script>
+</body>
+</html>

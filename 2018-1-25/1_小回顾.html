@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        数组去重
+    */
+
+    let arr = [1,2,'1',3,4,4,5,5,1,2,3];
+    let obj = {};
+    let arr2 = [];
+    /*
+        {
+            number1:1,
+            string1:1,
+            2:1,
+            3:1,
+            4:1,
+            5:1
+        }
+
+        [1,2,3,4,5]
+        
+    */
+
+    //去重
+    for(let i=0;i<arr.length;i++){
+        if(!obj[typeof arr[i] + arr[i]]){
+            arr2.push(arr[i]);
+            obj[typeof arr[i] + arr[i]] = true;
+        }
+    }
+
+    console.log(obj);
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" style="width:100px;height:200px;"></div>
+<script>
+    /*
+        对象解构赋值
+    */
+
+    let obj = {
+        name:'一刀',
+        age:188,
+        job:'屠夫'
+    }
+
+    let {name:key,age,job} = obj;
+    
+
+    // console.log(`我的名字叫${obj.name},芳龄:${obj.age}万光年岁,我的职业是在屠宰场做一个可爱${obj.job}`)
+    //console.log(`我的名字叫${key},芳龄:${age}万光年岁,我的职业是在屠宰场做一个可爱${job}`)
+    
+
+    // function fn(){
+    //     let a = 10,b = 11;
+    //     return {
+    //         //key值和value值一样可以简写成一个
+    //         // a:a,
+    //         // b:b
+    //         a,
+    //         b
+    //     }
+    // }
+
+    // console.log(fn());
+
+
+    let obj2 = {
+        p: [
+            'Hello',
+            { y: 'World' }
+        ]
+    };
+
+    // let {p:[a,{y:b}]} = obj2;
+
+    // console.log(a,b);//Hello World
+
+
+    const node = {
+        loc: {
+            start: {
+                line: 1,
+                column: 5
+            }
+        }
+    };
+
+    // let {loc:{start:{line:a,column:b}}} = node;
+
+    // console.log(a,b)
+
+    // var {x:y = 3} = {x:undefined};
+
+    // console.log(y);
+
+    // let {baz:{bar}} = {baz: {bar:'baz'}};
+
+    // console.log(bar)
+
+    let { log:g,dir:d } = console;
+    
+    // g(123);
+
+    let {width:w,height:h} = getComputedStyle(box);
+
+    g(w,h);
+
+    d(box);
+
+
+    
+   
+
+
+</script>
+</body>
+</html>

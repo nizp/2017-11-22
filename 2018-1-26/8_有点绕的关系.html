@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    /*
+        function fn(){}
+
+        let fn = new Function()
+
+        {} => new Object
+
+        function Object(){}
+
+        Function()
+
+    */
+
+    function Fn(){}
+    Object.prototype.say = function(){
+        alert('Object的say');
+    }
+    Fn.prototype.say = function(){
+        alert(123);
+    }
+    Function.prototype.say = function(){
+        alert('大Fn的原型say');
+    }
+    Function.say = function(){
+        alert('大Fn的say');
+    }
+    // Fn.say = function(){
+    //     alert('Fn的say');
+    // }
+    let f = new Fn;
+    Object.say();
+
+    // console.dir(Fn);
+    // Fn.say();
+
+
+    // let fn = new Function('','alert(123)');
+
+    console.dir(Object);
+
+</script>
+</body>
+</html>

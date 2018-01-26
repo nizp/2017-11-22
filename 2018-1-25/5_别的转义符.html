@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        \w  一个字符、数字、下划线
+        \W  非一个字符、数字、下划线
+
+        \s  一个空格
+        \S  一个非空格
+
+        \b  一个边界符
+        \B  一个非边界符
+
+        匹配邮箱:
+            6~18个字符，可使用字母、数字、下划线，需以字母开头
+            
+            dsajidsao@sina.com
+            das38921d@yahoo.com
+            yyd_dnm@hotmail.com.cn
+            yyd.yydd@vip.com
+            yyd-yydd
+
+
+            [a-z]\w{5,17}@[0-9a-z]{2,8}(\.[a-z]{3}){1,2}
+
+    */
+
+    let str = 'yyd_dn_m@hotmail.com.cn';
+
+    //console.log(/^[a-z][\w\.\-]{5,17}@[0-9a-z]{2,8}(\.[a-z]{2,3}){1,2}$/.test(str));
+
+    let str2 = '   dsj ada   ';
+
+    console.log(str2.replace(/^\s+|\s+$/g,''));
+
+</script>
+</body>
+</html>

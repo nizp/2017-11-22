@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+
+       面向对象的规则:
+
+            构造函数的首字母大写
+
+            实例化的时候使用new
+
+        new 函数的一元运算符，专门用来运算函数的。
+
+        new的时候可以不用加括号，加括号的情况为了传参
+
+        new完之后构造函数中的this指向它的实例化对象
+
+        new完之后默认的返回值变成了实例化对象
+
+        如果有return，要看return后面是什么数据类型，
+        如果是简单类型，那么返回实例化对象
+        如果是复合类型，那么就返回这个复合类型
+
+    */
+    let {log,dir} = console;
+
+    // let fn = function (){
+    //     // alert('1');
+    //     // log(this);
+    //     return function fn3(){};
+    // }
+
+    // // fn();
+    // let f = new fn;
+
+    // log(f);
+    
+
+    /*
+        一般面向的写法：
+            属性挂在构造函数中
+            方法挂在构造函数的原型下
+    */
+
+    //工厂函数
+    function Person(name,age){
+        // var obj = {}; //原材料
+        this.name = name; //加工
+        this.age = age;
+        
+        //return obj; //出厂
+    }
+    Person.prototype.say = function(){
+        alert(this.name);
+    }
+    let p = new Person('一刀',8);
+    let p2 = new Person('暴民',18);
+    p.say();
+    p2.say();
+
+    log(p.say == p2.say);
+
+    // log(p == p2);
+
+    let arr = [];
+    let arr2 = [];
+
+    log(arr.push == arr2.push);
+
+    // let str1 = '1';
+    // let str2 = '1';
+
+    // log(arr == arr2);  //2个对象就算值一样，也不可能相等
+    // log(str1 == str2); //true  简单类型只要值一样就相等
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

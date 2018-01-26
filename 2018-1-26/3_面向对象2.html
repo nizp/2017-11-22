@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        let arr = [];
+
+        let arr = new Array()
+
+        arr.push()
+
+       面向对象的规则:
+
+            构造函数的首字母大写
+
+            实例化的时候使用new
+    */
+
+    // let t = new Date();
+
+    //工厂函数
+    function Person(name,age){
+        var obj = {}; //原材料
+        obj.name = name; //加工
+        obj.age = age;
+        obj.say = function(){
+            alert(this.name);
+        }
+        return obj; //出厂
+    }
+
+    let p = new Person('一刀',8);
+    p.say();
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

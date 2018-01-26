@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        请计算出下列字符字节长度是多少，假设英文为1，中文为2
+
+        [\u4e00-\u9fa5]
+
+            //console.log(/[\u4e00-\u9fa5]/.test('鞫')) //true
+    */
+
+    let str = 'Hello,一刀ti头来见!';//19
+
+
+    let num = 0;
+    for(let i=0;i<str.length;i++){
+        if(/[\u4e00-\u9fa5]/.test(str[i])){
+            num += 2;
+        }else{
+            num ++;
+        }
+    }
+    console.log(num);
+
+</script>
+</body>
+</html>

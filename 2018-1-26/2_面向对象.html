@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        面向对象是基础
+
+        抽象：
+            抽离出像的部分
+
+        抽象：封装函数   
+
+
+        类  class 
+
+            警察类：
+                穿警服、手铐、警徽、警棍、开警车、
+                有安全感、有责任感、不怕牺牲、为人民服务
+                奉献、没干实事儿
+
+
+
+
+            人类:
+                有胳膊有腿、会直立行走、会发明使用工具
+                有思想有情感、还会开车、会说人话
+
+
+        js面向对象:
+            把相同部分的代码提取出来封装成一个函数（类）
+            描述这个类型特性的方法挂在它的（类）原型上的一种编程方式
+
+        三大特征:
+            抽象
+            封装
+            继承
+            多态
+
+        警察 -> {
+            人类、穿警服、手铐、警徽、警棍
+        }
+
+        警察.原型 = {
+            开警车,
+            抓坏蛋,
+            会功夫
+        }
+
+        之前我们写的代码叫 面向过程  （关注如何实现）
+        现在我们写的代码叫 面向对象  （谁来实现）
+            
+    */
+
+    // let name1 = 'leo';
+    // let age1 = 80;
+    // let class1 = '数学'
+
+    // let name2 = 'momo';
+    // let age2 = 30;
+    // let class2 = '语文'
+
+    // let name3 = 'zp';
+    // let age3 = 16;
+    // let class3 = '挖掘机'
+    function teacher(name,age,t){//构造函数->构造对象的函数
+        var name = name;
+        var age = age;
+        var t = t;
+        return {
+            name,
+            age,
+            t,
+            say:function(){
+                alert(this.name);
+            }
+        }
+    }
+
+    //实例化对象     t1是teacher的实例化对象
+    let t1 = teacher('leo',80,'数学');
+
+    // console.log(t1.t);
+
+    t1.say();   //str.substr()  arr.push() 
+
+    
+
+
+
+
+</script>
+</body>
+</html>

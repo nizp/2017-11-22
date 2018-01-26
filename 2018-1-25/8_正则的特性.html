@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        正则的2大特性：
+            贪婪:
+                \d+
+            懒惰:
+                \d   g
+
+        *
+        .
+        ?
+
+        ^1[35678]\d{9}$
+    */
+
+    let str = 'a1h^正&\n则_ca2cac';
+
+    console.log(str.match(/a\d?c/g));//可以有（最多一个）也可以没有
+    // console.log(str.match(/a.+c/g));   //任意字符(除了\n以外)
+    // console.log(str.match(/a\d*c/g));  //可以有数字也可以没有数字
+
+
+</script>
+</body>
+</html>
