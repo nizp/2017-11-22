@@ -41,27 +41,29 @@
     // log(f);
     
 
-    
-
-
-    
+    /*
+        一般面向的写法：
+            属性挂在构造函数中
+            方法挂在构造函数的原型下
+    */
 
     //工厂函数
     function Person(name,age){
         // var obj = {}; //原材料
         this.name = name; //加工
         this.age = age;
-        this.say = function(){
-            alert(this.name);
-        }
+        
         //return obj; //出厂
+    }
+    Person.prototype.say = function(){
+        alert(this.name);
     }
     let p = new Person('一刀',8);
     let p2 = new Person('暴民',18);
     p.say();
     p2.say();
 
-    // log(p.say == p2.say);
+    log(p.say == p2.say);
 
     // log(p == p2);
 

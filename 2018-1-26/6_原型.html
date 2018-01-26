@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+       原型：
+            prototype
+            当创建一个函数的时候，这个函数有很多的属性和方法
+            其中有一个属性叫prototype，它就是原型，
+            ****它的属性值为一个对象****
+
+            constructor -> 指向构造函数
+
+        等同于css中的class
+
+        !!! 构造函数的原型只给，该函数的实例化对象使用。
+
+
+        
+    */
+
+    function fn(){
+        // this.say = function(){
+        //     alert(3);
+        // }
+    }
+
+    fn.prototype.say = function(){
+        alert(1);
+    }
+
+    let f = new fn; 
+    let f2 = new fn;
+
+    // console.log(f.say == f2.say);
+
+    // f.say = function(){
+    //     alert(2);
+    // }
+
+    // f.say();
+
+    // Array.prototype.push = function(){
+    //     alert('真不是我要刀你，是ta');
+    // }
+
+    // let arr = [];
+
+    // arr.push(5);
+
+    
+
+
+    // Object.prototype.age = 30;
+
+    // let obj = {
+    //     name:'小黄'
+    // }
+
+    // console.log(obj.age);
+
+
+
+    // console.dir(new fn);
+
+</script>
+</body>
+</html>

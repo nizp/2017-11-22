@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        数组的方法有哪些？
+            push
+            pop
+            shift
+            unshift
+            sort
+            slice
+            join
+            includes
+            forEach
+            every
+            some
+            map
+            filter
+            reverse
+            concat
+            Array.from
+            padStart
+            padEnd
+
+
+        手写闭包
+            (function(){})()
+
+            ~function(){}
+
+            (function(global,factory){
+                "use strict"
+                factory(global);
+            })(typeof window !== 'undefined'?window:this,function(global,noGlobal){
+
+            });
+
+
+        手写排序
+
+        手写jsonp
+
+        数组去重
+
+        {}
+
+        [...new Set([1,2,3,3,4,5,6,5,6])]
+
+        手写url?a=abc    queryString
+
+        [1,1,2] 
+
+        less
+
+    */
+    let {log} = console;
+    let str = 'http://www.miaov.com?user=一刀&pass=123';
+    
+    log(queryString(str)); //->{user:一刀,pass:123} 
+
+    function queryString(str){
+        let obj = {};
+        let arr = str.split('?')[1].split('&');
+        arr.forEach(e=>{
+            let a = e.split('=');
+            obj[a[0]] = a[1];
+        });
+        return obj;
+    }
+
+    log(fn(4));//[1,1,2,3,5,8]
+
+    function fn(n){
+        let arr = [1,1];
+        for(let i=0;i<n;i++){
+            arr.push(arr[i] + arr[i+1]);
+        }
+        return arr;
+    }
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        原型链：
+            对象上都有一个属性叫原型链
+                __proto__
+
+        原型 与 原型链的关系：
+            实例化对象的原型链 === 构造函数的原型
+
+        原型链是实例化对象 与 构造函数之间的桥梁。
+
+        看下实例化对象有没有say  -> f.__proto__
+
+        Fn.prototype  -> Fn.prototype.__proto__
+
+        Object.prototype
+
+
+
+
+    */
+
+    function Fn(){
+
+    }
+
+    // Object.prototype.say = function(){
+    //     alert('Object的say');
+    // }
+
+    // Fn.prototype.say = function(){
+    //     alert(123);
+    // }
+
+    let f = new Fn;
+    // f.say();
+
+    console.dir(Fn);
+    // console.dir(f.__proto__ === Fn.prototype);
+
+
+
+</script>
+</body>
+</html>
