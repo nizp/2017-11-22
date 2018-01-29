@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.active{
+    background: yellow;
+}
+div.show{
+    display: block;
+}
+div{
+    width:150px;
+    height: 150px;
+    border: 1px solid #000;
+    display: none;
+}
+</style>
+</head>
+<body>
+    <button type="button" class="active">按钮一</button>
+    <button type="button">按钮二</button>
+    <button type="button">按钮三</button>
+    <div class="show">111111</div>
+    <div>222222</div>
+    <div>33333</div>
+<script>
+   
+    function Tab(){
+        this.btns = document.getElementsByTagName('button');
+        this.divs = document.getElementsByTagName('div');
+        this.timer = null;
+        this.num = 0;
+    }
+
+    Tab.prototype.Events = function(type="onclick"){
+        let _this = this;//Tab{}
+        for(let i=0;i<this.btns.length;i++){
+            this.btns[i][type] = function(){
+                /*
+                    this 为点击的按钮
+                    而按钮下是没有changeTab这个方法的
+                    changeTab只有Tab{}的下面才有
+                */
+                //alert(1);
+                // this.changeTab();
+                _this.changeTab(i);  //i索引
+            }
+        }
+    }
+
+    Tab.prototype.changeTab = function(index){
+        for(let i=0;i<this.btns.length;i++){
+            this.btns[i].classList.remove('active');
+            this.divs[i].classList.remove('show');
+        }
+        this.btns[index].classList.add('active');
+        this.divs[index].classList.add('show');
+    }
+
+    Tab.prototype.autoPlay = function(){
+        this.timer = setInterval(()=>{
+            this.num++;
+            this.num %= this.btns.length;
+            this.changeTab(this.num);
+        },1000);
+    }
+
+    let t = new Tab
+    t.Events();
+    t.autoPlay();
+
+
+
+
+
+
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        通过实例化对象的constructor指向构造函数（意义是这样的，但是不一定准确）。
+        constructor:
+            obj.constructor =  obj的构造函数
+    
+
+        constructor容易被修改。
+
+        只要构造函数的原型被赋址，那么constructor就一定会被修改
+
+        如果被修改，需要手动去修正constructor指向
+    */
+
+    function Person(name){
+        this.name = name;
+    }
+
+    
+    let obj = {
+        constructor:Person,
+        a:10,
+        b:20,
+        say:function(){
+            alert(this.a);
+        },
+        say2:function(){
+            alert(this.b);
+        }
+    }
+
+    Person.prototype = obj;
+
+    // console.log(obj.constructor)
+
+    let p = new Person();
+
+    // // p.say();
+
+    console.log(p.constructor);
+
+
+
+
+
+    //let arr = []; 
+    // let str = ''; //new String
+
+    //console.log(str.constructor);
+
+</script>
+</body>
+</html>

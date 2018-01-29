@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        obj. hasOwnProperty(attr)
+        attr这个属性是不是obj**自身**的。
+
+        返回布尔值
+            prop是这个对象的属性 true,
+            否则false
+    */
+
+    function Person(name){
+        this.name = name;
+        this.age = 23
+    }
+    Person.prototype.num = 10;
+    Person.num2 = 20;
+    let p = new Person();
+    let p1 = new Person();
+    
+    // p1.yidao = '怨一刀';
+
+    // console.log(p.num);
+
+    // console.log(p.hasOwnProperty("age"));
+    // console.log(Person.hasOwnProperty('num2'));
+    console.log(p1.hasOwnProperty("yidao"));
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
