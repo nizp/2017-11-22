@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.active{
+    background: yellow;
+}
+#wrap div.show{
+    display: block;
+}
+#wrap div{
+    width:150px;
+    height: 150px;
+    border: 1px solid #000;
+    display: none;
+}
+</style>
+</head>
+<body>
+    <div id="wrap">
+        <button type="button" class="active">按钮一</button>
+        <button type="button">按钮二</button>
+        <button type="button">按钮三</button>
+        <div class="show">111111</div>
+        <div>222222</div>
+        <div>33333</div>
+    </div>
+<script>
+    function Tab(id){
+        this.box = document.getElementById(id);
+        this.btns = this.box.getElementsByTagName('button');
+        this.divs = this.box.getElementsByTagName('div');
+        this.init();
+    };
+
+    Tab.prototype.init = function(){
+        this.types();
+    }
+
+    Tab.prototype.types = function(type="click"){
+        let that = this;
+        for(let i=0;i<this.btns.length;i++){
+            this.btns[i].index = i;
+            this.btns[i].addEventListener(type,function(){
+                that.changeTab(this);
+            });
+        }
+    }
+    Tab.prototype.changeTab = function(that){
+        for(let i=0;i<this.btns.length;i++){
+            this.btns[i].className = '';
+            this.divs[i].className = '';
+        }
+        that.className = 'active';//点击时候的this
+        this.divs[that.index].className = 'show';
+    }
+
+    let t = new Tab('wrap'); 
+    // t.init();
+
+
+
+</script>
+</body>
+</html>
