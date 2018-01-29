@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.active{
+    background: yellow;
+}
+#wrap div.show,#wrap2 div.show{
+    display: block;
+}
+#wrap div,#wrap2 div{
+    width:150px;
+    height: 150px;
+    border: 1px solid #000;
+    display: none;
+}
+
+</style>
+</head>
+<body>
+    <div id="wrap">
+        <button type="button" class="active">按钮一</button>
+        <button type="button">按钮二</button>
+        <button type="button">按钮三</button>
+        <div class="show">111111</div>
+        <div>222222</div>
+        <div>33333</div>
+    </div>
+    <div id="wrap2">
+            <button type="button" class="active">按钮一</button>
+            <button type="button">按钮二</button>
+            <button type="button">按钮三</button>
+            <div class="show">111111</div>
+            <div>222222</div>
+            <div>33333</div>
+        </div>
+
+        <button id="btn1">点击第二个启动</button>
+        <button id="btn2">点击第一个停止</button>
+        <button>点击2个一起动</button>
+        <button>点击反向动</button>
+<script>
+    /*
+        低耦合，高内聚
+
+        1.自动播放
+    */
+    
+    tab('wrap',true);
+    tab('wrap2');
+
+    function tab(id,onOff){
+        const wrap = document.getElementById(id); 
+        const lis = wrap.querySelectorAll('button');
+        const divs = wrap.querySelectorAll('div');
+        wrap.timer = null;
+        wrap.num = 0;
+        wrap.onOff = onOff;
+        
+
+        for(var i=0;i<lis.length;i++){
+            lis[i].index = i;
+            lis[i].onclick = function(){
+                for(var i=0;i<lis.length;i++){
+                    lis[i].className = '';
+                    divs[i].className = '';
+                }
+                this.className = 'active';
+                divs[this.index].className = 'show';
+            }
+        }
+
+        if(wrap.onOff){
+            wrap.timer = setInterval(function(){
+                wrap.num ++;
+                wrap.num %= lis.length;
+                for(var i=0;i<lis.length;i++){
+                    lis[i].className = '';
+                    divs[i].className = '';
+                }
+                lis[wrap.num].className = 'active';
+                divs[wrap.num].className = 'show';
+            },1000);
+        }
+
+        btn1.onclick = function(){
+            tab('wrap2',true);
+        }
+        btn2.onclick = function(){
+            const wrap = document.getElementById('wrap');
+            clearInterval(wrap.timer);
+        }
+        
+    }
+ 
+</script>
+</body>
+</html>

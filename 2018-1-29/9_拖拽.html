@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box {
+    width:100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    top:0;
+    left:0;
+}
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    function Drag(id){
+        this.box = document.getElementById(id);
+        this.disX = 0;
+        this.disY = 0;
+        this.down();
+    }
+
+    /*
+        事件触发谁this就是谁
+        window
+        老爹
+        实例化对象
+    */
+
+    Drag.prototype.down = function(){
+        let _this = this;
+        this.box.onmousedown = function(ev){
+            _this.disX = ev.pageX - _this.box.offsetLeft;
+            _this.disY = ev.pageY - _this.box.offsetTop;
+            _this.move();
+            _this.up();
+        }
+    }
+    Drag.prototype.move = function(){
+        let _this = this;
+        document.onmousemove = function(ev){
+            _this.box.style.left = ev.pageX - _this.disX + 'px';
+            _this.box.style.top = ev.pageY - _this.disY + 'px';
+        }
+    }
+    Drag.prototype.up = function(ev){
+        document.onmouseup = function(){
+            document.onmouseup = document.onmousemove = null;
+        }
+    }
+
+    new Drag('box');
+
+
+</script>
+</body>
+</html>
