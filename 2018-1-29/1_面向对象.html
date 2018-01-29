@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        JS面向对象：
+            编程的思想，主要思想由谁来做（不是怎么做），
+            把具有相同特征的代码抽象出来归为一类,
+            把描述的细节挂在原型下。
+    */
+
+    /*
+    三种形态    
+        不管new不new Person它是一个函数
+
+        new过之后，它的返回值是一个叫做，Person的对象
+
+        以Function的角度去看Person，它是一个Function的实例化对象
+
+        对象只有__proto__
+        函数既有__proto__ 也有protoType
+
+        
+
+        实例化对象的原型链 === 构造函数的原型
+
+
+        只要是对象直接找链 -> 构造函数的原型
+
+        let name = '小强'
+        let age = 23
+        {
+            name:name,
+            age:age
+        }
+
+        function Person(name,age){
+            return {
+                name:name,
+                age:age
+            }
+        }
+
+    */
+    function Person(name,age){  
+        //this是指向  Person{}
+        this.name = name;
+        this.age = age;
+        this.say = function(){
+            alert('里面的say');
+        }
+    }
+
+    // Person.say = function(){
+    //     alert('123');
+    // }
+    // Object.prototype.say = function(){
+    //     alert('Object');
+    // }
+    Person.prototype.say = function(){
+        alert('proto')
+    }
+    // Function.prototype.say = function(){
+    //     alert('大写的FN');
+    // }
+    //let p = new Person();  //{}
+
+    console.dir(Function.say);
+
+</script>
+</body>
+</html>
