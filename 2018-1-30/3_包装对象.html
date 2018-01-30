@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        对象身上才能加属性或者方法
+        如果在null或者undefined身上加属性或者方法就报错。
+        别的简单类型为undefined
+
+        当去调用简单类型的属性或者方法的时候，系统会偷偷的把
+        这个简单类型转成对象类型，调用该对象下的属性或者方法
+        使用之后，自动销毁，这个过程就称为包装对象。
+
+    */
+
+    let arr = [1,2,3,4];
+    arr.num = 0;
+
+    let str = 'hehe';
+    str.num = 10;
+   
+    // let b = true;
+
+    // console.log(b.num);  //A:10  B:undefined C:报错
+
+    //console.log(str.substr(1));
+
+    // console.dir(typeof new String('hehe'));
+
+    arr.length = 1;
+
+    let s = new String('hehe'); 
+
+    s.length = 1;//简单类型的实例化对象上的length只能读不能写
+
+    console.log(s);
+
+</script>
+</body>
+</html>

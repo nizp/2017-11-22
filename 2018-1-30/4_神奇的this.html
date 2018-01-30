@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        1.事件触发的元素
+        2.函数直接调用  -> window
+        3.对象下的this -> 就是对象
+        4.定时器下的this指向window
+        5.构造函数下的this -> 实例化对象
+        6.()=> 的this 指向老爹
+        7.undefined  严格模式下
+
+        只要遇到有函数的情况下（也包括函数套函数），this非常容易被修改
+
+    */
+
+    // document.onclick = fn(); 
+
+    // function fn(){
+    //     alert(this);
+    // }
+
+    //fn();  window
+
+    // let obj = {
+    //     name:'杨娜',
+    //     fn:function(){
+    //         alert(this.name);
+    //         // console.log(this);
+    //     }
+    // }
+    // obj.fn();
+
+    // console.dir(window);
+
+    // setTimeout(obj.fn,1000);  //null '' undefined
+
+
+
+    document.onclick = function(){
+        setTimeout(()=>{
+            // new fn();
+            "use strict"
+            console.log(this);
+        });
+    }; 
+
+    // function fn(){
+    //     "use strict"
+    //     console.log(this); //undefined
+    // }
+
+    // let fn = function (){
+    //     "use strict"
+    //     console.log(this); //undefined
+    // }
+    // fn();
+
+
+    /*
+        开始执行代码时，会创建一个全局对象window
+        js执行代码过程可以分： 词法分析期和执行期
+        第一步词法分析包括：形参分析、实参分析、变量声明分析、函数声明分析。分析出的结果作为对象的属性和方法
+        window对象在词法分析期 得到的属性和方法有：
+        window.a=function(xx){this.x=xx;return this} 
+        window.x=undefined
+        window.y=undefined
+        代码执行期：
+            /*先执行 window.a(5) =》window.a=function(xx){this.x=xx;return this} 函数中的this指代对象是window.
+            得出window.x=5,   此时，全局域中window.x=undefined 变成 window.x=5  
+            然后   return  window 赋值给 x 即：x=window ,
+            最终这x=window这句赋值语句 把 window.x=5改成 window.x=window  
+            x=a(5)；    
+            /*先执行 window.a(6) =》window.a=function(xx){this.x=xx;return this} 函数中的this指代对象是window.
+            得出window.x=6,   把全局域中window.x=window变成 window.x=6    
+            然后   return  window 赋值给 y  即：y=window  
+            y=window  赋值语句把window.y=undefined 变成了 window.y=window 
+            y=a(6);
+            //综上所述：window.x=6     window.y=window
+            console.log(x.x);     //输出x.x 相当于：(window.x).x=6.x------->window对象中没有 6.x属性      则输出undefined
+            console.log(y.x);      //输出 y.x 相当于：(window.y).x=window.x------------>window对象中有window.x这个属性  则输出6 
+    */
+    function a(xx){
+        this.x = xx;//windiw.x = 5    x
+        return this;
+    };
+    var x = a(5);  
+    var y = a(6); // window.x = 6    y
+
+    // console.dir(window);
+
+    console.log(x.x);
+    console.log(y.x);//windiw.x = 6
+    
+</script>
+</body>
+</html>
