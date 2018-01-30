@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+<script>
+    /*
+        for of:
+            keys()        [key]
+            entries()  -> [key,val]
+
+        Symbol.iterator  遍历器
+
+        只要有遍历器就可以使用for of循环
+
+        数组是没有values()
+
+        DOM对象是有values()的
+
+        遍历所有数据结构的统一的方法。
+
+        for...of循环可以使用的范围包括
+        数组、Set 和 Map 结构、某些类似数组的对象（比如arguments对象、DOM NodeList 对象）、后文的 Generator 对象，以及字符串
+    */
+
+    let arr = [1,2,3,4,5,6];
+
+    // for(let i of arr.entries()){
+    //     console.log(i[1]);
+    // }
+
+    // console.dir(arr);
+
+    const lis = document.querySelectorAll('li');
+
+    // for(let el of lis.values()){
+    //     el.onclick = function(){
+    //         alert(1);
+    //     }
+    // }
+
+    /*
+        字符串没有keys、values、entries
+    */
+    // const str = '1234567';
+    // for(let i of str){
+    //     console.log(i);
+    // }
+    // console.dir(new String('hehe'));
+
+
+    let obj = {
+        name:'一刀',
+        age:99
+    }
+
+    obj[Symbol.iterator] = function(){
+        let keys = Object.keys(obj);
+       // console.log(keys);  [name,age]  len = 2
+        let i = 0;
+        return {
+            next:function (){
+                if(i < keys.length){
+                    return {
+                        value:{
+                            val:obj[keys[i]],
+                            key:keys[i++]
+                        },
+                        done:false
+                    }
+                }else{
+                    return {
+                        value:'123',
+                        done:true
+                    }
+                }
+            }
+        }
+    }
+
+    for(let {val,key} of obj){
+        console.dir(key);
+    }
+
+   
+
+
+
+</script>
+</body>
+</html>
