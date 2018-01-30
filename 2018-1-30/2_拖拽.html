@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box {
+    width:100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    top:0;
+    left:0;
+}
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    /*
+        
+        ***一个对象下面如果没有某个属性或者方法，不一定真的没有
+        因为还会去构造函数的原型上去查找某个属性或者方法。
+
+        {name:123}.age
+
+        Object.prototype.age = 20
+
+    */
+    function Drag(id){
+        this.box = document.getElementById(id);
+        this.disX = 0;
+        this.disY = 0;
+        this.down();
+    }
+
+    Drag.prototype.down = function(){
+        let _this = this;
+        let down = function(ev){
+            _this.disX = ev.pageX - _this.box.offsetLeft;
+            _this.disY = ev.pageY - _this.box.offsetTop;
+            let move = function(ev){
+                _this.move(ev);
+            }
+            let up = function(ev){
+                _this.up(ev,move,up,down);
+            }
+            document.addEventListener('mousemove',move);
+            document.addEventListener('mouseup',up);
+        }
+        this.box.addEventListener('mousedown',down);
+    }
+
+    Drag.prototype.move = function(ev){
+        let l = ev.pageX - this.disX;
+        let t = ev.pageY - this.disY;
+
+        // if(t < 50){
+        //     t = 0;
+        // }
+        // if(l < 50){
+        //     l = 0;
+        // }
+
+        this.box.style.left = l + 'px';
+        this.box.style.top = t + 'px';
+    }
+
+    Drag.prototype.up = function(ev,move,up,down){
+        document.removeEventListener('mousemove',move);
+        document.removeEventListener('mouseup',up);
+        // this.removeDown(down);
+    }
+
+    Drag.prototype.removeDown = function(down){
+        this.box.removeEventListener('mousedown',down);
+    }
+   let d = new Drag('box');
+
+
+
+
+
+</script>
+</body>
+</html>

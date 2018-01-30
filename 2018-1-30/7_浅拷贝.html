@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let arr = [1,2,3];
+    // let arr2 = arr;
+
+    // let arr2 = arr.concat();
+
+    // let arr2 = arr.map(e=>e);
+
+    /*
+        arr是数组，数组的赋值为赋址，但是数组中的值是简单类型的
+        循环数组中的每个值，把简单类型的值赋值给另一个，那么就是赋值，不是赋址了
+    */
+    // let arr2 = [];
+    // let arr2 = JSON.parse(JSON.stringify(arr));
+
+    let arr2 = Object.assign([],arr);
+
+    // for(let i=0;i<arr.length;i++){
+    //     arr2[i] = arr[i];
+    // }
+
+    arr2.push(4);
+
+    console.log(arr);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box {
+    width:100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    top:0;
+    left:0;
+}
+#box2{
+    width:100px;
+    height: 100px;
+    background:skyblue;
+    position: absolute;
+    top:0;
+    left:100px;
+}
+</style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="box2"></div>
+<script>
+    /*
+        继承:
+            子类继承父类特征，自己也有一套自己的特性
+            原型继承
+            类式继承
+            拷贝继承
+    */
+
+    function Drag(id){
+        console.log(this);
+        this.box = document.getElementById(id);
+        this.disX = 0;
+        this.disY = 0;
+        this.down();
+    }
+    Drag.prototype.down = function(){
+        let _this = this;
+        let down = function(ev){
+            _this.disX = ev.pageX - _this.box.offsetLeft;
+            _this.disY = ev.pageY - _this.box.offsetTop;
+            let move = function(ev){
+                _this.move(ev);
+            }
+            let up = function(ev){
+                _this.up(ev,move,up,down);
+            }
+            document.addEventListener('mousemove',move);
+            document.addEventListener('mouseup',up);
+            ev.preventDefault();
+        }
+        this.box.addEventListener('mousedown',down);
+    }
+    Drag.prototype.move = function(ev){
+        let l = ev.pageX - this.disX;
+        let t = ev.pageY - this.disY;
+        this.box.style.left = l + 'px';
+        this.box.style.top = t + 'px';
+    }
+    Drag.prototype.up = function(ev,move,up,down){
+        document.removeEventListener('mousemove',move);
+        document.removeEventListener('mouseup',up);   
+    }
+
+    /*
+        拷贝继承:
+            属性继承:
+                类式继承
+                    call(this,1,2,3,4,5)
+                    apply(this,[1,2,3,4,5])
+                    Math.min.apply(null,[1,2,3,4])
+                    调用父类，修改this指向
+
+            方法继承:
+                    不能直接把父类的原型等于子类的原型
+                    通过浅拷贝来继承：
+                        高版本可以使用
+                            Object.assign
+                        低版本
+                            for in
+    */
+
+    Object.prototype.say = 10;
+
+    function Drag2(id){
+        Drag.call(this,id);//window
+        //this -> Drag2{}
+    }
+
+    Object.assign(Drag2.prototype,Drag.prototype);
+
+    /*
+       *** in不但能够遍历当前对象上的属性，还能遍历原型上的属性
+    */
+    // for(let attr in Drag.prototype){
+    //     if(Drag.prototype.hasOwnProperty(attr)){
+    //         Drag2.prototype[attr] = Drag.prototype[attr];
+    //     }
+    // }
+
+    // console.log(Drag.prototype);
+
+    
+    Drag2.prototype.move = function(ev){
+        let l = ev.pageX - this.disX;
+        let t = ev.pageY - this.disY;
+        if(t < 0){
+            t = 0;
+        }
+        this.box.style.left = l + 'px';
+        this.box.style.top = t + 'px';
+    }
+ 
+   let d = new Drag('box');
+   let d2 = new Drag2('box2');
+
+   console.log(Drag2.prototype);
+
+
+
+</script>
+</body>
+</html>
