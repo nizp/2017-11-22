@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        深度克隆
+
+
+    */
+
+    let arr = [1,2,3,4,[5,6,[[{name:'hh',arr:[7,8]},[[[1,2,[7,8]]]]]]]]; //{name:'hh',arr:[7,8]}
+    // let arr2 = [];
+
+    // for(let i of arr.keys()){
+    //     arr2[i] = arr[i];
+    // }
+
+    // arr2 = JSON.parse(JSON.stringify(arr));
+
+    //length   
+    function deepClone(data){
+        let o = data.push?[]:{};
+        for(let attr in data){
+            //说明是复合类型
+            if(typeof data[attr] === 'object'){
+                o[attr] = deepClone(data[attr]);
+            }else{
+                //简单类型
+                o[attr] = data[attr];
+            }
+        }
+        return o;
+    }
+
+    let arr2 = deepClone(arr);
+
+    arr2[4][2][0][1].push(10);
+    console.log(arr);
+
+
+
+
+</script>
+</body>
+</html>

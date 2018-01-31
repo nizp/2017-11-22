@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li class="li li1">1</li>
+        <li class="li1 li">2</li>
+        <li class="li1 li li2">3</li>
+        <li>4</li>
+        <li class="li1">5</li>
+        
+    </ul>
+<script>
+    /*
+        1.BOM中的可视区宽高
+
+            window.innerHeight/innerWidth
+
+        2.如何查看浏览器内核信息
+            window.navigator.userAgent
+
+        3.url的查询信息和锚信息分别是指哪段，如何获取？
+
+            window.loaction.search   ?到#之间的信息
+
+            window.loaction.hash     #之后的信息
+
+            onhashchange  当hash值发生变化的时候使用的。
+
+        4.什么是事件模型（事件流）？
+            由window起从上而下直到目标点（捕获），到达目标点之后（目标阶段）
+            又从目标点由下而上直到window（冒泡）的整个过程就叫事件模型
+
+        5.什么情况下用得到事件对象？
+            当用户在浏览器上操作的时候，想获取到操作时的细节信息时
+
+            鼠标事件：onmousemove
+            键盘事件: ev.keyCode  ev.shiftKey..
+            阻止冒泡
+            ...
+        6.举例说明冒泡的好处和坏处？如何阻止冒泡？
+            好处:
+                事件委托、事件监听
+                    给父级绑定事件 通过ev.target找到子级
+            坏处:
+                在嵌套标签的时候，如果祖孙节点都绑定了相同的事件
+                触发了子孙级事件会触发祖先级的事件
+            ev.cancelBubble = true
+            ev.stopPropagation();
+
+        7.自定义滚动条0-1之间的比例是如何求的？
+        
+            拖拽top / 目标位置  = 0-1
+
+        8.什么是正则？它的常用方法有哪些，各代表什么意思？
+
+            专门用来操作检索模糊范围的字符串的一种规则工具
+
+            //.test(str)  返回布尔值  匹配成功?true:false
+
+            str.match(//)  返回数组   匹配成功?[]:null
+
+            str.search(//) 返回下标   匹配成功?index:-1
+
+            str.replace(''|re,''|cb); 替换
+                cb:
+                    $0:匹配到的整个字符
+
+                    $1:默认?index:第一个子项
+                    $2:默认?整个字符串:第二个子项
+                    $3:默认?undefined:第三个子项
+                    .....
+
+        9.匹配16-118之间的数字
+            ^1[6-9]$|^[2-9][0-9]$|^10[0-9]$|^11[0-8]$
+
+        10.中文范围区间怎么写？
+            [\u4e00-\u9fa5]
+
+        11.不用\b的方式来获取className
+
+            "li li1 li2"
+            "li1 li"
+            "li li1"
+            "li1"
+
+            ^|\s className $|\s
+
+        12.判断是否以元音结尾
+            return /[aeiou]$/.test('a')
+
+        13.举例说明解构赋值（数组、对象）
+
+            let [b,a=6] = [a,b];
+            let {a:x=20} = {a:10}
+        
+    */
+
+    
+    console.log(getByClass('li1').forEach(e=>e.style.background="red"))
+    function getByClass(cName){
+        const lis = document.getElementsByTagName('li');
+        let arr = [];
+        let re = new RegExp('(\\s|^)' + cName + '(\\s|$)');
+        for(let ele of lis){
+            console.log(ele.className)
+            if(re.test(ele.className)){
+                arr.push(ele);
+            }
+        }
+        return arr;
+    }
+
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        Object.create();
+    */
+
+    function Fn(){
+        this.a = 10;
+        this.b = 20;
+    }
+    Fn.prototype.x = 30;
+
+    /*
+        当使用Object.create(),设置了value值之后
+        修改值是不会变的（依然是create的时候填写的）
+
+        在对象的值不能改变的情况下使用。
+
+        设置value的时候有以下几个属性
+            value:初始值（配置数据类型）
+            writable: true,  //可写（可修改）
+            enumerable: true,//可枚举（可循环）
+            configurable: true //可删除（可delete）
+
+    */
+    // let f = Object.create(Fn.prototype);//,{a:{value:10}}
+    let f = Object.create(Fn.prototype,{
+        a:{
+            value:10,
+            writable: true,
+            enumerable: true,
+            configurable: true 
+        }
+    });
+
+    f.a = 80;
+    f.b = 50;
+
+    delete f.a;
+    // console.log(f.a);
+
+    // for(let attr in f){
+    //     console.log(attr);
+    // }
+
+
+    let obj = {
+        a:10,
+        get aa(){
+            // console.log(this.a);
+            return this.a;
+        },
+        set aa(val){
+            console.log('我在设置');
+            this.a = val;
+        }
+    }
+    // obj.a = 20;
+
+
+    console.log(obj.a === 1 && obj.a === 2);
+
+    // obj.aa = 30;
+
+    // console.log(obj.aa);
+    // console.log(obj.a);
+
+    
+
+
+    
+
+</script>
+</body>
+</html>
