@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        class
+            如果类要接收参数，在constructor中接收
+
+
+        {
+            num : num   ===  {num}
+        }
+
+        {
+            fn:function(){} === { fn(){} }
+        }
+
+        fn:function(){} 
+
+        extends  继承
+        
+    */
+
+    class Person {
+        constructor(name,age){
+            this.name = name;
+            this.age = age;
+        }
+
+        say(){
+            alert(this.name);
+        }
+
+        runing(){
+            alert(this.name + '会跑');
+        }
+    }
+
+    /*
+        在继承的时候，必须在constructor中写super(父类的参数)才能
+        有this。
+
+
+    */
+    class Police extends Person {
+        constructor(name,age,job){
+            /*
+                super写完之后才能写this
+            */
+            // this.job = job;  //报错
+            super(name,age);
+            this.job = job;
+        }
+
+        say(){
+            alert(this.name+'是个铁狼');
+        }
+
+        kungfu(){
+            alert('会毒人,会救人,会查杀');
+        }
+    }
+
+    let p = new Person('小黄黄',18);
+    let p2 = new Police('脏脏',28,'警察');
+
+    p2.say();
+    p.say();
+
+    p2.kungfu();
+
+    console.log(p2);
+
+</script>
+</body>
+</html>

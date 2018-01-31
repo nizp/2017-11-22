@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        class
+            如果类要接收参数，在constructor中接收
+
+
+        {
+            num : num   ===  {num}
+        }
+
+        {
+            fn:function(){} === { fn(){} }
+        }
+
+        fn:function(){} 
+
+
+        
+    */
+
+    class Person {
+        constructor(name,age){
+            this.name = name;
+            this.age = age;
+        }
+
+        say(){
+            alert(this.name);
+        }
+
+        runing(){
+            alert(this.name + '会跑');
+        }
+
+    }
+
+    let p = new Person('小黄黄',18);
+    p.runing();
+
+    console.log(p);
+
+</script>
+</body>
+</html>

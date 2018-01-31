@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let num = 1;
+
+    let obj = {
+        get a(){
+            // console.log('我在读取a')
+            return num>2?2:num ++;
+        }
+    }
+
+    // obj.aa = ++ obj.a;
+
+    // console.log(obj.a); //1
+
+    // console.log(obj.a);//2
+    // console.log(obj.a);//2
+
+    // console.log(obj);
+
+
+    console.log(obj.a === 1 && obj.a === 2);
+
+
+    // let obj2 = {
+    //     name:"xx"
+    // }
+
+    // let obj2 = {
+    //     nn:'',
+    //     get n(){
+    //         return 'xx';
+    //     },
+    //     set n(val){
+    //         return this.nn = val;
+    //     }
+    // }
+
+    // console.log(obj2.name);
+
+    //修改了n同步改变了nn
+    // console.log(obj2);
+    // obj2.n = 'cc';
+    // console.log(obj2.nn);
+
+    
+
+
+
+</script>
+</body>
+</html>

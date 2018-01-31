@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        toString：
+            转字符串
+    */
+    let obj = {name:123}
+
+    // Object.prototype.toString = function(){
+    //     alert('就是改了')
+    // }
+
+    // alert(obj);
+
+     //[object Object]
+     /*
+        Object是说明当前这个数据的构造函数是什么
+
+        [object Object]只有对象的toString才会有这样的效果
+     */
+    
+    let arr = [];
+    let str = '';
+    let b = false;
+    let f = function(){}
+    
+    // Object.prototype.toString.call(arr);//[object Array]
+
+    // console.log(obj.toString());
+
+    console.log(Object.prototype.toString.call({}));
+
+    console.log(isArray([]));
+
+    function isArray(data){
+        let toStr = Object.prototype.toString;
+        return toStr.call(data) === '[object Array]'?true:false;
+    }
+
+
+
+</script>
+</body>
+</html>
