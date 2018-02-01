@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #contain {
+            width: 400px;
+            height: 400px;
+            border: 1px solid yellowgreen;
+            border-radius: 20px;
+            margin: 20px auto;
+            padding: 60px 30px 30px 30px;
+            box-sizing: border-box;
+        }
+
+        #contain div {
+            margin-bottom: 30px;
+        }
+
+        #contain div span {
+            font-size: 20px;
+            color: #555;
+            width: 80px;
+            display: inline-block;
+        }
+
+        #contain div input {
+            width: 200px;
+            height: 30px;
+            outline: none;
+            padding-left: 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid yellowgreen;
+        }
+
+        #btn {
+            display: block;
+            outline: none;
+            width: 100px;
+            height: 40px;
+            border: 1px solid yellowgreen;
+            background-color: #fff;
+            border-radius: 10px;
+            font-size: 20px;
+            margin: 20px auto;
+            cursor:no-drop;
+            color: #555;
+
+        }
+
+        #contain .ok {
+            border-color: yellowgreen;
+        }
+
+        #contain .error {
+            border-color: red;
+        }
+
+    </style>
+</head>
+<body>
+<div id="contain">
+    <div id="qq">
+        <span>QQ：</span>
+        <input type="text" name="qq" placeholder="请输入QQ">
+    </div>
+    <div id="email">
+        <span>Email：</span>
+        <input type="text" name="email" placeholder="请输入邮箱">
+    </div>
+    <div id="mobile">
+        <span>Mobile：</span>
+        <input type="text" name="phone" placeholder="请输入手机号码">
+    </div>
+    <div id="date">
+        <span>Date：</span>
+        <input type="text" name="birth" placeholder="请输入生日">
+    </div>
+
+    <p><input type="submit" value="注册" id="btn"></p>
+
+</div>
+<script>
+    const inputs = Array.from(document.querySelectorAll('input[name]')),
+        btn=document.querySelector('#btn');
+    // console.log(input);
+
+    /*
+        dsdsad_sds_123@163.com
+
+        4sda13@qq.com   yohoo
+
+        [a-z][\w\.\-]{5,17}@[0-9a-zA-Z]{2,7}(\.[a-z]{2,3}){1,2}
+
+
+        1.时间不能超过当前
+        2.2月30无效
+
+        
+
+    */
+
+    let re = {
+        qq:/^[1-9]\d{5,11}$/,
+        email:/^[a-z][\w\.\-]{5,17}@[0-9a-zA-Z]{2,7}(\.[a-z]{2,3}){1,2}$/
+        ,phone:/^1[35678]\d{9}$/,
+        birth:/^(\d+)\D+(\d+)\D+(\d+)\D*$/
+    }
+    // birth:
+    inputs.forEach((e,i)=>{
+        e.addEventListener('input',function(){
+            //第一关
+            if(re[e.name].test(e.value)){
+                if(Re(e,re)){
+                    //第二关
+                    e.className = 'ok';
+                    if (inputs.every(el=>el.className=='ok')){
+                        btn.style.cursor='pointer';
+                    }
+                }else{
+                    e.className = 'error';
+                    btn.style.cursor='no-drop';
+                }
+                
+            }else{
+                e.className = 'error';
+                btn.style.cursor='no-drop';
+            }
+        });
+    });
+
+    function Re(ele,re){
+        switch(ele.name){
+            case 'birth':
+                let arr = ele.value.match(re[ele.name]);
+                /*
+                    查看时间是否比当前要大
+                */
+                let d = new Date(arr[1],arr[2]-1,arr[3]);
+                // d.setFullYear(arr[1],arr[2]-1,arr[3]);
+
+                let newD = +new Date;
+                let y = d.getFullYear()
+                let m = d.getMonth() + 1;
+                let dd = d.getDate();
+
+                // console.log(y,m,dd);
+
+                // console.log(d.getTime() > newD)
+                if(d.getTime() >= newD || y != arr[1] || m != arr[2] || dd != arr[3]){
+                    return false;
+                }else{
+                    return true;
+                }
+                
+            break;
+            default:
+                return true;
+            break;
+        }
+    }
+
+
+
+
+    
+
+</script>
+</body>
+</html>
