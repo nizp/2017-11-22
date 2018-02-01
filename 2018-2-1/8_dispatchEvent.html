@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style lang="">
+#box{
+    width:100px;
+    height: 100px;
+    background: red;
+    opacity: 0;
+}
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    document.addEventListener('点击',fn);
+
+    function fn(){
+        alert(1);
+        // document.removeEventListener('点击',fn);
+    }
+
+    /*
+        使用系统的自定义事件:
+            创建HTMLEvents
+                event = document.createEvent('HTMLEvents');
+            初始化
+                第一个参数:
+                    事件名
+                第二个参数：
+                    是否冒泡
+                第三个参数:
+                    是否阻止浏览器默认行为
+                event.initEvent("点击", true, true);
+
+    */
+    // document.onclick = function(){
+    //     var event = document.createEvent('HTMLEvents'); 
+    //     event.initEvent("点击", true, true);
+    //     document.dispatchEvent(event);  
+    // }
+
+    let num = 0;
+    document.addEventListener('长按',function(){
+        box.style.opacity = ++num / 100;
+    });
+
+    document.onmousedown = function(ev){
+        var event = document.createEvent('HTMLEvents'); 
+        let oldTime = new Date;
+        let newTime = 0;
+        let timer = null;
+        let disX = ev.pageX,
+        disY = ev.pageY;
+        timer = setInterval(function(){
+            newTime = new Date;
+            if((newTime - oldTime)/1000 > 1){
+                event.initEvent("长按", true, true);
+                document.dispatchEvent(event);  
+            }
+            
+        },30);
+        
+        document.onmouseup = function(ev){
+            clearInterval(timer);
+
+            if(Math.abs(ev.pageX - disX) <= 5 && Math.abs(ev.pageY - disY) <= 5){
+                event.initEvent("点击", true, true);
+                document.dispatchEvent(event);  
+            }
+        }
+    }
+
+</script>
+</body>
+</html>
