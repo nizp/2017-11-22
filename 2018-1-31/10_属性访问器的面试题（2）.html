@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        setter和getter
+
+        为了通过改变某个值去同步另一个值
+
+        当读某个属性的时候会进
+            get(){}
+
+        当写某个属性的时候会进
+            set(){}
+
+        一定不要自己修改自己，不然会递归（修改别人控制自已||修改自己控制别人）
+        自己的数据和被控制的数据一致。
+
+    */
+    let obj = {
+        a:'xx',
+        get b(){
+            return this.a;
+        },
+        set b(val){
+            // console.log('设置n'+val);
+            return this.a = val;
+        }
+    }
+
+    // obj.nn = 'cc';
+    obj.a = 'ggg';
+
+    console.log(obj.b);
+
+
+
+
+
+</script>
+</body>
+</html>

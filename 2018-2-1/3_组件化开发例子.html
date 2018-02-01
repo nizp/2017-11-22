@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    background: seagreen;
+    position: absolute;
+    top:0;
+    left:0;
+}
+#box2{
+    width:100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    top:0;
+    left:100px;
+}
+</style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="box2"></div>
+<script>
+    class Drag {
+        constructor(id){
+            this.box = document.getElementById(id);
+            this.disX = this.disY = 0;
+        }
+
+        init(down,move,up){ //回调函数（钩子函数）
+            this.down(down,move,up);
+        }
+
+        down(d,m,u){
+            let _this = this;
+            this.box.addEventListener('mousedown',function(ev){
+                _this.disX = ev.pageX - _this.box.offsetLeft;
+                _this.disY = ev.pageY - _this.box.offsetTop;
+                d && d();
+                // _this.box.style.background = 'red';
+                let move = function(ev){
+                    _this.move(ev);
+                    m && m();
+                    // _this.box.style.background = 'blue';
+                }
+                let up = function(){
+                    _this.up(ev,move,up);
+                    // _this.box.style.background = 'seagreen';
+                    u && u();
+                }
+                document.addEventListener('mousemove',move);
+                document.addEventListener('mouseup',up);
+                ev.preventDefault();
+            });
+        }
+
+        move(ev){
+            let l = ev.pageX - this.disX;
+            let t = ev.pageY - this.disY; 
+            this.box.style.left = l + 'px';
+            this.box.style.top = t + 'px';
+        }
+
+        up(ev,move,up){
+            document.removeEventListener('mousemove',move);
+            document.removeEventListener('mouseup',up);
+        }
+
+    }
+
+    let d = new Drag('box');
+    let d2 = new Drag('box2');
+    d.init(function(){
+        d.box.style.background = 'red';
+    },function(){
+        d.box.style.background = 'blue';
+    },function(){
+        d.box.style.background = 'seagreen';
+    });
+    d2.init();
+</script>
+</body>
+</html>

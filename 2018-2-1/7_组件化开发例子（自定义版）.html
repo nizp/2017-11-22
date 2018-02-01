@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    background: seagreen;
+    position: absolute;
+    top:0;
+    left:0;
+}
+#box2{
+    width:100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    top:0;
+    left:100px;
+}
+</style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="box2"></div>
+<script>
+
+    class DefineEvent {
+        constructor(){
+            this.storage = {}
+        }
+        //给数组添加函数和事件名
+        on(type,cb){
+            //有事件就走这个事件数组，没有创建一个新的数组
+            this.storage[type] = this.storage[type] || [];
+            this.storage[type].push(cb);
+
+            //保证不重复。
+            this.storage[type] = [...new Set(this.storage[type])];
+
+            // if(!this.storage[type].some(e=>cb.name)){
+            //     this.storage[type].push(cb);
+            // }
+        }
+        //在某个情况下循环调用绑定的事件函数
+        trigger(type){
+            //如果没绑就不循环调用
+            if(!this.storage[type])return;
+            //找到绑定的事件函数数组，循环调用
+            this.storage[type].forEach(fns => {
+                fns.call(this);
+            });
+        }
+        del(type,fn){
+            //过滤要解绑的函数
+            this.storage[type] = this.storage[type].filter(e=>{
+                return fn.name != e.name;
+            });
+        }
+    };
+
+    class Drag extends DefineEvent {
+        constructor(id){
+            super();
+            this.box = document.getElementById(id);
+            this.disX = this.disY = 0;
+            //默认的配置
+            this.opt = {
+                d(){},
+                m(){},
+                u(){}
+            }
+        }
+        //json给外面配置的接口{}
+        init(json){ //回调函数（钩子函数）json = down,move,up
+            Object.assign(this.opt,json);
+            this.down();
+        }
+
+        down(){
+            let _this = this;
+            let downFn = function(ev){
+                _this.disX = ev.pageX - _this.box.offsetLeft;
+                _this.disY = ev.pageY - _this.box.offsetTop;
+                // d && d();
+                _this.opt.d();
+                _this.trigger('按下');
+                // _this.box.style.background = 'red';
+                let move = function(ev){
+                    _this.move(ev,downFn);
+                    _this.opt.m();
+                    _this.trigger('移动');
+                    // m && m();
+                    // _this.box.style.background = 'blue';
+                }
+                let up = function(){
+                    _this.up(ev,move,up);
+                    _this.trigger('抬起');
+                    // _this.box.style.background = 'seagreen';
+                    // u && u();
+                    _this.opt.u(downFn);
+                }
+                document.addEventListener('mousemove',move);
+                document.addEventListener('mouseup',up);
+                ev.preventDefault();
+            }
+            this.box.addEventListener('mousedown',downFn);
+        }
+
+        move(ev){
+            let l = ev.pageX - this.disX;
+            let t = ev.pageY - this.disY; 
+            this.box.style.left = l + 'px';
+            this.box.style.top = t + 'px';
+        }
+
+        up(ev,move,up){
+            document.removeEventListener('mousemove',move);
+            document.removeEventListener('mouseup',up);
+        }
+
+        rmdwon(downFn){
+            this.box.removeEventListener('mousedown',downFn);
+        }
+
+    }
+
+    let d = new Drag('box');
+    let d2 = new Drag('box2');
+    
+    d2.init();
+
+    d2.on('按下',function(){
+        console.log('此处有1000行代码');
+    });
+    d2.on('按下',function(){
+        console.log('此处有2000行代码');
+    });
+
+    d2.on('抬起',function(){
+       alert('结束');
+    });
+
+    
+
+</script>
+</body>
+</html>
