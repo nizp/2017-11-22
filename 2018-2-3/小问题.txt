@@ -1,0 +1,11 @@
+引用:
+	import 'css地址'  -> requrie('css地址')
+
+	如果下载的模块（node_modules） || node模块 'react'
+
+	除了自己写的js要加 在当前路径下就写 './xxx'
+
+	
+		
+	export
+渲染
