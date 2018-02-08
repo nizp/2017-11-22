@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,
+			html {
+				margin:0;
+				width:100%;
+				height:100%;
+			}
+			ul {
+				margin:0;
+				padding:0;
+				list-style:none;
+			}
+			a{
+				text-decoration:none;
+			}
+			.clearFix:after {
+				content:"";
+				display:block;
+				clear:both;
+			}
+			#wrap {
+				margin:0 auto;
+				position:relative;
+				/*width:1200px;
+				height:100%;
+				background:url("image/bg.png") no-repeat;*/
+				height: 100vh;
+				background: url("image/bg.png");
+				background-size: cover;
+				overflow: hidden;
+			}
+			.box {
+				/*position:absolute;
+				left:70px;
+				top:195px;
+				padding:22px 20px 20px 20px;*/
+				margin:180px auto;
+				width:440px;
+				background:#533fa8;
+				height: 420px;
+			}
+			.left {
+				float:left;
+				height:100%;
+				width:162px;
+				background:#433293;
+				min-height:34px;
+			}
+			.right {
+				float:right;
+				height:100%;
+				width:162px;
+				background:#433293;
+				min-height:10px;
+			}
+			.change {
+				float:left;
+				margin:144px 0 0 16px;
+				width:85px;
+				height:83px;
+			}
+			.change li {
+				width:85px;
+				height:30px;
+				text-align:center;
+				line-height:30px;
+				color:#fff;
+				border-radius:2px;
+			}
+
+			.change li:nth-of-type(1){
+				background:#29efdc;
+				margin-bottom:23px;
+			}
+			.change li:nth-of-type(2){
+				background:#54affc;
+			}
+
+			.change a {
+				color:#fff;
+			}
+			.left li,
+			.right li {
+				margin:4px 0;
+				height:36px;
+			}
+			.left li:hover,
+			.right li:hover {
+				-background:#c6aec7;
+				background:#362876;
+			}
+			.left .active,
+			.right .active {
+				background:#362876;
+			}
+			.left li a,
+			.right li a {
+				display:block;
+				height:36px;
+				font:14px "微软雅黑";
+				line-height:36px;
+				color:#fff;
+			}
+			.point {
+				display:inline-block;
+				margin-left:20px;
+				margin-right:8px;
+				width:7px;
+				height:7px;
+				border-radius:50%;
+				background:#fff;
+			}
+			.box2 {
+				position:absolute;
+				right:70px;
+				top:195px;
+				padding:22px 20px 20px 20px;
+				width:440px;
+				background:#fff;
+				border-radius:10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div class="box clearFix">
+				<ul class="left list">
+					<li class="item-li">
+						<a href="javascript:;">
+							<span class="point"></span><span class="text">小程序</span>
+						</a>
+					</li>
+					<li class="item-li">
+						<a href="javascript:;">
+							<span class="point"></span><span class="text">jQuery</span>
+						</a>
+					</li>
+					<li class="item-li">
+						<a href="javascript:;">
+							<span class="point"></span><span class="text">AJAX</span>
+						</a>
+					</li>
+					<li class="item-li">
+						<a href="javascript:;">
+							<span class="point"></span><span class="text">JS基础-2</span>
+						</a>
+					</li>
+					<li class="item-li">
+						<a href="javascript:;">
+							<span class="point"></span><span class="text">移动端实践</span>
+						</a>
+					</li>
+				</ul>
+				<ul class="change">
+					<li class="move-to-l"><a href="#"><向左</a></li>
+					<li class="move-to-r"><a href="#">向右></a></li>
+				</ul>
+				<ul class="right list">
+					<li class="item-li">
+						<a href="javascript:;">
+							<span class="point"></span><span class="text">Node</span>
+						</a>
+					</li>
+					<li class="item-li">
+						<a href="javascript:;">
+							<span class="point"></span><span class="text">ECMA6</span>
+						</a>
+					</li>
+					<li class="item-li">
+						<a href="javascript:;">
+							<span class="point"></span><span class="text">面向对象-中</span>
+						</a>
+					</li>
+					<li class="item-li">
+						<a href="javascript:;">
+							<span class="point"></span><span class="text">React</span>
+						</a>
+					</li>
+					<li class="item-li">
+						<a href="javascript:;">
+							<span class="point"></span><span class="text">JS基础-1</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+<script src="jquery-3.1.1.js"></script>
+<script>
+	$('.list').on('click','li',function(){
+		$(this).toggleClass('active');
+	});
+	
+	$('.move-to-r').on('click',function(){
+		var $rightFirstC = $('.right li').first();
+		//console.log($rightFirstC)
+		$('.left .item-li').each(function(i,e){
+			if($(e).hasClass('active')){
+				var $newLi1 = $(`
+					<li class="item-li">
+						<a href="javascript:;">
+							<span class="point"></span>
+							<span class="text">${$(this).find('.text').html()}</span>
+						</a>
+					</li>
+					`);
+				if($rightFirstC.length == 0){
+					//console.log(111)
+					$('.right').append($newLi1);
+				}else {
+					//console.log(222)
+					$rightFirstC.before($newLi1);
+				}
+				$(this).remove();
+			}
+		});
+	});
+	
+	$('.move-to-l').on('click',function(){
+		var $leftFirstC = $('.left li').first();
+		$('.right .item-li').each(function(i,e){
+			if($(e).hasClass('active')){
+				var $newLi2 = $(`
+					<li class="item-li">
+						<a href="javascript:;">
+							<span class="point"></span>
+							<span class="text">${$(this).find('.text').html()}</span>
+						</a>
+					</li>
+					`)
+				if($leftFirstC.length == 0){
+					$('.left').append($newLi2);	
+				}else {
+					$leftFirstC.before($newLi2);
+				}
+				$(this).remove();
+			}
+		})
+	})
+</script>
+	</body>
+</html>
