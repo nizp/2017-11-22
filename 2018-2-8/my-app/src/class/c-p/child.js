@@ -25,3 +25,4 @@ class Child extends React.Component {
 }
  
 export default Child;
+
