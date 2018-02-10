@@ -1,0 +1,15 @@
+a{
+    text-decoration: none;
+}
+a:active,a:visited{
+    color:#000;
+}
+
+.active{
+    background: yellow;
+}
+#box div{
+    width:150px;
+    height:100px;
+    border: 1px solid #000;
+}
