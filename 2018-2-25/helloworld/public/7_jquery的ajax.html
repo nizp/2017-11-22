@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.ok{
+    color:green
+}
+.no{
+    color:red
+}
+
+</style>
+</head>
+<body>
+    <!-- <form action="/get"> -->
+        用户名:<input type="text" name="name" id="user"/><span id="span"></span>
+        <br />
+        密码:<input type="text" name="pass"/> 
+        <input type="button" value="提交"/>  
+    <!-- </form> -->
+<script src="javascripts/jquery-3.2.1.min.js"></script>
+<script>
+    let user = document.getElementById('user');
+    let span = document.getElementById('span');
+    user.onfocus = function(){
+        this.className = '';
+    }
+    user.onblur = function(){
+        $.ajax({
+            url:'/get',
+            data:{
+                name:user.value
+            },
+            dataType:'json',
+            success:function(data){
+                console.log(data);
+            }
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.ok{
+    color:green
+}
+.no{
+    color:red
+}
+
+</style>
+</head>
+<body>
+    <!-- <form action="/get"> -->
+        用户名:<input type="text" name="name" id="user"/><span id="span"></span>
+        <br />
+        密码:<input type="text" name="pass"/> 
+        <input type="button" value="提交"/>  
+    <!-- </form> -->
+<script>
+
+    /*
+        ajax的交互模型:
+            1.有个电话
+            2.输入号码
+            3.发送
+            4.等待接听
+            5.通话
+    */
+
+    let user = document.getElementById('user');
+    let span = document.getElementById('span');
+    user.onfocus = function(){
+        this.className = '';
+    }
+    user.onblur = function(){
+        let val = this.value;
+        const ajax = new XMLHttpRequest; //创建一个ajax对象
+
+        ajax.open('get','/get?name='+val,true);//拨号，默认异步
+
+        ajax.send(); //发送
+
+        //等待
+        ajax.onload = function(){
+            let json = JSON.parse(ajax.responseText);
+
+            if(json.code == 0){
+                user.className = 'no';
+            }else if(json.code == 1){
+                user.className = 'ok';
+            }
+
+            span.innerText = json.msg;
+            console.log(ajax.responseText,json); //通话
+        }
+
+
+    }
+</script>
+</body>
+</html>

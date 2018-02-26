@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.ok{
+    color:green
+}
+.no{
+    color:red
+}
+
+</style>
+</head>
+<body>
+    <!-- <form action="/get"> -->
+        用户名:<input type="text" name="name" id="user"/><span id="span"></span>
+        <br />
+        密码:<input type="text" name="pass"/> 
+        <input type="button" value="提交"/>  
+    <!-- </form> -->
+<script>
+
+    /*
+        post在IE下，使用中文是没问题的。
+        因为设置了请求头。
+
+    */
+
+    let user = document.getElementById('user');
+    let span = document.getElementById('span');
+    user.onfocus = function(){
+        this.className = '';
+    }
+    user.onblur = function(){
+        const ajax = new XMLHttpRequest;
+        // ajax.open('get','/get?name='+this.value);
+        ajax.open('post','/post');
+
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+        ajax.send('user='+this.value);
+
+        ajax.onload = function(){
+            let obj = JSON.parse(ajax.responseText);
+            if(obj.code === 0){
+                user.className = 'no';
+            }else{
+                user.className = 'ok';
+            }
+            span.innerText = obj.msg;
+        }
+    }
+</script>
+</body>
+</html>
