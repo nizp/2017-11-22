@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.ok{
+    color:green
+}
+.no{
+    color:red
+}
+
+</style>
+</head>
+<body>
+    <!-- <form action="/get"> -->
+        用户名:<input type="text" name="name" id="user"/><span id="span"></span>
+        <br />
+        密码:<input type="text" name="pass"/> 
+        <input type="button" value="提交"/>  
+    <!-- </form> -->
+<script>
+
+    /*
+        get:
+            通过url的方式进行请求-把数据放到url上
+            1.体积有限制，每个浏览器都有最大限制url的规则，不同的浏览器体积大小也不一样
+            2.安全方面相对不安全,通过记录是可以拿到用户的信息的
+            3.可被浏览器缓存    
+            直接暴露出来的数据可以使用get方式
+
+        post:
+            通过服务器进行传输-把数据放到send中
+
+            1.理论上是无限制大小（但是一般后端童鞋会进行限制）
+            2.相对get会安全一些
+            3.设置请求头:
+                ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  
+            4.请求不会被缓存
+
+
+        post更擅长处理敏感的信息，体积较大的数据
+        get更擅长处理暴露信息,体积小的数据
+
+        真正的验证只有后端来判断
+
+    */
+
+    let user = document.getElementById('user');
+    let span = document.getElementById('span');
+    user.onfocus = function(){
+        this.className = '';
+    }
+    user.onblur = function(){
+        const ajax = new XMLHttpRequest;
+        // ajax.open('get','/get?name='+this.value);
+        ajax.open('post','/post');
+
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+        ajax.send('user='+this.value);
+
+        ajax.onload = function(){
+            let obj = JSON.parse(ajax.responseText);
+            if(obj.code === 0){
+                user.className = 'no';
+            }else{
+                user.className = 'ok';
+            }
+            span.innerText = obj.msg;
+        }
+    }
+</script>
+</body>
+</html>

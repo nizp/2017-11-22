@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+<body>
+    <button id="btn">点击渲染</button>
+    <ul id="ul"></ul>
+<script>
+
+    const btn = document.getElementById('btn');
+    const ul = document.getElementById('ul');
+
+    btn.onclick = function(){
+        const ajax = new XMLHttpRequest;
+        ajax.open('get','/data.xml');
+        ajax.send();
+        ajax.onload = function(){
+            const doc = ajax.responseXML;
+            let html = '';
+            const person = doc.getElementsByTagName('person');
+
+            for(let v of person){
+                html += `<li>我的名字叫${v.children[0].innerHTML},
+                    今年${v.children[1].innerHTML}岁，
+                    性别${v.children[2].innerHTML},
+                    我想说:${v.children[3].innerHTML}
+                </li>`;
+            }
+
+            ul.innerHTML = html;
+
+            console.log(person);
+        }
+    };
+
+
+
+</script>
+</body>
+</html>
