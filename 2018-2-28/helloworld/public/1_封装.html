@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    用户名:<input type="text" id="user"/>
+<script>
+    
+    /*
+        {
+            name:chaoxue,
+            pass:123
+        }
+
+        name=chaoxue&pass=123
+    */
+
+    var user = document.getElementById('user');
+    user.onblur = function(){
+        ajax({
+            url:'/post',
+            data:{
+                name:this.value
+            },
+            type:'post',
+            success:function(data){
+                console.log(data);
+            },
+            fail:function(d){
+                alert(d);
+            }
+        });
+    }
+
+    function ajax(json){
+        //默认配置
+        var opt = {
+            url:'',
+            success:function(){},
+            fail:function(){},
+            type:'get',
+            dataType:'json',
+            data:{},
+            asy:true,
+            cache:true
+        }
+
+        for(var attr in json){
+            opt[attr] = json[attr];
+        }
+
+        var ajax = new XMLHttpRequest;
+        var arr = [];
+        for(var attr in opt.data){
+            arr.push(attr + '=' + opt.data[attr]);
+        }
+        opt.data = arr.join('&');
+
+        if(opt.type === 'get'){
+            /*
+                get方式会有缓存,当一个url第一次被请求成功的时候，浏览器会把这个url缓存到本地，在这个url多次请求的时候，资源直接往本地取。
+            */
+          
+            ajax.open('get',opt.url + '?' + opt.data + '&' + (opt.cache?+new Date:''),opt.asy);
+            
+            ajax.onreadystatechange = ready;
+            ajax.send();
+        }else if(opt.type === 'post'){
+            ajax.open('post',opt.url,opt.asy);
+            ajax.onreadystatechange = ready;
+            ajax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+            ajax.send(opt.data);
+        }
+
+        function ready(){
+            if(ajax.readyState === 4){
+                if(ajax.status >= 200 && ajax.status <= 207){
+                    if(opt.dataType === 'json'){
+                        // opt.success(JSON.parse(ajax.responseText));
+                        // opt.success(eval('('+ ajax.responseText +')'));
+                        opt.success((new Function('','return'+ ajax.responseText))());
+                    }else if (opt.dataType === 'xml'){
+                        opt.success(ajax.responseXML);
+                    }else{
+                        opt.success(ajax.responseText);
+                    }
+
+                }else{
+                    opt.fail(ajax.status);
+                }
+            }
+        }
+    }
+
+
+   
+
+
+</script>
+</body>
+</html>
