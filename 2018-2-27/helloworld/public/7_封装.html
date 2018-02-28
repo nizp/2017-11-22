@@ -91,7 +91,7 @@
             监听一步
         */
         function ready(){
-            //alert(ajax.readyState);
+            alert(ajax.readyState);
             if(ajax.readyState === 4){//只能说可以接收到服务器的信息，但是不保证成功还是失败
                 if(ajax.status >=200 && ajax.status <= 207){
                     if(opt.dataType === 'json'){
