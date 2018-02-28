@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">按钮</button>
+    <button id="btn2">按钮2</button>
+<script>
+    /*
+        跨域（跨源）:
+            跨出某个范围。
+
+        源:
+            域名、协议、端口
+
+        同源策略:
+            同源策略（Same origin policy）是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。可以说Web是构建在同源策略基础之上的，浏览器只是针对同源策略的一种实现
+
+        同源：
+            相同域名、协议、端口
+        跨源(不同源):
+            不同域名、协议、端口
+
+        域名:
+            ip地址的一个别名，为了方便记忆
+
+            www.baidu.com
+            www.baidu.com/xxx
+            www.taobao.com
+
+        协议：
+            http/https 超文本传输协议
+            file
+            ftp (文件传输协议)
+            .....
+
+        端口:
+            类似柜台的服务人员
+               www.baidu.com:80
+               www.baidu.com:88
+
+    解决:
+        标准浏览器 
+		利用 XMLHttpRequest() 与后端配合来解决。
+          	问题 ：低版本的 XMLHttpRequest() 对象不支持与后端配合。
+          	后端 ：  php :  header('Access-Control-Allow-Origin:*');
+
+        后端代理
+            后端去请求裸露的数据不会有跨域问题
+            后端先把数据取到当前服务器中，
+            然后前端通过 正常 的 ajax 请求来获取数据。
+
+        jsonp
+            json + padding
+
+            ****数据本身就是函数名 + 括号
+            需要在*全局*定义一个与数据函数名一样的函数
+            当需要使用数据的时候，创建一个script标签
+            把接口放到script.src中
+
+            script中的src会把引入文件中的代码尽量解析为js
+
+            fn([1,2,3,4]) ; 函数调用
+            
+            ajax没有函数名 + 括号
+            
+
+            
+    */
+
+    // function ff(){
+        
+    // }
+    // ff();
+    function fn(data){
+        console.log(data);
+    }
+    function fn(data){
+        alert(data);
+    }
+
+    // fn(123);
+
+    btn.onclick = function(){
+        // 下面的代码等同于fn([1,2,3,4]);把数据当做实参传了进去
+        let os = document.createElement('script');
+        os.src = 'http://localhost/data.js';
+        document.getElementsByTagName('head')[0].appendChild(os);
+    }
+    btn2.onclick = function(){
+        // 下面的代码等同于fn([1,2,3,4]);把数据当做实参传了进去
+        let os = document.createElement('script');
+        os.src = 'http://localhost/data.js';
+        document.getElementsByTagName('head')[0].appendChild(os);
+    }
+
+
+</script>
+</body>
+</html>
