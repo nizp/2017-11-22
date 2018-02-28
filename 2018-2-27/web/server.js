@@ -15,7 +15,7 @@ app.use('/api', require('./routers/api'));
 app.use('/admin', require('./routers/admin'));
 // app.use('/', require('./routers/main'));
 
-mongoose.connect('mongodb://localhost:27017', (err) => {
+mongoose.connect('mongodb://127.0.0.1:27017',{useMongoClient:true}, (err) => {
   if (err) {
     console.log(err.message);
   } else {

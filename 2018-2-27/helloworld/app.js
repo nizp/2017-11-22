@@ -1,3 +1,5 @@
+// import { read } from 'fs';
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -9,7 +11,8 @@ var index = require('./routes/index');
 var get = require('./routes/get');
 var post = require('./routes/post');
 var sleep = require('./routes/sleep');
-
+var kuayu = require('./routes/kuayu');
+var jsonp = require('./routes/jsonp');
 var app = express();
 
 // view engine setup
@@ -28,6 +31,8 @@ app.use('/', index);
 app.use('/get', get);
 app.use('/post',post);
 app.use('/sleep',sleep);
+app.use('/kuayu',kuayu);
+app.use('/jsonp',jsonp);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
