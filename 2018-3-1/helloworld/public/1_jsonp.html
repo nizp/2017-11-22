@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="txt"/>
+    <ul id="ul"></ul>
+<script>
+    /*
+        跨域:
+            不同域名、协议、端口
+        
+        解决跨域问题:
+            1.标准浏览器的XMLHttpRequest + 服务端设置请求头
+            
+            2.后端代理:服务器文件可以访问第三方资源，这个服务器文件又跟前端文件同源，前端文件能正常访问服务器文件，能够访问第三方资源，即实现跨域
+
+            3.jsonp(get方式请求):
+                1.数据格式就是函数名 + 括号（在括号中传入相应的数据）
+
+                2.在**全局**定义一个能够接受数据的函数
+
+                3.请求:创建script标签,src="接口地址",然后插入到前端文件中
+
+        
+    */
+
+
+    txt.onkeyup = function(){
+        let os = document.createElement('script');
+        os.src = 'https://sug.so.360.cn/suggest?callback=fn&encodein=utf-8&encodeout=utf-8&format=json&fields=word&word='+this.value;
+        document.getElementsByTagName('head')[0].appendChild(os);
+        os.remove();
+    }
+
+    function fn(data){
+        let html = '';
+        data.result.forEach(e=>{
+            html += '<li>'+ e.word +'</li>'
+        });
+        ul.innerHTML = html;
+    }
+
+
+
+
+    // ajax({
+    //     url:'http://localhost:8085/kuayu',
+    //     data:{
+    //         name:'yangna'
+    //     },
+    //     success:function(data){
+    //         console.log(data);
+    //     }
+    // })
+
+
+    function ajax(json){
+        //默认配置
+        var opt = {
+            url:'',
+            success:function(){},
+            fail:function(){},
+            type:'get',
+            dataType:'json',
+            data:{},
+            asy:true,
+            cache:true
+        }
+
+        for(var attr in json){
+            opt[attr] = json[attr];
+        }
+
+        var ajax = new XMLHttpRequest;
+        var arr = [];
+        for(var attr in opt.data){
+            arr.push(attr + '=' + opt.data[attr]);
+        }
+        opt.data = arr.join('&');
+
+        if(opt.type === 'get'){
+            /*
+                get方式会有缓存,当一个url第一次被请求成功的时候，浏览器会把这个url缓存到本地，在这个url多次请求的时候，资源直接往本地取。
+            */
+          
+            ajax.open('get',opt.url + '?' + opt.data + '&' + (opt.cache?+new Date:''),opt.asy);
+            
+            ajax.onreadystatechange = ready;
+            ajax.send();
+        }else if(opt.type === 'post'){
+            ajax.open('post',opt.url,opt.asy);
+            ajax.onreadystatechange = ready;
+            ajax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+            ajax.send(opt.data);
+        }
+
+        function ready(){
+            if(ajax.readyState === 4){
+                if(ajax.status >= 200 && ajax.status <= 207){
+                    if(opt.dataType === 'json'){
+                        // opt.success(JSON.parse(ajax.responseText));
+                        // opt.success(eval('('+ ajax.responseText +')'));
+                        opt.success((new Function('','return'+ ajax.responseText))());
+                    }else if (opt.dataType === 'xml'){
+                        opt.success(ajax.responseXML);
+                    }else{
+                        opt.success(ajax.responseText);
+                    }
+
+                }else{
+                    opt.fail(ajax.status);
+                }
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

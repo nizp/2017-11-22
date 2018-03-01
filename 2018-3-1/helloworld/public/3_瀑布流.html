@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+    	body{
+    		background:skyblue;
+    	}
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      .pic{
+        width: 236px;
+        box-shadow:0 1px 3px rgba(0,0,0,.3);
+        overflow:hidden;
+        margin-top:10px;
+      }
+      img{
+        width:236px;
+        border: none;
+        display: block;
+      }
+      ul{
+        list-style: none;
+        margin: 0 auto;
+        /*border:1px solid #000;*/
+        width:1050px;
+        overflow: hidden;
+      }
+      li{
+        /*position: absolute;*/
+        /* border: 1px solid #ccc; */
+        float: left;
+        margin: 8px;
+        width:236px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="ul">
+    	<li>
+          <!-- <div class="pic">
+            <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+          </div>
+          <div class="pic">
+            <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+          </div>
+          <div class="pic">
+                <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+              </div> -->
+        </li>
+        <li>
+          <!-- <div class="pic">
+            <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+          </div> -->
+        </li>
+         <li>
+          <!-- <div class="pic">
+            <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+          </div> -->
+        </li>
+         <li>
+          <!-- <div class="pic">
+            <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+          </div> -->
+        </li>
+        
+        
+    </ul>
+  <script src="jsonp_1.0.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+  /*
+    http://www.wookmark.com/api/json/popular?callback=fn
+  */
+
+  const list = Array.from(document.getElementsByTagName('li'));
+  
+  //找出最短的下标
+  function minFn(){
+    let arr = list.map(e=>e.scrollHeight);
+    let m = Math.min.apply(null,arr);
+    return arr.findIndex(e=>e==m);
+  }
+
+  // minFn();
+
+  jsonp({
+    url:'http://www.wookmark.com/api/json/popular',
+    data:{
+      page:0
+    },
+    success:function(data){
+      data.forEach(e=>{
+        
+        let div = document.createElement('div');
+        div.className = 'pic';
+        let img = new Image();
+        img.src = e.preview;
+        div.appendChild(img);
+        img.onload = function(){
+          let m = minFn(); //最短的下标
+          list[m].appendChild(div);
+        } 
+      });
+    }
+  });
+
+
+    
+	
+</script>
+</body>
+</html>

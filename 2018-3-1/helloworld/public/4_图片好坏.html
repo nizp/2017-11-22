@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        当图片能加载出来就会进 img.onload
+        否则进img.onerror
+    */
+    let img = new Image();
+    img.src = 'http://www.wookmark.com//images//thumbs//666470_wookmark.jpg';
+    // img.src = 'http://www.wookmark.com/images/thumbs/666487_wookmark.jpg'
+    img.onload = function(){
+        alert('加载完成')
+    }
+    img.onerror = function(){
+        alert('烂图')
+    }
+</script>
+</body>
+</html>
