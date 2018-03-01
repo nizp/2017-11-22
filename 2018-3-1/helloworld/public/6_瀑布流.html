@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+    	body{
+    		background:skyblue;
+    	}
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      .pic{
+        width: 236px;
+        box-shadow:0 1px 3px rgba(0,0,0,.3);
+        overflow:hidden;
+        margin-top:10px;
+      }
+      img{
+        width:236px;
+        border: none;
+        display: block;
+      }
+      ul{
+        list-style: none;
+        position: relative;
+        margin: 0 auto;
+        border:1px solid #000;
+        /* width:1050px; */
+        /* overflow: hidden; */
+      }
+      li{
+        position: absolute;
+        /* border: 1px solid #ccc; */
+        /* float: left; */
+        /* margin: 8px; */
+        width:236px;
+        transition: 500ms;
+      }
+      #loading{
+        height: 50px;
+        position: fixed;
+        bottom:0;
+        background: #fff;
+        width:100%;
+        transition: 500ms;
+      }
+      #loading img{
+        width:80px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="ul">
+    	
+    </ul>
+    <div id="loading">
+      <img height="50" src="1.gif" >
+    </div>
+  <script src="jsonp_1.0.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+  /*
+    http://www.wookmark.com/api/json/popular?callback=fn
+  */
+
+  
+ 
+
+  /*
+    计算一个可视区能放几个li
+  */
+
+  const w = 236;
+  const iW = document.documentElement.clientWidth;
+  const pl = 10; //间距
+  let num = 0;
+  let onOff = false;
+
+  let len = Math.floor(iW / (w + pl));
+
+  /*
+    ul设置宽度
+  */
+
+  ul.style.width = (w + pl) * len - pl + 'px';
+
+  let arrL = [];
+  let arrT = [];
+
+  for(let i=0;i<len;i++){
+    arrL.push(i*(w+pl));
+    arrT.push(0);
+  }
+
+  render(num);
+  function render(num){
+    onOff = false;
+    loading.style.opacity = 1;
+    jsonp({
+      url:'http://www.wookmark.com/api/json/popular',
+      data:{
+        page:num
+      },
+      success:function(data){
+        data.forEach(e=>{
+          let li = document.createElement('li');
+          li.className = 'pic';
+          let img = new Image();
+          img.src = e.preview;
+          li.appendChild(img);
+          //求比例高度
+          let ih = w * (e.height/e.width);
+          
+          li.style.height = ih + 'px';
+          img.onload = function(){
+            let m = minIndex(); //最短的下标
+            li.style.top = arrT[m] + 'px';
+            li.style.left = arrL[m] + 'px';
+            ul.appendChild(li);
+            arrT[m] += (li.offsetHeight*1)+10; 
+          } 
+        });
+        onOff = true;
+        setTimeout(function(){
+          loading.style.opacity = 0;
+        },500)
+      }
+    });
+  }
+
+  window.onresize = function(){
+    const iW = document.documentElement.clientWidth;
+    let len = Math.floor(iW / (w + pl));
+    if(len < 4){
+      len = 4;
+    }
+    if(len > 7){
+      len = 7;
+    }
+    ul.style.width = (w + pl) * len - pl + 'px';
+    arrL.length = arrT.length = 0;
+    for(let i=0;i<len;i++){
+      arrL.push(i*(w+pl));
+      arrT.push(0);
+    }
+
+    let list = Array.from(document.getElementsByTagName('li'));
+
+    list.forEach(e=>{
+      let m = minIndex(); //最短的下标
+      e.style.top = arrT[m] + 'px';
+      e.style.left = arrL[m] + 'px';
+      arrT[m] += (e.offsetHeight*1)+10; 
+    });
+    
+  }
+
+  window.onscroll = function(){
+    let m = minIndex();
+
+    if(arrT[m] <= window.innerHeight + window.pageYOffset){
+      if(onOff){
+        num ++;
+        render(num);
+        console.log('要加载',num);
+      }
+    }
+  }
+
+
+
+
+   //找出最短的下标
+   function minIndex(){
+    let m = Math.min.apply(null,arrT);
+    return arrT.findIndex(e=>e==m);
+  }
+
+
+
+
+
+
+
+
+  
+	
+</script>
+</body>
+</html>
