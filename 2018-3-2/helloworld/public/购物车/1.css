@@ -1,0 +1,29 @@
+#div1{
+    position: absolute;
+    left:0;
+    top:0;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+h2{
+    width:150px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 15px;
+    border: 1px solid #000;
+}
+li{
+    height:30px;
+    line-height: 30px;
+    border: 1px solid #000; 
+    text-align: center;
+    list-style: none;
+    margin:5px;
+}
+#div2{
+    position: absolute;
+    right:0;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        获取cookie
+            一次性会把所有的cookie都获取出来
+
+            key=val; users={"name":"王硕"}
+
+            cookie与cookie之间是通过; （分号+空格）来分割的
+    */
+
+    console.log(document.cookie);
+
+    function getCookie(key){
+        let c = document.cookie.split('; ');
+        let data = c.find(e=>new RegExp('^' + key.trim() + '=').test(e));
+        return data?data.split('=')[1]:null;
+        // if(data){
+        //     return data.split('=')[1];
+        // }else{
+        //     return null;
+        // }
+    }
+    
+    let key = 'users';
+
+    console.log(getCookie('  uID  '));
+    // console.log(c.find(e=>e.includes(key)))
+
+
+
+
+
+
+</script>
+</body>
+</html>
