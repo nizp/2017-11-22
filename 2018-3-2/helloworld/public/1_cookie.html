@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+/*
+    cookie:
+        其实它是一个后端的技术
+        指某些网站为了辨别用户身份、进行 session 跟踪而储存在用户本地终端上的数据
+
+        前端使用cookie的主要用途：进行本地存储（前端的数据库）
+            猜你喜欢
+
+        在老版本浏览器中存储的空间是很有限的，每个域名只能有xx条
+
+        一个浏览器能创建的 Cookie 数量最多为 300 个，并且每个不能超过 4KB，每个 Web 站点能设置的 Cookie 总数不能超过 20 个
+
+        *** 必须在服务器端环境下才能使用
+
+
+        设置:
+            document.cookie = 'key=val;'
+
+        cookie默认的生命周期:
+            在浏览器关闭之前
+
+        设置生命周期:
+           document.cookie = 'key=val;expires=生命周期的时间' 
+*/
+    // document.cookie = 'jquery';
+
+    // document.cookie = 'jquery2';
+
+    // document.cookie = 'user=jquery';
+    // document.cookie = 'user2=leizong';
+
+    //设置cookie
+    function setCookie(key,val,time){
+        if(time){
+            let t = new Date();
+            t.setDate(t.getDate() + time);
+            document.cookie = key+'='+val+';expires='+t;
+        }else{
+            document.cookie = key+'='+val;
+        }
+    }
+
+    //删除cookie
+    // function removeCookie(key,val){
+    //     setCookie(key,val,-1);
+    // }
+
+    // setCookie('users','一刀',7);
+
+    //如果存的是一个对象，那么内部会调用toString方法
+    //所以要用JSON.stringify转一下
+    setCookie('users',JSON.stringify({name:'王硕'}));
+    setCookie('uID',JSON.stringify({name:'丁绒绒'}));
+
+</script>
+</body>
+</html>

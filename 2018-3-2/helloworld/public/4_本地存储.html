@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        localStorage 、 sessionstorage--- 本地存储
+        
+    localStorage:
+        存储量 5M
+        提供了非常方便的api
+        还提供了一些监听事件（onstorage）:当localStorage中的数据发生变化的时候，**兄弟**页面触发
+        生命周期:永远存在
+
+    */
+
+    // localStorage.setItem('users2','[1,2,3,4]');
+    
+    // console.log(localStorage.getItem('users'));
+
+    // localStorage.removeItem('users');
+
+    // localStorage.clear(); //清空
+
+    document.onclick = function(){
+        localStorage.setItem('users2','[1,2,3,4]');
+    }
+
+    window.addEventListener('storage',function(){
+        console.log('当前页面');
+    });
+
+
+
+
+</script>
+</body>
+</html>
