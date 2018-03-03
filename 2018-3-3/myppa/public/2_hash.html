@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button>0</button>
+    <button>1</button>
+    <button>2</button>
+    <div id="div1"></div>
+<script>
+    let arr = [{num:0},{num:1},{num:2}]
+    let num = 0;
+    let btns = document.getElementsByTagName('button');
+
+    for(let e of btns){
+        e.addEventListener('click',function(){
+            window.location.hash = 'page='+this.innerText;
+        });
+    }
+
+    window.onhashchange = function(){
+        let hash = window.location.hash.split('=')[1];
+        render(hash);
+    }
+
+    render(num)
+    function render(hash){
+        div1.innerText = hash;
+    }
+</script>
+</body>
+</html>

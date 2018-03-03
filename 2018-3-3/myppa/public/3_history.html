@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <button>0</button>
+        <button>1</button>
+        <button>2</button>
+        <div id="div1"></div>
+<script>
+    /*
+        历史记录
+            history
+            ***必须要在服务器下运行
+
+        go()
+        back()  
+        forward()
+
+        //后退一页
+        history.go(-1)
+        back()  
+        //前进一页
+        history.go(1);
+        forward()
+
+        history.pushState()  添加历史记录
+
+            history.pushState(数据,title,url);
+
+        history.replaceState() 替换当前的历史记录
+
+        onpopstate 取数据  
+
+        window.onpopstate = function(ev){
+            ev.state //本次的数据
+        }
+    */
+
+    let arr = [{num:0},{num:1},{num:2}]
+    let num = 0;
+    let btns = document.getElementsByTagName('button');
+    for(let e of btns){
+        e.addEventListener('click',function(){
+            history.pushState(this.innerText,'','http://localhost:3000/3_history.html/'+this.innerText);
+            render(this.innerText)
+        });
+    }
+
+    //操作历史记录的时候就触发
+    window.onpopstate = function(ev){
+        alert('操作就触发')
+        if(ev.state){
+            render(ev.state);
+        }
+    }
+    render(num);
+    function render(hash){
+        div1.innerText = hash;
+    }
+</script>
+</body>
+</html>
