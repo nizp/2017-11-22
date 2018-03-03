@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        原型和原型链之间的关系
+    */
+
+    function Person(name,age){
+        this.name = name;
+        this.age = age;
+    }
+
+    Person.prototype.say = function(){
+        alert(this.name + this.age);
+    };
+    Person.say = function(){
+        alert('Person的say');
+    };
+    Function.say = function(){
+        alert('Fuction的say');
+    };
+    // Function.prototype.say = function(){
+    //     alert('Fuction原型的say');
+    // }
+    // Object.say = function(){
+    //     alert('Obj的say');
+    // }
+
+    Object.prototype.say = function(){
+        alert('Obj原型的say');
+    }
+
+    let p = new Person('心痛','此刻'); //p{}
+    // console.log(p);
+    // p.say();
+
+    // Person.say();//   -> Function.prototype => {__proto__} => Object.prototype
+
+
+    //Function.say();//Function -> Function.prototype => {__proto__} => Object.prototype
+
+    function fn(){alert(1)}
+    // fn.say();
+
+
+    // Object.say();
+
+    console.log(Object)
+</script>
+</body>
+</html>
