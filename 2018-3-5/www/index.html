@@ -12,6 +12,51 @@
 </style>
 </head>
 <body>
-    <div id="box"></div>
+    <!-- <div id="box"></div> -->
+    用户:<input type="text" id="user"/>
+    密码:<input type="password" id="pass"/>
+    <button id="btn">登录</button>
+    <button id="btn2">注册</button>
+<script src="ajax_1.0.js"></script>
+<script>
+    btn.onclick = function(){
+        ajax({
+            url:'/user',
+            type:'post',
+            data:{
+                act:'login',
+                username:user.value,
+                pass:pass.value
+            },
+            success:function(data){
+                if(data.code === 0){
+                    console.log(data);
+                    // window.location.href = 'http://www.miaov.com';
+                }else if(data.code === 1){
+                    alert(data.msg);
+                }else if(data.code === 2){
+                    alert(data.msg);
+                }
+            }
+        })
+    }
+
+
+    btn2.onclick = function(){
+        console.log(pass.value);
+        ajax({
+            url:'/user',
+            data:{
+                act:'add',
+                username:user.value,
+                pass:pass.value
+            },
+            success:function(data){
+                console.log(data);
+            }
+        })
+    }
+
+</script>
 </body>
 </html>
