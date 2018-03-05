@@ -6,7 +6,7 @@ import {
   Link
 } from 'react-router-dom';
 
-import App from './class/routers/demo5/1_route';
+import App from './class/routers/demo4/1_route';
 /*
   1.引入react-router-dom
   2.给根组件包上<Router>标签对（只需要一个Router即可）
