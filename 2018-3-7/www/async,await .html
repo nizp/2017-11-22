@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    function timeout(value,ms) {
+        return new Promise((resolve) => {
+            setTimeout(function(){
+                resolve(value)
+            }, ms);
+        });
+    }
+
+    async function asyncPrint(value, ms) {
+        await timeout(ms);
+        console.log(value);
+    }
+
+    let t = timeout('你好',2000);
+
+    t.then((v)=>{
+        console.log(v);
+    })
+
+    // asyncPrint('呵呵',2000);
+
+
+
+</script>
+</body>
+</html>
