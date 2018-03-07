@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    用户:<input id="user"/>
+    密码:<input type="password" id="pass"/>
+    <button id="btn">提交</button>
+<script src="ajax_1.0.js"></script>
+<script>
+
+    btn.onclick = function(){
+        ajax({
+            url:'/user',
+            type:'post',
+            data:{
+                name:user.value,
+                pass:pass.value
+            },
+            success:function(data){
+                if(data.code == 0){
+                    window.location.reload();
+                }
+                // console.log();
+            }
+        })
+    }
+    
+
+    // try{
+    //     console.log(a);
+    // }catch(err){
+    //     console.log(err);
+    //     a = 10;
+    // }
+
+    // console.log(a);
+
+    // alert(a);
+
+</script>
+</body>
+</html>
