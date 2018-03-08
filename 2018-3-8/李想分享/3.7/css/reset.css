@@ -1,0 +1,44 @@
+h2,
+h3,
+h4,
+nav,
+p,
+dl,
+dd,
+footer{
+	margin: 0;
+}
+ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color: #3b3b3b;
+	-webkit-tap-highlight-color:transparent;
+}
+img{
+	vertical-align: top;
+	border: none;
+}
+input{
+	padding: 0;
+	border: none;
+}
+html{
+	height: 100%;
+	overflow: hidden;
+}
+body{
+	height: 100%;
+	overflow: auto;
+	font-size: 0.3125rem;
+	font-family:"微软雅黑","PingFang-SC-Regular",arial,"黑体";
+	margin: 0 auto;
+    padding-top: 1px;
+    background-color: #FFFFFF;
+}
+ul{
+	overflow: hidden;
+}

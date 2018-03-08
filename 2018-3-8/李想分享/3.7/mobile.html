@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<style>
+			#box1{
+			    width: 10rem;
+				height: 5.875rem;
+				opacity: .5;   
+   				background-color: darkgrey;
+			}
+			#box2{
+			    width: 10rem;
+				height: 5.875rem;
+				background-color: mediumpurple;
+				position:relative;
+			}
+			#box3{
+			    width: 10rem;
+				height: 100.875rem;
+				background-color: orange;
+			}
+			#box2 a{
+				display: block;
+				width: 8rem;
+				height: 5rem:
+			}
+			#box2 span{
+				display: block;
+				width: 8rem;
+				height:4rem;
+				background: rgba(0,0,0,0.5);
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		</style>
+		<script>
+			var dpr = 1 / window.devicePixelRatio;
+			document.write('<meta name="viewport" content="width=device-width,initial-scale='+ dpr +',minimum-scale='+ dpr +',maximum-scale='+ dpr +',user-scalable=no" />');
+			
+			var w = document.documentElement.clientWidth / 10;
+			var html = document.getElementsByTagName('html')[0];
+			html.style.fontSize = w + 'px';
+
+			// document.onclick = function(){
+			// 	// console.log('点击');
+				
+			// 	console.timeEnd('计时器')
+			// }
+			// document.ontouchend = function(){
+			// 	// console.log(1);
+			// 	console.time('计时器')
+			// }
+
+			
+
+		</script>
+	</head>
+	
+	<body>
+		
+		<div id="box1"></div>
+		<div id="box2">
+			<!-- <a href="https://www.baidu.com/" id="a">底下部分</a> -->
+			<input type="text" id="t">
+			<span id="span">遮罩</span>
+		</div>
+		<div id="box3"></div>
+		<script>
+		//     var box1=document.getElementById('box1');
+		    
+		//     //1.事件定义的方式
+		    
+		// 	box1.ontouchstart = function(){
+		// 	     alert(1);
+		// 	 }
+			
+		// 	 box1.addEventListener("click",function(ev){
+		// 	      alert(2);
+			       
+		// 	  });
+		// 	  box1.onclick = function(){
+		// 	     alert(3);
+		// 	 }
+		//      /*
+		//       * screenX: 511, 
+		// 	    screenY: 400,//触点相对于屏幕左边沿的Y坐标
+		// 	    clientX: 244.37899780273438, 
+		// 	    clientY: 189.3820037841797,//相对于可视区域
+		// 	    pageX: 244.37, 
+		// 	    pageY: 189.37,//相对于HTML文档顶部，当页面有滚动的时候与clientX=Y 不等
+		// 	    force: 1,//压力大小，是从0.0(没有压力)到1.0(最大压力)的浮点数
+		// 	    identifier: 1036403715,//一次触摸动作的唯一标识符
+		// 	    radiusX: 37.565673828125, //能够包围用户和触摸平面的接触面的最小椭圆的水平轴(X轴)半径
+		// 	    radiusY: 37.565673828125,
+		// 	    rotationAngle: 0,//它是这样一个角度值：由radiusX 和 radiusY 描述的正方向的椭圆，需要通过顺时针旋转这个角度值，才能最精确地覆盖住用户和触摸平面的接触面
+		// 	    target: {} // 此次触摸事件的目标element
+		//       */
+		   
+		//     //2.PC的事件比移动端上的事件响应的慢300ms
+		    
+		//      box2.onclick = function(){
+	    //         console.log("click!");
+	    //         console.log(ev.touches[0])
+		//      }
+		     
+	    //     box2.ontouchstart = function(){
+	    //         console.log("touchstart!");
+	    //         console.log(ev.touches[0])
+	    //     }
+	        
+		//     //3.点击穿透问题
+		
+			document.addEventListener("touchend",function(ev){
+				//阻止焦点行为 
+				ev.preventDefault();
+			})
+	        span.addEventListener('touchstart',function(){
+		    	// setTimeout(function(){
+				// 	span.style.display='none';
+				// })
+				span.style.display='none';
+			})
+
+			t.addEventListener('touchend',function(ev){
+				ev.cancelBubble = true;
+			})
+			
+			// a.addEventListener('touchstart',function(){
+			// 	window.location.href = this.href;
+			// })
+	         
+	    //     document.addEventListener("click",function(ev){
+		// 	 ev.preventDefault();
+		// 	})
+			
+		// 	a.ontouchstart = function(){
+		// 	       window.location = this.href;  
+		// 	 }
+			
+			
+		// 	//
+		// 	box3.ontouchmove = function(evt){
+        //     this.innerHTML = `
+        //         touches-length:${evt.touches.length}
+        //         <br/>
+        //         targetTouches-length:${evt.targetTouches.length}
+        //         <br/>
+        //         changedTouches-length:${evt.changedTouches.length}
+        //         `
+	    //         console.log(evt);
+	           
+		//    }
+		
+		</script>
+	</body>
+</html>
