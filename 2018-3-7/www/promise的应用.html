@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body id="body">
+<script>
+
+    function promise(url){
+       return new Promise((resolve,reject)=>{
+            let img = new Image();
+            img.src = url;
+            img.onload = function(){
+                resolve(url);
+            }
+            img.onerror = function(){
+                reject(url);
+            }
+        });
+    } 
+
+    // promise('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520413470349&di=ee96d62c1d5c85a00dcd1d393ed4f926&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0828%2Fgha%2F2%2F07.jpg').then((url)=>{
+    //     let img = `<img src=${url} />`;
+    //     body.innerHTML = img;
+    // });
+
+    let p1 = promise('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520413470349&di=ee96d62c1d5c85a00dcd1d393ed4f926&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0828%2Fgha%2F2%2F07.jpg');
+    let p2 = promise('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520413470348&di=ced7bc321aeeea72c89804b479ceaf62&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201409%2F17%2F20140917015743_YXGwr.png');
+    // let p3 = promise('https://timgsa.360.com/timg?image&quality=80&size=b9999_10001010223&sec=152041dhjk48&di=2107a6516d4e7fc8625742743eefb05c&imgtype=0&src=http%3A%2F%2Fim6.leaderhero.com%2Fwallpaper%2F20150210%2F7c07cdd666.png');
+
+    /*
+        3张图片必须都得满足成功才能进Promise.all中的then()
+    */
+    Promise.all([p1,p2]).then(arr=>{
+        console.log(arr);
+        arr.forEach(e=>{
+            let img = `<img src=${e} />`;
+            body.innerHTML += img;
+        });
+    }).catch((url)=>{
+        console.log(url);
+    })
+
+
+</script>
+</body>
+</html>

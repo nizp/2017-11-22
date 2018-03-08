@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    用户:<input type="text" id="user"/>
+    密码:<input type="password" id="pass"/>
+    <button id="submit">登录</button>
+    <button id="submit2">注册</button>
+<script src="ajax_1.0.js"></script>
+<script>
+    submit.onclick = function(){
+        ajax({
+            url:'/user/login',
+            data:{
+                username:user.value,
+                password:pass.value
+            },
+            success:function(data){
+                console.log(data);
+            }
+        })
+    }
+
+
+    submit2.onclick = function(){
+        ajax({
+            url:'/user/add',
+            data:{
+                username:user.value,
+                password:pass.value
+            },
+            success:function(data){
+                console.log(data);
+            }
+        })
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        function fn1(){
+            function fn2(){
+                function fn3(){
+
+                }
+            }
+        }
+
+        fn1()
+        fn2()
+        fn3()
+
+        then()   成功
+
+        catch()    失败
+
+    */
+
+    let a = 10;
+
+    // let promise = new Promise((resolve,reject)=>{
+    //     setTimeout(() => {
+    //         a = 20;
+    //         if(a == 20){
+    //             resolve(a);
+    //         }else{
+    //             reject('失败');
+    //         }
+    //     },2000);
+    // })
+
+    // setTimeout(() =>a = 20,0);
+    
+    // alert(a);
+
+    // promise.then((a)=>{
+    //     alert(a);
+    // },(err)=>{
+    //     alert(err);
+    // })
+
+    // promise.then((a)=>{
+    //     alert(a);
+    //     alert(a + 1); //21
+    // });
+
+
+
+    function pormise(data,ms){
+        return new Promise((reslove,reject)=>{
+            setTimeout(function(){
+                if(data){
+                    reslove(data);
+                }else{
+                    reject('失败');  
+                }
+            },ms);
+        });
+    }
+
+
+    let p1 = pormise('杨丽春',1000);
+    let p2 = pormise('刘春雨',5000);
+
+    Promise.all([p1,p2]).then((data)=>{
+        console.log(data[0] + data[1] + '是好姐们儿!');
+    });
+
+
+</script>
+</body>
+</html>
