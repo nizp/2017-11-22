@@ -1,7 +1,5 @@
-import {fn} from './es6';
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
-require('./1.css');
 
 class App extends Component {
     constructor(){

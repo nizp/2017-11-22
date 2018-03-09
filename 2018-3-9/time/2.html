@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			
+			// for(let i=0; i<5; i++){	//0
+			// 	setTimeout(function(){
+			// 		console.log(i)			//因为let不可以重复声明变量
+			// 	},1000)				
+			// }	
+			
+			
+//			for (var i = 0; i<5; ++i){
+//			function time(i) {
+//			  setTimeout(function() {
+//			  		console.log(i) 
+//			  		},1000);
+//				}time(i);						
+//			}
+
+			
+			//加上闭包，就能解决这个问题，									
+			
+				// for (var i=0; i<5; i++){
+				// 	(function(i){
+				// 	     setTimeout(function(){
+				// 	       console.log(i);
+				// 	     },1000);
+				// 	})(i);
+				// }
+
+//			这里使用了匿名函数，匿名函数最大的用途是创建闭包，
+//			匿名函数是立即执行的，执行完就释放，闭包的一个缺陷就是变量一直没有释放，会导致内存泄漏。
+			
+//				闭包就是函数套函数
+//				子级能访问父级的参数或者变量，并且引用着这个时候，
+//          	父级的参数或者变量就不会被垃圾回收机制回收
+//	      		这个时候形成闭包环境
+
+				// function fn(){
+				// 	var a =0;
+				// 	a++;
+				// 	alert(a)
+				// }
+				// fn()
+				// fn()
+	//在函数执行的时候，函数内变量会被浏览器垃圾回收机制给回收。
+
+
+				
+				// function fn(){
+				// 	var a = 0;
+				// 	return	function fn2(){
+				// 		a++
+				// 		alert(a)
+				// 	}
+				// }
+				// var ff = fn();				
+				// 	ff()
+				// 	ff()
+
+
+
+				// function f1(){
+				// 　　　　var n=999;
+				// 　　aa = function(){	//声明的是全局变量
+				// 		n++
+				// 	}
+				// 　　　　function f2(){
+				// 　　　　　　alert(n);
+				// 　　　　}
+				// 　　　　return f2;
+				// 　　}
+				// 　　var result=f1();
+				// 　　result(); // 999
+				// 　　aa();				//让n++
+				// 　　result(); // 1000
+				
+				
+
+			
+		</script>
+	</body>
+</html>
