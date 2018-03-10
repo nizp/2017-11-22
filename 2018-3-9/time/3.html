@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.active{
+    background: yellow;
+}
+div.show{
+    display: block;
+}
+div{
+    width:175px;
+    height: 150px;
+    border: 1px solid #2B2B2B;
+    display: none;
+}
+</style>
+</head>
+<body>
+    <button type="button" class="active">按钮一</button>
+    <button type="button">按钮二</button>
+    <button type="button">按钮三</button>
+    <div class="show">111111</div>
+    <div>222222</div>
+    <div>33333</div>
+<script>    
+    const lis = document.querySelectorAll('button');
+    const divs = document.querySelectorAll('div');
+    
+//  for(var i=0;i<lis.length;i++){
+//      lis[i].num = i;
+//      lis[i].onclick = function(){           
+//          for(var i=0;i<lis.length;i++){
+//              lis[i].className = '';
+//              divs[i].className = '';
+//          }
+//          this.className='active';
+//          divs[this.num].className = 'show';
+//      }
+//  }
+    		
+    		
+    		
+    	for(var i=0;i<lis.length;i++){
+            lis[i].onclick = (function(i){
+                return function(){
+                    for(var j=0;j<lis.length;j++){	//大清洗，
+                        divs[j].className='';
+                        lis[j].className=''
+                    }
+                    lis[i].className='active';		
+                    divs[i].className='show';
+                }
+            })(i);
+        }
+
+
+    		   		
+    
+</script>
+</body>
+</html>

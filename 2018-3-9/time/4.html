@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script>
+	// function fn(){
+	// 	var a = 0;
+	// 	++a;
+	// 	alert(a);
+	// }
+	// fn();
+	// fn();
+
+	function fn(){
+		var a = 10;
+		return function(){
+			a ++;
+			// alert(a);
+		}
+	}
+
+	var f = fn();
+
+	console.dir(f);
+
+
+	(function(){
+		var a = 10;
+		alert(a);
+	})()
+
+	+function(){
+		"use strict"
+		var a = 12;
+		alert(a);
+	}();
+
+
+
+	
+
+</script>	
+</body>
+</html>
