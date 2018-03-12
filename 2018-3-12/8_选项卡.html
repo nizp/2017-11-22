@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:200px;
+    height: 200px;
+    border: 1px solid #000;
+}
+#box2{
+    width:100px;
+    height: 100px;
+    border: 1px solid #000;
+    background: yellow;
+}
+.yellow{
+    background: yellow
+}
+
+</style>
+</head>
+<body>
+    <div id="app">
+        <input type="text" @keyup.shift.13="up"/>
+        <button 
+            v-for="(val,key) in arr"
+            @click="fn(key)"
+            :class="val.b?y:''"
+
+        >{{val.title}}</button>
+
+        <!-- <div>{{arr[num].title}}</div> -->
+
+        <div v-for="(val,key) in arr" v-if="val.b">{{val.text}}</div>
+
+    </div>
+<script src="vue.js"></script>
+<script>
+   
+    let v = new Vue({
+        el:'#app',
+        data:{
+            arr:[{title:'按钮1',b:true,text:'第一个内容'},{title:'按钮2',b:false,text:'第二个内容'},{title:'按钮3',b:false,text:'第三个内容'}],
+            y:'yellow',
+            // num:0
+        },
+        methods:{
+            up(ev){
+                this.arr.push({
+                    title:'按钮'+(this.arr.length+1),
+                    b:false,
+                    text:ev.target.value
+                })
+                ev.target.value = '';
+            },
+            fn(key){
+                // this.num = key;
+                this.arr.forEach((e,i)=>{
+                    if(i == key){
+                        e.b = true
+                    }else{
+                        e.b = false
+                    }
+                })
+            }
+        }
+    });
+
+ 
+
+</script>
+</body>
+</html>

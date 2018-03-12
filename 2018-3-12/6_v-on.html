@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    border: 1px solid #000;
+}
+
+</style>
+</head>
+<body>
+    <div id="app">
+        <!-- <button v-on:click="fn">点击</button> -->
+        <button @mouseover="fn">点击</button>
+        <div v-if="onOff" id="box"></div>
+    </div>
+<script src="vue.js"></script>
+<script>
+    /*
+        methods:{
+            管理事件的
+        }
+
+        v-on:click=""  ->缩写为 @click
+
+    */
+    let v = new Vue({
+        el:'#app',
+        data:{
+            onOff:false
+        },
+        methods:{
+            fn:function(){
+                this.onOff = !this.onOff;
+            }
+        }
+    });
+
+ 
+
+</script>
+</body>
+</html>
