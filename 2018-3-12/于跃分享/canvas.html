@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="300" height="300"></canvas>  
+        <script type="text/javascript"> 
+            //随意增添数据曲线图会随之变化 
+            //定义图表数据  
+            var y_axis=[80,92,101,110,68,50,45,90,74,68,98,103,300,250];
+            //函数调用  
+            drawChart(y_axis); 
+            
+            
+
+            //绘制折线数据图表的函数  
+            function drawChart(data){  
+                //获取上下文  
+                var canvas=document.getElementById("canvas");  
+                var ctx=canvas.getContext("2d");  
+                //描绘背景  
+                var gradient=ctx.createLinearGradient(0,0,0,300);   //创建线性的渐变对象的一种方法调用 (x0,y0,x1,y1)渐变起点到渐变终点
+                gradient.addColorStop(0,"#e0e0e0"); 
+                gradient.addColorStop(1,"#ffffff");
+
+                ctx.fillStyle=gradient; 
+                ctx.fillRect(0,0,canvas.width,canvas.height); 
+                
+                
+
+                //计算坐标  
+                var grid_cols=data.length+1;  //columns
+                var grid_rows=4;               //rows
+                var cell_width=canvas.width/grid_cols;  
+                var cell_height=canvas.height/grid_rows;  
+                //绘制背景的方格线  
+                ctx.beginPath();  
+                for(var row=0;row<=grid_rows;row++){  
+                        var y=row*cell_height;  
+                        ctx.moveTo(0,y);  
+                        ctx.lineTo(canvas.width,y);  
+                    }
+                for(var col=0;col<grid_cols;col++){  
+                        var x=col*cell_width;  
+                        ctx.moveTo(x,0);  
+                        ctx.lineTo(x,canvas.height);  
+                    }  
+                ctx.lineWidth=1;ctx.strokeStyle="#c0c0c0";  
+                ctx.stroke(); 
+                    
+                    
+
+
+                    //获取数据中最大值  
+                    var max_v=0;  
+                    for(var i=0;i<data.length;i++){  
+                            if(data[i]>max_v)  
+                                max_v=data[i];  
+                        }  
+                    //为了能让最大值能容纳在图表内，计算坐标  
+                    max_v=max_v*1.1;  
+                    //将数据转换为坐标  
+                    var points=[];  
+                    for(var i=0;i<data.length;i++){  
+                            var v=data[i];  
+                            var px=cell_width*(1+i);  
+                            var py=canvas.height-canvas.height*(v/max_v);  
+                            points.push({"x":px,"y":py});  
+                        }  
+
+
+
+
+                    //描绘折线  
+                    ctx.beginPath();  
+                    ctx.moveTo(points[0].x,points[0].y);  
+                    for(var i=1;i<points.length;i++){  
+                        ctx.lineTo(points[i].x,points[i].y);   
+                    }  
+                    ctx.lineWidth=2;  
+                    ctx.strokeStyle="#ee0000";  
+                    ctx.stroke(); 
+                    
+                    
+
+
+
+                    //绘制坐标图形（坐标对于一红色圈圈）  
+                    for(var i in points){  
+                        var p=points[i];  
+                        ctx.beginPath();  
+                        ctx.arc(p.x,p.y,6,0,2*Math.PI);  //arc(x,y,r,起始弧度rad，结束弧度rad，旋转方向（默认false顺时针）)
+                        ctx.fillStyle="#ee0000";  
+                        ctx.fill();   
+                    }  
+            }  
+        </script> 
+</body>
+</html>
