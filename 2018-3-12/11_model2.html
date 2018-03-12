@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <input 
+            type="checkbox"
+            v-model="onOff"
+        /> -->
+        
+        <input 
+            type="checkbox"
+            value="刘春雨"
+            v-model="arr"
+        />
+        <input 
+            type="checkbox"
+            value="杨丽春"
+            v-model="arr"
+        />
+        <input 
+            type="checkbox"
+            value="李宇春"
+            v-model="arr"
+        />
+        <div>{{arr}}</div>
+        
+    </div>
+<script src="vue.js"></script>
+<script>
+    /*
+        碰到表单元素就要立马想到用
+            v-model
+            
+            用户的操作和数据绑定
+
+            如果有多个表单控件，要通过用户的操作去取值，直接在元素身上绑v-model和添加value即可
+
+    */
+
+    new Vue({
+        el:'#app',
+        data:{
+            onOff:false,
+            arr:[]
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input 
+            type="text"
+            v-model.trim="val"
+        />
+        <input 
+            type="text"
+            v-model.trim="val"
+            
+        />
+
+        <div>{{val}}</div>
+    </div>
+<script src="vue.js"></script>
+<script>
+    /*
+        碰到表单元素就要立马想到用
+            v-model
+            
+            用户的操作和数据绑定
+
+    */
+
+    new Vue({
+        el:'#app',
+        data:{
+            val:'123'
+        },
+        methods:{
+            // up(ev){
+            //     // this.val = ev.target.value;
+            //     //let {val} = this.state
+            //     //this.setState({
+            //     // val:ev.target.value
+            //     //})
+
+            //     console.log(this.val)
+            // }
+        }
+    });
+</script>
+</body>
+</html>

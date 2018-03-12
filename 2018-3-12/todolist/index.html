@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>todos</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+
+<body>
+    <div id="app">
+            <section class="todoapp">
+                    <div>
+                        <header class="header" >
+                            <h1>todos</h1>
+                            <input 
+                                class="new-todo" 
+                                placeholder="请输入内容" 
+                                v-model="val"
+                                @keyup.13="up"
+                            >
+                        </header>
+                        <section class="main">
+                            <input 
+                                class="toggle-all" 
+                                type="checkbox" 
+                                :checked="listenArr"
+                                @click="click"
+                            >
+                            <ul class="todo-list">
+                                <li 
+                                    :class="val.checked?'completed':''" 
+                                    v-for="(val,key) in arr">
+                                    <div class="view" >
+                                        <input 
+                                            class="toggle" 
+                                            type="checkbox" 
+                                            v-model="val.checked">
+                                        <label>{{val.txt}}</label>
+                                        <button class="destroy"></button>
+                                    </div>
+                                    <!-- <input class="edit" value="多多对对对"> -->
+                                </li>
+                            </ul>
+                        </section>
+                        <!-- <footer class="footer">
+                            <span class="todo-count">
+                                <strong>0</strong>
+                                <span>条未选中</span>
+                            </span>
+                        </footer> -->
+
+                    </div>
+                </section>
+
+                <div>{{listenVal}}</div>
+    </div>
+<script src="../vue.js" charset="utf-8"></script>
+<script>
+
+    /*
+        computed:{
+            监听的函数名:function(){
+                return 监听的数据的处理
+            }
+        }
+        当某个数据发生变化的时候就会触发
+
+
+    */
+
+    new Vue({
+        el:'#app',
+        data:{
+            val:'',
+            arr:[
+                {
+                    id:0,
+                    txt:'呵呵',
+                    checked:false
+                },
+                {
+                    id:1,
+                    txt:'呵哒',
+                    checked:true
+                }
+            ]
+        },
+        methods:{
+            up(){
+                this.arr.unshift({
+                    id:new Date().getTime(),
+                    txt: this.val,
+                    checked:false 
+                })
+                this.val = '';
+            },
+            click(ev){
+                let {checked} = ev.target;
+               
+                this.arr.forEach(e=>{
+                    console.log(e.checked)
+                    e.checked = checked
+                })
+            }
+        },
+        computed:{
+            listenArr(){
+               // console.log('数据变更') 
+                return this.arr.every(e=>e.checked);
+            },
+            listenVal(){
+                return  this.val.replace(/\d+/g,'');
+            }
+        }
+    })
+
+</script>
+</body>
+</html>
