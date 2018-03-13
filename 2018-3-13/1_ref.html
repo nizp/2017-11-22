@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p 
+            ref="pp"
+            @click="click"
+        >pppppppppppp</p>
+    </div>
+<script src="vue.js"></script>
+<script>
+    /*
+        ref帮助我们快速定位某个**组件**或者某个**元素**
+            定义：
+                ref="名字"
+            调用:
+                this.$refs.名字
+        
+    */
+    new Vue({
+        el:'#app',
+        methods:{
+            click(){
+                console.log(this.$refs.pp)
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

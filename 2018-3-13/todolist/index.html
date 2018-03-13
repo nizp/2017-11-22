@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+    <div id="app">
+            <section class="todoapp">
+                    <div>
+                        <header class="header" >
+                            <h1>todos</h1>
+                            <input 
+                                class="new-todo" 
+                                placeholder="请输入内容" 
+                                v-model="val"
+                                @keyup.13="up"
+                            >
+                        </header>
+                        <section class="main">
+                            <input 
+                                class="toggle-all" 
+                                type="checkbox" 
+                                :checked="listenArr"
+                                @click="click"
+                            >
+                            <!-- editing -->
+                            <ul class="todo-list">
+                                <li 
+                                    :class="((val.id==ed)?'editing':'') + (val.checked?' completed':'')" 
+                                    v-for="(val,key) in cArr"
+                                    
+                                >
+                                    <div class="view" >
+                                        <input 
+                                            class="toggle" 
+                                            type="checkbox" 
+                                            v-model="val.checked">
+                                        <label
+                                            @dblclick="db($event,val.id)"
+                                        >{{val.txt}}</label>
+                                        <button 
+                                            class="destroy"
+                                            @click="remove(val.id)"
+                                        ></button>
+                                    </div>
+                                    <input 
+                                        class="edit"
+                                        :value="val.txt"
+                                        @blur="blur(val.id,$event)"
+                                        @keyup.13="blur(val.id,$event)"
+                                        @keyup.esc="ed=-1"
+                                    >
+                                </li>
+                            </ul>
+                        </section>
+                        <footer class="footer">
+                            <span class="todo-count">
+                                <strong>{{changeNum}}</strong>
+                                <span>条未选中</span>
+                            </span>
+                            <ul class="filters">
+                                <li><a href="#/all" @click="active='all'" :class="active=='all'?'selected':''">全部</a></li>
+                                <li><a href="#/active" @click="active='active'" :class="active=='active'?'selected':''">未完成</a></li>
+                                <li><a href="#/completed" @click="active='completed'" :class="active=='completed'?'selected':''">已完成</a></li>
+                            </ul>
+
+                        </footer>
+
+                    </div>
+                </section>
+
+                <div>{{listenVal}}</div>
+    </div>
+<script src="../vue.js" charset="utf-8"></script>
+<script>
+
+    /*
+        computed:{
+            监听的函数名:function(){
+                return 监听的数据的处理
+            }
+        }
+        当某个数据发生变化的时候就会触发
+
+        $event：
+            当事件函数传参的时候，把ev给覆盖了，如果还想使用
+            ev，那么传入$event，就可以拿到ev了;
+
+        $nextTick
+            当数据变更之后，DOM加载完成就执行。
+
+        computed和methods的区别
+            computed页面刷新就触发一次，当数据发生变化的时候再触发
+
+            methods只有事件触发或者调用才会触发，数据如果发生了变化，只要不调用就不会触发
+
+        watch:
+            只有数据发生变化的时候才会触发watch
+
+            watch:{
+                监听数据的名称:function(newVal,oldVal){}
+            }
+
+            watch:{
+                监听数据的名称:{
+                    handler:function(newVal,oldVal){},
+                    deep:true
+                }
+            }
+
+
+
+
+
+    */
+
+    function getData(){
+        return localStorage.getItem('data')?JSON.parse(localStorage.getItem('data')):[
+                {
+                    id:99,
+                    txt:'呵呵',
+                    checked:false
+                },
+                {
+                    id:1,
+                    txt:'呵哒',
+                    checked:true
+                }
+            ]
+    }
+
+    new Vue({
+        el:'#app',
+        data:{
+            active:'all',
+            ed:-1,
+            val:'',
+            arr:getData()
+        },
+        methods:{
+            blur(id,ev){
+                this.ed = -1;
+                let val = ev.target.value.trim();
+                if(val){
+                    //修改数据
+                    this.arr.forEach(e=>{
+                        if(e.id == id){
+                            e.txt = val;
+                        }
+                    });
+                }
+            },
+            db(ev,id){
+                this.ed = id;
+                this.$nextTick(function(){
+                    ev.target.parentNode.nextElementSibling.focus();
+                });
+            },
+            //删除
+            remove(id){
+                this.arr = this.arr.filter(e=>e.id != id);
+            },
+            up(){
+                this.arr.unshift({
+                    id:new Date().getTime(),
+                    txt: this.val,
+                    checked:false 
+                })
+                this.val = '';
+            },
+            click(ev){
+                let {checked} = ev.target;
+               
+                this.arr.forEach(e=>{
+                    console.log(e.checked)
+                    e.checked = checked
+                })
+            }
+        },
+        computed:{
+            listenArr(){
+            //    console.log('数据变更')
+                 
+                return this.arr.length?this.arr.every(e=>e.checked):false;
+            },
+            listenVal(){
+                return  this.val.replace(/\d+/g,'');
+            },
+            changeNum(){
+                // console.log('ggg')
+                return this.arr.filter(e=>!e.checked).length;
+            },
+            cArr(){
+                // console.log(this.active)
+                return this.arr.filter(e=>{
+                    switch(this.active){
+                        case 'all':
+                            return e;
+                        break;
+                        case 'active':
+                            return !e.checked;
+                        break;
+                        case 'completed':
+                            return e.checked;
+                        break;
+                    }
+                })
+            },
+        },
+        watch:{
+            arr:{
+                handler:function(newVal,oldVal){
+                    localStorage.setItem('data',JSON.stringify(this.arr))
+                },
+                deep:true
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

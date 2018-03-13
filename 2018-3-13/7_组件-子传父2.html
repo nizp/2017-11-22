@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>父级{{num}}</div>
+        <hr />
+        <child-pa :pnum="num" @pchange="changeNum"></child-pa>
+    </div>
+<script src="vue.js"></script>
+<script>
+    
+    const childPa = {
+        template:`
+            <div>
+                <button
+                   @click="click"
+                >子级点击修改</button>
+                <p>{{cnum}}</p>    
+            </div>
+        `,
+        props:['pnum'],
+        data(){
+            return {
+                cnum:this.pnum
+            }
+        },
+        methods:{
+            click(){
+                this.cnum ++;
+                this.$emit('pchange',this.cnum);
+            }
+        }
+
+    }
+
+    Vue.component('child-pa',childPa);
+
+    new Vue({
+        el:'#app',
+        data:{
+            num:0
+        },
+        methods:{
+            changeNum(num){
+                this.num = num;
+            }
+        }
+    });
+
+    
+</script>
+</body>
+</html>
