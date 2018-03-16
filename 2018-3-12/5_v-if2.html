@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    border: 1px solid #000;
+}
+#box2{
+    width:100px;
+    height: 100px;
+    border: 1px solid #000;
+    background: red;
+}
+#box3{
+    width:100px;
+    height: 100px;
+    border: 1px solid #000;
+    background: green;
+}
+.red{
+    background: red;
+}
+</style>
+</head>
+<body>
+    <div id="app">
+        <div v-if="c=='white'" id="box"></div>
+        <div v-else-if="c=='green'" id="box3"></div>
+        <div v-else id="box2"></div>
+    </div>
+<script src="vue.js"></script>
+<script>
+    /*
+        vue:
+            https://cn.vuejs.org/
+
+            Vue 的核心库只关注视图层  mvvm框架  M V C:{VM}
+
+            ng-xx
+            v-xx
+
+            数据输出就用: {{包data中数据即可}}
+
+            v-bind  绑定行间属性
+                css     ->  v-bind:class="r"
+
+                            :class="r"
+                    输出的结果:
+                        <div id="box" class="red">123</div>
+
+                style   ->  v-bind:style="{'background':r}"   
+                            r:data中的r
+
+                            v-bind:style="{'fontSize':'50px'}"   
+                
+                v-text=""  ->innerText
+                v-html=""  ->innerHTML
+
+                 v-for="(val,key) in arr2"  
+                <li v-for="(val,key) in arr2">{{val.name}}</li>
+                    小敏
+                    刘春雨
+                    杨丽春
+                    李宇春
+
+                v-if
+                    如果条件成立就显示这个元素，否则不加载某个（些）元素
+
+                前一兄弟元素必须有 v-if 或 v-else-if
+    */
+
+    let v = new Vue({
+        el:'#app',
+        data:{
+            arr:[{name:'小敏'},{name:'刘春雨'},{name:'杨丽春'},{name:'李宇春'}]
+            ,c:'white'
+        }
+    });
+
+ 
+
+    //{name:'小敏'},{name:'刘春雨'},{name:'杨丽春'},{name:'李宇春'}
+
+</script>
+</body>
+</html>

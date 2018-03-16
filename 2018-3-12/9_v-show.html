@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.y{
+    background: yellow
+}
+</style>
+</head>
+<body>
+    <div class="app">
+       <input type="text" @keyup.13="up"/>
+       <button 
+            v-for="(val,key) in arr"
+            :class="{'y':val.b}"
+            @click="click(key)"
+        >{{val.title}}</button>
+        <div 
+            v-for="(val,key) in arr" 
+            v-show="val.b"
+        >{{val.text}}</div>
+    </div>
+<script src="vue.js"></script>
+<script>
+   
+    new Vue({
+        el:'.app',
+        data:{
+            arr:[{title:'按钮1',b:true,text:'第一个内容'},
+            {title:'按钮2',b:false,text:'第二个内容'},
+            {title:'按钮3',b:false,text:'第三个内容'}]
+        },
+        methods:{
+            click(key){
+                this.arr.forEach((e,i)=>{
+                    if(i === key){
+                        e.b = true;
+                    }else{
+                        e.b = false;
+                    }
+                })
+            },
+            up(ev){
+               this.arr.push({
+                    title:'按钮'+(this.arr.length+1),
+                    b:false,
+                    text:ev.target.value
+               });
+               ev.target.value = '';
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

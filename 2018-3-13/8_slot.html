@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style lang="">
+.p{
+    color:aqua;
+    width:50px;
+    height: 50px;
+    border: 1px solid red;
+}
+#h,#w{
+    width:100px;
+    height: 100px;
+    border: 1px solid #000;
+}
+
+</style>
+</head>
+<body>
+    <div id="app">
+        <div>父级</div>
+        <hr />
+        <child-pa>
+            <!-- <template slot="h">
+                <p class="p" >hello</p>
+                <p class="p" >and</p>
+                <p class="p" >wrold</p>
+            </template> -->
+            <p class="p" slot="h">hello</p>
+            <p class="p" slot="h">and</p>
+            <p class="p" slot="w">wrold</p>
+        </child-pa>
+    </div>
+<script src="vue.js"></script>
+<script>
+    /*
+        在子组件中定义一个slot标签，可以写上默认的结构和样式
+        当不需要默认的结构和样式时，可以在子组件的双标签内
+        填充想使用的结构和样式，这个时候，就会将指定的slot标签
+        覆盖，既有配置走配置，没配置走默认
+
+        小技巧:
+            定义slot的时候记得给标签加name="xxx"
+            覆盖的时候使用slot="xxx"
+
+            如果一个slot被添加若干配置，那么使用template包裹
+            并且在template标签上写上slot="xxx" ，这个时候
+            被template包裹的所有元素都是覆盖执行的slot的。
+    */
+    const childPa = {
+        template:`
+            <div>
+                <button>子组件的按钮</button>
+                <slot name="h">
+                    <div id="h">
+                        你好
+                    </div>
+                </slot>   
+                <slot name="w">
+                    <div id="w">
+                        世界
+                    </div>
+                </slot>    
+            </div>
+        `
+    }
+
+    Vue.component('child-pa',childPa);
+
+    new Vue({
+        el:'#app'
+    });
+
+    
+</script>
+</body>
+</html>

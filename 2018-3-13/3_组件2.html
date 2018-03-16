@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button
+            @click="++num"
+        >点击{{num}}</button>
+       <ul>
+           <child-pa :pnum="num" n="-20"></child-pa>
+       </ul>
+    </div>
+<script src="vue.js"></script>
+<script>
+    
+    const childPa = {
+        template:`<li>{{pnum}}{{n}}</li>`,
+        props:['pnum','n']
+        // props:{
+        //     pnum:Number,
+        //     n:[String,Number]
+        // }
+    }
+
+    Vue.component('child-pa',childPa);
+
+    new Vue({
+        el:'#app',
+        data:{
+            num:10
+        }
+    });
+
+    
+</script>
+</body>
+</html>

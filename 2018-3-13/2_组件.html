@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>这些都是子组件{{num}}</h1>
+        <!-- <ppa></ppa> -->
+        <child-pa></child-pa>
+    </div>
+<script src="vue.js"></script>
+<script>
+   /*
+        写组件的Vue.component(组件的名字,{
+            template:`子组件的模板`
+            data(){  
+                return {
+                    arr:[1,2,3]
+                }
+            }
+        });
+        
+        注意:
+            component中的data必须为函数，函数中必须return一个对象
+            对象中就是你的初始化的数据
+
+            template顶层只能有一个元素。
+
+        在vue中，子组件的命名如果是驼峰命名法，那么使用组件的时候
+        得用烤串命名方式使用。
+            childPa ->   <childPa></childPa>  ×
+            childPa ->   <child-pa></child-pa> √
+
+            小技巧，尽量不要使用驼峰命名法定义子组件
+            如果太想要分割名字，就使用烤串命名方式定义组件名
+
+
+   */
+
+   let childPa = {
+        template:`
+            <div
+                @click="click"
+                @mousedown.prevent=""
+                >我是子组件{{num2}}</div>
+        `,
+        data(){
+            return {
+                num:1,
+                // num2:1
+            }
+        },
+        methods:{
+            click(){
+                // alert(123);
+                ++ this.num
+            }
+        },
+        computed:{
+            num2(){
+                return this.num<10?'0'+ this.num:''+this.num;
+            }
+        }
+        // watch:{
+        //     num:function(newV,oldV){
+                
+        //        this.num2 = newV<10?'0'+ newV:''+newV;
+        //     }
+        // }
+   }
+    
+   Vue.component('child-pa',childPa);
+
+    new Vue({
+        el:'#app',
+        data:{
+            num:'呵呵'
+        }
+    });
+
+    
+</script>
+</body>
+</html>

@@ -6,7 +6,7 @@ import {Provider} from 'react-redux';
 import reducer from './src/demo2/reducer/Reducer';
 
 let store = createStore(reducer);
-
+let num = 0;
 ReactDOM.render(
     <Provider store={store}>
         <App/>

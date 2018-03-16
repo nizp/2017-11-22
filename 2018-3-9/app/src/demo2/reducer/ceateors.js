@@ -4,8 +4,10 @@ export function add(num){
         num
     }
 }
-export function rm(){
-    return {
-        type:"REMOVE"
+export function rm()=>(getState, dispatch)=>{
+    if(getState().x===1){
+        dispatch( {
+            type:"REMOVE"
+        })
     }
 }

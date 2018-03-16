@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:200px;
+    height: 200px;
+    border: 1px solid #000;
+}
+#box2{
+    width:100px;
+    height: 100px;
+    border: 1px solid #000;
+    background: yellow;
+}
+
+</style>
+</head>
+<body>
+    <div id="app">
+       <div id="box"  @contextmenu="fn1">
+           <div id="box2" @click.stop="fn2"></div>
+       </div>
+
+       <img :src="src" @mousedown.prevent=""/>
+    </div>
+<script src="vue.js"></script>
+<script>
+    /*
+        methods:{
+            管理事件的
+        }
+
+        v-on:click=""  ->缩写为 @click
+
+        .stop阻止冒泡
+        .prevent 阻止默认行为
+
+    */
+    let v = new Vue({
+        el:'#app',
+        data:{
+            onOff:false,
+            src:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520836258202&di=1eb0c2528d76984ef690aa5455c0222a&imgtype=0&src=http%3A%2F%2Fimg01.taopic.com%2F140926%2F318765-14092621112261.jpg'
+        },
+        methods:{
+            fn1:function(ev){
+                console.log(ev);
+                alert('我是1');
+
+                ev.preventDefault();
+            },
+            fn2(){
+                alert('我是2')
+            }
+        }
+    });
+
+ 
+
+</script>
+</body>
+</html>
